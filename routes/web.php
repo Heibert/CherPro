@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\CoordinacionController;
+use App\Http\Controllers\AsistenciaController;
 use App\Models\Reporte;
 
 /*
@@ -19,9 +20,7 @@ use App\Models\Reporte;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('asistencia', function () {
-    return view('asistencia');
-});
+Route::resource('/asistencia', AsistenciaController::class);
 
 Route::resource('/reporte', ReporteController::class);
 Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy');
