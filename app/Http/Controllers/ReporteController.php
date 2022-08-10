@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Instructor;
+use App\Models\Reporte;
+use Illuminate\Support\Facades\validator;
 
 class ReporteController extends Controller
 {
@@ -14,9 +16,8 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        //
+        return view('reportes.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +25,9 @@ class ReporteController extends Controller
      */
     public function create()
     {
-        /* $Instructores; */
+        $instructores = Instructor::all();
+        return view('reportes.registro')
+            ->with('instructores',$instructores);
     }
 
     /**
@@ -35,7 +38,29 @@ class ReporteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reglas = [
+            "instructor"=>"required|numeric",
+            "coordinador"=>"required|numeric",
+            "fecha"=>"required|date"
+        ];
+        $mensajes = [
+            "required" => "Debes llenar el campo"
+        ];
+        $validation = Validator::make($request->all(),$reglas,$mensajes);
+        if ($validation->fails()) {
+            return redirect('reporte/create')
+            ->withErrors($validation)
+            ->withInput();
+        }
+        else {
+            $reporte = new Reporte;
+            $reporte->idInstructor = $request->instructor;
+            $reporte->idCoordinador = $request->coordinador;
+            $reporte->fechaReporte = $request->fecha;
+            $reporte->save();
+            return redirect('reporte/create')
+            ->with('mensaje','Reporte guardado');
+        }
     }
 
     /**

@@ -17,8 +17,7 @@ class InstructorFactory extends Factory
     public function definition()
     {
         return [
-            "nombreInst" => $this->faker->name(),
-            "apellido"
+            "nombre" => $this->faker->name()
         ];
     }
 }

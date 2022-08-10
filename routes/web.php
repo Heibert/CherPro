@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReporteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('reporte', function () {
-    return view('reporte');
-});
+Route::resource('/reporte', ReporteController::class);
 Route::get('asistencia', function () {
     return view('asistencia');
 });
