@@ -4,34 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reportes</title>
+    <title>Coordinacions</title>
 </head>
 <body>
     <nav>
-        <h2><a href="reporte/create">Registrar </a></h2>
+        <h2><a href="coordinacion/create">Registrar </a></h2>
     </nav>
     <table>
     <tr>
-        <th>IdReporte</th>
-        <th>IdInstructor</th>
-        <th>IdCoordinador</th>
-        <th>Fecha</th>
+        <th>Idcoordinacion</th>
+        <th>Nombre de la coordinacion</th>
+        <th>IdPrograma</th>
     </tr>
-    @foreach ($reportes as $reporte)
+    @foreach ($coordinaciones as $coordinacion)
     <tr>
-        <td>{{$reporte->id}}</td>
-        <td>{{$reporte->idInstructor}}</td>
-        <td>{{$reporte->idCoordinador}}</td>
-        <td>{{$reporte->fechaReporte}}</td>
+        <td>{{$coordinacion->id}}</td>
+        <td>{{$coordinacion->nomCoordinacion}}</td>
+        <td>{{$coordinacion->idPrograma}}</td>
         <td>
-            <form action="{{ route('reporte.destroy', $reporte->id) }}" method ="POST" >
+            <form action="{{ route('coordinacion.destroy', $coordinacion->id) }}" method ="POST" >
             @csrf
             {{ method_field('DELETE') }}
             <input type="submit" value="Eliminar">
             </form>
         </td>
         <td>
-            <form action="{{ route('reporte.edit', $reporte->id) }}" method ="GET" >
+            <form action="{{ route('coordinacion.edit', $coordinacion->id) }}" method ="GET" >
             @csrf
             <input type="submit" value="Editar">
             </form>

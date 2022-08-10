@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Programa;
+use App\Models\Coordinacion;
+use Illuminate\Support\Facades\validator;
 
 class CoordinacionController extends Controller
 {
@@ -13,7 +16,8 @@ class CoordinacionController extends Controller
      */
     public function index()
     {
-        echo 'Index';
+        $coordinaciones = Coordinacion::all();
+        return view('coordinacion.index',['coordinaciones'=>$coordinaciones]);
     }
 
     /**
@@ -23,7 +27,9 @@ class CoordinacionController extends Controller
      */
     public function create()
     {
-        //
+        $programas = Programa::all();
+        return view('coordinacion.registro')
+            ->with('programas',$programas);
     }
 
     /**
@@ -34,7 +40,27 @@ class CoordinacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $reglas = [
+            "idPrograma"=>"required|numeric",
+            "nomCoordinacion"=>"required|string",
+        ];
+        $mensajes = [
+            "required" => "Debes llenar el campo"
+        ];
+        $validation = Validator::make($request->all(),$reglas,$mensajes);
+        if ($validation->fails()) {
+            return redirect('coordinacion/create')
+            ->withErrors($validation)
+            ->withInput();
+        }
+        else {
+            $coordinacion = new Coordinacion;
+            $coordinacion->nomCoordinacion = $request->nomCoordinacion;
+            $coordinacion->idPrograma = $request->idPrograma;
+            $coordinacion->save();
+            return redirect('coordinacion/create')
+            ->with('mensaje','coordinacion guardada');
+        }
     }
 
     /**
@@ -79,6 +105,8 @@ class CoordinacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $coordinacion = Coordinacion::findOrFail($id);
+        $coordinacion->delete();
+        return redirect()->action([CoordinacionController::class, 'index']);
     }
 }

@@ -16,7 +16,8 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        return view('reportes.index');
+        $reportes = Reporte::all();
+        return view('reportes.index',['reportes'=>$reportes]);
     }
     /**
      * Show the form for creating a new resource.
@@ -82,7 +83,11 @@ class ReporteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $reporte = Reporte::findOrFail($id);
+        $instructores = Instructor::all();
+        return view ('reportes.edit')
+        ->with('instructores',$instructores)
+        ->with('reportes',$reporte);
     }
 
     /**
@@ -94,7 +99,29 @@ class ReporteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reglas = [
+            "instructor"=>"required|numeric",
+            "coordinador"=>"required|numeric",
+            "fecha"=>"required|date"
+        ];
+        $mensajes = [
+            "required" => "Debes llenar el campo"
+        ];
+        $validation = Validator::make($request->all(),$reglas,$mensajes);
+        if ($validation->fails()) {
+            return redirect('reporte.edit',$id)
+            ->withErrors($validation)
+            ->withInput();
+        }
+        else {
+            $reporte = Reporte::findOrFail($id);
+            $reporte->idInstructor = $request->instructor;
+            $reporte->idCoordinador = $request->coordinador;
+            $reporte->fechaReporte = $request->fecha;
+            $reporte->save();
+            return redirect('reporte')
+            ->with('mensaje','Reporte actualizado');
+        }
     }
 
     /**
@@ -105,6 +132,8 @@ class ReporteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reporte = Reporte::findOrFail($id);
+        $reporte->delete();
+        return redirect()->action([ReporteController::class, 'index']);
     }
 }
