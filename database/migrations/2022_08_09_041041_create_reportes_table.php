@@ -15,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('reportes', function (Blueprint $table) {
             $table->id();
-            $table->integer('idInstructor');
-            $table->integer('idCoordinador');
+            $table->unsignedBigInteger('idInstructor');
+            $table->unsignedBigInteger('idCoordinador');
             $table->date('fechaReporte');
             $table->timestamps();
+
+            $table->foreign('idInstructor')->references('id')->on('instructores');
+            $table->foreign('idCoordinador')->references('id')->on('coordinadores');
         });
     }
 

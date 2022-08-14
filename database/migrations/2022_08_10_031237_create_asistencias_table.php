@@ -16,9 +16,12 @@ return new class extends Migration
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
             $table->date('fechaAsistencia');
-            $table->integer('idAprendiz');
-            $table->integer('idTematica');
+            $table->unsignedBigInteger('idAprendiz');
+            $table->unsignedBigInteger('idTematica');
             $table->timestamps();
+
+            $table->foreign('idAprendiz')->references('id')->on('aprendices');
+            $table->foreign('idTematica')->references('id')->on('tematicas');
         });
     }
 
