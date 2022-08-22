@@ -18,7 +18,7 @@ class AsistenciaController extends Controller
     public function index()
     {
         $asistencias = Asistencia::all();
-        return view('asistencia.index',['asistencias'=>$asistencias]);
+        return $asistencias;
     }
 
     /**

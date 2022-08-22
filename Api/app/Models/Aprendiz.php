@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Aprendiz extends Model
 {
     use HasFactory;
+    protected $table = "Aprendices";
     public function asistencia(){
         return $this->hasMany('App\Asistencia');
     }
