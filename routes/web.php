@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExcusaController;
+use App\Http\Controllers\CoordinadorController;
+use App\Http\Controllers\ProgramaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/excusa/create',[ExcusaController::class,'create']);
+
+Route::resource('excusa',ExcusaController::class);
+
+Route::resource('coordinador',CoordinadorController::class); 
+
+Route::resource('programa',ProgramaController::class);
