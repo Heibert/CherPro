@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coordinadores', function (Blueprint $table) {
+        Schema::create('programas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombrePrograma');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coordinadores');
+        Schema::dropIfExists('programas');
     }
 };

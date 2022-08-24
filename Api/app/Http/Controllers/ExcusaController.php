@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Programa;
+use App\Models\Excusa;
 use Illuminate\Http\Request;
 
-class ProgramaController extends Controller
+class ExcusaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ProgramaController extends Controller
     public function index()
     {
         //
-        $datos['programas']= Programa::paginate();
-        return view('programa.index', $datos);
+        $datos['excusas']= Excusa::paginate();
+        return view('excusa.index', $datos);
     }
 
     /**
@@ -27,7 +27,7 @@ class ProgramaController extends Controller
     public function create()
     {
         //
-        return view('programa.create');
+        return view('excusa.create');
     }
 
     /**
@@ -39,19 +39,19 @@ class ProgramaController extends Controller
     public function store(Request $request)
     {
         //
-        $datosPrograma = request()->except('_token');
-        Programa::insert($datosPrograma );
+        $datosExcusa = request()->except('_token');
+        Excusa::insert($datosExcusa );
         
-        return redirect('programa')->with('mensaje','Programa agregado con exito');
+        return redirect('excusa')->with('mensaje','Excusa agregada con exito');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\Excusa  $excusa
      * @return \Illuminate\Http\Response
      */
-    public function show(Programa $programa)
+    public function show(Excusa $excusa)
     {
         //
     }
@@ -59,43 +59,45 @@ class ProgramaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\Excusa  $excusa
      * @return \Illuminate\Http\Response
      */
     public function edit( $id)
     {
         //
-        $programa=Programa::findOrFail($id);
-        return view('programa.edit', compact('programa'));
+        $excusa=Excusa::findOrFail($id);
+        return view('excusa.edit', compact('excusa'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\Excusa  $excusa
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $datosPrograma = request()->except(['_token','_method']);
-        Programa::where('id','=',$id)->update($datosPrograma);
+        $datosExcusa = request()->except(['_token','_method']);
+        Excusa::where('id','=',$id)->update($datosExcusa);
 
-        $programa=Programa::findOrFail($id);
-        return view('programa.edit', compact('programa'));
+        $excusa=Excusa::findOrFail($id);
+        return view('excusa.edit', compact('excusa'));
+        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\Excusa  $excusa
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
         //
-        Programa::destroy($id);
-        return redirect('programa');
+        Excusa::destroy($id);
+        return redirect('excusa');
     }
 }

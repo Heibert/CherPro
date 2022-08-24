@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Programa extends Model
 {
     use HasFactory;
+
+    public function instructores(){
+        return $this->belongsToMany(Instructor::class);
+    }
+
+    public function administradores(){
+        return $this->hasMany(Administrador::class);
+    }
 }
