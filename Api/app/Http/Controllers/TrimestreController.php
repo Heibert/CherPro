@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tematica;
+use App\Models\Trimestre;
 use Illuminate\Http\Request;
 
-class TematicaController extends Controller
+class TrimestreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class TematicaController extends Controller
      */
     public function index()
     {
-        $datos['tematicas']= Tematica::paginate(5);
-        return view ('Tematica.index',$datos );
+        $datos['trimestres']= Trimestre::paginate(5);
+        return view ('Trimestre.index',$datos );
     }
 
     /**
@@ -25,7 +25,7 @@ class TematicaController extends Controller
      */
     public function create()
     {
-        return view ('Tematica.create');
+        return view ('Trimestre.create');
     }
 
     /**
@@ -36,18 +36,18 @@ class TematicaController extends Controller
      */
     public function store(Request $request)
     {
-        $datosTema = request()->except('_token');
-        Tematica::insert($datosTema);
-        return response()->json($datosTema);
+        $datosTrimes = request()->except('_token');
+        Trimestre::insert($datosTrimes);
+        return response()->json($datosTrimes);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tematica  $tematica
+     * @param  \App\Models\Trimestre  $trimestre
      * @return \Illuminate\Http\Response
      */
-    public function show(Tematica $tematica)
+    public function show(Trimestre $trimestre)
     {
         //
     }
@@ -55,39 +55,39 @@ class TematicaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tematica  $tematica
+     * @param  \App\Models\Trimestre  $trimestre
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $tematica=Tematica::findOrFail($id);
-        return view ('Tematica.edit', compact('tematica'));
+        $trimestre=Trimestre::findOrFail($id);
+        return view ('Trimestre.edit', compact('trimestre'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tematica  $tematica
+     * @param  \App\Models\Trimestre  $trimestre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tematica $tematica)
+    public function update(Request $request, Trimestre $trimestre)
     {
-        $datosTema = request()->except('_token','_method');
-        Tematica::where('idTematica','=','$idTematica')->update($datosTema);
-        $tematica=Tematica::findOrFail($id);
-        return view ('Tematica.edit', compact('tematica'));
+        $datosTrimes = request()->except('_token','_method');
+        Trimestre::where('idTrimestre','=','$idTrimestre')->update($datosTrimes);
+        $trimestre=Trimestre::findOrFail($id);
+        return view ('Trimestre.edit', compact('trimestre'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tematica  $tematica
+     * @param  \App\Models\Trimestre  $trimestre
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Tematica::destroy($id);
-        return redirect('tematica');
+        Trimestre::destroy($id);
+        return redirect('trimestre');
     }
 }
