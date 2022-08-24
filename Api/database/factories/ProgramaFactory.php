@@ -17,7 +17,7 @@ class ProgramaFactory extends Factory
     public function definition()
     {
         return [
-            "nombre" => $this->faker->name()
+            "nombrePrograma" => $this->faker->name()
         ];
     }
 }

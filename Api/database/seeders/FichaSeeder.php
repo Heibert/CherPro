@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Tematica;
+use App\Models\Ficha;
 
-class TematicaSeeder extends Seeder
+class FichaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,6 @@ class TematicaSeeder extends Seeder
      */
     public function run()
     {
-        $u = new Tematica();
-        $u->nombreTematica = "Biologia";
-        $u->instructor_id = "1";
-        $u->programa_id = "1";
-        $u->ficha_id = "1";
-        $u->save();
+        Ficha::factory(10)->create();
     }
 }
