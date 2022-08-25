@@ -20,32 +20,24 @@ var Fecha_Actual = new Date()
 var fecha_iso = Fecha_Actual.toISOString()
 var fecha_buena = fecha_iso.split("T", 1); 
 Asistencias.map(function(Asistencia){
-    console.log(Asistencia)
-        if (fecha_buena == Asistencias.fechaAsistencia) {
-            console.log('Encontrado en: ',Asistencia.id, "Y la fecha es: ",Asistencia.fechaAsistencia)
-        }
-        else(
-            console.log("No encontrado")
-        )
+    Asistencia.lol = "losl";
     }) 
-/*     for (let i = 0; i < Asistencias.length; i++) {
-        Asistencias.
-        
-    } */
     return (
     <div>
         <button className='btn btn-primary'>crear</button>
         <table className='bg-primary text-white'>
             <thead >
                 <tr>
+                    <th>Fecha</th>
                     <th>Nombre</th>
                 </tr>
             </thead>
             <tbody>
                 {Asistencias.map((Asistencia)=>(
                     <tr key={Asistencia.id}>
-                        <td>Asistencia numero {Asistencia.id}</td>
-                        <td>Su fecha fue {Asistencia.fechaAsistencia}</td>
+                        <td className='bg-success bg-gradient'>{Asistencia.fechaAsistencia}</td>
+                        <td className='bg-secondary bg-gradient'>{Asistencia.nombre}</td>
+                        <td>{Asistencia.lol}</td>
                     </tr>
                 ) )}
                 

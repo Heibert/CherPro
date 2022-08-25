@@ -15,10 +15,21 @@ class AsistenciaSeeder extends Seeder
      */
     public function run()
     {
-        $u = new Asistencia();
-        $u->fechaAsistencia = "2022-01-01";
+
+            Asistencia::factory(10)->create();
+        
+    }
+}
+
+/*      $u = new Asistencia();
+        $u->$faker->date('Y-M-D');
         $u->idAprendiz = "1";
         $u->idTematica = "1";
         $u->save();
-    }
-}
+        for ($i=0; $i < 11; $i++) { 
+            $u = new Asistencia();
+            $u->fechaAsistencia = "2000-15-22";
+            $u->idAprendiz = "1";
+            $u->idTematica = "1";
+            $u->save(); 
+            }*/

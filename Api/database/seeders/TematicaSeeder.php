@@ -15,11 +15,6 @@ class TematicaSeeder extends Seeder
      */
     public function run()
     {
-        $u = new Tematica();
-        $u->nombreTematica = "Biologia";
-        $u->instructor_id = "1";
-        $u->programa_id = "1";
-        $u->ficha_id = "1";
-        $u->save();
+        Tematica::factory(10)->create();
     }
 }
