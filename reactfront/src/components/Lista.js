@@ -20,27 +20,48 @@ var Fecha_Actual = new Date()
 var fecha_iso = Fecha_Actual.toISOString()
 var fecha_buena = fecha_iso.split("T", 1); 
 Asistencias.map(function(Asistencia){
-    Asistencia.lol = "losl";
-    }) 
+    var Fechas = Asistencia.fechaAsistencia 
+    if (Asistencia.fechaAsistencia) { 
+
+    }
+    switch (Asistencia.Asistencia) {
+        case "A":
+            Asistencia.color = "bg-success"; 
+            break;
+        case "F":
+            Asistencia.color = "bg-danger"; 
+            break;
+        case "E":
+            Asistencia.color = "bg-success"; 
+            break;
+        case "R":
+            Asistencia.color = "bg-warning"; 
+            break;
+        default:
+            break;
+    }
+    })
+    let copiaArray = Asistencias.length();
+    console.log(Asistencias,"",copiaArray)
     return (
     <div>
         <button className='btn btn-primary'>crear</button>
-        <table className='bg-primary text-white'>
-            <thead >
+        <table className='bg-primary table-bordered text-white'>
+            <thead>
                 <tr>
-                    <th>Fecha</th>
                     <th>Nombre</th>
+                    {Asistencias.map((Asistencia)=>(
+                    <><th>{Asistencia.fechaAsistencia}</th></>
+                    ))}
                 </tr>
             </thead>
             <tbody>
                 {Asistencias.map((Asistencia)=>(
                     <tr key={Asistencia.id}>
-                        <td className='bg-success bg-gradient'>{Asistencia.fechaAsistencia}</td>
-                        <td className='bg-secondary bg-gradient'>{Asistencia.nombre}</td>
-                        <td>{Asistencia.lol}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.Asistencia}</td>
                     </tr>
                 ) )}
-                
             </tbody>
         </table>
     </div>
