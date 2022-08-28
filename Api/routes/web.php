@@ -25,7 +25,7 @@ use App\Http\Controllers\TrimestreController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('/asistencia', AsistenciaController::class);
+/* Route::resource('/asistencia', AsistenciaController::class); */
 
 Route::resource('/reporte', ReporteController::class);
 Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy');

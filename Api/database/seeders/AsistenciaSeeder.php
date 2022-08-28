@@ -20,16 +20,3 @@ class AsistenciaSeeder extends Seeder
         
     }
 }
-
-/*      $u = new Asistencia();
-        $u->$faker->date('Y-M-D');
-        $u->idAprendiz = "1";
-        $u->idTematica = "1";
-        $u->save();
-        for ($i=0; $i < 11; $i++) { 
-            $u = new Asistencia();
-            $u->fechaAsistencia = "2000-15-22";
-            $u->idAprendiz = "1";
-            $u->idTematica = "1";
-            $u->save(); 
-            }*/

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
             $table->date('fechaAsistencia');
-            $table->char('Asistencia');
+            $table->char('estadoAsistencia',1);
             $table->unsignedBigInteger('idAprendiz');
             $table->unsignedBigInteger('idTematica');
             $table->timestamps();

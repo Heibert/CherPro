@@ -1,5 +1,5 @@
 <?php
-
+/* Heibert */
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -33,9 +33,9 @@ class AsistenciaController extends Controller
     {
         $aprendices = Aprendiz::all();
         $tematicas = Tematica::all();
-        return view('asistencia.registro')
+        return  $tematicas;/* view('asistencia.registro')
             ->with('Aprendices',$aprendices)
-            ->with('Tematicas',$tematicas);
+            ->with('Tematicas',$tematicas); */
     }
 
     /**
@@ -46,7 +46,7 @@ class AsistenciaController extends Controller
      */
     public function store(Request $request)
     {
-        $reglas = [
+/*         $reglas = [
             "fechaAsistencia"=>"required|date",
             "idAprendiz"=>"required|numeric",
             "idTematica"=>"required|numeric",
@@ -60,15 +60,17 @@ class AsistenciaController extends Controller
             ->withErrors($validation)
             ->withInput();
         }
-        else {
+        else { */
             $asistencia = new Asistencia;
             $asistencia->fechaAsistencia = $request->fechaAsistencia;
+            $asistencia->estadoAsistencia = $request->estadoAsistencia;
             $asistencia->idAprendiz = $request->idAprendiz;
             $asistencia->idTematica = $request->idTematica;
             $asistencia->save();
-            return redirect('asistencia/create')
-            ->with('mensaje','asistencia guardada');
-    }
+            return $asistencia; 
+            /* redirect('asistencia/create')
+            ->with('mensaje','asistencia guardada'); */
+        /* } */
 }
 
     /**

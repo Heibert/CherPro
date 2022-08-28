@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const endpoint = 'http://localhost:8000/api'
 const Lista = () => {
     const [Asistencias, setAsistencias] = useState ( [] )
+
 
     useEffect ( ()=> {
         getAllAsistencias()
@@ -24,7 +25,7 @@ Asistencias.map(function(Asistencia){
     if (Asistencia.fechaAsistencia) { 
 
     }
-    switch (Asistencia.Asistencia) {
+    switch (Asistencia.estadoAsistencia) {
         case "A":
             Asistencia.color = "bg-success"; 
             break;
@@ -41,17 +42,19 @@ Asistencias.map(function(Asistencia){
             break;
     }
     })
-    let copiaArray = Asistencias.length();
-    console.log(Asistencias,"",copiaArray)
+/*     let copiaArray = Asistencias.length();
+    console.log(Asistencias,"",copiaArray) */
     return (
     <div>
-        <button className='btn btn-primary'>crear</button>
+        <div className='d-grid gap-2'>
+            <a href='/create' className='btn btn-success btn-lg mt-2 mb-2 text-white'>Crear asistencia de una fecha especifica</a>
+        </div>
         <table className='bg-primary table-bordered text-white'>
             <thead>
                 <tr>
                     <th>Nombre</th>
                     {Asistencias.map((Asistencia)=>(
-                    <><th>{Asistencia.fechaAsistencia}</th></>
+                    <th key={Asistencia.id}>{Asistencia.fechaAsistencia}</th>
                     ))}
                 </tr>
             </thead>
@@ -59,7 +62,7 @@ Asistencias.map(function(Asistencia){
                 {Asistencias.map((Asistencia)=>(
                     <tr key={Asistencia.id}>
                         <td className={Asistencia.color}>{Asistencia.nombre}</td>
-                        <td className={Asistencia.color}>{Asistencia.Asistencia}</td>
+                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ) )}
             </tbody>
