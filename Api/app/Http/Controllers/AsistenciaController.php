@@ -33,9 +33,7 @@ class AsistenciaController extends Controller
     {
         $aprendices = Aprendiz::all();
         $tematicas = Tematica::all();
-        return  $tematicas;/* view('asistencia.registro')
-            ->with('Aprendices',$aprendices)
-            ->with('Tematicas',$tematicas); */
+        return array($tematicas, $aprendices);
     }
 
     /**
