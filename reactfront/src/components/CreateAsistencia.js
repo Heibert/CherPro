@@ -2,38 +2,33 @@ import axios, { Axios, AxiosError } from "axios";
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+var fecha_Actual = new Date()
+var fecha_AñoPasado = new Date()
+fecha_AñoPasado.setFullYear(fecha_Actual.getFullYear() - 1)
+var fecha_ISOPasada = fecha_AñoPasado.toISOString()
+var fecha_CorrectaPasado = fecha_ISOPasada.split("T", 1)
+var fecha_ISO = fecha_Actual.toISOString()
+var fecha_Correcta = fecha_ISO.split("T", 1)
+
 const endpoint = 'http://localhost:8000/api/asistencia'
 
 const CreateAsistencia = () => {
 
   const [Aprendices, setAprendices] = useState([])
   const [Tematicas, setTematicas] = useState([])
-
-  useEffect(() => {
-    getAllTematicaAprendiz()
-  }, [])
-
-  const getAllTematicaAprendiz = async () => {
-    const response = await axios.get(`${endpoint}/create`)
-    setAprendices(response.data[1])
-    setTematicas(response.data[0])
-  }
-
-  var Fecha_Actual = new Date()
-  var fecha_iso = Fecha_Actual.toISOString()
-  var fecha_buena = fecha_iso.split("T", 1)
-  
-  var difference = Math.abs(fecha_buena - day1);
-  days = difference / (1000 * 3600 * 24)
-
   const [erroresAxio, setErroresAxio] = useState("");
-
   const [fechaAsistencia, setfechaAsistencia] = useState('')
   const [estadoAsistencia, setEstadoAsistencia] = useState('')
   const [idAprendiz, setidAprendiz] = useState(0)
   const [idTematica, setidTematica] = useState(0)
 
   const navigate = useNavigate()
+
+  const getAllTematicaAprendiz = async () => {
+    const response = await axios.get(`${endpoint}/create`)
+    setAprendices(response.data[1])
+    setTematicas(response.data[0])
+  }
 
   const Store = async (e) => {
     e.preventDefault()
@@ -51,6 +46,10 @@ const CreateAsistencia = () => {
       })
   }
 
+  useEffect(() => {
+    getAllTematicaAprendiz()
+  }, [])
+
   return (
     <div>
       <h3>Insertar la asistencia de una fecha especifica</h3>
@@ -60,7 +59,8 @@ const CreateAsistencia = () => {
           <label className="form-label">Fecha:</label>
           <input
             autoFocus
-            max={fecha_buena}
+            min={fecha_CorrectaPasado}
+            max={fecha_Correcta}
             value={fechaAsistencia}
             onChange={(e) => setfechaAsistencia(e.target.value)}
             type='date'
