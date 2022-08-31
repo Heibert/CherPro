@@ -31,6 +31,15 @@ const CreateAsistencia = () => {
             })
     }
 
+    function mostrarDato() {
+        var Dato = 0
+        console.log(Dato)
+    }
+
+    useEffect(() => {
+        mostrarDato()
+      }, [])
+
     return (
         <div>
             <h3>Insertar la asistencia de una fecha especifica</h3>
@@ -61,12 +70,13 @@ const CreateAsistencia = () => {
                     <label className="form-label">Tematica:</label>
                     <input
                         value={idTematica}
+                        
                         onChange={(e) => setidTematica(e.target.value)}
                         type='number'
                         className="form-control"
                     />
                 </div>
-                <button type="submit">Crear</button>
+                <button onClick={mostrarDato()} type="submit">Crear</button>
             </form>
         </div>
     )

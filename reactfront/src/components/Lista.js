@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-
-import { Link, useNavigate } from "react-router-dom";
+/* 
+import { Link, useNavigate } from "react-router-dom"; */
 
 const endpoint = 'http://localhost:8000/api'
 const Lista = () => {
@@ -21,9 +21,6 @@ const Lista = () => {
     var fecha_buena = fecha_iso.split("T", 1);
     Asistencias.map(function (Asistencia) {
         var Fechas = Asistencia.fechaAsistencia
-        if (Asistencia.fechaAsistencia) {
-
-        }
         switch (Asistencia.estadoAsistencia) {
             case "A":
                 Asistencia.color = "bg-success";
