@@ -50,19 +50,19 @@ const Lista = () => {
             <table className='bg-primary table-bordered text-white'>
                 <thead>
                     <tr>
-                        <th>Nombre</th>
                         {Asistencias.map((Asistencia) => (
-                            <th key={Asistencia.id}>{Asistencia.fechaAsistencia}</th>
+                            <><th>Nombre</th>
+                            <th key={Asistencia.id}>{Asistencia.fechaAsistencia}</th></>
                         ))}
                     </tr>
                 </thead>
                 <tbody>
-                    {Asistencias.map((Asistencia) => (
-                        <tr key={Asistencia.id}>
-                            <td className={Asistencia.color}>{Asistencia.nombre}</td>
-                            <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                        </tr>
-                    ))}
+                    <tr>
+                        {Asistencias.map((Asistencia) => (
+                            <><td className={Asistencia.color}>{Asistencia.nombre}</td>
+                            <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td></>
+                        ))}
+                    </tr>
                 </tbody>
             </table>
         </div>
