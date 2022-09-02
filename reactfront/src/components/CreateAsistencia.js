@@ -43,6 +43,7 @@ const CreateAsistencia = () => {
       })
       .catch(function (error) {
         setErroresAxio(error.response.data.message)
+        console.log(error.response.data.message)
       })
   }
 

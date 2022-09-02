@@ -38,6 +38,7 @@ const Lista = () => {
                 break;
         }
         AsistenciaArray.push(Asistencia.fechaAsistencia)
+        Asistencias
     })
 console.log("sort",AsistenciaArray.sort())
     return (
@@ -55,7 +56,7 @@ console.log("sort",AsistenciaArray.sort())
                 </thead>
                 <tbody>
                 {Asistencias.map((Asistencia) => (
-                    <tr>
+                    <tr key={Asistencia.id}>
                         <td key={Asistencia.id}>{AsistenciaArray[1]}</td>
                         <td className={Asistencia.color}>{Asistencia.nombre}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
