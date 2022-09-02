@@ -8,14 +8,14 @@ const Lista = () => {
     const [Asistencias, setAsistencias] = useState([])
 
     useEffect(() => {
-        getAllAsistencias()
+        getAllDatosAsistencias()
     }, [])
 
-    const getAllAsistencias = async () => {
+    const getAllDatosAsistencias = async () => {
         const response = await axios.get(`${endpoint}/asistencia`)
         setAsistencias(response.data)
     }
-
+    var AsistenciaArray = []
     var Fecha_Actual = new Date()
     var fecha_iso = Fecha_Actual.toISOString()
     var fecha_buena = fecha_iso.split("T", 1);
@@ -37,8 +37,9 @@ const Lista = () => {
             default:
                 break;
         }
+        AsistenciaArray.push(Asistencia.fechaAsistencia)
     })
-
+console.log("sort",AsistenciaArray.sort())
     return (
         <div>
             <div className='d-grid gap-2'>
@@ -47,19 +48,19 @@ const Lista = () => {
             <table className='bg-primary table-bordered text-white'>
                 <thead>
                     <tr>
-                        {Asistencias.map((Asistencia) => (
-                            <><th>Nombre</th>
-                            <th key={Asistencia.id}>{Asistencia.fechaAsistencia}</th></>
-                        ))}
+                        <th>Asistencias</th>
+                        <th>Nombre</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
+                {Asistencias.map((Asistencia) => (
                     <tr>
-                        {Asistencias.map((Asistencia) => (
-                            <><td className={Asistencia.color}>{Asistencia.nombre}</td>
-                            <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td></>
-                        ))}
+                        <td key={Asistencia.id}>{AsistenciaArray[1]}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

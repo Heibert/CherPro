@@ -32,8 +32,8 @@ const CreateAsistencia = () => {
     }
 
     function mostrarDato() {
-        var Dato = 0
-        console.log(Dato)
+        var Dato = ["10","8","6"]
+        console.log(Dato.sort())
     }
 
     useEffect(() => {

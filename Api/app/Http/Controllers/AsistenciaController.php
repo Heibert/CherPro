@@ -17,7 +17,8 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-/*         $asistencias = Asistencia::all(); */
+        /* $asistencias = Asistencia::all();
+        $aprendices = Aprendiz::all(); */
         $asistencias = Aprendiz::join("Asistencias","Asistencias.idAprendiz", "=", "Aprendices.id")
             ->select("*")
             ->get();
