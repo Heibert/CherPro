@@ -69,6 +69,7 @@ const CreateAsistencia = () => {
           />
           <label className="form-label">Estado:</label>
           <select type='select' onChange={(e) => setEstadoAsistencia(e.target.value)} className="form-control">
+            <option>Elija una opcion</option>
             <option value="A">Asistio</option>
             <option value="R">Retardo</option>
             <option value="E">Excusa</option>

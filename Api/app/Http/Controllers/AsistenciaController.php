@@ -7,6 +7,7 @@ use App\Models\Tematica;
 use App\Models\Aprendiz;
 use App\Models\Asistencia;
 use Illuminate\Support\Facades\validator;
+use Illuminate\Support\Facades\DB;
 
 class AsistenciaController extends Controller
 {
@@ -17,11 +18,13 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-        /* $asistencias = Asistencia::all();
-        $aprendices = Aprendiz::all(); */
-        $asistencias = Aprendiz::join("Asistencias","Asistencias.idAprendiz", "=", "Aprendices.id")
+        $asistencias = DB::table('asistencias')
+        ->join('aprendices','asistencias.idAprendiz','=','aprendices.id')
+        ->orderBy('fechaAsistencia','asc')->get();
+        /* $aprendices = Aprendiz::all(); */
+        /* $asistencias = Aprendiz::join("Asistencias","Asistencias.idAprendiz", "=", "Aprendices.id")
             ->select("*")
-            ->get();
+            ->get(); */
         return $asistencias;
     }
 

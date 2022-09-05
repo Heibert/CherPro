@@ -20,7 +20,7 @@ class AsistenciaFactory extends Factory
     public function definition()
     {
         return [
-            "fechaAsistencia" => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            "fechaAsistencia" => $this->faker->dateTimeThisYear(),
             'estadoAsistencia'=> $this->faker->randomElement(['A','F','R','E']),
             'idAprendiz'=> Aprendiz::all()->random()->id,
             'idTematica'=> Tematica::all()->random()->id,

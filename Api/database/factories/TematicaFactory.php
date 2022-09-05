@@ -20,7 +20,7 @@ class TematicaFactory extends Factory
     public function definition()
     {
         return [
-            "nombreTematica" => $this->faker->word(),
+            "nombreTematica" => $this->faker->randomElement(['SQL', 'Ingles', 'JS', 'PHP', 'Java','React','C++','C#']),
             'instructor_id'=> Instructor::all()->random()->id,
             'programa_id'=> Programa::all()->random()->id,
             'ficha_id'=> Ficha::all()->random()->id,

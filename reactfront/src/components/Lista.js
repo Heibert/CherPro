@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 /* 
 import { Link, useNavigate } from "react-router-dom"; */
 
@@ -18,7 +18,8 @@ const Lista = () => {
     var AsistenciaArray = []
     var Fecha_Actual = new Date()
     var fecha_iso = Fecha_Actual.toISOString()
-    var fecha_buena = fecha_iso.split("T", 1);
+    fecha_iso.split("T", 1);
+
     Asistencias.map(function (Asistencia) {
         var Fechas = Asistencia.fechaAsistencia
         switch (Asistencia.estadoAsistencia) {
@@ -37,30 +38,28 @@ const Lista = () => {
             default:
                 break;
         }
-        AsistenciaArray.push(Asistencia.fechaAsistencia)
-        Asistencias
     })
-console.log("sort",AsistenciaArray.sort())
+    console.log(Asistencias)
     return (
         <div>
             <div className='d-grid gap-2'>
                 <a href='/create' className='btn btn-success btn-lg mt-2 mb-2 text-white'>Crear asistencia de una fecha especifica</a>
             </div>
-            <table className='bg-primary table-bordered text-white'>
+            <table className='bg-primary table-bordered text-white container '>
                 <thead>
-                    <tr>
-                        <th>Asistencias</th>
-                        <th>Nombre</th>
+                    <tr className=''>
+                        <th className='col'>Asistencias</th>
+                        <th className='col'>Nombre</th>
                         <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
-                {Asistencias.map((Asistencia) => (
-                    <tr key={Asistencia.id}>
-                        <td key={Asistencia.id}>{AsistenciaArray[1]}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    {Asistencias.map((Asistencia) => (
+                        <tr key={Asistencia.fechaAsistencia}>
+                            <td>{Asistencia.fechaAsistencia}</td>
+                            <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                            <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
+                        </tr>
                     ))}
                 </tbody>
             </table>
