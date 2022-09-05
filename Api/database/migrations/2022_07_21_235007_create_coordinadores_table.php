@@ -15,7 +15,19 @@ return new class extends Migration
     {
         Schema::create('coordinadores', function (Blueprint $table) {
             $table->id();
+            $table->string('nomCoordinador');
+            $table->string('apeCoordinador');
+            $table->char('tipoDoc');
+            $table->integer('numDoc');
+            $table->string('correoMisena');
+            $table->integer('telefonoCoordinador');
+            $table->unsignedBigInteger('idCoordinacion')->unique();
             $table->timestamps();
+
+
+            $table->foreign('idCoordinacion')->references('id')->on('coordinaciones')
+                                                ->onDelete('cascade');
+
         });
     }
 

@@ -13,9 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tematicas', function (Blueprint $table) {
+        Schema::create('excusas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+
+            $table->date('fechaExcusa');
+            $table->string('descExcusa');
+
+            $table->unsignedBigInteger('idAsistencia')->unique();
+            $table->foreign('idAsistencia')->references('id')
+                                ->on('asistencias')
+                                ->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
@@ -27,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tematicas');
+        Schema::dropIfExists('excusas');
     }
 };

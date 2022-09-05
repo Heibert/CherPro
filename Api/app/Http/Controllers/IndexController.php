@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Programa;
+use App\Models\index;
 use Illuminate\Http\Request;
 
-class ProgramaController extends Controller
+class IndexController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class ProgramaController extends Controller
      */
     public function index()
     {
-        //
-        $datos['programas']= Programa::paginate();
-        return view('programa.index', $datos);
+        Echo 'index';
     }
 
     /**
@@ -27,7 +25,6 @@ class ProgramaController extends Controller
     public function create()
     {
         //
-        return view('programa.create');
     }
 
     /**
@@ -39,19 +36,15 @@ class ProgramaController extends Controller
     public function store(Request $request)
     {
         //
-        $datosPrograma = request()->except('_token');
-        Programa::insert($datosPrograma );
-        
-        return redirect('programa')->with('mensaje','Programa agregado con exito');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\index  $index
      * @return \Illuminate\Http\Response
      */
-    public function show(Programa $programa)
+    public function show(index $index)
     {
         //
     }
@@ -59,43 +52,34 @@ class ProgramaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\index  $index
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit(index $index)
     {
         //
-        $programa=Programa::findOrFail($id);
-        return view('programa.edit', compact('programa'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\index  $index
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, index $index)
     {
         //
-        $datosPrograma = request()->except(['_token','_method']);
-        Programa::where('id','=',$id)->update($datosPrograma);
-
-        $programa=Programa::findOrFail($id);
-        return view('programa.edit', compact('programa'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\index  $index
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy(index $index)
     {
         //
-        Programa::destroy($id);
-        return redirect('programa');
     }
 }

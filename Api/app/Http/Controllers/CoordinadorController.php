@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Programa;
+use App\Models\Coordinador;
 use Illuminate\Http\Request;
 
-class ProgramaController extends Controller
+class CoordinadorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ProgramaController extends Controller
     public function index()
     {
         //
-        $datos['programas']= Programa::paginate();
-        return view('programa.index', $datos);
+        $datos['coordinadores']= Coordinador::paginate();
+        return view('coordinador.index', $datos);
     }
 
     /**
@@ -27,7 +27,7 @@ class ProgramaController extends Controller
     public function create()
     {
         //
-        return view('programa.create');
+        return view('coordinador.create');
     }
 
     /**
@@ -39,19 +39,19 @@ class ProgramaController extends Controller
     public function store(Request $request)
     {
         //
-        $datosPrograma = request()->except('_token');
-        Programa::insert($datosPrograma );
+        $datosCoordinador = request()->except('_token');
+        Coordinador::insert($datosCoordinador );
         
-        return redirect('programa')->with('mensaje','Programa agregado con exito');
+        return redirect('coordinador')->with('mensaje','coordinador agregado con exito');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\Coordinador  $coordinador
      * @return \Illuminate\Http\Response
      */
-    public function show(Programa $programa)
+    public function show(Coordinador $coordinador)
     {
         //
     }
@@ -59,43 +59,43 @@ class ProgramaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\Coordinador  $coordinador
      * @return \Illuminate\Http\Response
      */
     public function edit( $id)
     {
         //
-        $programa=Programa::findOrFail($id);
-        return view('programa.edit', compact('programa'));
+        $coordinador=Coordinador::findOrFail($id);
+        return view('coordinador.edit', compact('coordinador'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\Coordinador  $coordinador
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $datosPrograma = request()->except(['_token','_method']);
-        Programa::where('id','=',$id)->update($datosPrograma);
+        $datosCoordinador = request()->except(['_token','_method']);
+        Coordinador::where('id','=',$id)->update($datosCoordinador);
 
-        $programa=Programa::findOrFail($id);
-        return view('programa.edit', compact('programa'));
+        $coordinador=Coordinador::findOrFail($id);
+        return view('coordinador.edit', compact('coordinador'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Programa  $programa
+     * @param  \App\Models\Coordinador  $coordinador
      * @return \Illuminate\Http\Response
      */
     public function destroy( $id)
     {
         //
-        Programa::destroy($id);
-        return redirect('programa');
+        coordinador::destroy($id);
+        return redirect('coordinador');
     }
 }
