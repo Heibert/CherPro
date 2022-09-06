@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Coordinacion;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Coordinacion>
  */
-class ProgramaFactory extends Factory
+class CoordinacionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +17,7 @@ class ProgramaFactory extends Factory
     public function definition()
     {
         return [
-            "nombrePrograma" => $this->faker->name(),
-            "id_coordinacion" => Coordinacion::all()->random()->id
+            //
         ];
     }
 }

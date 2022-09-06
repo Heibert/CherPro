@@ -16,10 +16,7 @@ return new class extends Migration
         Schema::create('coordinaciones', function (Blueprint $table) {
             $table->id();
             $table->string('nomCoordinacion');
-            $table->unsignedBigInteger('idPrograma');
-            $table->timestamps();
-
-            $table->foreign('idPrograma')->references('id')->on('programas');
+            /* La tabla se completa en programas */
         });
     }
 

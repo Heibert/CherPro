@@ -13,28 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tematicas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombreTematica');
-
-            $table->foreignId('id_instructor')
-                        ->nullable()
-                        ->constrained('instructor')
-                        ->cascadeOnUpdate()
-                        ->nullOnDelete();
+        Schema::create('instructores', function (Blueprint $table) {
             
+            $table->id();
+            $table->string('nombreInst'); 
+            $table->string('apellidoInst');
+            $table->string('tipoDoc');
+            $table->integer('numDoc');
+            $table->string('correoMisena');
+            $table->integer('telefonoInst');
             $table->foreignId('id_programa')
                         ->nullable()
                         ->constrained('programas')
                         ->cascadeOnUpdate()
                         ->nullOnDelete();
-            
-            $table->foreignId('id_ficha')
-                        ->nullable()
-                        ->constrained('fichas')
-                        ->cascadeOnUpdate()
-                        ->nullOnDelete();
-                        
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -46,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tematicas');
+        Schema::dropIfExists('instructor');
     }
 };

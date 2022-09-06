@@ -16,11 +16,6 @@ return new class extends Migration
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
             $table->date('fechaAsistencia');
-<<<<<<< HEAD:Api/database/migrations/2022_08_10_031237_create_asistencias_table.php
-            $table->char('estadoAsistencia',1);
-            $table->unsignedBigInteger('idAprendiz');
-            $table->unsignedBigInteger('idTematica');
-=======
             $table->foreignId('id_tematica')
                         ->nullable()
                         ->constrained('tematicas')
@@ -28,10 +23,9 @@ return new class extends Migration
                         ->nullOnDelete();
             $table->foreignId('id_aprendiz')
                         ->nullable()
-                        ->constrained('aprendiz')
+                        ->constrained('aprendices')
                         ->cascadeOnUpdate()
                         ->nullOnDelete();
->>>>>>> d130205b3880d93e8c64892c58fc376ac7d42f3c:Api/database/migrations/2022_10_05_155009_create_asistencias_table.php
             $table->timestamps();
         });
     }

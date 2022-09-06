@@ -21,12 +21,14 @@ return new class extends Migration
             $table->integer('numDoc');
             $table->string('correoMisena');
             $table->integer('telefonoCoordinador');
-            $table->unsignedBigInteger('idCoordinacion')->unique();
+
+            $table->unsignedBigInteger('id_coordinacion')->unique();
+            $table->foreign('id_coordinacion')->references('id')->on('coordinaciones')
+                                                ->onDelete('cascade');
+            $table->string('password');
             $table->timestamps();
 
-
-            $table->foreign('idCoordinacion')->references('id')->on('coordinaciones')
-                                                ->onDelete('cascade');
+            
 
         });
     }
@@ -38,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coordinadores');
+        Schema::dropIfExists('coordinadors');
     }
 };
