@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Administrador;
+use App\Models\Programa;
 use Illuminate\Http\Request;
 
 class AdministradorController extends Controller
@@ -14,8 +15,8 @@ class AdministradorController extends Controller
      */
     public function index()
     {
-        $datos['administradores']= Administrador::paginate(5);
-        return view ('Administrador.index',$datos );
+        $datos['administradors']= Administrador::paginate();
+        return view ('administrador.index',$datos );
     }
 
     /**
@@ -25,7 +26,8 @@ class AdministradorController extends Controller
      */
     public function create()
     {
-        return view ('Administrador.create');
+        $programa = Programa::all();
+        return view ('administrador.create', compact('programas'));
     }
 
     /**
@@ -37,9 +39,9 @@ class AdministradorController extends Controller
     public function store(Request $request)
     {
         //$datosAdmin = request()->all();
-        $datosAdmin = request()->except('_token');
+        $datosAdmin = $request()->except('_token');
         Administrador::insert($datosAdmin);
-        return response()->json($datosAdmin);
+        return redirect('administrador')->with("Admin registrado");
     }
 
     /**
@@ -51,6 +53,8 @@ class AdministradorController extends Controller
     public function show(Administrador $administrador)
     {
         //
+        $datos['administradors']=Administrador::paginate();
+        return view('administrador.index', $datos);
     }
 
     /**
@@ -61,8 +65,10 @@ class AdministradorController extends Controller
      */
     public function edit($id)
     {
-        $administrador=Administrador::findOrFail($id);
-        return view ('Administrador.edit', compact('administrador'));
+        return view('administrador.edit')->with([
+            'administradors' => Administrador::find($id),
+            'programas' => Programas::all()
+        ]);
     }
 
     /**
@@ -72,12 +78,15 @@ class AdministradorController extends Controller
      * @param  \App\Models\Administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Administrador $administrador)
+    public function update(Request $request, $id)
     {
-        $datosAdmin = request()->except('_token','_method');
-        Administrador::where('idAdministrador','=','$idAdministrador')->update($datosAdmin);
-        $administrador=Administrador::findOrFail($id);
-        return view ('Administrador.edit', compact('administrador'));
+        $datosAdmin = $request()->except('_token','_method');
+        Administrador::where('id','=',$id)->update($datosAdmin);
+        
+        return view('administrador.edit')->with([
+            'administradors' => Administrador::find($id),
+            'programas' => Programas::all('id')
+        ]);
     }
 
     /**

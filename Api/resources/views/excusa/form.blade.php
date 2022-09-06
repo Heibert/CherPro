@@ -15,14 +15,18 @@
             <input type="text" value="{{ isset ($excusa->descExcusa)?$excusa->descExcusa:''}}" name="descExcusa" id="descExcusa"><br>
 
 
-            <select name="idAsistencia" id="idAsistencia">
-                <option value="">coordinacion</option>
-                @foreach($asistencias as $asistencia)
-                <option value="{{$asistencia->id}}">
-                {{$asistencia->nombre}}
-                </option>
+            <label for="id_coordinacion"> 
+                coordinación  
+            </label>
+            <select name="id_coordinacion" id="id_coordinacion" value="{{ isset($coordinador-> id_coordinacion)?$coordinador-> id_coordinacion: '' }}">
+                @foreach ($coordinacions as $coordinacion)
+                    <option value="{{ $coordinacion['id'] }}">
+                        {{ $coordinacion['nomCoordinacion'] }}
+                    </option>
                 @endforeach
-            </select><div>{{$errors->first('idAsistencia')}}</div><br>
+            </select> 
+            <br><br>
+
 
 
             <input type="submit" value="{{$modo}}">

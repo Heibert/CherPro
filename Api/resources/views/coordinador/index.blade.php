@@ -22,13 +22,13 @@
                 <th>Número de documento</th>
                 <th>Correo Misena</th>
                 <th>Telefono</th>
-                <th>ID coordinación</th>
+                <th>Nombre coordinación</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($coordinadores as $coordinador)
+            @foreach($coordinadors as $coordinador)
             <tr>
                 <td>{{ $coordinador->id }}</td>
                 <td>{{ $coordinador->nomCoordinador }}</td>
@@ -37,7 +37,7 @@
                 <td>{{ $coordinador->numDoc }}</td>
                 <td>{{ $coordinador->correoMisena }}</td>
                 <td>{{ $coordinador->telefonoCoordinador }}</td>
-                <td>{{ $coordinacion->idCoordinacion }}</td>
+                <td>{{ $coordinador->coordinacions->nomCoordinacion}}</td>
                 <td>
                 <a href="{{ url('/coordinador/'.$coordinador->id.'/edit') }}">Editar</a>
                 </td>
@@ -52,6 +52,10 @@
             @endforeach
         </tbody>
     </table>
+
+    <button type="submit">
+        <a href="{{ url('/')}}">Regresar</a>
+    </button>
     
 </body>
 </html>

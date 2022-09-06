@@ -9,11 +9,33 @@ class Programa extends Model
 {
     use HasFactory;
 
-    public function instructores(){
-        return $this->belongsToMany(Instructor::class);
+    // Relacion con administrador (1:m)
+
+    public function administador(){
+        return $this->hasMany(Administrador::class, 'id');
     }
 
-    public function administradores(){
-        return $this->hasMany(Administrador::class);
+    // Relacion con tematica (1:m)
+
+    public function tematicas(){
+        return $this->hasMany(Tematica::class, 'id');
+    }
+
+    // Relacion con coordinacion (m:1)
+
+    public function coordinacions(){
+        return $this->belongsTo(Coordinacion::class, 'id_coordinacion');
+    }
+
+    // Relacion con instructor (1:m)
+
+    public function instructores(){
+        return $this->hasMany(Instructor::class, 'id');
+    }
+
+    //Relacion con ficha (1:m)
+
+    public function fichas(){
+        return $this->hasMany(Ficha::class, 'id');
     }
 }

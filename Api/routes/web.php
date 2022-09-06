@@ -10,6 +10,15 @@ use App\Http\Controllers\ProgramaController;
 use App\Http\Controllers\AdministradorController;
 use App\Http\Controllers\TematicaController;
 use App\Http\Controllers\TrimestreController;
+use App\Http\Controllers\FichaController;
+use App\Http\Controllers\AprendizController;
+use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\RegisterController;
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,22 +30,18 @@ use App\Http\Controllers\TrimestreController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+*/
 Route::resource('/asistencia', AsistenciaController::class);
 
-Route::resource('/reporte', ReporteController::class);
-Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy');
-Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update');
+Route::resource('reporte', FichaController::class);
 
 Route::resource('/coordinacion', CoordinacionController::class);
 Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/excusa/create',[ExcusaController::class,'create']);
 
@@ -46,12 +51,24 @@ Route::resource('coordinador',CoordinadorController::class);
 
 Route::resource('programa',ProgramaController::class);
 
-/*Route::get('/administrador', function () {
-    return view('Administrador.index');
-});
 
-Route::get('/administrador/create',[AdministradorController::class,'create']);
-*/
 Route::resource('administrador', AdministradorController::class);
 Route::resource('tematica', TematicaController::class);
 Route::resource('trimestre', TrimestreController::class);
+
+Route::resource('ficha', FichaController::class);
+Route::resource('aprendiz', AprendizController::class);
+Route::resource('instructor', InstructorController::class);
+
+//---------------------------------- Login -----------------------------------
+
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::get('/login', [RegisterController::class, 'create'])->name('login.index');
+
+Route::post('/login', [RegisterController::class, 'store'])->name('login.store');
+
+Route::get('/register', [SessionsController::class, 'create'])->name('register.index');
+Route::get('/register', [SessionsController::class, 'create'])->name('register.index');

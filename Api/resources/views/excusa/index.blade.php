@@ -44,6 +44,10 @@
             @endforeach
         </tbody>
     </table>
+
+    <button type="submit">
+        <a href="{{ url('/')}}">Regresar</a>
+    </button>
     
 </body>
 </html>
