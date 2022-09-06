@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('aprendices', function (Blueprint $table) {
+        Schema::create('reportes', function (Blueprint $table) {
+
             $table->id();
-            $table->string('nombre');
+            
+            $table->date('fechaReporte');
+            $table->foreignId('idCoordinador')->nullable()->constrained('coordinadors');
+            $table->foreignId('id_instructor')->nullable()->constrained('instructor');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aprendices');
+        Schema::dropIfExists('reportes');
     }
 };

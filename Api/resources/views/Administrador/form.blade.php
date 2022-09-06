@@ -10,7 +10,7 @@
     <label for="Telefono">Telefono</label>
     <input type="text" name="Telefono" id="Telefono"><br>
 
-    <label for="Telefono">Id Programa</label>
-    <input type="text" name="idPrograma" id="idPrograma"><br>
+    <label for="programa_id">Id Programa</label>
+    <input type="text" name="programa_id" id="programa_id"><br>
 
     <input type="submit" value="Guardar">

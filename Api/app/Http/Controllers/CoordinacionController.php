@@ -16,8 +16,8 @@ class CoordinacionController extends Controller
      */
     public function index()
     {
-        $coordinaciones = Coordinacion::all();
-        return view('coordinacion.index',['coordinaciones'=>$coordinaciones]);
+        $coordinacions = Coordinacion::all();
+        return view('coordinacion.index',['coordinacions'=>$coordinacions]);
     }
 
     /**
