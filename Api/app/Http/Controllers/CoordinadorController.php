@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Coordinador;
 use Illuminate\Http\Request;
+
 use App\Models\Coordinacion;
+
 
 class CoordinadorController extends Controller
 {
@@ -16,7 +18,7 @@ class CoordinadorController extends Controller
     public function index()
     {
         //
-        $datos['coordinadors']= Coordinador::paginate();
+        $datos['coordinadores']= Coordinador::paginate();
         return view('coordinador.index', $datos);
     }
 
@@ -31,7 +33,7 @@ class CoordinadorController extends Controller
 
         $coordinacions = Coordinacion::all();
         return view('coordinador.create', compact('coordinacions'));
-        
+
     }
 
     /**
@@ -53,8 +55,6 @@ class CoordinadorController extends Controller
             'telefonoCoordinador' => 'required|numeric',
             'id_coordinacion' => 'required|numeric'
         ]);
-
-
 
         $datosCoordinador = request()->except('_token');
         Coordinador::insert($datosCoordinador );
@@ -96,6 +96,7 @@ class CoordinadorController extends Controller
     public function update(Request $request, $id)
     {
         //
+
         $request->validate([
             'nomCoordinador' => 'required|min:5|max:16',
             'apeCoordinador' => 'required',
@@ -113,6 +114,7 @@ class CoordinadorController extends Controller
         return view('coordinador.edit')->with(['coordinador' => Coordinador::find($id),
             'coordinacions' => Coordinacion::find('id')
         ]);
+
     }
 
     /**

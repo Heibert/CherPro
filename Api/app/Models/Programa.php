@@ -9,6 +9,7 @@ class Programa extends Model
 {
     use HasFactory;
 
+
     // Relacion con administrador (1:m)
 
     public function administador(){

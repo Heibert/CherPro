@@ -10,18 +10,7 @@
     <label for="Telefono">Telefono</label>
     <input type="text" name="Telefono" id="Telefono"><br>
 
-    <label for="id_programa">
-        Programas
-    </label>
-    <select 
-    name="id_programa" 
-    id="id_programa" 
-    value="{{ isset($administradors-> id_programa)?$administradors-> id_programa: '' }}">
-        @foreach ($programas as $p)
-            <option value="{{ $p['id'] }}">
-                {{ $programa['nombrePrograma'] }}
-            </option>
-        @endforeach
-</select>
+    <label for="programa_id">Id Programa</label>
+    <input type="text" name="programa_id" id="programa_id"><br>
 
     <input type="submit" value="Guardar">

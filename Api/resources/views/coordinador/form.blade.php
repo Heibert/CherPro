@@ -9,6 +9,7 @@
 <body>
     <h1>{{ $modo }} Coordinador</h1>
             <label for="nomCoordinador">Nombre Coordinador</label><br>
+
             <input type="text" value="{{ old ('nomCoordinador', isset ($coordinador->nomCoordinador)?$coordinador->nomCoordinador:'')}}" name="nomCoordinador" id="nomCoordinador">
  
             @error('nomCoordinador')
@@ -90,8 +91,6 @@
             @enderror
             <br>
             <br><br>
-
-
             <input type="submit" value="{{$modo}}">
             
             <button type="submit">

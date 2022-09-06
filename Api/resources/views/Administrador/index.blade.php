@@ -10,14 +10,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($administradors as $a)
+        @foreach($administradores as $administrador)
         <tr>
-            <td>{{$a->id}}</td>
-            <td>{{$a->Nombre}}</</td>
-            <td>{{$a->Apellido}}</</td>
-            <td>{{$a->Correo}}</</td>
-            <td>{{$a->Telefono}}</</td>
-            <td>{{$a->id_programa->nombrePrograma}}</</td>
+            <td>{{$administrador->id}}</td>
+            <td>{{$administrador->Nombre}}</</td>
+            <td>{{$administrador->Apellido}}</</td>
+            <td>{{$administrador->Correo}}</</td>
+            <td>{{$administrador->Telefono}}</</td>
+            <td>{{$administrador->idPrograma}}</</td>
+
             <td>
             <a href="{{url('/administrador/'.$administrador->id.'/edit')}}">
                 <button>Editar</button>
@@ -33,7 +34,3 @@
         @endforeach
     </tbody>
 </table>
-
-<button type="submit">
-        <a href="{{ url('/')}}">Regresar</a>
-</button>

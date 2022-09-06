@@ -15,6 +15,7 @@
             <input type="text" value="{{ isset ($excusa->descExcusa)?$excusa->descExcusa:''}}" name="descExcusa" id="descExcusa"><br>
 
 
+
             <label for="id_coordinacion"> 
                 coordinación  
             </label>
@@ -26,9 +27,6 @@
                 @endforeach
             </select> 
             <br><br>
-
-
-
             <input type="submit" value="{{$modo}}">
             
             <button type="submit">

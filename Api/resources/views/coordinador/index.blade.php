@@ -28,6 +28,7 @@
             </tr>
         </thead>
         <tbody>
+
             @foreach($coordinadors as $coordinador)
             <tr>
                 <td>{{ $coordinador->id }}</td>
@@ -37,6 +38,7 @@
                 <td>{{ $coordinador->numDoc }}</td>
                 <td>{{ $coordinador->correoMisena }}</td>
                 <td>{{ $coordinador->telefonoCoordinador }}</td>
+
                 <td>{{ $coordinador->coordinacions->nomCoordinacion}}</td>
                 <td>
                 <a href="{{ url('/coordinador/'.$coordinador->id.'/edit') }}">Editar</a>
@@ -52,7 +54,6 @@
             @endforeach
         </tbody>
     </table>
-
     <button type="submit">
         <a href="{{ url('/')}}">Regresar</a>
     </button>

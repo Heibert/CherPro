@@ -9,6 +9,7 @@ class Coordinador extends Model
 {
     use HasFactory;
 
+
     // Relacion con coordinacion (1:1)
     
      public function coordinacions(){
