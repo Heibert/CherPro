@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('tematicas', function (Blueprint $table) {
             $table->id();
             $table->string('nombreTematica');
-            $table->foreignId('instructor_id')->constrained();
+            $table->foreignId('instructor_id')->references('id')->on('instructores');
             $table->foreignId('programa_id')->constrained();
             $table->foreignId('ficha_id')->constrained();
             $table->timestamps();

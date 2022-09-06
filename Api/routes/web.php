@@ -32,7 +32,7 @@ Route::get('/', function () {
     return view('index');
 });
 */
-Route::resource('/asistencia', AsistenciaController::class);
+/* Route::resource('/asistencia', AsistenciaController::class); */
 Route::resource('/index', IndexController::class);
 Route::resource('/reporte', ReporteController::class);
 Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy');

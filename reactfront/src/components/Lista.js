@@ -1,58 +1,259 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios'
-
-import {Link} from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import axios/* , { AxiosError } */ from 'axios'
+/* 
+import { Link, useNavigate } from "react-router-dom"; */
 
 const endpoint = 'http://localhost:8000/api'
 const Lista = () => {
-    const [Asistencias, setAsistencias] = useState ( [] )
+    const [OrdenAsistencia, setOrdenAsistencia] = useState("")
+    const [Asistencias, setAsistencias] = useState([])
+    const [AsistenciasAntiguas, setAsistenciasAntiguas] = useState([])
+    const [AsistenciasEstadoAsc, setAsistenciasEstadoAsc] = useState([])
+    const [AsistenciasEstadoDesc, setAsistenciasEstadoDesc] = useState([])
+    const [AsistenciasNombreAsc, setAsistenciasNombreAsc] = useState([])
+    const [AsistenciasNombreDesc, setAsistenciasNombreDesc] = useState([])
 
-    useEffect ( ()=> {
-        getAllAsistencias()
+    useEffect(() => {
+        getAllDatosAsistencias()
     }, [])
 
-    const getAllAsistencias = async () => {
+    const getAllDatosAsistencias = async () => {
         const response = await axios.get(`${endpoint}/asistencia`)
-        setAsistencias(response.data)
+        setAsistencias(response.data[0])
+        setAsistenciasAntiguas(response.data[1])
+        setAsistenciasEstadoAsc(response.data[2])
+        setAsistenciasEstadoDesc(response.data[3])
+        setAsistenciasNombreAsc(response.data[4])
+        setAsistenciasNombreDesc(response.data[5])
     }
 
-var Fecha_Actual = new Date()
-var fecha_iso = Fecha_Actual.toISOString()
-var fecha_buena = fecha_iso.split("T", 1); 
-Asistencias.map(function(Asistencia){
-    console.log(Asistencia)
-        if (fecha_buena == Asistencias.fechaAsistencia) {
-            console.log('Encontrado en: ',Asistencia.id, "Y la fecha es: ",Asistencia.fechaAsistencia)
-        }
-        else(
-            console.log("No encontrado")
-        )
-    }) 
-/*     for (let i = 0; i < Asistencias.length; i++) {
-        Asistencias.
-        
-    } */
-    return (
-    <div>
-        <button className='btn btn-primary'>crear</button>
-        <table className='bg-primary text-white'>
-            <thead >
-                <tr>
-                    <th>Nombre</th>
-                </tr>
-            </thead>
-            <tbody>
-                {Asistencias.map((Asistencia)=>(
-                    <tr key={Asistencia.id}>
-                        <td>Asistencia numero {Asistencia.id}</td>
-                        <td>Su fecha fue {Asistencia.fechaAsistencia}</td>
+    const up = "bi bi-caret-up-fill"
+    const down = "bi bi-caret-down-fill"
+
+    function mostrarAsistencia() {
+        if (OrdenAsistencia == "Antigua") {
+            AsistenciasAntiguas.map(function (Asistencia) {
+                switch (Asistencia.estadoAsistencia) {
+                    case "A":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "F":
+                        Asistencia.color = "bg-danger";
+                        break;
+                    case "E":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "R":
+                        Asistencia.color = "bg-warning";
+                        break;
+                    default:
+                        break;
+                }
+            })
+            return (
+                AsistenciasAntiguas.map((Asistencia) => (
+                    <tr key={Asistencia.fechaAsistencia}>
+                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
-                ) )}
-                
-            </tbody>
-        </table>
-    </div>
-  )
+                ))
+            )
+        }
+        if (OrdenAsistencia == "NombreAsc") {
+            AsistenciasNombreAsc.map(function (Asistencia) {
+                switch (Asistencia.estadoAsistencia) {
+                    case "A":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "F":
+                        Asistencia.color = "bg-danger";
+                        break;
+                    case "E":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "R":
+                        Asistencia.color = "bg-warning";
+                        break;
+                    default:
+                        break;
+                }
+            })
+            return (
+                AsistenciasNombreAsc.map((Asistencia) => (
+                    <tr key={Asistencia.fechaAsistencia}>
+                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
+                    </tr>
+                ))
+            )
+        }
+        if (OrdenAsistencia == "NombreDesc") {
+            AsistenciasNombreDesc.map(function (Asistencia) {
+                switch (Asistencia.estadoAsistencia) {
+                    case "A":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "F":
+                        Asistencia.color = "bg-danger";
+                        break;
+                    case "E":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "R":
+                        Asistencia.color = "bg-warning";
+                        break;
+                    default:
+                        break;
+                }
+            })
+            return (
+                AsistenciasNombreDesc.map((Asistencia) => (
+                    <tr key={Asistencia.fechaAsistencia}>
+                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
+                    </tr>
+                ))
+            )
+        }
+        if (OrdenAsistencia == "EstadoAsc") {
+            AsistenciasEstadoAsc.map(function (Asistencia) {
+                switch (Asistencia.estadoAsistencia) {
+                    case "A":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "F":
+                        Asistencia.color = "bg-danger";
+                        break;
+                    case "E":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "R":
+                        Asistencia.color = "bg-warning";
+                        break;
+                    default:
+                        break;
+                }
+            })
+            return (
+                AsistenciasEstadoAsc.map((Asistencia) => (
+                    <tr key={Asistencia.fechaAsistencia}>
+                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
+                    </tr>
+                ))
+            )
+        }
+        if (OrdenAsistencia == "EstadoDesc") {
+            AsistenciasEstadoDesc.map(function (Asistencia) {
+                switch (Asistencia.estadoAsistencia) {
+                    case "A":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "F":
+                        Asistencia.color = "bg-danger";
+                        break;
+                    case "E":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "R":
+                        Asistencia.color = "bg-warning";
+                        break;
+                    default:
+                        break;
+                }
+            })
+            return (
+                AsistenciasEstadoDesc.map((Asistencia) => (
+                    <tr key={Asistencia.fechaAsistencia}>
+                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
+                    </tr>
+                ))
+            )
+        }
+        else {
+            Asistencias.map(function (Asistencia) {
+                switch (Asistencia.estadoAsistencia) {
+                    case "A":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "F":
+                        Asistencia.color = "bg-danger";
+                        break;
+                    case "E":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "R":
+                        Asistencia.color = "bg-warning";
+                        break;
+                    default:
+                        break;
+                }
+            })
+            return (
+                Asistencias.map((Asistencia) => (
+                    <tr key={Asistencia.fechaAsistencia}>
+                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
+                    </tr>
+                ))
+            )
+        }
+    }
+    console.log(Asistencias)
+    return (
+        <div>
+            <div className='d-grid gap-2'>
+                <a href='/create' className='btn btn-success btn-lg mt-2 mb-2 text-white'>Crear asistencia de una fecha especifica</a>
+            </div>
+            <table className='bg-primary table-bordered text-white container '>
+                <thead>
+                    <tr>
+                        <th>
+                            <button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                                if (OrdenAsistencia == "Antigua") {
+                                    setOrdenAsistencia("")
+                                    document.getElementById("flechaAsistencia").className = down
+                                } else {
+                                    setOrdenAsistencia("Antigua")
+                                    document.getElementById("flechaAsistencia").className = up
+                                }
+                            }}>Asistencia <i className={down} id='flechaAsistencia'></i>
+                            </button></th>
+                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                            if (OrdenAsistencia == "NombreAsc") {
+                                setOrdenAsistencia("NombreDesc")
+                                document.getElementById("flechaNombre").className = down
+                            } else {
+                                setOrdenAsistencia("NombreAsc")
+                                document.getElementById("flechaNombre").className = up
+                            }
+                        }}>Nombre <i className={down} id='flechaNombre'></i>
+                        </button></th>
+                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                            if (OrdenAsistencia == "EstadoAsc") {
+                                setOrdenAsistencia("EstadoDesc")
+                                document.getElementById("flechaEstado").className = down
+                            } else {
+                                setOrdenAsistencia("EstadoAsc")
+                                document.getElementById("flechaEstado").className = up
+                            }
+                        }}>Estado <i className={down} id='flechaEstado'></i>
+                        </button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {mostrarAsistencia()}
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 export default Lista
