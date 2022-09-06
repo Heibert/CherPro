@@ -3,12 +3,10 @@ import React, { useState, useEffect /*, useRef */} from "react";
 import { useNavigate } from "react-router-dom";
 
 var fecha_Actual = new Date()
-var fecha_AñoPasado = new Date()
-fecha_AñoPasado.setFullYear(fecha_Actual.getFullYear() - 1)
-var fecha_ISOPasada = fecha_AñoPasado.toISOString()
-var fecha_CorrectaPasado = fecha_ISOPasada.split("T", 1)
-var fecha_ISO = fecha_Actual.toISOString()
-var fecha_Correcta = fecha_ISO.split("T", 1)
+var fecha_ISO = fecha_Actual.toISOString().split("T", 1)
+/* Fecha Actual pasa a ser la de hace 1 año */
+fecha_Actual.setFullYear(fecha_Actual.getFullYear() - 1)
+var fecha_ISOPasado = fecha_Actual.toISOString().split("T", 1)
 
 const endpoint = 'http://localhost:8000/api/asistencia'
 
@@ -60,8 +58,8 @@ const CreateAsistencia = () => {
           <label className="form-label">Fecha:</label>
           <input
             autoFocus
-            min={fecha_CorrectaPasado}
-            max={fecha_Correcta}
+            min={fecha_ISOPasado}
+            max={fecha_ISO}
             value={fechaAsistencia}
             onChange={(e) => setfechaAsistencia(e.target.value)}
             type='date'

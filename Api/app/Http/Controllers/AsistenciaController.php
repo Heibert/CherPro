@@ -1,5 +1,6 @@
 <?php
 /* Heibert */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -19,13 +20,30 @@ class AsistenciaController extends Controller
     public function index()
     {
         $asistencias = DB::table('asistencias')
-        ->join('aprendices','asistencias.idAprendiz','=','aprendices.id')
-        ->orderBy('fechaAsistencia','asc')->get();
-        /* $aprendices = Aprendiz::all(); */
-        /* $asistencias = Aprendiz::join("Asistencias","Asistencias.idAprendiz", "=", "Aprendices.id")
-            ->select("*")
-            ->get(); */
-        return $asistencias;
+            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->orderBy('fechaAsistencia', 'desc')
+            ->orderBy('estadoAsistencia', 'desc')->get();
+        $asistenciasA = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->orderBy('fechaAsistencia', 'asc')
+            ->orderBy('estadoAsistencia', 'desc')->get();
+        $estadoasc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->orderBy('estadoAsistencia', 'asc')
+            ->orderBy('nombre', 'asc')->get();
+        $estadodesc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->orderBy('estadoAsistencia', 'desc')
+            ->orderBy('nombre', 'asc')->get();
+        $nombreasc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->orderBy('nombre', 'asc')
+            ->orderBy('estadoAsistencia', 'asc')->get();
+        $nombredesc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->orderBy('nombre', 'desc')
+            ->orderBy('estadoAsistencia', 'asc')->get();
+        return  array($asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc);
     }
 
     /**
@@ -48,7 +66,7 @@ class AsistenciaController extends Controller
      */
     public function store(Request $request)
     {
-/*         $reglas = [
+        /*         $reglas = [
             "fechaAsistencia"=>"required|date",
             "idAprendiz"=>"required|numeric",
             "idTematica"=>"required|numeric",
@@ -63,17 +81,17 @@ class AsistenciaController extends Controller
             ->withInput();
         }
         else { */
-            $asistencia = new Asistencia;
-            $asistencia->fechaAsistencia = $request->fechaAsistencia;
-            $asistencia->estadoAsistencia = $request->estadoAsistencia;
-            $asistencia->idAprendiz = $request->idAprendiz;
-            $asistencia->idTematica = $request->idTematica;
-            $asistencia->save();
-            return $asistencia; 
-            /* redirect('asistencia/create')
+        $asistencia = new Asistencia;
+        $asistencia->fechaAsistencia = $request->fechaAsistencia;
+        $asistencia->estadoAsistencia = $request->estadoAsistencia;
+        $asistencia->idAprendiz = $request->idAprendiz;
+        $asistencia->idTematica = $request->idTematica;
+        $asistencia->save();
+        return $asistencia;
+        /* redirect('asistencia/create')
             ->with('mensaje','asistencia guardada'); */
         /* } */
-}
+    }
 
     /**
      * Display the specified resource.
