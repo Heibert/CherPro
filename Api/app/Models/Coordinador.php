@@ -9,8 +9,15 @@ class Coordinador extends Model
 {
     use HasFactory;
 
+    // Relacion con coordinacion (1:1)
+    
+     public function coordinacions(){
+        return $this->belongsTo(Coordinacion::class, 'id_coordinacion');
+    }
 
+    // Relacion con reportes (1:m)
+    
     public function reportes(){
-        return $this->hasMany(Reporte::class);
+        return $this->hasMany(Reporte::class, 'id');
     }
 }

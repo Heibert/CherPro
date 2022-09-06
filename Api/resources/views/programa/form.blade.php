@@ -9,7 +9,14 @@
 <body>
     <h1>{{ $modo }} Programa</h1>
             <label for="nombrePrograma">Nombre del programa</label><br>
-            <input type="text" value="{{ isset ($programa->nombrePrograma)?$programa->nombrePrograma:''}}" name="nombrePrograma" id="nombrePrograma"><br>
+            <input type="text" value="{{ old ('nombrePrograma',isset ($programa->nombrePrograma)?$programa->nombrePrograma:'')}}" name="nombrePrograma" id="nombrePrograma">
+
+            @error('nombrePrograma')
+                <br>
+                    <small>{{$message}}</small>
+                <br>
+            @enderror
+            <br>
 
             <input type="submit" value="{{$modo}}">
             

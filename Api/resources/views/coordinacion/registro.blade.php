@@ -16,11 +16,18 @@
         <option value="">Elija un programa</option>
             @foreach($programas as $programa)
                 <option value="{{$programa->id}}">
-                    {{$programa->nombre}}
+                    {{$programa->nombrePrograma}}
                 </option>
             @endforeach
-    </select><div>{{$errors->first('idPrograma')}}</div><br>
+    </select>
+    <div>{{$errors->first('idPrograma')}}</div>
+    <br>
     <input type="submit">
+
+    
 </form>
+    <button type="submit">
+        <a href="{{ url('coordinacion')}}">Regresar</a>
+    </button>
 </body>
 </html>

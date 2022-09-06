@@ -16,7 +16,7 @@
         <th>Nombre de la coordinacion</th>
         <th>IdPrograma</th>
     </tr>
-    @foreach ($coordinaciones as $coordinacion)
+    @foreach ($coordinacions as $coordinacion)
     <tr>
         <td>{{$coordinacion->id}}</td>
         <td>{{$coordinacion->nomCoordinacion}}</td>
@@ -37,5 +37,10 @@
     </tr>
     @endforeach
     </table>
+
+    <button type="submit">
+        <a href="{{ url('/')}}">Regresar</a>
+    </button>
+    
 </body>
 </html>

@@ -9,7 +9,16 @@ use App\Models\Aprendiz;
 class Asistencia extends Model
 {
     use HasFactory;
-    public function aprendiz(){
-        return $this->belongsTo('App\Aprendiz','id');
+    
+    // Relacion con aprendiz (m:1)
+
+    public function aprendices(){
+        return $this->belongsTo(Aprendiz::class, 'id_aprendiz');
+    }
+
+    // Relacion con excusa (1:1)
+
+    public function excusas(){
+        return $this->hasOne(Excusa::class);
     }
 }
