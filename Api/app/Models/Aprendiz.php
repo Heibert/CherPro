@@ -8,8 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Aprendiz extends Model
 {
     use HasFactory;
-    protected $table = "Aprendices";
-    public function asistencia(){
-        return $this->hasMany('App\Asistencia');
+
+    // Relacion con ficha (m:1)
+
+    public function fichas(){
+        return $this->belongsTo(Ficha::class, 'id_ficha');
+    }
+
+    // Relacion con asistencia (1:m)
+
+    public function asistencias(){
+        return $this->hasMany(Asistencia::class, 'id');
     }
 }

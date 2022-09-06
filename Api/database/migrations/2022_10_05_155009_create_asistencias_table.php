@@ -16,12 +16,17 @@ return new class extends Migration
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
             $table->date('fechaAsistencia');
-            $table->unsignedBigInteger('idAprendiz');
-            $table->unsignedBigInteger('idTematica');
+            $table->foreignId('id_tematica')
+                        ->nullable()
+                        ->constrained('tematicas')
+                        ->cascadeOnUpdate()
+                        ->nullOnDelete();
+            $table->foreignId('id_aprendiz')
+                        ->nullable()
+                        ->constrained('aprendiz')
+                        ->cascadeOnUpdate()
+                        ->nullOnDelete();
             $table->timestamps();
-
-            $table->foreign('idAprendiz')->references('id')->on('aprendices');
-            $table->foreign('idTematica')->references('id')->on('tematicas');
         });
     }
 

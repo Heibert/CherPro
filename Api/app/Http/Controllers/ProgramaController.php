@@ -39,6 +39,7 @@ class ProgramaController extends Controller
     public function store(Request $request)
     {
         //
+
         $datosPrograma = request()->except('_token');
         Programa::insert($datosPrograma );
         
@@ -79,6 +80,11 @@ class ProgramaController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $request->validate([
+            'nombrePrograma' => 'required|min:5|max:16',
+        ]);
+
         $datosPrograma = request()->except(['_token','_method']);
         Programa::where('id','=',$id)->update($datosPrograma);
 

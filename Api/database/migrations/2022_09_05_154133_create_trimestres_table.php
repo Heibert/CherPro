@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('administradors', function (Blueprint $table) {
+        Schema::create('trimestres', function (Blueprint $table) {
             $table->id();
-            $table->string('Nombre');
-            $table->string('Apellido');
-            $table->string('Correo');
-            $table->string('Telefono');  
-            $table->foreignId('programa_id')->constrained();
+            $table->string('numTrimestre');
+            $table->foreignId('id_ficha')
+                            ->nullable()
+                            ->constrained('fichas')
+                            ->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('administradors');
+        Schema::dropIfExists('trimestres');
     }
 };

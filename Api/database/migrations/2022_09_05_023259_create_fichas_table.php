@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('fichas', function (Blueprint $table) {
             $table->id();
+            $table->string('numFicha');
+            $table->integer('cantAprendiz');
+            $table->string('instuEncargado');
+            $table->foreignId('id_programa')
+                        ->nullable()
+                        ->constrained('programas')
+                        ->cascadeOnUpdate()
+                        ->nullOnDelete();
             $table->timestamps();
         });
     }
@@ -26,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ficha');
+        Schema::dropIfExists('fichas');
     }
 };

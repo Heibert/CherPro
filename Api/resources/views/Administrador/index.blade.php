@@ -18,6 +18,7 @@
             <td>{{$administrador->Correo}}</</td>
             <td>{{$administrador->Telefono}}</</td>
             <td>{{$administrador->idPrograma}}</</td>
+
             <td>
             <a href="{{url('/administrador/'.$administrador->id.'/edit')}}">
                 <button>Editar</button>
