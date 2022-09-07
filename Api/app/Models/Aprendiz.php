@@ -10,7 +10,7 @@ class Aprendiz extends Model
     use HasFactory;
 
     // Relacion con ficha (m:1)
-
+    protected $table = "Aprendices";
     public function fichas(){
         return $this->belongsTo(Ficha::class, 'id_ficha');
     }

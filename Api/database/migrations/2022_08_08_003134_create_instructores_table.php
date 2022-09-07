@@ -13,23 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coordinadors', function (Blueprint $table) {
+        Schema::create('instructores', function (Blueprint $table) {
+            
             $table->id();
-            $table->string('nomCoordinador');
-            $table->string('apeCoordinador');
-            $table->char('tipoDoc');
+            $table->string('nombreInst'); 
+            $table->string('apellidoInst');
+            $table->string('tipoDoc');
             $table->integer('numDoc');
             $table->string('correoMisena');
-            $table->integer('telefonoCoordinador');
-
-            $table->unsignedBigInteger('id_coordinacion')->unique();
-            $table->foreign('id_coordinacion')->references('id')->on('coordinacions')
-                                                ->onDelete('cascade');
+            $table->integer('telefonoInst');
+            $table->foreignId('id_programa')
+                        ->nullable()
+                        ->constrained('programas')
+                        ->cascadeOnUpdate()
+                        ->nullOnDelete();
             $table->string('password');
             $table->timestamps();
-
-            
-
         });
     }
 
@@ -40,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coordinadors');
+        Schema::dropIfExists('instructor');
     }
 };

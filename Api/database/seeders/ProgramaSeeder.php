@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Asistencia;
+use App\Models\Programa;
 
-class AsistenciaSeeder extends Seeder
+class ProgramaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,6 @@ class AsistenciaSeeder extends Seeder
      */
     public function run()
     {
-
-            Asistencia::factory(20)->create();
-        
+        Programa::factory(10)->create();
     }
 }

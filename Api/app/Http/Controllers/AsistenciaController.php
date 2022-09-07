@@ -20,28 +20,28 @@ class AsistenciaController extends Controller
     public function index()
     {
         $asistencias = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->orderBy('fechaAsistencia', 'desc')
             ->orderBy('estadoAsistencia', 'desc')->get();
         $asistenciasA = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->orderBy('fechaAsistencia', 'asc')
             ->orderBy('estadoAsistencia', 'desc')->get();
         $estadoasc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->orderBy('estadoAsistencia', 'asc')
-            ->orderBy('nombre', 'asc')->get();
+            ->orderBy('nombreAprend', 'asc')->get();
         $estadodesc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->orderBy('estadoAsistencia', 'desc')
-            ->orderBy('nombre', 'asc')->get();
+            ->orderBy('nombreAprend', 'asc')->get();
         $nombreasc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
-            ->orderBy('nombre', 'asc')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->orderBy('nombreAprend', 'asc')
             ->orderBy('estadoAsistencia', 'asc')->get();
         $nombredesc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.idAprendiz', '=', 'aprendices.id')
-            ->orderBy('nombre', 'desc')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->orderBy('nombreAprend', 'desc')
             ->orderBy('estadoAsistencia', 'asc')->get();
         return  array($asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc);
     }

@@ -16,16 +16,16 @@ return new class extends Migration
         Schema::create('instructor_has_ficha', function (Blueprint $table) {
             $table->id();
             $table->foreignId('instructor_id')
-                  ->nullable()
-                  ->constrained('instructor')
-                  ->cascadeOnUpdate()
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('instructores')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
 
             $table->foreignId('ficha_id')
-                  ->nullable()
-                  ->constrained('fichas')
-                  ->cascadeOnUpdate()
-                  ->nullOnDelete();
+                ->nullable()
+                ->constrained('fichas')
+                ->cascadeOnUpdate()
+                ->nullOnDelete();
             $table->timestamps();
         });
     }

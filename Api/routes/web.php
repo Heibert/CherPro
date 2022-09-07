@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\CoordinacionController;
-use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\ExcusaController;
 use App\Http\Controllers\CoordinadorController;
 use App\Http\Controllers\ProgramaController;
@@ -32,7 +31,6 @@ Route::get('/', function () {
     return view('index');
 });
 */
-/* Route::resource('/asistencia', AsistenciaController::class); */
 Route::resource('/index', IndexController::class);
 Route::resource('/reporte', ReporteController::class);
 Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy');

@@ -13,28 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tematicas', function (Blueprint $table) {
+        Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
-            $table->string('nombreTematica');
-
-            $table->foreignId('id_instructor')
+            $table->date('fechaAsistencia');
+            $table->char('estadoAsistencia');
+            $table->foreignId('id_tematica')
                         ->nullable()
-                        ->constrained('instructor')
+                        ->constrained('tematicas')
                         ->cascadeOnUpdate()
                         ->nullOnDelete();
-            
-            $table->foreignId('id_programa')
+            $table->foreignId('id_aprendiz')
                         ->nullable()
-                        ->constrained('programas')
+                        ->constrained('aprendices')
                         ->cascadeOnUpdate()
                         ->nullOnDelete();
-            
-            $table->foreignId('id_ficha')
-                        ->nullable()
-                        ->constrained('fichas')
-                        ->cascadeOnUpdate()
-                        ->nullOnDelete();
-                        
             $table->timestamps();
         });
     }
@@ -46,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tematicas');
+        Schema::dropIfExists('asistencias');
     }
 };

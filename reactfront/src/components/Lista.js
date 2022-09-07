@@ -52,9 +52,9 @@ const Lista = () => {
             })
             return (
                 AsistenciasAntiguas.map((Asistencia) => (
-                    <tr key={Asistencia.fechaAsistencia}>
+                    <tr key={Asistencia.numDoc}>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -81,9 +81,9 @@ const Lista = () => {
             })
             return (
                 AsistenciasNombreAsc.map((Asistencia) => (
-                    <tr key={Asistencia.fechaAsistencia}>
+                    <tr key={Asistencia.numDoc}>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -110,9 +110,9 @@ const Lista = () => {
             })
             return (
                 AsistenciasNombreDesc.map((Asistencia) => (
-                    <tr key={Asistencia.fechaAsistencia}>
+                    <tr key={Asistencia.numDoc}>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -139,9 +139,9 @@ const Lista = () => {
             })
             return (
                 AsistenciasEstadoAsc.map((Asistencia) => (
-                    <tr key={Asistencia.fechaAsistencia}>
+                    <tr key={Asistencia.numDoc}>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -168,9 +168,9 @@ const Lista = () => {
             })
             return (
                 AsistenciasEstadoDesc.map((Asistencia) => (
-                    <tr key={Asistencia.fechaAsistencia}>
+                    <tr key={Asistencia.numDoc}>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -197,9 +197,9 @@ const Lista = () => {
             })
             return (
                 Asistencias.map((Asistencia) => (
-                    <tr key={Asistencia.fechaAsistencia}>
+                    <tr key={Asistencia.numDoc}>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombre}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))

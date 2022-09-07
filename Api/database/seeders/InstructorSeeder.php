@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Asistencia;
+use App\Models\Instructor;
 
-class AsistenciaSeeder extends Seeder
+class InstructorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,6 @@ class AsistenciaSeeder extends Seeder
      */
     public function run()
     {
-
-            Asistencia::factory(20)->create();
-        
+        Instructor::factory(10)->create();
     }
 }
