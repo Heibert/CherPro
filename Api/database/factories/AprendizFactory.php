@@ -15,18 +15,19 @@ class AprendizFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
     public function definition()
     {
+        $correoSena = "@misena.edu.co";
+        $nombre = $this->faker->userName();
         return [
-            $correoSena = "@misena.edu.co",
-            $nombre = $this->faker->userName(),
-            "nombreAprend" => $this->faker->name(),
+            "nombreAprend" => $this->faker->firstName(),
             "apelliAprend" => $this->faker->lastName(),
             "tipoDoc" => $this->faker->randomElement(['Cedula', 'TI']),
             "numDoc" => $this->faker->randomNumber(5, true),
-            "correoMisena" => $nombre.$correoSena,
+            "correoMisena" => $nombre . $correoSena,
             "correoAprend" => $this->faker->unique()->email,
-            "telefonoAprend" => $this->faker->unique()->phoneNumber,
+            "telefonoAprend" => $this->faker->randomNumber(5, true),
             "id_ficha" => Ficha::all()->random()->id,
             "password" => $this->faker->sha1(),
         ];

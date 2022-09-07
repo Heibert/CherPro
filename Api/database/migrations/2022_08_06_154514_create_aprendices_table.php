@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('nombreAprend');
             $table->string('apelliAprend');
             $table->char('tipoDoc');
-            $table->integer('numDoc');
+            $table->integer('numDoc')->unique();
             $table->string('correoMisena');
-            $table->string('correoAprend');
+            $table->string('correoAprend')->unique();
             $table->integer('telefonoAprend');
             $table->foreignId('id_ficha')
                         ->nullable()
@@ -39,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aprendiz');
+        Schema::dropIfExists('aprendices');
     }
 };

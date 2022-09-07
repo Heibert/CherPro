@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
             $table->date('fechaAsistencia');
+            $table->char('estadoAsistencia');
             $table->foreignId('id_tematica')
                         ->nullable()
                         ->constrained('tematicas')

@@ -22,8 +22,8 @@ class AsistenciaFactory extends Factory
         return [
             "fechaAsistencia" => $this->faker->dateTimeThisYear(),
             'estadoAsistencia'=> $this->faker->randomElement(['A','F','R','E']),
-            'idAprendiz'=> Aprendiz::all()->random()->id,
-            'idTematica'=> Tematica::all()->random()->id,
+            'id_tematica' => Tematica::all()->random()->id,
+            'id_aprendiz'=> Aprendiz::all()->random()->id,
         ];
     }
 }

@@ -19,7 +19,7 @@ class ProgramaFactory extends Factory
     {
         return [
             "nombrePrograma" => $this->faker->name(),
-            "id_coordinacion" => Coordinacion::all()->random()->id
+            /* "id_coordinacion" => Coordinacion::all()->random()->id */
         ];
     }
 }
