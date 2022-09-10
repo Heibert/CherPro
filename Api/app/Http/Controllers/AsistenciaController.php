@@ -21,29 +21,45 @@ class AsistenciaController extends Controller
     {
         $asistencias = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->orderBy('fechaAsistencia', 'desc')
-            ->orderBy('estadoAsistencia', 'desc')->get();
+            ->orderBy('numFicha', 'desc')->get();
         $asistenciasA = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->orderBy('fechaAsistencia', 'asc')
-            ->orderBy('estadoAsistencia', 'desc')->get();
+            ->orderBy('numFicha', 'desc')->get();
         $estadoasc = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->orderBy('estadoAsistencia', 'asc')
             ->orderBy('nombreAprend', 'asc')->get();
         $estadodesc = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->orderBy('estadoAsistencia', 'desc')
             ->orderBy('nombreAprend', 'asc')->get();
         $nombreasc = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->orderBy('nombreAprend', 'asc')
             ->orderBy('estadoAsistencia', 'asc')->get();
         $nombredesc = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->orderBy('nombreAprend', 'desc')
             ->orderBy('estadoAsistencia', 'asc')->get();
-        return  array($asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc);
+        $fichaAsc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('numFicha', 'desc')
+            ->orderBy('nombreAprend', 'desc')->get();
+        $fichaDesc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('numFicha', 'Asc')
+            ->orderBy('nombreAprend', 'desc')->get();
+        return  array($asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc, $fichaAsc, $fichaDesc);
     }
 
     /**
