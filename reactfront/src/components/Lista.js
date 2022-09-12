@@ -59,7 +59,7 @@ const Lista = () => {
                     <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -89,7 +89,7 @@ const Lista = () => {
                     <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -119,7 +119,7 @@ const Lista = () => {
                     <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -149,7 +149,7 @@ const Lista = () => {
                     <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -179,7 +179,7 @@ const Lista = () => {
                     <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -209,7 +209,7 @@ const Lista = () => {
                     <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -239,7 +239,7 @@ const Lista = () => {
                     <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -269,7 +269,7 @@ const Lista = () => {
                     <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
@@ -299,7 +299,7 @@ const Lista = () => {
                     <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend}</td>
+                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
                     </tr>
                 ))
