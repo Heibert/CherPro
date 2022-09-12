@@ -23,6 +23,7 @@ return new class extends Migration
                             ->constrained('asistencias')
                             ->cascadeOnUpdate()
                             ->onDelete('cascade');
+            $table->string('archivo');
             $table->timestamps();
         });
     }

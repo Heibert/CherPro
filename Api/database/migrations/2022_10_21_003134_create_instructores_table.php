@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('nombreInst'); 
             $table->string('apellidoInst');
             $table->string('tipoDoc');
-            $table->integer('numDoc');
-            $table->string('correoMisena');
+            $table->integer('numDoc')->unique();
+            $table->string('correoMisena')->unique();
             $table->integer('telefonoInst');
             $table->foreignId('id_programa')
                         ->nullable()

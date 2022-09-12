@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Programa;
+use App\Models\Coordinacion;
+use App\Http\Requests\ProgramaCreateRequest;
+use App\Http\Requests\ProgramaEditRequest;
 use Illuminate\Http\Request;
 
 class ProgramaController extends Controller
@@ -15,7 +18,7 @@ class ProgramaController extends Controller
     public function index()
     {
         //
-        $datos['programas']= Programa::paginate();
+        $datos['programa']= Programa::paginate();
         return view('programa.index', $datos);
     }
 
@@ -27,7 +30,8 @@ class ProgramaController extends Controller
     public function create()
     {
         //
-        return view('programa.create');
+        $coordinacion = Coordinacion::all();
+        return view('programa.create', compact('coordinacion'));
     }
 
     /**
@@ -36,13 +40,10 @@ class ProgramaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProgramaCreateRequest $request)
     {
-        //
-
-        $datosPrograma = request()->except('_token');
+        $datosPrograma = $request->except('_token');
         Programa::insert($datosPrograma );
-        
         return redirect('programa')->with('mensaje','Programa agregado con exito');
     }
 
@@ -55,6 +56,8 @@ class ProgramaController extends Controller
     public function show(Programa $programa)
     {
         //
+        $datos['programa']=Programa::paginate();
+        return view('programa.index', $datos);
     }
 
     /**
@@ -63,11 +66,13 @@ class ProgramaController extends Controller
      * @param  \App\Models\Programa  $programa
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
         //
-        $programa=Programa::findOrFail($id);
-        return view('programa.edit', compact('programa'));
+        return view('programa.edit')->with([
+            'programa' => Programa::find($id),
+            'coordinacions' => Coordinacion::find($id)
+        ]);
     }
 
     /**
@@ -77,28 +82,23 @@ class ProgramaController extends Controller
      * @param  \App\Models\Programa  $programa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProgramaEditRequest $request, $id)
     {
-        //
+        $datosPrograma = $request->except(['_token','_method']);
+        Programa::where('id', '=', $id)->update($datosPrograma);
 
-        $request->validate([
-            'nombrePrograma' => 'required|min:5|max:16',
+        return redirect('programa')->with([
+            'programa' => Programa::find($id),
+            'coordinacions' => Coordinacion::find('id')
         ]);
-
-        $datosPrograma = request()->except(['_token','_method']);
-        Programa::where('id','=',$id)->update($datosPrograma);
-
-        $programa=Programa::findOrFail($id);
-        return view('programa.edit', compact('programa'));
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Programa  $programa
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
         //
         Programa::destroy($id);

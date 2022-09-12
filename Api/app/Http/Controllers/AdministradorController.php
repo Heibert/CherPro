@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Administrador;
 use App\Models\Programa;
+use App\Http\Requests\AdministradorCreateRequest;
+use App\Http\Requests\AdministradorEditRequest;
+
 use Illuminate\Http\Request;
 
 class AdministradorController extends Controller
@@ -15,8 +18,8 @@ class AdministradorController extends Controller
      */
     public function index()
     {
-        $datos['administradors']= Administrador::paginate();
-        return view ('administrador.index',$datos );
+        $datos['administrador']=Administrador::paginate();
+        return view('administrador.index', $datos);
     }
 
     /**
@@ -27,7 +30,7 @@ class AdministradorController extends Controller
     public function create()
     {
         $programa = Programa::all();
-        return view ('administrador.create', compact('programas'));
+        return view ('administrador.create', compact('programa'));
     }
 
     /**
@@ -36,10 +39,9 @@ class AdministradorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdministradorCreateRequest $request)
     {
-        //$datosAdmin = request()->all();
-        $datosAdmin = $request()->except('_token');
+        $datosAdmin = $request->except('_token');
         Administrador::insert($datosAdmin);
         return redirect('administrador')->with("Admin registrado");
     }
@@ -53,7 +55,7 @@ class AdministradorController extends Controller
     public function show(Administrador $administrador)
     {
         //
-        $datos['administradors']=Administrador::paginate();
+        $datos['administrador']=Administrador::paginate();
         return view('administrador.index', $datos);
     }
 
@@ -66,8 +68,9 @@ class AdministradorController extends Controller
     public function edit($id)
     {
         return view('administrador.edit')->with([
+
             'administradors' => Administrador::find($id),
-            'programas' => Programas::all()
+            'programa' => Programa::all()
         ]);
     }
 
@@ -78,14 +81,14 @@ class AdministradorController extends Controller
      * @param  \App\Models\Administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $datosAdmin = $request()->except('_token','_method');
+    public function update(AdministradorEditRequest $request, $id){
+
+        $datosAdmin = $request->except('_token','_method');
         Administrador::where('id','=',$id)->update($datosAdmin);
         
-        return view('administrador.edit')->with([
+        return redirect('administrador.edit')->with([
             'administradors' => Administrador::find($id),
-            'programas' => Programas::all('id')
+            'programa' => Programa::find('id')
         ]);
     }
 

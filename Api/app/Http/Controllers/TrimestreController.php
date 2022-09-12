@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Trimestre;
+use App\Models\Ficha;
 use Illuminate\Http\Request;
 
 class TrimestreController extends Controller
@@ -14,8 +15,8 @@ class TrimestreController extends Controller
      */
     public function index()
     {
-        $datos['trimestres']= Trimestre::paginate(5);
-        return view ('Trimestre.index',$datos );
+        $datos['trimestre']=Trimestre::paginate();
+        return view('trimestre.index', $datos);
     }
 
     /**
@@ -25,7 +26,8 @@ class TrimestreController extends Controller
      */
     public function create()
     {
-        return view ('Trimestre.create');
+        $fichas = Ficha::all();
+        return view('trimestre.create', compact('fichas'));
     }
 
     /**
@@ -36,9 +38,9 @@ class TrimestreController extends Controller
      */
     public function store(Request $request)
     {
-        $datosTrimes = request()->except('_token');
+        $datosTrimes = $request->except('_token');
         Trimestre::insert($datosTrimes);
-        return response()->json($datosTrimes);
+        return redirect('trimestre')->with("Trimestre registrado");
     }
 
     /**
@@ -49,7 +51,9 @@ class TrimestreController extends Controller
      */
     public function show(Trimestre $trimestre)
     {
-        //
+        
+        $datos['trimestre']=Trimestre::paginate();
+        return view('trimestre.index', $datos);
     }
 
     /**
@@ -60,8 +64,11 @@ class TrimestreController extends Controller
      */
     public function edit($id)
     {
-        $trimestre=Trimestre::findOrFail($id);
-        return view ('Trimestre.edit', compact('trimestre'));
+
+        return view('trimestre.edit')->with([
+            'trimestres' => Trimestre::find($id),
+            'fichas' => Ficha::all()
+        ]);
     }
 
     /**
@@ -71,12 +78,15 @@ class TrimestreController extends Controller
      * @param  \App\Models\Trimestre  $trimestre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trimestre $trimestre)
+    public function update(Request $request, $id)
     {
-        $datosTrimes = request()->except('_token','_method');
-        Trimestre::where('idTrimestre','=','$idTrimestre')->update($datosTrimes);
-        $trimestre=Trimestre::findOrFail($id);
-        return view ('Trimestre.edit', compact('trimestre'));
+        $datosTrimes = $request->except('_token','_method');
+        Trimestre::where('id','=', $id)->update($datosTrimes);
+
+        return redirect('trimestre')->with([
+            'trimestres' => Trimestre::find($id),
+            'fichas' => Ficha::find('id')
+        ]);
     }
 
     /**

@@ -13,9 +13,9 @@
         <tr>
             <td>{{$tematica->id}}</td>
             <td>{{$tematica->nombreTematica}}</</td>
-            <td>{{$tematica->idInstructor}}</</td>
-            <td>{{$tematica->idPrograma}}</</td>
-            <td>{{$tematica->idFicha}}</</td>
+            <td>{{$tematica->instructores->nombreInst}}</</td>
+            <td>{{$tematica->programas->nombrePrograma}}</</td>
+            <td>{{$tematica->fichas->numFicha}}</</td>
             <td>
             <a href="{{url('/tematica/'.$tematica->id.'/edit')}}">
                 <button>Editar</button>

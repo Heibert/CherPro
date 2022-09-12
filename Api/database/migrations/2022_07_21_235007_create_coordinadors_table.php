@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coordinadores', function (Blueprint $table) {
+        Schema::create('coordinadors', function (Blueprint $table) {
             $table->id();
             $table->string('nomCoordinador');
             $table->string('apeCoordinador');
             $table->char('tipoDoc');
-            $table->integer('numDoc');
-            $table->string('correoMisena');
+            $table->integer('numDoc')->unique();
+            $table->string('correoMisena')->unique();
             $table->integer('telefonoCoordinador');
 
             $table->unsignedBigInteger('id_coordinacion')->unique();
-            $table->foreign('id_coordinacion')->references('id')->on('coordinaciones')
+            $table->foreign('id_coordinacion')->references('id')->on('coordinacions')
                                                 ->onDelete('cascade');
             $table->string('password');
             $table->timestamps();

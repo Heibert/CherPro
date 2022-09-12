@@ -8,39 +8,31 @@
 </head>
 <body>
     <nav>
-        <h2><a href="coordinacion/create">Registrar </a></h2>
+        <h2><a href="coordinacion/create">Registrar</a></h2>
     </nav>
     <table>
-    <tr>
-        <th>Idcoordinacion</th>
-        <th>Nombre de la coordinacion</th>
-        <th>IdPrograma</th>
-    </tr>
-    @foreach ($coordinacions as $coordinacion)
-    <tr>
-        <td>{{$coordinacion->id}}</td>
-        <td>{{$coordinacion->nomCoordinacion}}</td>
-        <td>{{$coordinacion->idPrograma}}</td>
-        <td>
-            <form action="{{ route('coordinacion.destroy', $coordinacion->id) }}" method ="POST" >
-            @csrf
-            {{ method_field('DELETE') }}
-            <input type="submit" value="Eliminar">
-            </form>
-        </td>
-        <td>
-            <form action="{{ route('coordinacion.edit', $coordinacion->id) }}" method ="GET" >
-            @csrf
-            <input type="submit" value="Editar">
-            </form>
-        </td>
-    </tr>
-    @endforeach
+        <tr>
+            <th>ID</th>
+            <th>Nombre de la coordinacion</th>
+        </tr>
+        @foreach ($coordinacion as $coordi)
+        <tr>
+            <td>{{$coordi->id}}</td>
+            <td>{{$coordi->nomCoordinacion}}</td>
+            <td>
+                <a href="{{ url('/coordinacion/'.$coordi->id.'/edit') }}"> Editar </a>
+                <br>
+                    @csrf
+                    {{ method_field('DELETE') }}
+                    <input type="submit" onclick="return confirm('¿Estas seguro?')" value="Borrar">
+                </form>
+            </td>
+        </tr>
+        @endforeach
     </table>
-
+    <br>
     <button type="submit">
         <a href="{{ url('/')}}">Regresar</a>
     </button>
-    
 </body>
 </html>

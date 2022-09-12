@@ -1,11 +1,54 @@
-<label for="nombreTematica">Nombre</label>
+<div>
+    <label for="nombreTematica">Nombre</label>
     <input type="text" name="nombreTematica" id="nombreTematica"><br>
-    <label for="instructor_id">Id Instructor</label>
-    <input type="text" name="instructor_id" id="instructor_id"><br>
+</div>
 
-    <label for="programa_id">Id Programa</label>
-    <input type="text" name="programa_id" id="programa_id"><br>
+<div>
+    <label for="id_instructor">
+        Instructor
+    </label>
+    <select 
+        name="id_instructor" 
+        id="id_instructor" 
+        value="{{ isset($tematica-> id_instructor)?$tematica-> id_instructor: '' }}">
+            @foreach($instructors as $instu)
+                <option value="{{ $instu['id'] }}">
+                    {{ $instu['nombreInst'] }}
+                </option>
+            @endforeach
+    </select>
+</div>
 
-    <label for="ficha_id">Id Ficha</label>
-    <input type="text" name="ficha_id" id="ficha_id"><br>
+<div>
+    <label for="id_programa">
+        Programa
+    </label>
+    <select 
+        name="id_programa" 
+        id="id_programa" 
+        value="{{ isset($tematica-> id_programa)?$tematica-> id_programa: '' }}">
+            @foreach ($programas as $pro)
+                <option value="{{ $pro['id'] }}">
+                    {{ $pro['nombrePrograma'] }}
+                </option>
+            @endforeach
+    </select>
+</div>
+
+<div>
+    <label for="id_ficha">
+        Fichas
+    </label>
+    <select 
+        name="id_ficha" 
+        id="id_ficha" 
+        value="{{ isset($tematica-> id_ficha)?$tematica-> id_ficha: '' }}">
+            @foreach ($fichas as $ficha)
+                <option value="{{ $ficha['id'] }}">
+                    {{ $ficha['numFicha'] }}
+                </option>
+            @endforeach
+    </select>
+</div>
+
     <input type="submit" value="Guardar">

@@ -4,26 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Programa</title>
 </head>
 <body>
-    <h1>{{ $modo }} Programa</h1>
+    <div>
+        <div>
             <label for="nombrePrograma">Nombre del programa</label><br>
-
-            <input type="text" value="{{ old ('nombrePrograma',isset ($programa->nombrePrograma)?$programa->nombrePrograma:'')}}" name="nombrePrograma" id="nombrePrograma">
-
-            @error('nombrePrograma')
-                <br>
+                <input type="text" name="nombrePrograma" id="nombrePrograma" value="{{ isset($programa->nombrePrograma)?$programa->nombrePrograma:''}}">
+                @error('nombrePrograma')
                     <small>{{$message}}</small>
-                <br>
-            @enderror
-            <br>
-
-            <input type="submit" value="{{$modo}}">
-            
-            <button type="submit">
+                @enderror
+        </div>
+    </div>
+    <br>
+    <div>
+        <label for="id_coordinacion"> Coordinacion </label>
+            <select name="id_coordinacion" id="id_coordinacion" value="{{ isset($programa-> id_coordinacion)?$programa-> id_coordinacion: '' }}">
+                @foreach ($coordinacion as $coor)
+                    <option value="{{ $coor['id'] }}">
+                        {{ $coor['nomCoordinacion'] }}
+                    </option>
+                @endforeach
+            </select>
+    </div>
+    <br>
+    <div>
+        <input type="submit" value="Guardar">
+            <button type="submit"> 
                 <a href="{{ url('programa')}}">Regresar</a>
             </button>
-    
+    </div>
 </body>
 </html>

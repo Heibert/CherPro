@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             
             $table->date('fechaReporte');
-            $table->foreignId('idCoordinador')->nullable()->constrained('coordinadores');
+            $table->foreignId('idCoordinador')->nullable()->constrained('coordinadors');
             $table->foreignId('id_instructor')->nullable()->constrained('instructores');
             $table->timestamps();
         });

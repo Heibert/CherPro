@@ -14,19 +14,6 @@
             <label for="fechaExcusa">Descripción de la excusa</label><br>
             <input type="text" value="{{ isset ($excusa->descExcusa)?$excusa->descExcusa:''}}" name="descExcusa" id="descExcusa"><br>
 
-
-
-            <label for="id_coordinacion"> 
-                coordinación  
-            </label>
-            <select name="id_coordinacion" id="id_coordinacion" value="{{ isset($coordinador-> id_coordinacion)?$coordinador-> id_coordinacion: '' }}">
-                @foreach ($coordinacions as $coordinacion)
-                    <option value="{{ $coordinacion['id'] }}">
-                        {{ $coordinacion['nomCoordinacion'] }}
-                    </option>
-                @endforeach
-            </select> 
-            <br><br>
             <input type="submit" value="{{$modo}}">
             
             <button type="submit">

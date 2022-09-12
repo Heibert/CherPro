@@ -13,15 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('administradores', function (Blueprint $table) {
+        Schema::create('administradors', function (Blueprint $table) {
             
             $table->id();
             $table->string('name');
             $table->string('apellido');
-            $table->string('telefono');  
-            $table->string('email');
-
-
+            $table->string('telefono')->unique();  
+            $table->string('email')->unique();
+            $table->foreignId('id_programa')
+            ->nullable()
+            ->constrained('programas')
+            ->cascadeOnUpdate()
+            ->nullOnDelete();
             $table->string('password');
             $table->timestamps();
         });

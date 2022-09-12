@@ -10,6 +10,13 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Administrador extends Authenticatable
 {
+
+    // Relacion con programas (m:1)
+
+    public function programas(){
+        return $this->belongsTo(Programa::class, 'id_programa');
+    }
+    
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -44,10 +51,6 @@ class Administrador extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Relacion con programas (m:1)
-
-    public function programas(){
-        return $this->belongsTo(Programa::class, 'id_programa');
-    }
+    
 
 }

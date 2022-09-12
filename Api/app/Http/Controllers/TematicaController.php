@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tematica;
+use App\Models\Instructor;
+use App\Models\Ficha;
+use App\Models\Programa;
 use Illuminate\Http\Request;
 
 class TematicaController extends Controller
@@ -14,7 +17,7 @@ class TematicaController extends Controller
      */
     public function index()
     {
-        $datos['tematicas']= Tematica::paginate(5);
+        $datos['tematicas']= Tematica::paginate();
         return view ('Tematica.index',$datos );
     }
 
@@ -25,7 +28,11 @@ class TematicaController extends Controller
      */
     public function create()
     {
-        return view ('Tematica.create');
+
+        $instructors = Instructor::all();
+        $programas = Programa::all();
+        $fichas = Ficha::all(); 
+        return view ('tematica.create', compact('instructors', 'programas', 'fichas'));
     }
 
     /**
@@ -36,9 +43,9 @@ class TematicaController extends Controller
      */
     public function store(Request $request)
     {
-        $datosTema = request()->except('_token');
+        $datosTema = $request->except('_token');
         Tematica::insert($datosTema);
-        return response()->json($datosTema);
+        return redirect('tematica')->with("Tematica registrada");
     }
 
     /**
@@ -50,6 +57,8 @@ class TematicaController extends Controller
     public function show(Tematica $tematica)
     {
         //
+        $datos['tematica']=Tematica::paginate();
+        return view('tematica.index', $datos);
     }
 
     /**
@@ -60,8 +69,13 @@ class TematicaController extends Controller
      */
     public function edit($id)
     {
-        $tematica=Tematica::findOrFail($id);
-        return view ('Tematica.edit', compact('tematica'));
+        return view('tematica.edit')->with([
+            'tematica' => Tematica::find($id),
+            'instructors' => Instructor::all(),
+            'programas' => Programa::all(),
+            'fichas' => Ficha::all()
+        ]);
+
     }
 
     /**
@@ -71,12 +85,18 @@ class TematicaController extends Controller
      * @param  \App\Models\Tematica  $tematica
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tematica $tematica)
+    public function update(Request $request, $id)
     {
-        $datosTema = request()->except('_token','_method');
-        Tematica::where('idTematica','=','$idTematica')->update($datosTema);
-        $tematica=Tematica::findOrFail($id);
-        return view ('Tematica.edit', compact('tematica'));
+        $datosTema = $request->except('_token','_method');
+        Tematica::where('id','=', $id)->update($datosTema);
+        
+        return redirect('tematica')->with([
+            'tematica' => Tematica::find($id),
+            'instructor' => Instructor::find('id'),
+            'programa' => Programa::find('id'),
+            'ficha' => Ficha::find('id')
+        ]);
+
     }
 
     /**

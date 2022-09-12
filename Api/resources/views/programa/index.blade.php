@@ -17,23 +17,25 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
+                <th>Coordinacion</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($programas as $programa)
+            @foreach($programa as $pro)
             <tr>
-                <td>{{ $programa->id }}</td>
-                <td>{{ $programa->nombrePrograma }}</td>
+                <td>{{ $pro->id }}</td>
+                <td>{{ $pro->nombrePrograma }}</td>
+                <td>{{ $pro->coordinacions->nomCoordinacion }}</td>
                 <td>
-                <a href="{{ url('/programa/'.$programa->id.'/edit') }}">Editar</a>
+                    <a href="{{ url('/programa/'.$pro->id.'/edit') }}">Editar</a>
                 </td>
                 <td>
-                <form action="{{ url('/programa/'.$programa->id) }}" method="post">
-                        @csrf
-                        {{ method_field('DELETE') }}
-                        <input type="submit" onclick="return confirm('¿Quieres borrar este campo?')" value="Borrar">
+                <form action="{{ url('/programa/'.$pro->id) }}" method="post">
+                @csrf
+                {{ method_field('DELETE') }}
+                <input type="submit" onclick="return confirm('¿Quieres borrar este campo?')" value="Borrar">
                 </form>
                 </td>
             </tr>

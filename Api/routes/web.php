@@ -33,11 +33,12 @@ Route::get('/', function () {
 */
 Route::resource('/index', IndexController::class);
 Route::resource('/reporte', ReporteController::class);
-Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy');
-Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update');
+
+/*Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy');
+Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update');*/
 
 Route::resource('/coordinacion', CoordinacionController::class);
-Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy');
+//Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy');
 
 Route::get('/', function () {
     return view('welcome');

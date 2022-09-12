@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coordinador;
+use App\Http\Requests\CoordinadorCreateRequest;
+use App\Http\Requests\CoordinadorEditRequest;
 use Illuminate\Http\Request;
-
 use App\Models\Coordinacion;
 
 
@@ -18,7 +19,7 @@ class CoordinadorController extends Controller
     public function index()
     {
         //
-        $datos['coordinadores']= Coordinador::paginate();
+        $datos['coordinadors']= Coordinador::paginate();
         return view('coordinador.index', $datos);
     }
 
@@ -42,21 +43,10 @@ class CoordinadorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CoordinadorCreateRequest $request)
     {
-        //
 
-        $request->validate([
-            'nomCoordinador' => 'required|min:5|max:16',
-            'apeCoordinador' => 'required',
-            'tipoDoc' => 'required',
-            'numDoc' => 'required|numeric',
-            'correoMisena' => 'required',
-            'telefonoCoordinador' => 'required|numeric',
-            'id_coordinacion' => 'required|numeric'
-        ]);
-
-        $datosCoordinador = request()->except('_token');
+        $datosCoordinador = $request->except('_token');
         Coordinador::insert($datosCoordinador );
         
         return redirect('coordinador')->with('mensaje','coordinador agregado con exito');
@@ -93,28 +83,14 @@ class CoordinadorController extends Controller
      * @param  \App\Models\Coordinador  $coordinador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CoordinadorEditRequest $request, $id)
     {
-        //
-
-        $request->validate([
-            'nomCoordinador' => 'required|min:5|max:16',
-            'apeCoordinador' => 'required',
-            'tipoDoc' => 'required',
-            'numDoc' => 'required|numeric',
-            'correoMisena' => 'required|email:rfc,dns',
-            'telefonoCoordinador' => 'required|numeric',
-            'id_coordinacion' => 'required|numeric'
-        ]);
-
-
         $datosCoordinador = request()->except(['_token','_method']);
         Coordinador::where('id','=',$id)->update($datosCoordinador);
 
-        return view('coordinador.edit')->with(['coordinador' => Coordinador::find($id),
+        return redirect('coordinador')->with(['coordinador' => Coordinador::find($id),
             'coordinacions' => Coordinacion::find('id')
         ]);
-
     }
 
     /**
