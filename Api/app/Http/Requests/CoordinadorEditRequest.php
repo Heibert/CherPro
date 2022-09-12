@@ -28,7 +28,7 @@ class CoordinadorEditRequest extends FormRequest
             'nomCoordinador' => 'required|min:5|max:16',
             'apeCoordinador' => 'required',
             'tipoDoc' => 'required',
-            'numDoc' => 'unique:coordinadors,numDoc,'.$this->coordinador.'|required|numeric|max:15',
+            'numDoc' => 'unique:coordinadors,numDoc,'.$this->coordinador.'|required|numeric',
             'correoMisena' => 'unique:coordinadors,correoMisena,'.$this->coordinador.'|required',
             'telefonoCoordinador' => 'required|numeric',
             'id_coordinacion' => 'required|numeric'
@@ -43,7 +43,6 @@ class CoordinadorEditRequest extends FormRequest
             'tipoDoc.required' => 'Este campo es requerido',
             'numDoc.unique' => 'Este numero ya esta registrado',
             'numDoc.required' => 'Este campo es obligatorio',
-            'numDoc.max' => 'Este campo tiene que ser maximo de 15 numeros',
             'correoMisena.unique' => 'Este correo ya esta en uso',
             'correoMisena.required' => 'Este campo es obligatorio',
             'telefonoCoordinador.required' => 'Su telefono es obligatorio',

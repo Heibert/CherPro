@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Coordinador;
 use App\Http\Requests\CoordinadorCreateRequest;
 use App\Http\Requests\CoordinadorEditRequest;
-use Illuminate\Http\Request;
 use App\Models\Coordinacion;
-
+use Illuminate\Http\Request;
 
 class CoordinadorController extends Controller
 {
@@ -30,8 +29,6 @@ class CoordinadorController extends Controller
      */
     public function create()
     {
-        //
-
         $coordinacions = Coordinacion::all();
         return view('coordinador.create', compact('coordinacions'));
 
@@ -45,11 +42,9 @@ class CoordinadorController extends Controller
      */
     public function store(CoordinadorCreateRequest $request)
     {
-
         $datosCoordinador = $request->except('_token');
-        Coordinador::insert($datosCoordinador );
-        
-        return redirect('coordinador')->with('mensaje','coordinador agregado con exito');
+        Coordinador::insert($datosCoordinador);
+        return redirect('coordinador');
     }
 
     /**
@@ -60,7 +55,8 @@ class CoordinadorController extends Controller
      */
     public function show(Coordinador $coordinador)
     {
-        //
+        $datos['coordinadors']= Coordinador::paginate();
+        return view('coordinador.index', $datos);
     }
 
     /**
@@ -69,11 +65,12 @@ class CoordinadorController extends Controller
      * @param  \App\Models\Coordinador  $coordinador
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
-        //
-        return view('coordinador.edit')
-               ->with(['coordinador' => Coordinador::find($id),'coordinacions' => Coordinacion::all()]); 
+        return view('coordinador.edit')->with([
+            'coordinador' => Coordinador::find($id),
+            'coordinacion' => Coordinacion::all()
+        ]); 
     }
 
     /**
@@ -88,9 +85,10 @@ class CoordinadorController extends Controller
         $datosCoordinador = request()->except(['_token','_method']);
         Coordinador::where('id','=',$id)->update($datosCoordinador);
 
-        return redirect('coordinador')->with(['coordinador' => Coordinador::find($id),
-            'coordinacions' => Coordinacion::find('id')
-        ]);
+        return redirect('coordinador')->with([
+            'coordinador' => Coordinador::find($id),
+            'coordinacion' => Coordinacion::find('id')
+        ]); 
     }
 
     /**

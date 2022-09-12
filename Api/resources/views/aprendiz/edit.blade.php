@@ -4,109 +4,118 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Editar Aprendiz</title>
 </head>
 <body>
     <form action="{{ url('/aprendiz/'.$aprendiz->id) }}" method="post" enctype="multipart/form-data">
-    @csrf
-    {{ method_field('PATCH') }}
-
-        <nav>
-            <a href="{{ url('aprendiz') }}"> Volver </a>
+        @csrf
+        {{ method_field('PATCH') }}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="{{ url('aprendiz') }}">Inicio</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('aprendiz/create') }}"> Crear </a>
+                </li>
+            </div>
         </nav>
         <br>
         <div>
             <center>
+            <div>
+                <label for="nombreAprend" > Nombre del Aprendiz </label>
                 <div>
-                    <label for="nombreAprend"> Nombre del Aprendiz </label>
-                        <input type="text" name="nombreAprend" id="nombreAprend" value="{{ old('nombreAprend', isset($aprendiz-> nombreAprend)?$aprendiz-> nombreAprend: '' )}}"> 
-                            <br>
-                                @error('nombreAprend') 
-                                    <small> {{$message}} </small> 
-                                @enderror
+                    <input type="text" name="nombreAprend" id="nombreAprend" value="{{ isset($aprendiz-> nombreAprend)?$aprendiz-> nombreAprend: '' }}"> 
                 </div>
-                <br>
+                @error('nombreAprend') 
+                    <small> {{$message}} </small> 
+                @enderror
+            </div>
+            <br>
+            <div>
+                <label for="apelliAprend"> Apellido del Aprendiz </label>
                 <div>
-                    <label for="apelliAprend"> Apellido del Aprendiz </label>
-                        <input type="text" name="apelliAprend" id="apelliAprend" value="{{ old('apelliAprend', isset($aprendiz-> apelliAprend)?$aprendiz-> apelliAprend: '' )}}">
-                            <br>
-                                @error('apelliAprend') 
-                                    <small> {{$message}} </small>
-                                @enderror
+                    <input type="text" name="apelliAprend" id="apelliAprend" value="{{ isset($aprendiz-> apelliAprend)?$aprendiz-> apelliAprend: '' }}">
                 </div>
-                <br>
+                @error('apelliAprend') 
+                    <small> {{$message}} </small>
+                @enderror
+            </div>
+            <br>
+            <div>
+                <label for="tipoDoc"> Tipo de documento </label>
                 <div>
-                    <label for="tipoDoc"> Tipo de documento </label>
-                        <input type="text" name="tipoDoc"  id="tipoDoc" value="{{ old('tipoDoc', isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: '' )}}">
-                            <br>
-                                @error('tipoDoc')
-                                    <small>{{$message}}</small>
-                                @enderror
+                    <input type="text" name="tipoDoc"  id="tipoDoc" value="{{ isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: '' }}">
                 </div>
-                <br>
+                @error('tipoDoc')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <br>
+            <div>
+                <label for="numDoc"> Número de documento </label>
                 <div>
-                    <label for="numDoc"> Número de documento </label>
-                        <input type="number" name="numDoc"  id="numDoc" value="{{ old('numDoc', isset($aprendiz-> numDoc)?$aprendiz-> numDoc: '' )}}">
-                            <br>
-                                @error('numDoc')
-                                    <small>{{$message}}</small>
-                                @enderror
+                    <input type="number" name="numDoc"  id="numDoc" value="{{ isset($aprendiz-> numDoc)?$aprendiz-> numDoc: '' }}">
                 </div>
-                <br>
+                @error('numDoc')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <br>
+            <div>
+                <label for="correoMisena"> Correo Misena </label>
                 <div>
-                    <label for="correoMisena"> Correo Misena </label>
-                        <input type="text" name="correoMisena" id="correoMisena" value="{{ old('correoMisena', isset($aprendiz-> correoMisena)?$aprendiz-> correoMisena: '' )}}">
-                            <br>
-                                @error('correoMisena')
-                                    <small>{{$message}}</small>
-                                @enderror
+                    <input type="text" name="correoMisena" id="correoMisena" value="{{ isset($aprendiz-> correoMisena)?$aprendiz-> correoMisena: '' }}">
                 </div>
-                <br>
+                @error('correoMisena')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <br>
+            <div>
+                <label for="correoAprend"> Correo personal </label>
                 <div>
-                    <label for="correoAprend"> Correo personal </label>
-                        <input type="text" name="correoAprend" id="correoAprend" value="{{ old('correoAprend', isset($aprendiz-> correoAprend)?$aprendiz-> correoAprend: '' )}}">
-                            <br>
-                                @error('correoAprend')
-                                    <small>{{$message}}</small>
-                                @enderror
+                    <input type="text" name="correoAprend" id="correoAprend" value="{{ isset($aprendiz-> correoAprend)?$aprendiz-> correoAprend: '' }}">
                 </div>
-                <br>
+                @error('correoAprend')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <br>
+            <div>
+                <label for="telefonoAprend"> Telefono </label>
                 <div>
-                    <label for="telefonoAprend"> Telefono </label>
-                        <input type="text" name="telefonoAprend" id="telefonoAprend" value="{{ old('telefonoAprend', isset($aprendiz-> telefonoAprend)?$aprendiz-> telefonoAprend: '' )}}">
-                            <br>
-                                @error('telefonoAprend')
-                                    <small>{{$message}}</small>
-                                @enderror
+                    <input type="text" name="telefonoAprend" id="telefonoAprend" value="{{ isset($aprendiz-> telefonoAprend)?$aprendiz-> telefonoAprend: '' }}">
                 </div>
-                <br>
+                @error('telefonoAprend')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <br>
+            <div>
+                <label for="id_ficha"> Fichas </label>
                 <div>
-                    <label for="id_ficha"> Fichas </label>
-                        <select name="id_ficha" id="id_ficha" value="{{ old('id_ficha', isset($aprendiz-> id_ficha)?$aprendiz-> id_ficha: '' )}}">
-                            @foreach ($fichas as $ficha)
-                                <option value="{{ $ficha['id'] }}">
-                                    {{ $ficha['numFicha'] }}
-                                </option>
-                            @endforeach
-                        </select>
-                            <br>
-                                @error('id_ficha')
-                                    <small>{{$message}}</small>
-                                @enderror
+                    <select name="id_ficha" id="id_ficha" value="{{ isset($aprendiz-> id_ficha)?$aprendiz-> id_ficha: '' }}">
+                        @foreach ($fichas as $ficha)
+                            <option value="{{ $ficha['id'] }}">
+                                {{ $ficha['numFicha'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <br>
+                    @error('id_ficha')
+                        <small>{{$message}}</small>
+                    @enderror
                 </div>
-                <br>
-                <div>
-                    <label for="password"> Contraseña </label>
-                        <input type="text" name="password" id="password" value="{{ old('password', isset($aprendiz-> password)?$aprendiz-> password: '' )}}">
-                            <br>
-                                @error('password')
-                                    <small>{{$message}}</small>
-                                @enderror
-                </div>
-                <br>
-                <div>
-                    <input type="submit" value="Guardar">
-                </div>
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="Guardar">
+            </div>
             </center>
         </div>
     </form>

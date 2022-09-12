@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Trimestre;
 use App\Models\Ficha;
+use App\Http\Requests\TrimestreCreateRequest;
+use App\Http\Requests\TrimestreEditRequest;
 use Illuminate\Http\Request;
 
 class TrimestreController extends Controller
@@ -36,7 +38,7 @@ class TrimestreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TrimestreCreateRequest $request)
     {
         $datosTrimes = $request->except('_token');
         Trimestre::insert($datosTrimes);
@@ -78,7 +80,7 @@ class TrimestreController extends Controller
      * @param  \App\Models\Trimestre  $trimestre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TrimestreEditRequest $request, $id)
     {
         $datosTrimes = $request->except('_token','_method');
         Trimestre::where('id','=', $id)->update($datosTrimes);

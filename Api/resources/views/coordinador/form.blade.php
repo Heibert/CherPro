@@ -3,96 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Crear coordinador</title>
 </head>
 <body>
-    <nav>
-        <a href="{{url('coordinador')}}"> Volver </a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{{ url('coordinador') }}">Inicio</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url('coordinador/create') }}"> Crear </a>
+            </li>
+        </div>
     </nav>
     <br>
     <div>
         <center>
+        <div>
+            <label for="nomCoordinador">Nombre Coordinador</label>
             <div>
-                <label for="nomCoordinador">Nombre Coordinador</label><br>
-                    <input type="text" value="{{ old ('nomCoordinador', isset ($coordinador->nomCoordinador)?$coordinador->nomCoordinador:'')}}" name="nomCoordinador" id="nomCoordinador">
-                        <br>
-                        @error('nomCoordinador')
-                            <small>{{$message}}</small>
-                        @enderror
+                <input type="text" name="nomCoordinador" id="nomCoordinador" value="{{ isset($coordinador->nomCoordinador)?$coordinador->nomCoordinador:''}}">
             </div>
-            <br>
+            @error('nomCoordinador')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <br>
+        <div>
+            <label for="apeCoordinador">Apellido Coordinador</label>
             <div>
-                <label for="apeCoordinador">Apellido Coordinador</label><br>
-                    <input type="text" value="{{ old ('apeCoordinador', isset ($coordinador->apeCoordinador)?$coordinador->apeCoordinador:'')}}" name="apeCoordinador" id="apeCoordinador">
-                        <br>
-                        @error('apeCoordinador')
-                                <small>{{$message}}</small>
-                        @enderror
+                <input type="text" name="apeCoordinador" id="apeCoordinador" value="{{ isset($coordinador->apeCoordinador)?$coordinador->apeCoordinador:''}}" >
             </div>
-            <br>
+            @error('apeCoordinador')
+                    <small>{{$message}}</small>
+            @enderror
+        </div>
+        <br>
+        <div>
+            <label for="tipoDoc">Tipo de documento</label>
             <div>
-                <label for="tipoDoc">Tipo de documento</label><br>
-                    <select name="tipoDoc" id="tipoDoc" value="{{ old ('tipoDoc', isset ($coordinador->tipoDoc)?$coordinador->tipoDoc:'')}}">
-                        <option name="tipoDoc" value="CC">CC</option>
-                        <option name="tipoDoc" value="CI">CI</option>
-                    </select>
-                        <br> 
-                            @error('tipoDoc')
-                                    <small>{{$message}}</small>
-                            @enderror
+                <select name="tipoDoc" id="tipoDoc" value="{{ isset($coordinador->tipoDoc)?$coordinador->tipoDoc:''}}">
+                    <option name="tipoDoc" value="CC">CC</option>
+                    <option name="tipoDoc" value="CI">CI</option>
+                </select>
             </div>
-            <br>
+            @error('tipoDoc')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <br>
+        <div>
+            <label for="numDoc">Número de documento</label>
             <div>
-                <label for="numDoc">Número de documento</label><br>
-                        <input type="number" value="{{ old ('numDoc', isset ($coordinador->numDoc)?$coordinador->numDoc:'')}}" name="numDoc" id="numDoc">
-                            <br>
-                            @error('numDoc')
-                                    <small>{{$message}}</small>
-                            @enderror   
+                <input type="number" name="numDoc" id="numDoc" value="{{  isset($coordinador->numDoc)?$coordinador->numDoc:''}}">
             </div>
-            <br>
-            <div>  
-                <label for="correoMisena">Correo Misena</label><br>
-                    <input type="emile" value="{{ old ('correoMisena', isset ($coordinador->correoMisena)?$coordinador->correoMisena:'')}}" name="correoMisena" id="correoMisena">
-                        <br>
-                        @error('correoMisena')
-                                <small>{{$message}}</small>
-                        @enderror
-            </div>
-            <br>
+            @error('numDoc')
+                <small>{{$message}}</small>
+            @enderror   
+        </div>
+        <br>
+        <div>  
+            <label for="correoMisena">Correo Misena</label>
             <div>
-                <label for="telefonoCoordinador">Telefono</label><br>
-                    <input type="number" name="telefonoCoordinador" id="telefonoCoordinador" value="{{ old ('telefonoCoordinador', isset ($coordinador->telefonoCoordinador)?$coordinador->telefonoCoordinador:'' )}}">      
-                        <br>
-                        @error('telefonoCoordinador')
-                                <small>{{$message}}</small>
-                        @enderror
+                <input type="email" name="correoMisena" id="correoMisena" value="{{ isset($coordinador->correoMisena)?$coordinador->correoMisena:''}}">
             </div>
-            <br>
+            @error('correoMisena')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <br>
+        <div>
+            <label for="telefonoCoordinador">Telefono</label>
             <div>
-                <label for="id_coordinacion"> Coordinación </label><br>
-                    <select name="id_coordinacion" id="id_coordinacion" value="{{ isset($coordinador-> id_coordinacion)?$coordinador-> id_coordinacion: ''}}">
-                        @foreach ($coordinacions as $coordinacion)
-                            <option value="{{ $coordinacion['id'] }}">
-                                {{ $coordinacion['nomCoordinacion'] }}
-                            </option>
-                        @endforeach
-                    </select> 
-                        <br>
-                        @error('id_coordinacion')
-                                <small>{{$message}}</small>
-                        @enderror
+                <input type="number" name="telefonoCoordinador" id="telefonoCoordinador" value="{{ isset($coordinador->telefonoCoordinador)?$coordinador->telefonoCoordinador:'' }}">      
             </div>
-            <br>
+            @error('telefonoCoordinador')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <br>
+        <div>
+            <label for="id_coordinacion"> Coordinación </label>
             <div>
-                <label for="password">Contraseña</label><br>
-                    <input type="text" name="password" id="password" value="{{ isset($coordinador-> password)?$coordinador-> password:'' }}"> 
+                <select name="id_coordinacion" id="id_coordinacion" value="{{ isset($coordinador-> id_coordinacion)?$coordinador-> id_coordinacion: ''}}">
+                    @foreach ($coordinacions as $coordinacion)
+                        <option value="{{ $coordinacion['id'] }}">
+                            {{ $coordinacion['nomCoordinacion'] }}
+                        </option>
+                    @endforeach
+                </select> 
             </div>
-            <br>
-            <div>
-                <input type="submit" value="Guardar">
-            </div>
+            @error('id_coordinacion')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Guardar">
+        </div>
         </center>
     </div>
 </body>

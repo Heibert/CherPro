@@ -86,7 +86,7 @@ class AdministradorController extends Controller
         $datosAdmin = $request->except('_token','_method');
         Administrador::where('id','=',$id)->update($datosAdmin);
         
-        return redirect('administrador.edit')->with([
+        return redirect('administrador')->with([
             'administradors' => Administrador::find($id),
             'programa' => Programa::find('id')
         ]);

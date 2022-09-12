@@ -85,7 +85,7 @@ class CoordinacionController extends Controller
         $datosCoordi = $request->except('_token','_method');
         Coordinacion::where('id', '=', $id)->update($datosCoordi);
 
-        return view('coordinacion.edit')->with([
+        return redirect('coordinacion')->with([
             'coordinacion' => Coordinacion::find($id)
         ]);
     }

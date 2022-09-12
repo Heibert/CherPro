@@ -21,11 +21,9 @@ return new class extends Migration
             $table->integer('numDoc')->unique();
             $table->string('correoMisena')->unique();
             $table->integer('telefonoCoordinador');
-
             $table->unsignedBigInteger('id_coordinacion')->unique();
             $table->foreign('id_coordinacion')->references('id')->on('coordinacions')
                                                 ->onDelete('cascade');
-            $table->string('password');
             $table->timestamps();
 
             

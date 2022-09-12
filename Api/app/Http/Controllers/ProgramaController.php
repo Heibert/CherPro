@@ -71,7 +71,7 @@ class ProgramaController extends Controller
         //
         return view('programa.edit')->with([
             'programa' => Programa::find($id),
-            'coordinacions' => Coordinacion::find($id)
+            'coordinacion' => Coordinacion::all()
         ]);
     }
 
@@ -89,7 +89,7 @@ class ProgramaController extends Controller
 
         return redirect('programa')->with([
             'programa' => Programa::find($id),
-            'coordinacions' => Coordinacion::find('id')
+            'coordinacion' => Coordinacion::find('id')
         ]);
     }
     /**

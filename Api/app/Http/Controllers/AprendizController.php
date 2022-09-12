@@ -71,7 +71,6 @@ class AprendizController extends Controller
      */
     public function edit($id)
     {
-    
         return view('aprendiz.edit')->with([
             'aprendiz' => Aprendiz::find($id),
             'fichas' => Ficha::all()
@@ -105,10 +104,9 @@ class AprendizController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {       
         //
         Aprendiz::destroy($id); 
         return redirect('aprendiz');
-        
     }
 }

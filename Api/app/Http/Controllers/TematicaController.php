@@ -6,6 +6,8 @@ use App\Models\Tematica;
 use App\Models\Instructor;
 use App\Models\Ficha;
 use App\Models\Programa;
+use App\Http\Requests\TematicaCreateRequest;
+use App\Http\Requests\TematicaEditRequest;
 use Illuminate\Http\Request;
 
 class TematicaController extends Controller
@@ -41,7 +43,7 @@ class TematicaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TematicaCreateRequest $request)
     {
         $datosTema = $request->except('_token');
         Tematica::insert($datosTema);
@@ -75,7 +77,6 @@ class TematicaController extends Controller
             'programas' => Programa::all(),
             'fichas' => Ficha::all()
         ]);
-
     }
 
     /**
@@ -85,7 +86,7 @@ class TematicaController extends Controller
      * @param  \App\Models\Tematica  $tematica
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TematicaEditRequest $request, $id)
     {
         $datosTema = $request->except('_token','_method');
         Tematica::where('id','=', $id)->update($datosTema);

@@ -25,7 +25,6 @@ return new class extends Migration
             ->constrained('programas')
             ->cascadeOnUpdate()
             ->nullOnDelete();
-            $table->string('password');
             $table->timestamps();
         });
     }
