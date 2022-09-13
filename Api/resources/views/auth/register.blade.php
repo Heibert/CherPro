@@ -5,37 +5,93 @@
     <div>
         <h1>Registrarse</h1>
 
-        <form class="" action="" method="POST">
+        <form class="formulario" id="formulario" action="" method="POST">
 
             @csrf
 
-            <label for="name">Nombre
-            </label><br>
-            <input type="text" class="" name="name" id="name" placeholder="name">
+            <div class="formulario__grupo" id="formulario__grupo">
+                <label for="name">Nombre</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="name" id="name" placeholder="Nombre" value="{{old('name')}}">
+                    <i class="fa-light fa-circle-quarters"></i>
+                </div>
+                @error('name')
+                    <span>
+                        <br>
+                        <strong>{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
+            <br>
+            
+            <div>
+                <label for="apellido">Apellido</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="apellido" id="apellido" placeholder="apellido" value="{{old('apellido')}}">
+                </div>
+                @error('apellido')
+                    <span>
+                        <br>
+                        <strong>{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
             <br>
 
-            <label for="apellido">apellido
-            </label><br>
-            <input type="text" class="" name="apellido" id="apellido" placeholder="apellido">
+            <div>
+                <label for="telefono">Telefono</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="number" class="formulario__input" name="telefono" id="telefono" placeholder="Número de telefono" value="{{old('telefono')}}">
+                </div>
+                @error('telefono')
+                    <span>
+                        <br>
+                        <strong>{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
             <br>
 
-            <label for="telefono">Telefono
-            </label><br>
-            <input type="number" class="" name="telefono" id="telefono" placeholder="Número de telefono">
-            <br>
-            <label for="Correo">Correo
-            </label><br>
-            <input type="email" class="" name="email" id="email" placeholder="Correo">
+            <div>
+                <label for="Correo">Correo</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="email" id="email" placeholder="Correo" value="{{old('email')}}">
+                </div>
+                @error('email')
+                    <span>
+                        <br>
+                        <strong>{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
             <br>
 
-            <label for="password">Contraseña
-            </label><br>
-            <input type="password" class="" name="password" id="password" placeholder="Contraseña">
+            <div>
+                <label for="password">Contraseña</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password" id="password" placeholder="Contraseña">
+                </div>
+                @error('password')
+                    <span>
+                        <br>
+                        <strong>{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
             <br>
 
-            <label for="password_confirmation">Contraseña
-            </label><br>
-            <input type="password" class="" name="password_confirmation" id="password_confirmation" placeholder="Confirmar contraseña">
+            <div>
+                <label for="password_confirmation">Contraseña</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password_confirmation" id="password_confirmation" placeholder="Confirmar contraseña">
+                </div>
+                @error('password_confirmation')
+                    <span>
+                        <br>
+                        <strong>{{$message}}</strong>
+                    <span>
+                 @enderror
+            </div>
             <br>
 
         <button type="submit" class="" name="" id="">Ingresar</button>

@@ -66,9 +66,15 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', [RegisterController::class, 'create'])->name('login.index');
+Route::get('/index', function () {
+    return view('/index');
+});
 
-Route::post('/login', [RegisterController::class, 'store'])->name('login.store');
+Route::get('/register', [RegisterController::class, 'create'])->name('register.index');
 
-Route::get('/register', [SessionsController::class, 'create'])->name('register.index');
-Route::get('/register', [SessionsController::class, 'create'])->name('register.index');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+
+Route::get('/login', [SessionsController::class, 'create'])->name('login.index');
+
+Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
