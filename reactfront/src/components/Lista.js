@@ -316,8 +316,20 @@ const Lista = () => {
     return (
         <div>
             <div className='d-grid gap-2'>
-                <a href='/create' className='btn btn-success btn-lg mt-2 mb-2 text-white'>Crear asistencia de una fecha especifica</a>
+            <h1 className="mt-3 mb-5">Selecione Una Fehca Expecifica</h1>
+            <ul className="nav nav-tabs mb-4">
+  <li className="nav-item">
+    <a className="nav-link active" href="/">Lista</a>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link" href="/create">Crear</a>
+  </li>
+  <li ClassName="nav-item">
+    <a className="nav-link" href="#">Salir</a>
+  </li>
+</ul>
             </div>
+            
             {/* <table className='bg-primary table-bordered text-white container '>
                 <thead>
                     <tr>
