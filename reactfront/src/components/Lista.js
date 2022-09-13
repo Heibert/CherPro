@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import axios/* , { AxiosError } */ from 'axios'
 /* 
 import { Link, useNavigate } from "react-router-dom"; */
-
 const endpoint = 'http://localhost:8000/api'
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
@@ -146,12 +145,20 @@ const Lista = () => {
             })
             return (
                 AsistenciaFichaDesc.map((Asistencia, index) => (
-                    <tr key={index}>
+                    <div key={index} className='container-fluid'>
+                        <div className='row h5'>
+                            <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color +" col text-white border"}/>
+                            <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia}/>
+                            <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"}/>
+                            <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia}/>
+                        </div>
+                    </div>
+                    /* <tr key={index}>
                         <td className={Asistencia.color}>{Asistencia.numFicha}</td>
                         <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
                         <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
                         <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    </tr> */
                 ))
             )
         }
@@ -311,7 +318,7 @@ const Lista = () => {
             <div className='d-grid gap-2'>
                 <a href='/create' className='btn btn-success btn-lg mt-2 mb-2 text-white'>Crear asistencia de una fecha especifica</a>
             </div>
-            <table className='bg-primary table-bordered text-white container '>
+            {/* <table className='bg-primary table-bordered text-white container '>
                 <thead>
                     <tr>
                         <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
@@ -359,7 +366,7 @@ const Lista = () => {
                 <tbody>
                     {mostrarAsistencia()}
                 </tbody>
-            </table>
+            </table> */}{mostrarAsistencia()}
         </div>
     )
 }
