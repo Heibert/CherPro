@@ -17,6 +17,7 @@
                 <li>
                     <a href="{{ url('coordinador')}}">coordinador</a>
                 </li>
+                <li>
                     <a href="{{ url('excusa')}}">excusa</a>
                 </li>
                 <li>
