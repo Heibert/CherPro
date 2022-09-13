@@ -18,8 +18,8 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{{ url('programa/create') }}"> Crear </a>
             </li>
-        </div>
     </nav>
+    <br>
     <table class="table table-light">
         <thead>
             <tr>
@@ -30,21 +30,20 @@
                 <th>Eliminar</th>
             </tr>
         </thead>
-
         <tbody>
-            @foreach($programa as $pro)
+            @foreach($programa as $prog)
             <tr>
-                <td>{{ $pro->id }}</td>
-                <td>{{ $pro->nombrePrograma }}</td>
-                <td>{{ $pro->coordinacions->nomCoordinacion }}</td>
+                <td>{{$prog->id}}</td>
+                <td>{{$prog->nombrePrograma}}</td>
+                <td>{{$prog->coordinaciones->nomCoordinacion}}</td>
                 <td>
-                    <a href="{{url('/programa/'.$pro->id.'/edit')}}">
+                    <a href="{{url('/programa/'.$prog->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>
                     </a> 
                 </td>
                 <br>
                 <td>
-                    <form action="{{url('/programa/'.$pro->id)}}" method="post">
+                    <form action="{{url('/programa/'.$prog->id)}}" method="post">
                         @csrf
                         {{method_field('DELETE')}}
                         <button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>

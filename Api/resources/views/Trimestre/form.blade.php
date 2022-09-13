@@ -49,6 +49,28 @@
         </div>
         <br>
         <div>
+            <label for="id_tematica"> Asignar tematicas </label>
+            <div>
+                <select name="id_tematica" id="id_tematica" value="{{ isset($trimestre-> id_tematica)?$trimestre-> id_tematica: '' }}">
+                    @foreach ($tematica as $tema)
+                        <option value="{{ $tema['id'] }}">
+                            {{ $tema['nombreTematica'] }}
+                        </option>
+                    @endforeach
+                </select> 
+            </div><br>
+            <div>
+                <select name="id_tematica" id="id_tematica" value="{{ isset($trimestre-> id_tematica)?$trimestre-> id_tematica: '' }}">
+                    @foreach ($tematica2 as $tema)
+                        <option value="{{ $tema['id'] }}">
+                            {{ $tema['nombreTematica'] }}
+                        </option>
+                    @endforeach
+                </select> 
+            </div>
+        </div>
+        <br>
+        <div>
             <input type="submit" value="Guardar">
         </div>
         </center>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trimestre;
 use App\Models\Ficha;
+use App\Models\Tematica;
 use App\Http\Requests\TrimestreCreateRequest;
 use App\Http\Requests\TrimestreEditRequest;
 use Illuminate\Http\Request;
@@ -29,7 +30,9 @@ class TrimestreController extends Controller
     public function create()
     {
         $fichas = Ficha::all();
-        return view('trimestre.create', compact('fichas'));
+        $tematica = Tematica::all();
+        $tematica2 = Tematica::all();
+        return view('trimestre.create', compact('fichas', 'tematica', 'tematica2'));
     }
 
     /**
@@ -69,7 +72,8 @@ class TrimestreController extends Controller
 
         return view('trimestre.edit')->with([
             'trimestres' => Trimestre::find($id),
-            'fichas' => Ficha::all()
+            'fichas' => Ficha::all(),
+            'tematica' => Tematica::all()
         ]);
     }
 
@@ -87,7 +91,8 @@ class TrimestreController extends Controller
 
         return redirect('trimestre')->with([
             'trimestres' => Trimestre::find($id),
-            'fichas' => Ficha::find('id')
+            'fichas' => Ficha::find('id'),
+            'tematica' => Tematica::find('id')
         ]);
     }
 

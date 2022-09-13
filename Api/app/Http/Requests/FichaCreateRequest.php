@@ -35,6 +35,7 @@ class FichaCreateRequest extends FormRequest
 
         return [
             'numFicha.required' => 'El número es requerido',
+            'numFicha.unique' => 'Esta ficha ya existe',
             'cantAprendiz.required' => 'La cantidad es requerida',
             'id_instructor.required' => 'Esta opción es requerida',
             'id_programa.required' => 'Esta opción es requerida'

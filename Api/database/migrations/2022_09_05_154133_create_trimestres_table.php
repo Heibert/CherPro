@@ -21,6 +21,7 @@ return new class extends Migration
                             ->constrained('fichas')
                             ->cascadeOnUpdate()
                             ->nullOnDelete();
+            $table->integer('id_tematica');
             $table->timestamps();
         });
     }

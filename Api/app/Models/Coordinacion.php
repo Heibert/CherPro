@@ -11,7 +11,7 @@ class Coordinacion extends Model
 
     // Relacion con coordinador (1:1)
     protected $table = "coordinacions";
-    public function coordinadors(){
+    public function coordinadores(){
         return $this->hasOne(Coordinador::class);
     }
     

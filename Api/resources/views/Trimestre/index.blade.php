@@ -25,6 +25,7 @@
             <th>#</th>
             <th>Numero Trimestre</th>
             <th>Ficha</th>
+            <th>Tematicas asignadas</th>
             <th>Editar</th>
             <th>Eliminar</th>
         </tr>
@@ -35,6 +36,7 @@
             <td>{{$tr->id}}</td>
             <td>{{$tr->numTrimestre}}</</td>
             <td>{{$tr->fichas->numFicha}}</</td>
+            <td>{{$tr->id_tematica}}, {{$tr->id_tematica}}</</td>
             <td>
                 <a href="{{url('/trimestre/'.$tr->id.'/edit')}}">
                     <button class="btn btn-outline-warning">Editar</button>

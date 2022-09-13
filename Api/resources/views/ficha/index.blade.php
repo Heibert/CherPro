@@ -39,7 +39,7 @@
                 <td>{{ $f->id }}</td>
                 <td>{{ $f->numFicha }}</td>
                 <td>{{ $f->cantAprendiz }}</td>
-                <td>{{ $f->instructor}}</td>
+                <td>{{ $f->id_instructor}}</td>
                 <td>{{ $f->programas->nombrePrograma}}</td>
                 <td>
                     <a href="{{url('/ficha/'.$f->id.'/edit')}}">

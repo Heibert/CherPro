@@ -45,7 +45,6 @@ class FichaController extends Controller
      */
     public function store(FichaCreateRequest $request)
     {
-
         $datosFicha = $request->except('_token'); 
         Ficha::insert($datosFicha); 
         return redirect('ficha');
@@ -73,7 +72,6 @@ class FichaController extends Controller
     public function edit($id)
     {
         //
-
         return view('ficha.edit')->with([
             'ficha' => Ficha::find($id),
             'instructors' => Instructor::all(),
