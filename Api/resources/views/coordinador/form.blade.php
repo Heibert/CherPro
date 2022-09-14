@@ -9,14 +9,15 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ url('coordinador') }}">Inicio</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <a class="navbar-brand" href="{{ url('./index') }}">Inicio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="{{ url('coordinador/create') }}"> Crear </a>
+                <a class="nav-link" href="{{ url('coordinador/index') }}"> Lista </a>
             </li>
         </div>
     </nav>
@@ -90,7 +91,7 @@
             <label for="id_coordinacion"> Coordinación </label>
             <div>
                 <select name="id_coordinacion" id="id_coordinacion" value="{{ isset($coordinador-> id_coordinacion)?$coordinador-> id_coordinacion: ''}}">
-                    @foreach ($coordinacions as $coordinacion)
+                    @foreach ($coordinaciones as $coordinacion)
                         <option value="{{ $coordinacion['id'] }}">
                             {{ $coordinacion['nomCoordinacion'] }}
                         </option>
