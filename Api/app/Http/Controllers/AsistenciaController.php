@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Tematica;
 use App\Models\Aprendiz;
 use App\Models\Asistencia;
+use App\Models\Ficha;
 use Illuminate\Support\Facades\validator;
 use Illuminate\Support\Facades\DB;
 
@@ -71,7 +72,8 @@ class AsistenciaController extends Controller
     {
         $aprendices = Aprendiz::all();
         $tematicas = Tematica::all();
-        return array($tematicas, $aprendices);
+        $fichas = Ficha::all();
+        return array($tematicas, $aprendices, $fichas);
     }
 
     /**
@@ -86,7 +88,9 @@ class AsistenciaController extends Controller
             'fechaAsistencia' => 'bail|required|Date',
             'estadoAsistencia'=> 'bail|required|size:1|string',
             'id_aprendiz' => 'bail|required|numeric',
-            'id_tematica' => 'bail|required|numeric'
+            'id_tematica' => 'bail|required|numeric',
+
+            'ficha' => 'bail|required|numeric'
         ]);
         $asistencia = new Asistencia;
         $asistencia->fechaAsistencia = $request->fechaAsistencia;

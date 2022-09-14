@@ -15,6 +15,7 @@ const CreateAsistencia = () => {
   const [Validation, setValidation] = useState([])
   const [Aprendices, setAprendices] = useState([])
   const [Tematicas, setTematicas] = useState([])
+  const [Fichas, setFichas] = useState([])
   const [erroresAxio, setErroresAxio] = useState("");
   const [fechaAsistencia, setfechaAsistencia] = useState('')
   const [estadoAsistencia, setEstadoAsistencia] = useState('')
@@ -27,6 +28,7 @@ const CreateAsistencia = () => {
     const response = await axios.get(`${endpoint}/create`)
     setAprendices(response.data[1])
     setTematicas(response.data[0])
+    setFichas(response.data[2])
   }
   const Store = async (e) => {
     e.preventDefault()
@@ -69,10 +71,16 @@ const CreateAsistencia = () => {
         else {
           document.getElementById("tematicaError").classList.add('d-none')
         }
+        if (errores.ficha != undefined) {
+          document.getElementById("fichaError").classList.remove('d-none')
+        }
+        else {
+          document.getElementById("fichaError").classList.add('d-none')
+        }
       })
   }
   var div = <div className="alert alert-danger"></div>
-
+console.log(erroresAxio)
   useEffect(() => {
     getAllTematicaAprendiz()
   }, [])
@@ -114,6 +122,20 @@ const CreateAsistencia = () => {
             <div className="alert alert-danger d-none" id="estadoError">{erroresAxio.estadoAsistencia}</div>
           </div>
         </div>
+        {/*  */}
+        <div className="row">
+          <div className="col">
+            <label className="form-label mt-5 mb-3">Ficha:</label>
+            <select type='select' onChange={(e) => setFichas(e.target.value)} className="form-control">
+              <option value="">Selecciona una Ficha</option>
+              {Fichas.map((Ficha) => (
+                <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
+              ))}
+            </select>
+            <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.ficha}</div>
+          </div>
+        </div>
+        {/*  */}
         <div className="row">
           <div className="col">
             <label className="col-sm-2 col-form-label mt-4 mb-3">Aprendiz:</label>
