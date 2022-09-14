@@ -4,29 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite(['resources/css/app.css'])
     <title>Document</title>
+    @vite(['resources/css/app.css'])
 </head>
 <body>
-    <h1>CherPro</h1>
-    <ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
+
     @extends('layouts.app')
 
     @section('title', 'home')
     @section('content')
+
+        <h1>wenas</h1>
+
+
     @endsection
     
 </body>

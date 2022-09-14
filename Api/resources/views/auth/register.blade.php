@@ -2,6 +2,7 @@
 
     @section('title', 'Register')
     @section('content')
+    @vite(['resources/css/app.css'])
     <div>
         <h1>Registrarse</h1>
 
