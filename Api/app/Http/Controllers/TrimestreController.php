@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Trimestre;
+use App\Models\Ficha;
+use App\Models\Tematica;
+use App\Http\Requests\TrimestreCreateRequest;
+use App\Http\Requests\TrimestreEditRequest;
 use Illuminate\Http\Request;
 
 class TrimestreController extends Controller
@@ -14,8 +18,8 @@ class TrimestreController extends Controller
      */
     public function index()
     {
-        $datos['trimestres']= Trimestre::paginate(5);
-        return view ('Trimestre.index',$datos );
+        $datos['trimestre']=Trimestre::paginate();
+        return view('trimestre.index', $datos);
     }
 
     /**
@@ -25,7 +29,10 @@ class TrimestreController extends Controller
      */
     public function create()
     {
-        return view ('Trimestre.create');
+        $fichas = Ficha::all();
+        $tematica = Tematica::all();
+        $tematica2 = Tematica::all();
+        return view('trimestre.create', compact('fichas', 'tematica', 'tematica2'));
     }
 
     /**
@@ -34,11 +41,11 @@ class TrimestreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TrimestreCreateRequest $request)
     {
-        $datosTrimes = request()->except('_token');
+        $datosTrimes = $request->except('_token');
         Trimestre::insert($datosTrimes);
-        return response()->json($datosTrimes);
+        return redirect('trimestre')->with("Trimestre registrado");
     }
 
     /**
@@ -49,7 +56,9 @@ class TrimestreController extends Controller
      */
     public function show(Trimestre $trimestre)
     {
-        //
+        
+        $datos['trimestre']=Trimestre::paginate();
+        return view('trimestre.index', $datos);
     }
 
     /**
@@ -60,8 +69,12 @@ class TrimestreController extends Controller
      */
     public function edit($id)
     {
-        $trimestre=Trimestre::findOrFail($id);
-        return view ('Trimestre.edit', compact('trimestre'));
+
+        return view('trimestre.edit')->with([
+            'trimestres' => Trimestre::find($id),
+            'fichas' => Ficha::all(),
+            'tematica' => Tematica::all()
+        ]);
     }
 
     /**
@@ -71,12 +84,16 @@ class TrimestreController extends Controller
      * @param  \App\Models\Trimestre  $trimestre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trimestre $trimestre)
+    public function update(TrimestreEditRequest $request, $id)
     {
-        $datosTrimes = request()->except('_token','_method');
-        Trimestre::where('idTrimestre','=','$idTrimestre')->update($datosTrimes);
-        $trimestre=Trimestre::findOrFail($id);
-        return view ('Trimestre.edit', compact('trimestre'));
+        $datosTrimes = $request->except('_token','_method');
+        Trimestre::where('id','=', $id)->update($datosTrimes);
+
+        return redirect('trimestre')->with([
+            'trimestres' => Trimestre::find($id),
+            'fichas' => Ficha::find('id'),
+            'tematica' => Tematica::find('id')
+        ]);
     }
 
     /**

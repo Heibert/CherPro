@@ -14,4 +14,8 @@ class Trimestre extends Model
      public function tematicas(){
         return $this->belongsToMany(Tematica::class, 'tematica:trimestre');
     }
+
+    public function fichas(){
+        return $this->belongsTo(Ficha::class, 'id_ficha');
+    }
 }

@@ -15,6 +15,8 @@ use App\Http\Controllers\AprendizController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\EnviarExcusaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,39 +28,35 @@ use App\Http\Controllers\RegisterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
+
+Route::resource('/index', IndexController::class)->middleware('auth');
+Route::resource('/reporte', ReporteController::class)->middleware('auth');
+Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy')->middleware('auth');
+Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update')->middleware('auth');
+
+Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth');
+Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth');
+
 Route::get('/', function () {
     return view('index');
 });
-*/
-Route::resource('/index', IndexController::class);
-Route::resource('/reporte', ReporteController::class);
-Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy');
-Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update');
-
-Route::resource('/coordinacion', CoordinacionController::class);
-Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy');
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
-Route::get('/excusa/create',[ExcusaController::class,'create']);
+Route::get('/excusa/create',[ExcusaController::class,'create'])->middleware('auth');
 
-Route::resource('excusa',ExcusaController::class);
+Route::resource('excusa',ExcusaController::class)->middleware('auth');
 
-Route::resource('coordinador',CoordinadorController::class); 
+Route::resource('coordinador',CoordinadorController::class)->middleware('auth'); 
 
-Route::resource('programa',ProgramaController::class);
+Route::resource('programa',ProgramaController::class)->middleware('auth');
 
-Route::resource('administrador', AdministradorController::class);
-Route::resource('tematica', TematicaController::class);
-Route::resource('trimestre', TrimestreController::class);
+Route::resource('administrador', AdministradorController::class)->middleware('auth');
+Route::resource('tematica', TematicaController::class)->middleware('auth');
+Route::resource('trimestre', TrimestreController::class)->middleware('auth');
 
-Route::resource('ficha', FichaController::class);
-Route::resource('aprendiz', AprendizController::class);
-Route::resource('instructor', InstructorController::class);
+Route::resource('ficha', FichaController::class)->middleware('auth');
+Route::resource('aprendiz', AprendizController::class)->middleware('auth');
+Route::resource('instructor', InstructorController::class)->middleware('auth');
 
 //---------------------------------- Login -----------------------------------
 
@@ -66,9 +64,21 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', [RegisterController::class, 'create'])->name('login.index');
+Route::get('/index', function () {
+    return view('/index');
+})->middleware('auth');
 
-Route::post('/login', [RegisterController::class, 'store'])->name('login.store');
+Route::get('/register', [RegisterController::class, 'create'])->name('register.index');
 
-Route::get('/register', [SessionsController::class, 'create'])->name('register.index');
-Route::get('/register', [SessionsController::class, 'create'])->name('register.index');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+
+Route::get('/login', [SessionsController::class, 'create'])->name('login.index');
+
+Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
+
+//-------------------------------- Mail ---------------------------------------
+
+Route::get('excusaenv', [EnviarExcusaController::class, 'index'])->name('enviar.index');
+
+Route::post('excusa', [EnviarExcusaController::class, 'store'])->name('enviar.store');

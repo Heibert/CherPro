@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 /* Heibert */
 use Illuminate\Http\Request;
-use App\Models\Programa;
 use App\Models\Coordinacion;
+use App\Http\Requests\CoordinacionCreateRequest;
+use App\Http\Requests\CoordinacionEditRequest;
 use Illuminate\Support\Facades\validator;
 
 class CoordinacionController extends Controller
@@ -16,8 +17,8 @@ class CoordinacionController extends Controller
      */
     public function index()
     {
-        $coordinacions = Coordinacion::all();
-        return view('coordinacion.index',['coordinacions'=>$coordinacions]);
+        $datos['coordinacion']=Coordinacion::paginate();
+        return view('coordinacion.index', $datos);
     }
 
     /**
@@ -27,9 +28,7 @@ class CoordinacionController extends Controller
      */
     public function create()
     {
-        $programas = Programa::all();
-        return view('coordinacion.registro')
-            ->with('programas',$programas);
+        return view('coordinacion.create');
     }
 
     /**
@@ -38,29 +37,12 @@ class CoordinacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CoordinacionCreateRequest $request)
     {
-        $reglas = [
-            "idPrograma"=>"required|numeric",
-            "nomCoordinacion"=>"required|string",
-        ];
-        $mensajes = [
-            "required" => "Debes llenar el campo"
-        ];
-        $validation = Validator::make($request->all(),$reglas,$mensajes);
-        if ($validation->fails()) {
-            return redirect('coordinacion/create')
-            ->withErrors($validation)
-            ->withInput();
-        }
-        else {
-            $coordinacion = new Coordinacion;
-            $coordinacion->nomCoordinacion = $request->nomCoordinacion;
-            $coordinacion->idPrograma = $request->idPrograma;
-            $coordinacion->save();
-            return redirect('coordinacion/create')
-            ->with('mensaje','coordinacion guardada');
-        }
+
+        $datosCoordi = $request->except('_token'); 
+        Coordinacion::insert($datosCoordi); 
+        return redirect('coordinacion')->with("Coordinacion registrada");
     }
 
     /**
@@ -72,6 +54,8 @@ class CoordinacionController extends Controller
     public function show($id)
     {
         //
+        $datos['coordinacion']=Coordinacion::paginate();
+        return view('coordinacion.index', $datos);
     }
 
     /**
@@ -83,6 +67,9 @@ class CoordinacionController extends Controller
     public function edit($id)
     {
         //
+        return view('coordinacion.edit')->with([
+            'coordinacion' => Coordinacion::find($id)
+        ]);
     }
 
     /**
@@ -92,9 +79,15 @@ class CoordinacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CoordinacionEditRequest $request, $id)
     {
-        //
+   
+        $datosCoordi = $request->except('_token','_method');
+        Coordinacion::where('id', '=', $id)->update($datosCoordi);
+
+        return redirect('coordinacion')->with([
+            'coordinacion' => Coordinacion::find($id)
+        ]);
     }
 
     /**
@@ -105,8 +98,7 @@ class CoordinacionController extends Controller
      */
     public function destroy($id)
     {
-        $coordinacion = Coordinacion::findOrFail($id);
-        $coordinacion->delete();
-        return redirect()->action([CoordinacionController::class, 'index']);
+        Coordinacion::destroy($id);
+        return redirect('coordinacion');
     }
 }
