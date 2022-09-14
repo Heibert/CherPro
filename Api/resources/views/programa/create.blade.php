@@ -12,8 +12,6 @@
             <form action="{{ url('/programa') }}" method="post" enctype="multipart/form-data">
             @csrf
             @include('programa.form',['modo'=>'Crear'])
-
-            
             </form>
         </div>
     </section>

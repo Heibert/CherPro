@@ -1,45 +1,89 @@
+
 @extends('layouts.app')
 
-    @section('title', 'Register')
+    @section('title', 'Registrarse')
     @section('content')
-    @vite(['resources/css/app.css'])
-    <div>
-        <h1>Registrarse</h1>
-
-        <form class="" action="" method="POST">
-
+    <link rel="stylesheet" href="{{ url('css/login-auth.css')}}">
+    <main>  
+        <form class="formulario" id="formulario" action="" method="POST">
             @csrf
+            <div class="formulario__grupo" id="formulario__nombre">
+                <label for="name" class="formulario__label">Nombre</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="name" id="name" placeholder="Nombre" value="{{old('name')}}">
+                </div>
+                @error('name')
+                    <span>
+                        <strong class="formulario__input-error" >{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
+            
+            <div class="formulario__grupo" id="formulario__apellido">
+                <label for="apellido" class="formulario__label">Apellido</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="apellido" id="apellido" placeholder="apellido" value="{{old('apellido')}}">
+                </div>
+                @error('apellido')
+                    <span>
+                        <strong class="formulario__input-error">{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
 
-            <label for="name">Nombre
-            </label><br>
-            <input type="text" class="" name="name" id="name" placeholder="name">
-            <br>
+            <div class="formulario__grupo" id="formulario__telefono">
+                <label for="telefono" class="formulario__label">Telefono</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="number" class="formulario__input" name="telefono" id="telefono" placeholder="Número de telefono" value="{{old('telefono')}}">
+                </div>
+                @error('telefono')
+                    <span>
+                        <strong class="formulario__input-error">{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
 
-            <label for="apellido">apellido
-            </label><br>
-            <input type="text" class="" name="apellido" id="apellido" placeholder="apellido">
-            <br>
+            <div class="formulario__grupo" id="formulario__correo">
+                <label for="Correo" class="formulario__label">Correo</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="email" id="email" placeholder="Correo" value="{{old('email')}}">
+                </div>
+                @error('email')
+                    <span>
+                        <strong class="formulario__input-error">{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
 
-            <label for="telefono">Telefono
-            </label><br>
-            <input type="number" class="" name="telefono" id="telefono" placeholder="Número de telefono">
-            <br>
-            <label for="Correo">Correo
-            </label><br>
-            <input type="email" class="" name="email" id="email" placeholder="Correo">
-            <br>
+            <div class="formulario__grupo" id="formulario__password">
+                <label for="password" class="formulario__label">Contraseña</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password" id="password" placeholder="Contraseña">
+                </div>
+                @error('password')
+                    <span>
+                        <strong class="formulario__input-error">{{$message}}</strong>
+                    <span>
+                @enderror
+            </div>
 
-            <label for="password">Contraseña
-            </label><br>
-            <input type="password" class="" name="password" id="password" placeholder="Contraseña">
-            <br>
+            <div class="formulario__grupo" id="formulario__password2">
+                <label for="password_confirmation" class="formulario__label">Confirmar Contraseña</label><br>
+                <div class="formulario__grupo-input">
+                    <input type="password" class="formulario__input" name="password_confirmation" id="password_confirmation" placeholder="Confirmar contraseña">
+                </div>
+                @error('password_confirmation')
+                    <span>
+                        <strong class="formulario__input-error">{{$message}}</strong>
+                    <span>
+                 @enderror
+            </div>
 
-            <label for="password_confirmation">Contraseña
-            </label><br>
-            <input type="password" class="" name="password_confirmation" id="password_confirmation" placeholder="Confirmar contraseña">
-            <br>
-
-        <button type="submit" class="" name="" id="">Ingresar</button>
-
-    </div>
+            <div class="formulario__grupo formulario__grupo-btn-enviar">
+                <button type="submit" class="formulario__btn" name="" id="">Registrarse</button>
+            </div>
+        </form>  
+    </main>    
     @endsection
+
+    

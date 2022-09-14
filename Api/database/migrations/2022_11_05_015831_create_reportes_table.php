@@ -16,10 +16,18 @@ return new class extends Migration
         Schema::create('reportes', function (Blueprint $table) {
 
             $table->id();
-            
             $table->date('fechaReporte');
-            $table->foreignId('idCoordinador')->nullable()->constrained('coordinadores');
-            $table->foreignId('id_instructor')->nullable()->constrained('instructores');
+            $table->text('descReporte');
+            $table->foreignId('id_coordinador')
+                            ->nullable()
+                            ->constrained('coordinadors')
+                            ->cascadeOnUpdate()
+                            ->nullOnDelete();
+            $table->foreignId('id_instructor')
+                            ->nullable()
+                            ->constrained('instructores')
+                            ->cascadeOnUpdate()
+                            ->nullOnDelete();
             $table->timestamps();
         });
     }

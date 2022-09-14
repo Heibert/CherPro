@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Ficha;
 use App\Models\Instructor;
+use App\Models\Programa;
+use App\Http\Requests\FichaCreateRequest;
+use App\Http\Requests\FichaEditRequest;
 use Illuminate\Http\Request;
 
 class FichaController extends Controller
@@ -29,8 +32,9 @@ class FichaController extends Controller
     public function create()
     {
         //
+        $programas = Programa::all();
         $instructors = Instructor::all();
-        return view('ficha.create', compact('instructors'));
+        return view('ficha.create', compact('instructors', 'programas'));
     }
 
     /**
@@ -39,16 +43,9 @@ class FichaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FichaCreateRequest $request)
     {
-        $request->validate([
-            'numFicha' => 'required|numeric',
-            'cantAprendiz' => 'required|numeric',
-            'id_instructor' => 'required',
-            'idPrograma' => 'required',
-        ]);
-
-        $datosFicha = request()->except('_token'); 
+        $datosFicha = $request->except('_token'); 
         Ficha::insert($datosFicha); 
         return redirect('ficha');
     }
@@ -63,7 +60,7 @@ class FichaController extends Controller
     {
         //
         $datos['ficha']=Ficha::paginate();
-        return view('instructor.index', $datos);
+        return view('ficha.index', $datos);
     }
 
     /**
@@ -75,10 +72,10 @@ class FichaController extends Controller
     public function edit($id)
     {
         //
-
         return view('ficha.edit')->with([
             'ficha' => Ficha::find($id),
-            'instructors' => Instructor::all()
+            'instructors' => Instructor::all(),
+            'programas' => Programa::all()
         ]);
     }
 
@@ -89,23 +86,17 @@ class FichaController extends Controller
      * @param  \App\Models\Ficha  $ficha
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FichaEditRequest $request, $id)
     {
-        $request->validate([
-            'numFicha' => 'required|numeric',
-            'cantAprendiz' => 'required|numeric',
-            'id_instructor' => 'required',
-            'idPrograma' => 'required',
-        ]);
-        //
-        $datosFicha = request()->except('_token','_method');
+
+        $datosFicha = $request->except('_token','_method');
         Ficha::where('id', '=', $id)->update($datosFicha);
 
-        return view('ficha.edit')->with([
+        return redirect('ficha')->with([
             'ficha' => Ficha::find($id),
-            'instructors' => Instructor::find('id')
+            'instructors' => Instructor::find('id'),
+            'programas' => Programa::find('id')
         ]);
-
     }
 
     /**

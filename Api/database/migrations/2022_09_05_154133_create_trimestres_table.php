@@ -19,7 +19,9 @@ return new class extends Migration
             $table->foreignId('id_ficha')
                             ->nullable()
                             ->constrained('fichas')
-                            ->cascadeOnUpdate();
+                            ->cascadeOnUpdate()
+                            ->nullOnDelete();
+            $table->integer('id_tematica');
             $table->timestamps();
         });
     }

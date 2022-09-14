@@ -14,7 +14,7 @@ class Instructor extends Model
     protected $table = "instructores";
     public function fichas()
     {
-        return $this->belongsToMany(Ficha::class, 'instructor:ficha');
+        return $this->belongsToMany(Ficha::class, 'instructor_ficha');
     }
 
     // Relacion con tematica (1:m)

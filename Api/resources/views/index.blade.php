@@ -21,7 +21,7 @@
             </div>
     </nav>
 
-        <div>
+    <div>
             <h2></h2>
                 <li>
                     <a href="{{ url('coordinacion')}}">coordinacion</a>
@@ -50,7 +50,6 @@
                 <li>
                     <a href="{{ url('asistencia')}}">asistencia</a>
                 </li>
-
         </div>
 </body>
 </html>
