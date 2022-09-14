@@ -77,6 +77,8 @@ Route::get('/login', [SessionsController::class, 'create'])->name('login.index')
 
 Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
 
+Route::get('/sesion', [SessionsController::class, 'destroy'])->name('login.destroy');
+
 //-------------------------------- Mail ---------------------------------------
 
 Route::get('excusaenv', [EnviarExcusaController::class, 'index'])->name('enviar.index');
