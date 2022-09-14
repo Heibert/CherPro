@@ -28,6 +28,29 @@ main{
     padding: 40px;
 }
 
+.index{
+
+    width: 99%;
+    margin: auto;
+    padding: 30px;
+}
+
+
+
+
+
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+	margin: 10px;
+}
+
+
+
+
+
 .formulario {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
