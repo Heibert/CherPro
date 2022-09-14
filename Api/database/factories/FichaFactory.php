@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Instructor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Programa;
 
@@ -18,9 +19,9 @@ class FichaFactory extends Factory
     public function definition()
     {
         return [
-            "numFicha" => $this->faker->randomElement(["2465880", "2465903", "2567990", "2367981"]),
+            "numFicha" => $this->faker->unique()->phoneNumber,
             "cantAprendiz" => $this->faker->numberBetween(1,40),
-            "instuEncargado" => $this->faker->name(),
+            "id_instructor" => Instructor::all()->random()->id,
             "id_programa" => Programa::all()->random()->id,
         ];
     }

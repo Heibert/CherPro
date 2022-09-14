@@ -19,8 +19,8 @@ class CoordinacionFactory extends Factory
     public function definition()
     {
         return [
-            "nomCoordinacion" => $this->faker->randomElement(['Coordinacion del CGMLTI', 'Coordinacion del talento humano en salud','Coordinacion de servicios financieros']),
-            "idPrograma" => Programa::all()->random()->id
+            "nomCoordinacion" => $this->faker->unique()->name,
+            /* "idPrograma" => Programa::all()->random()->id */
         ];
     }
 }
