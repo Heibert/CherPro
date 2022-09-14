@@ -14,8 +14,6 @@
     @section('title', 'home')
     @section('content')
 
-        <h1>wenas</h1>
-
 
     @endsection
     
