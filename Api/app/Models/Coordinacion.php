@@ -10,8 +10,8 @@ class Coordinacion extends Model
     use HasFactory;
 
     // Relacion con coordinador (1:1)
-    protected $table = "coordinaciones";
-    public function coordinadors(){
+    protected $table = "coordinacions";
+    public function coordinadores(){
         return $this->hasOne(Coordinador::class);
     }
     

@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Administrador extends Authenticatable
 {
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -49,5 +50,4 @@ class Administrador extends Authenticatable
     public function programas(){
         return $this->belongsTo(Programa::class, 'id_programa');
     }
-
 }

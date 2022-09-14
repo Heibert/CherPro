@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 /* Heibert */
 use Illuminate\Http\Request;
 use App\Models\Instructor;
+use App\Models\Coordinador;
 use App\Models\Reporte;
-use Illuminate\Support\Facades\validator;
+use App\Http\Requests\ReporteCreateRequest;
+use App\Http\Requests\ReporteEditRequest;
+
 
 class ReporteController extends Controller
 {
@@ -16,8 +19,8 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        $reportes = Reporte::all();
-        return view('reportes.index',['reportes'=>$reportes]);
+        $datos['reporte']=Reporte::paginate();
+        return view('reporte.index', $datos);
     }
     /**
      * Show the form for creating a new resource.
@@ -26,9 +29,9 @@ class ReporteController extends Controller
      */
     public function create()
     {
-        $instructores = Instructor::all();
-        return view('reportes.registro')
-            ->with('instructores',$instructores);
+        $inst = Instructor::all();
+        $coordi = Coordinador::all();
+        return view('reporte.create', compact('inst', 'coordi'));
     }
 
     /**
@@ -37,31 +40,11 @@ class ReporteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReporteCreateRequest $request)
     {
-        $reglas = [
-            "instructor"=>"required|numeric",
-            "coordinador"=>"required|numeric",
-            "fecha"=>"required|date"
-        ];
-        $mensajes = [
-            "required" => "Debes llenar el campo"
-        ];
-        $validation = Validator::make($request->all(),$reglas,$mensajes);
-        if ($validation->fails()) {
-            return redirect('reporte/create')
-            ->withErrors($validation)
-            ->withInput();
-        }
-        else {
-            $reporte = new Reporte;
-            $reporte->idInstructor = $request->instructor;
-            $reporte->idCoordinador = $request->coordinador;
-            $reporte->fechaReporte = $request->fecha;
-            $reporte->save();
-            return redirect('reporte/create')
-            ->with('mensaje','Reporte guardado');
-        }
+        $datosReporte = $request->except('_token'); 
+        Reporte::insert($datosReporte); 
+        return redirect('reporte');
     }
 
     /**
@@ -70,9 +53,11 @@ class ReporteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Reporte $reporte)
     {
         //
+        $datos['reporte']=Reporte::paginate();
+        return view('reporte.index', $datos);
     }
 
     /**
@@ -83,11 +68,11 @@ class ReporteController extends Controller
      */
     public function edit($id)
     {
-        $reporte = Reporte::findOrFail($id);
-        $instructores = Instructor::all();
-        return view ('reportes.edit')
-        ->with('instructores',$instructores)
-        ->with('reportes',$reporte);
+        return view('reporte.edit')->with([
+            'reporte' => Reporte::find($id),
+            'inst' => Instructor::all(),
+            'coordi' => Coordinador::all()
+        ]);
     }
 
     /**
@@ -97,31 +82,16 @@ class ReporteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReporteEditRequest $request, $id)
     {
-        $reglas = [
-            "instructor"=>"required|numeric",
-            "coordinador"=>"required|numeric",
-            "fecha"=>"required|date"
-        ];
-        $mensajes = [
-            "required" => "Debes llenar el campo"
-        ];
-        $validation = Validator::make($request->all(),$reglas,$mensajes);
-        if ($validation->fails()) {
-            return redirect('reporte.edit',$id)
-            ->withErrors($validation)
-            ->withInput();
-        }
-        else {
-            $reporte = Reporte::findOrFail($id);
-            $reporte->idInstructor = $request->instructor;
-            $reporte->idCoordinador = $request->coordinador;
-            $reporte->fechaReporte = $request->fecha;
-            $reporte->save();
-            return redirect('reporte')
-            ->with('mensaje','Reporte actualizado');
-        }
+        $datosReporte = $request->except('_token','_method');
+        Reporte::where('id', '=', $id)->update($datosReporte);
+
+        return redirect('reporte')->with([
+            'reporte' => Reporte::find($id),
+            'inst' => Instructor::find('id'),
+            'coordi' => Coordinador::find('id')
+        ]);
     }
 
     /**
@@ -132,8 +102,7 @@ class ReporteController extends Controller
      */
     public function destroy($id)
     {
-        $reporte = Reporte::findOrFail($id);
-        $reporte->delete();
-        return redirect()->action([ReporteController::class, 'index']);
+        Reporte::destroy($id);
+        return redirect('reporte');   
     }
 }

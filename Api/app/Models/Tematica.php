@@ -17,6 +17,10 @@ class Tematica extends Model
 
     // Relacion con ficha (m:1)
 
+    public function instructores(){
+        return $this->belongsTo(Instructor::class, 'id_instructor');
+    }
+    
     public function fichas(){
         return $this->belongsTo(Ficha::class, 'id_ficha');
     }
@@ -29,7 +33,5 @@ class Tematica extends Model
 
     // Relacion con instructor (m:1)
 
-    public function instructores(){
-        return $this->belongsTo(Instructor::class, 'id_instructor');
-    }
+ 
 }

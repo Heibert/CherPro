@@ -14,20 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('instructores', function (Blueprint $table) {
-            
             $table->id();
             $table->string('nombreInst'); 
             $table->string('apellidoInst');
             $table->string('tipoDoc');
-            $table->integer('numDoc');
-            $table->string('correoMisena');
+            $table->integer('numDoc')->unique();
+            $table->string('correoMisena')->unique();
             $table->integer('telefonoInst');
             $table->foreignId('id_programa')
                         ->nullable()
                         ->constrained('programas')
                         ->cascadeOnUpdate()
                         ->nullOnDelete();
-            $table->string('password');
             $table->timestamps();
         });
     }

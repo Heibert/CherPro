@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Aprendiz;
 
-class AprendicesSeeder extends Seeder
+class CoordinadorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class AprendicesSeeder extends Seeder
      */
     public function run()
     {
-        Aprendiz::factory(10)->create();
+        //
     }
 }

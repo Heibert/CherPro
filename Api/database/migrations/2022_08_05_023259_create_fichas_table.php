@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('fichas', function (Blueprint $table) {
             $table->id();
-            $table->string('numFicha');
+            $table->string('numFicha')->unique();
             $table->integer('cantAprendiz');
-            $table->string('instuEncargado');
+            $table->integer('id_instructor');
             $table->foreignId('id_programa')
                         ->nullable()
                         ->constrained('programas')

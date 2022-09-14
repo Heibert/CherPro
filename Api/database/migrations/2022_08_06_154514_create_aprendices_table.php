@@ -27,7 +27,6 @@ return new class extends Migration
                         ->constrained('fichas')
                         ->cascadeOnUpdate()
                         ->nullOnDelete();
-            $table->string('password');
             $table->timestamps();
         });
     }
