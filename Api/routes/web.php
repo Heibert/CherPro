@@ -29,27 +29,34 @@ use App\Http\Controllers\EnviarExcusaController;
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::resource('/index', IndexController::class)->middleware('auth');
+Route::resource('/reporte', ReporteController::class)->middleware('auth');
+Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy')->middleware('auth');
+Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update')->middleware('auth');
+
+Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth');
+Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth');
 
 Route::get('/', function () {
     return view('index');
 });
 
-Route::resource('/index', IndexController::class);
-Route::resource('reporte', ReporteController::class);
-Route::resource('coordinacion', CoordinacionController::class);
-Route::resource('excusa',ExcusaController::class);
-Route::resource('coordinador',CoordinadorController::class); 
-Route::resource('programa',ProgramaController::class);
-Route::resource('administrador', AdministradorController::class);
-Route::resource('tematica', TematicaController::class);
-Route::resource('trimestre', TrimestreController::class);
-Route::resource('ficha', FichaController::class);
-Route::resource('aprendiz', AprendizController::class);
-Route::resource('instructor', InstructorController::class);
+
+Route::get('/excusa/create',[ExcusaController::class,'create'])->middleware('auth');
+
+Route::resource('excusa',ExcusaController::class)->middleware('auth');
+
+Route::resource('coordinador',CoordinadorController::class)->middleware('auth'); 
+
+Route::resource('programa',ProgramaController::class)->middleware('auth');
+
+Route::resource('administrador', AdministradorController::class)->middleware('auth');
+Route::resource('tematica', TematicaController::class)->middleware('auth');
+Route::resource('trimestre', TrimestreController::class)->middleware('auth');
+
+Route::resource('ficha', FichaController::class)->middleware('auth');
+Route::resource('aprendiz', AprendizController::class)->middleware('auth');
+Route::resource('instructor', InstructorController::class)->middleware('auth');
 
 //---------------------------------- Login -----------------------------------
 
@@ -57,12 +64,18 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', [RegisterController::class, 'create'])->name('login.index');
+Route::get('/index', function () {
+    return view('/index');
+})->middleware('auth');
 
-Route::post('/login', [RegisterController::class, 'store'])->name('login.store');
+Route::get('/register', [RegisterController::class, 'create'])->name('register.index');
 
-Route::get('/register', [SessionsController::class, 'create'])->name('register.index');
-Route::get('/register', [SessionsController::class, 'create'])->name('register.index');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+
+Route::get('/login', [SessionsController::class, 'create'])->name('login.index');
+
+Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
 
 //-------------------------------- Mail ---------------------------------------
 

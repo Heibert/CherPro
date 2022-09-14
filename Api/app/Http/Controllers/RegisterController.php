@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Register;
 use Illuminate\Http\Request;
-use App\Models\Administrador;
+use App\Models\User;
 
 class RegisterController extends Controller
 {
@@ -38,54 +38,20 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         //
-        $admin = Administrador::create(request(['name','apellido','telefono','email','password']));
 
+        $request->validate([
+            'name' => 'required|min:5|max:16',
+            'apellido' => 'required',
+            'telefono' => 'required',
+            'email' => 'required| email| unique:Users',
+            'password' => 'required |confirmed|min:5|max:16',
+            'password_confirmation' => 'required|min:5|max:16'
+        ]);
+
+        $admin = User::create(request(['name','apellido','telefono','email','password','password_confirmation']));
         auth()->login($admin);
         return redirect()->to('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Register  $register
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Register $register)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Register  $register
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Register $register)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Register  $register
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Register $register)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Register  $register
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Register $register)
-    {
-        //
-    }
+    
 }
