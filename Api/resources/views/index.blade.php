@@ -32,5 +32,6 @@
   <a href="{{ url('administrador')}}" class="list-group-item list-group-item-action list-group-item-dark">Administrador</a>
   <a href="{{ url('asistencia')}}" class="list-group-item list-group-item-action list-group-item-primary">Asistencia</a>
 </div></center>
+
 </body>
 </html>

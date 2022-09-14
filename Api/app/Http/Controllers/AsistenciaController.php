@@ -94,9 +94,6 @@ class AsistenciaController extends Controller
         $asistencia->id_aprendiz = $request->id_aprendiz;
         $asistencia->id_tematica = $request->id_tematica;
         $asistencia->save();
-        return $asistencia;
-/*         redirect('asistencia/create')
-            ->with('mensaje', 'asistencia guardada'); */
     }
 
     /**
@@ -118,7 +115,7 @@ class AsistenciaController extends Controller
      */
     public function edit($id)
     {
-        //
+/*  */
     }
 
     /**
@@ -130,7 +127,13 @@ class AsistenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $asistencia = Asistencia::find($id);
+
+        $asistencia->fechaAsistencia = $request->fechaAsistencia;
+        $asistencia->estadoAsistencia = $request->estadoAsistencia;
+        $asistencia->id_aprendiz = $request->id_aprendiz;
+        $asistencia->id_tematica = $request->id_tematica;
+        $asistencia->save();
     }
 
     /**
