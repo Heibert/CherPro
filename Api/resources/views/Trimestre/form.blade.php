@@ -25,8 +25,8 @@
                 </div>
             </div>
     </nav>
-    <br>
-    <div>
+    <br><br>
+    <div><br>
         <center>
         <div>
             <label for="numTrimestre">Numero</label>

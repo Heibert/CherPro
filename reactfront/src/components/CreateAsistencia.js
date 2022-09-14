@@ -78,7 +78,7 @@ const CreateAsistencia = () => {
   }, [])
   return (
     <div>
-      <h1 className="mt-3 mb-5">Selecione Una Fehca Expecifica</h1>
+      <h1 className="mt-3 mb-5">Selecione Una Fecha Expecifica</h1>
       <ul className="nav nav-tabs">
         <li className="nav-item">
           <a className="nav-link" href="/">Lista</a>
