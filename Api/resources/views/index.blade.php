@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asistencias</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>PROYECTO ASISTENCIA</h1>
 
-        <div>
+    @extends('layouts.app')
+
+    @section('title', 'home')
+    @section('content')
+
+    <div>
             <h2></h2>
                 <li>
                     <a href="{{ url('coordinacion')}}">coordinacion</a>
@@ -39,5 +43,9 @@
                 </li>
 
         </div>
+
+
+    @endsection
+    
 </body>
 </html>

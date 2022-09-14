@@ -29,7 +29,7 @@
         </thead>
         <tbody>
 
-            @foreach($coordinadors as $coordinador)
+            @foreach($coordinadores as $coordinador)
             <tr>
                 <td>{{ $coordinador->id }}</td>
                 <td>{{ $coordinador->nomCoordinador }}</td>
@@ -55,7 +55,7 @@
         </tbody>
     </table>
     <button type="submit">
-        <a href="{{ url('/')}}">Regresar</a>
+        <a href="{{ url('/index')}}">Regresar</a>
     </button>
     
 </body>

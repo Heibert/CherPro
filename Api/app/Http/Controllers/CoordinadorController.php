@@ -31,8 +31,8 @@ class CoordinadorController extends Controller
     {
         //
 
-        $coordinacions = Coordinacion::all();
-        return view('coordinador.create', compact('coordinacions'));
+        $coordinaciones = Coordinacion::all();
+        return view('coordinador.create', compact('coordinaciones'));
 
     }
 

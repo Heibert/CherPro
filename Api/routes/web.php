@@ -26,39 +26,35 @@ use App\Http\Controllers\RegisterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/', function () {
-    return view('index');
-});
-*/
-Route::resource('/index', IndexController::class);
-Route::resource('/reporte', ReporteController::class);
-Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy');
-Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update');
 
-Route::resource('/coordinacion', CoordinacionController::class);
-Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy');
+Route::resource('/index', IndexController::class)->middleware('auth');
+Route::resource('/reporte', ReporteController::class)->middleware('auth');
+Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy')->middleware('auth');
+Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update')->middleware('auth');
+
+Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth');
+Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/excusa/create',[ExcusaController::class,'create']);
+Route::get('/excusa/create',[ExcusaController::class,'create'])->middleware('auth');
 
-Route::resource('excusa',ExcusaController::class);
+Route::resource('excusa',ExcusaController::class)->middleware('auth');
 
-Route::resource('coordinador',CoordinadorController::class); 
+Route::resource('coordinador',CoordinadorController::class)->middleware('auth'); 
 
-Route::resource('programa',ProgramaController::class);
+Route::resource('programa',ProgramaController::class)->middleware('auth');
 
-Route::resource('administrador', AdministradorController::class);
-Route::resource('tematica', TematicaController::class);
-Route::resource('trimestre', TrimestreController::class);
+Route::resource('administrador', AdministradorController::class)->middleware('auth');
+Route::resource('tematica', TematicaController::class)->middleware('auth');
+Route::resource('trimestre', TrimestreController::class)->middleware('auth');
 
-Route::resource('ficha', FichaController::class);
-Route::resource('aprendiz', AprendizController::class);
-Route::resource('instructor', InstructorController::class);
+Route::resource('ficha', FichaController::class)->middleware('auth');
+Route::resource('aprendiz', AprendizController::class)->middleware('auth');
+Route::resource('instructor', InstructorController::class)->middleware('auth');
 
 //---------------------------------- Login -----------------------------------
 
@@ -68,7 +64,7 @@ Route::get('/', function () {
 
 Route::get('/index', function () {
     return view('/index');
-});
+})->middleware('auth');
 
 Route::get('/register', [RegisterController::class, 'create'])->name('register.index');
 
@@ -78,3 +74,5 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::get('/login', [SessionsController::class, 'create'])->name('login.index');
 
 Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
+
+Route::get('/sesion', [SessionsController::class, 'destroy'])->name('login.destroy');
