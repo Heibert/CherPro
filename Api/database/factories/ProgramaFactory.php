@@ -18,7 +18,7 @@ class ProgramaFactory extends Factory
     public function definition()
     {
         return [
-            "nombrePrograma" => $this->faker->name(),
+            "nombrePrograma" => $this->faker->unique()->randomElement(['CGMLTI','Academica',' Centro de Salud','Finanzas','diseño','Biodiversidad','moda','deportes','agricultura','aviacion','petroquimica']),
             /* "id_coordinacion" => Coordinacion::all()->random()->id */
         ];
     }
