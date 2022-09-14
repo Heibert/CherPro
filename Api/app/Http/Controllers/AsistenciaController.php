@@ -1,4 +1,5 @@
 <?php
+/* Heibert */
 
 namespace App\Http\Controllers;
 
@@ -7,6 +8,7 @@ use App\Models\Tematica;
 use App\Models\Aprendiz;
 use App\Models\Asistencia;
 use Illuminate\Support\Facades\validator;
+use Illuminate\Support\Facades\DB;
 
 class AsistenciaController extends Controller
 {
@@ -17,8 +19,47 @@ class AsistenciaController extends Controller
      */
     public function index()
     {
-        $asistencias = Asistencia::all();
-        return $asistencias;
+        $asistencias = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('fechaAsistencia', 'desc')
+            ->orderBy('numFicha', 'desc')->get();
+        $asistenciasA = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('fechaAsistencia', 'asc')
+            ->orderBy('numFicha', 'desc')->get();
+        $estadoasc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('estadoAsistencia', 'asc')
+            ->orderBy('nombreAprend', 'asc')->get();
+        $estadodesc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('estadoAsistencia', 'desc')
+            ->orderBy('nombreAprend', 'asc')->get();
+        $nombreasc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('nombreAprend', 'asc')
+            ->orderBy('estadoAsistencia', 'asc')->get();
+        $nombredesc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('nombreAprend', 'desc')
+            ->orderBy('estadoAsistencia', 'asc')->get();
+        $fichaAsc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('numFicha', 'desc')
+            ->orderBy('nombreAprend', 'desc')->get();
+        $fichaDesc = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->orderBy('numFicha', 'Asc')
+            ->orderBy('nombreAprend', 'desc')->get();
+        return  array($asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc, $fichaAsc, $fichaDesc);
     }
 
     /**
@@ -30,9 +71,7 @@ class AsistenciaController extends Controller
     {
         $aprendices = Aprendiz::all();
         $tematicas = Tematica::all();
-        return view('asistencia.registro')
-            ->with('Aprendices',$aprendices)
-            ->with('Tematicas',$tematicas);
+        return array($tematicas, $aprendices);
     }
 
     /**
@@ -43,30 +82,22 @@ class AsistenciaController extends Controller
      */
     public function store(Request $request)
     {
-        $reglas = [
-            "fechaAsistencia"=>"required|date",
-            "idAprendiz"=>"required|numeric",
-            "idTematica"=>"required|numeric",
-        ];
-        $mensajes = [
-            "required" => "Debes llenar el campo"
-        ];
-        $validation = Validator::make($request->all(),$reglas,$mensajes);
-        if ($validation->fails()) {
-            return redirect('asistencia/create')
-            ->withErrors($validation)
-            ->withInput();
-        }
-        else {
-            $asistencia = new Asistencia;
-            $asistencia->fechaAsistencia = $request->fechaAsistencia;
-            $asistencia->idAprendiz = $request->idAprendiz;
-            $asistencia->idTematica = $request->idTematica;
-            $asistencia->save();
-            return redirect('asistencia/create')
-            ->with('mensaje','asistencia guardada');
+        $request->validate([
+            'fechaAsistencia' => 'bail|required|Date',
+            'estadoAsistencia'=> 'bail|required|size:1|string',
+            'id_aprendiz' => 'bail|required|numeric',
+            'id_tematica' => 'bail|required|numeric'
+        ]);
+        $asistencia = new Asistencia;
+        $asistencia->fechaAsistencia = $request->fechaAsistencia;
+        $asistencia->estadoAsistencia = $request->estadoAsistencia;
+        $asistencia->id_aprendiz = $request->id_aprendiz;
+        $asistencia->id_tematica = $request->id_tematica;
+        $asistencia->save();
+        return $asistencia;
+/*         redirect('asistencia/create')
+            ->with('mensaje', 'asistencia guardada'); */
     }
-}
 
     /**
      * Display the specified resource.

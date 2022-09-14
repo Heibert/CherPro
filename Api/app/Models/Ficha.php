@@ -11,25 +11,29 @@ class Ficha extends Model
 
     // Relacion con aprenidiz (1:m)
 
-    public function aprendices(){
+    public function aprendices()
+    {
         return $this->hasMany(Aprendiz::class, 'id');
     }
 
     // Relacion con instructor (m:m)
 
-    public function instructores(){
+    public function instructores()
+    {
         return $this->belongsToMany(Instructor::class, 'instructor:ficha');
     }
 
     // Relacion con tematica (1:m)
 
-    public function tematicas(){
+    public function tematicas()
+    {
         return $this->hasMany(Tematica::class, 'id');
     }
 
     // Relacion con programa (m:1)
 
-    public function programas(){
+    public function programas()
+    {
         return $this->belongsTo(Programa::class, 'id_programa');
     }
 }

@@ -15,15 +15,14 @@ return new class extends Migration
     {
         Schema::create('excusas', function (Blueprint $table) {
             $table->id();
-
             $table->date('fechaExcusa');
             $table->string('descExcusa');
-
-            $table->unsignedBigInteger('idAsistencia')->unique();
-            $table->foreign('idAsistencia')->references('id')
-                                ->on('asistencias')
-                                ->onDelete('cascade');
-            
+            $table->foreignId('id_asistencia')
+                            ->unique()
+                            ->nullable()
+                            ->constrained('asistencias')
+                            ->cascadeOnUpdate()
+                            ->onDelete('cascade');
             $table->timestamps();
         });
     }

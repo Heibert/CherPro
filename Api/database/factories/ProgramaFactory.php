@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Coordinacion;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -17,7 +18,8 @@ class ProgramaFactory extends Factory
     public function definition()
     {
         return [
-            "nombre" => $this->faker->name()
+            "nombrePrograma" => $this->faker->name(),
+            /* "id_coordinacion" => Coordinacion::all()->random()->id */
         ];
     }
 }

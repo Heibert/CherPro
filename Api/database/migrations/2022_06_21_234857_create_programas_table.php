@@ -14,9 +14,21 @@ return new class extends Migration
     public function up()
     {
         Schema::create('programas', function (Blueprint $table) {
+
             $table->id();
             $table->string('nombrePrograma');
+            $table->foreignId('id_coordinacion')
+                                ->nullable()
+                                ->constrained('coordinaciones')
+                                ->cascadeOnUpdate()
+                                ->nullOnDelete();
             $table->timestamps();
+    
+        });
+        Schema::table('coordinaciones', function ($table) {
+            $table->unsignedBigInteger('idPrograma');
+            $table->timestamps();
+            $table->foreign('idPrograma')->references('id')->on('programas');
         });
     }
 

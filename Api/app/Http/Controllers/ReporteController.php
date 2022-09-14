@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+/* Heibert */
 use Illuminate\Http\Request;
 use App\Models\Instructor;
 use App\Models\Reporte;
