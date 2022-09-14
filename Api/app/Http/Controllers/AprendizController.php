@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Aprendiz;
 use App\Models\Ficha;
+use App\Http\Requests\AprendizCreateRequest;
+use App\Http\Requests\AprendizEditRequest;
 use Illuminate\Http\Request;
 //use Illuminate\Support\Facades\Validator;
 
@@ -40,19 +42,8 @@ class AprendizController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AprendizCreateRequest $request)
     {
-        $request->validate([
-            'nombreAprend' => 'required|min:5|max:16',
-            'apelliAprend' => 'required',
-            'tipoDoc' => 'required',
-            'numDoc' => 'required|numeric',
-            'correoMisena' => 'required',
-            'correoAprend' => 'required',
-            'telefonoAprend' => 'required|numeric',
-            'id_ficha' => 'required|numeric'
-        ]);
-
         $datosAprendiz = $request->except('_token'); 
         Aprendiz::insert($datosAprendiz); 
         return redirect('aprendiz')->with("Aprendiz registrado");
@@ -80,7 +71,6 @@ class AprendizController extends Controller
      */
     public function edit($id)
     {
-    
         return view('aprendiz.edit')->with([
             'aprendiz' => Aprendiz::find($id),
             'fichas' => Ficha::all()
@@ -94,25 +84,13 @@ class AprendizController extends Controller
      * @param  \App\Models\Aprendiz  $aprendiz
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AprendizEditRequest $request, $id)
     {
-
-        $request->validate([
-
-            'nombreAprend' => 'required|min:5|max:16',
-            'apelliAprend' => 'required',
-            'tipoDoc' => 'required',
-            'numDoc' => 'required|numeric',
-            'correoMisena' => 'required',
-            'correoAprend' => 'required',
-            'telefonoAprend' => 'required|numeric',
-            'id_ficha' => 'required|numeric'
-        ]);
         
         $datosAprend = $request->except('_token','_method');
         Aprendiz::where('id', '=', $id)->update($datosAprend);
 
-        return view('aprendiz.edit')->with([
+        return redirect('aprendiz')->with([
             'aprendiz' => Aprendiz::find($id),
             'fichas' => Ficha::find('id')
         ]);
@@ -126,10 +104,9 @@ class AprendizController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {       
         //
         Aprendiz::destroy($id); 
         return redirect('aprendiz');
-        
     }
 }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Instructor;
+use App\Models\Programa;
+use App\Http\Requests\InstructorCreateRequest;
+use App\Http\Requests\InstructorEditRequest;
 use Illuminate\Http\Request;
 
 class InstructorController extends Controller
@@ -27,7 +30,8 @@ class InstructorController extends Controller
     public function create()
     {
         //
-        return view('instructor.create');
+        $programas = Programa::all();
+        return view('instructor.create', compact('programas'));
     }
 
     /**
@@ -36,23 +40,11 @@ class InstructorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(InstructorCreateRequest $request)
     {
-        $request->validate([
-            'nombreInst' => 'required|min:5|max:16',
-            'apellidoInst' => 'required',
-            'tipoDoc' => 'required',
-            'numDoc' => 'required|numeric',
-            'correoMisena' => 'required',
-            'telefonoInst' => 'required|numeric',
-            'idTematica' => 'required|numeric',
-            'idPrograma' => 'required|numeric'
-        ]);
-
-        //
         $datosInst = $request->except('_token'); 
         Instructor::insert($datosInst);
-        return redirect('instructor');
+        return redirect('instructor')->with("Instructor registrado");
     }
 
     /**
@@ -77,8 +69,10 @@ class InstructorController extends Controller
     public function edit($id)
     {
         //
-        $instructor = Instructor::findOrFail($id); 
-        return view('instructor.edit', compact('instructor')); 
+        return view('instructor.edit')->with([
+            'instructor' => Instructor::find($id),
+            'programas' => Programa::all()
+        ]);
     }
 
     /**
@@ -88,25 +82,15 @@ class InstructorController extends Controller
      * @param  \App\Models\Instructor  $instructor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(InstructorEditRequest $request, $id)
     {
-        $request->validate([
-            'nombreInst' => 'required|min:5|max:16',
-            'apellidoInst' => 'required',
-            'tipoDoc' => 'required',
-            'numDoc' => 'required|numeric',
-            'correoMisena' => 'required',
-            'telefonoInst' => 'required|numeric',
-            'idTematica' => 'required|numeric',
-            'idPrograma' => 'required|numeric'
-        ]);
-
-        //
         $datosInst = $request->except('_token','_method'); 
         Instructor::where('id', '=', $id)->update($datosInst);
 
-        $instructor = Instructor::findOrFail($id); 
-        return view('instructor.edit', compact('instructor'));
+        return redirect('instructor')->with([
+            'instructor' => Instructor::find($id),
+            'programas' => Programa::find('id')
+        ]);
     }
 
     /**

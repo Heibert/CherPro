@@ -1,5 +1,5 @@
 <form action="{{url('/tematica')}}" method="post">
     @csrf
-    @include('Tematica.form');
+    @include('tematica.form');
     
 </form>

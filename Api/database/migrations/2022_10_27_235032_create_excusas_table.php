@@ -17,12 +17,13 @@ return new class extends Migration
             $table->id();
             $table->date('fechaExcusa');
             $table->string('descExcusa');
-            $table->foreignId('id_asistencia')
+            /*$table->foreignId('id_asistencia')
                             ->unique()
                             ->nullable()
                             ->constrained('asistencias')
                             ->cascadeOnUpdate()
-                            ->onDelete('cascade');
+                            ->onDelete('cascade');*/
+            $table->string('archivo');
             $table->timestamps();
         });
     }

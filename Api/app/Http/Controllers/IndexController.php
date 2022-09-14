@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\index;
+use App\Models\Index;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -14,7 +14,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        Echo 'index';
+        return view('index');
     }
 
     /**

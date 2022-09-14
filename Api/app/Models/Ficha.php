@@ -20,7 +20,7 @@ class Ficha extends Model
 
     public function instructores()
     {
-        return $this->belongsToMany(Instructor::class, 'instructor:ficha');
+        return $this->belongsToMany(Instructor::class, 'instructor_ficha');
     }
 
     // Relacion con tematica (1:m)

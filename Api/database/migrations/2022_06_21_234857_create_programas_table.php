@@ -19,16 +19,11 @@ return new class extends Migration
             $table->string('nombrePrograma');
             $table->foreignId('id_coordinacion')
                                 ->nullable()
-                                ->constrained('coordinaciones')
+                                ->constrained('coordinacions')
                                 ->cascadeOnUpdate()
                                 ->nullOnDelete();
             $table->timestamps();
     
-        });
-        Schema::table('coordinaciones', function ($table) {
-            $table->unsignedBigInteger('idPrograma');
-            $table->timestamps();
-            $table->foreign('idPrograma')->references('id')->on('programas');
         });
     }
 
