@@ -50,7 +50,7 @@ class RegisterController extends Controller
 
         $admin = User::create(request(['name','apellido','telefono','email','password','password_confirmation']));
         auth()->login($admin);
-        return redirect()->to('/');
+        return redirect()->to('/index');
     }
 
     

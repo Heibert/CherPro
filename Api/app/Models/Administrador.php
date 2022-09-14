@@ -15,4 +15,5 @@ class Administrador extends Model
     public function programas(){
         return $this->belongsTo(Programa::class, 'id_programa');
     }
+
 }
