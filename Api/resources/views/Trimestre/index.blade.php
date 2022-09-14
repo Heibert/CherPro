@@ -16,10 +16,10 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                 <li class="login-nav-li">
-                    <a class="login-nav-a" href="{{ url('index') }}">Inicio</a>
+                    <a class="login-nav-a" href="{{ url('trimestre/create') }}">Crear</a>
                 </li>
                 <li class="login-nav-li">
-                    <a class="login-nav-a" href="{{ url('trimestre/create') }}">Crear</a>
+                    <a class="login-nav-a" href="{{ url('index') }}">Salir</a>
                 </li>
         </ul>
                 </div>
