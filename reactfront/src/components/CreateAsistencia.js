@@ -12,7 +12,7 @@ const endpoint = 'http://localhost:8000/api/asistencia'
 
 const CreateAsistencia = () => {
 
-  const [Validation, setValidation] = useState([])
+
   const [Aprendices, setAprendices] = useState([])
   const [Tematicas, setTematicas] = useState([])
   const [erroresAxio, setErroresAxio] = useState("");
@@ -31,7 +31,6 @@ const CreateAsistencia = () => {
   const Store = async (e) => {
     e.preventDefault()
     const response = await axios.get(`${endpoint}/store`)
-    setValidation(response.data[0])
     await axios.post(endpoint, {
       fechaAsistencia: fechaAsistencia,
       estadoAsistencia: estadoAsistencia,
@@ -78,7 +77,7 @@ const CreateAsistencia = () => {
   }, [])
   return (
     <div>
-      <h1 className="mt-3 mb-5">Selecione Una Fehca Expecifica</h1>
+      <h1 className="mt-3 mb-5">Selecione Una Fecha Expecifica</h1>
       <ul className="nav nav-tabs">
         <li className="nav-item">
           <a className="nav-link" href="/">Lista</a>
