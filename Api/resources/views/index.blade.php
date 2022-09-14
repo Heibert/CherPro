@@ -15,7 +15,9 @@
                 <a class="navbar-brand" href="#page-top">CherPro</a>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                
+                <li class="login-nav-li">
+                    <a class="login-nav-a" href="{{ url('login') }}">Salir</a>
+                </li>
         </ul>
         
     </div>
@@ -30,7 +32,7 @@
   <a href="{{ url('tematica')}}" class="list-group-item list-group-item-action list-group-item-info">Tematica</a>
   <a href="{{ url('trimestre')}}" class="list-group-item list-group-item-action list-group-item-light">Trimestre</a>
   <a href="{{ url('administrador')}}" class="list-group-item list-group-item-action list-group-item-dark">Administrador</a>
-  <a href="{{ url('asistencia')}}" class="list-group-item list-group-item-action list-group-item-primary">Asistencia</a>
+  <a href="{{ url('http://localhost:3000')}}" class="list-group-item list-group-item-action list-group-item-primary">Asistencia</a>
 </div></center>
 
 </body>
