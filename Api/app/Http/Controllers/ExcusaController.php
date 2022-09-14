@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Excusa;
 use Illuminate\Http\Request;
+use App\Http\Requests\ExcusaCreateRequest;
+use App\Http\Requests\ExcusaEditRequest;
 
 class ExcusaController extends Controller
 {
@@ -17,6 +19,7 @@ class ExcusaController extends Controller
         //
         $datos['excusas']= Excusa::paginate();
         return view('excusa.index', $datos);
+
     }
 
     /**
@@ -36,13 +39,12 @@ class ExcusaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ExcusaCreateRequest $request)
     {
         //
-        $datosExcusa = request()->except('_token');
-        Excusa::insert($datosExcusa );
-        
-        return redirect('excusa')->with('mensaje','Excusa agregada con exito');
+        $datosExcusa = $request->except('_token');
+        Excusa::insert($datosExcusa);
+        return redirect('excusa');
     }
 
     /**
@@ -54,6 +56,8 @@ class ExcusaController extends Controller
     public function show(Excusa $excusa)
     {
         //
+        $datos['excusas']= Excusa::paginate();
+        return view('excusa.index', $datos);
     }
 
     /**
@@ -62,7 +66,7 @@ class ExcusaController extends Controller
      * @param  \App\Models\Excusa  $excusa
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
         //
         $excusa=Excusa::findOrFail($id);
@@ -77,10 +81,10 @@ class ExcusaController extends Controller
      * @param  \App\Models\Excusa  $excusa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ExcusaEditRequest $request, $id)
     {
         //
-        $datosExcusa = request()->except(['_token','_method']);
+        $datosExcusa = $request->except(['_token','_method']);
         Excusa::where('id','=',$id)->update($datosExcusa);
 
         $excusa=Excusa::findOrFail($id);

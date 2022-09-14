@@ -15,6 +15,8 @@ use App\Http\Controllers\AprendizController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\EnviarExcusaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,7 @@ Route::resource('/coordinacion', CoordinacionController::class)->middleware('aut
 Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 
@@ -75,4 +77,8 @@ Route::get('/login', [SessionsController::class, 'create'])->name('login.index')
 
 Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
 
-Route::get('/sesion', [SessionsController::class, 'destroy'])->name('login.destroy');
+//-------------------------------- Mail ---------------------------------------
+
+Route::get('excusaenv', [EnviarExcusaController::class, 'index'])->name('enviar.index');
+
+Route::post('excusa', [EnviarExcusaController::class, 'store'])->name('enviar.store');

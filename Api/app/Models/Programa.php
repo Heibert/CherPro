@@ -9,7 +9,6 @@ class Programa extends Model
 {
     use HasFactory;
 
-
     // Relacion con administrador (1:m)
 
     public function administador(){
@@ -24,7 +23,8 @@ class Programa extends Model
 
     // Relacion con coordinacion (m:1)
 
-    public function coordinacions(){
+    public function coordinaciones(){
+        
         return $this->belongsTo(Coordinacion::class, 'id_coordinacion');
     }
 

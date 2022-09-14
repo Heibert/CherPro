@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Coordinador;
-use Illuminate\Http\Request;
-
+use App\Http\Requests\CoordinadorCreateRequest;
+use App\Http\Requests\CoordinadorEditRequest;
 use App\Models\Coordinacion;
-
+use Illuminate\Http\Request;
 
 class CoordinadorController extends Controller
 {
@@ -18,7 +18,7 @@ class CoordinadorController extends Controller
     public function index()
     {
         //
-        $datos['coordinadores']= Coordinador::paginate();
+        $datos['coordinadors']= Coordinador::paginate();
         return view('coordinador.index', $datos);
     }
 
@@ -42,24 +42,11 @@ class CoordinadorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CoordinadorCreateRequest $request)
     {
-        //
-
-        $request->validate([
-            'nomCoordinador' => 'required|min:5|max:16',
-            'apeCoordinador' => 'required',
-            'tipoDoc' => 'required',
-            'numDoc' => 'required|numeric',
-            'correoMisena' => 'required',
-            'telefonoCoordinador' => 'required|numeric',
-            'id_coordinacion' => 'required|numeric'
-        ]);
-
-        $datosCoordinador = request()->except('_token');
-        Coordinador::insert($datosCoordinador );
-        
-        return redirect('coordinador')->with('mensaje','coordinador agregado con exito');
+        $datosCoordinador = $request->except('_token');
+        Coordinador::insert($datosCoordinador);
+        return redirect('coordinador');
     }
 
     /**
@@ -70,7 +57,8 @@ class CoordinadorController extends Controller
      */
     public function show(Coordinador $coordinador)
     {
-        //
+        $datos['coordinadors']= Coordinador::paginate();
+        return view('coordinador.index', $datos);
     }
 
     /**
@@ -79,11 +67,12 @@ class CoordinadorController extends Controller
      * @param  \App\Models\Coordinador  $coordinador
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
-        //
-        return view('coordinador.edit')
-               ->with(['coordinador' => Coordinador::find($id),'coordinacions' => Coordinacion::all()]); 
+        return view('coordinador.edit')->with([
+            'coordinador' => Coordinador::find($id),
+            'coordinacion' => Coordinacion::all()
+        ]); 
     }
 
     /**
@@ -93,28 +82,15 @@ class CoordinadorController extends Controller
      * @param  \App\Models\Coordinador  $coordinador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CoordinadorEditRequest $request, $id)
     {
-        //
-
-        $request->validate([
-            'nomCoordinador' => 'required|min:5|max:16',
-            'apeCoordinador' => 'required',
-            'tipoDoc' => 'required',
-            'numDoc' => 'required|numeric',
-            'correoMisena' => 'required|email:rfc,dns',
-            'telefonoCoordinador' => 'required|numeric',
-            'id_coordinacion' => 'required|numeric'
-        ]);
-
-
         $datosCoordinador = request()->except(['_token','_method']);
         Coordinador::where('id','=',$id)->update($datosCoordinador);
 
-        return view('coordinador.edit')->with(['coordinador' => Coordinador::find($id),
-            'coordinacions' => Coordinacion::find('id')
-        ]);
-
+        return redirect('coordinador')->with([
+            'coordinador' => Coordinador::find($id),
+            'coordinacion' => Coordinacion::find('id')
+        ]); 
     }
 
     /**
