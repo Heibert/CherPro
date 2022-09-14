@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+input[type="number"]::placeholder{
+color: rgba(255, 255, 255, 0.605);
+}
+input::placeholder{
+  color: white;
+}

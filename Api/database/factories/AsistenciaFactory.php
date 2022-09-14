@@ -20,7 +20,7 @@ class AsistenciaFactory extends Factory
     public function definition()
     {
         return [
-            "fechaAsistencia" => $this->faker->dateTimeThisYear(),
+            "fechaAsistencia" => $this->faker->dateTimeBetween('-1 week'),
             'estadoAsistencia'=> $this->faker->randomElement(['A','F','R','E']),
             'id_tematica' => Tematica::all()->random()->id,
             'id_aprendiz'=> Aprendiz::all()->random()->id,
