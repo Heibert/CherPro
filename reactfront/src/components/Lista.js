@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios/* , { AxiosError } */ from 'axios'
-/* 
-import { Link, useNavigate } from "react-router-dom"; */
-
-const endpoint = 'http://localhost:8000/api'
+import { Link, useParams, useNavigate } from "react-router-dom";
+const endpoint = 'http://localhost:8000/api/asistencia'
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
     const [AsistenciasFechaDesc, setAsistenciasFechaDesc] = useState([])
@@ -15,12 +13,47 @@ const Lista = () => {
     const [AsistenciaFichaAsc, setAsistenciaFichaAsc] = useState([])
     const [AsistenciaFichaDesc, setAsistenciaFichaDesc] = useState([])
 
+    const EditAsistencia = () => {
+        const [Aprendices, setAprendices] = useState([])
+        const [Tematicas, setTematicas] = useState([])
+        /* const [erroresAxio, setErroresAxio] = useState(""); */
+        const [fechaAsistencia, setfechaAsistencia] = useState('')
+        const [estadoAsistencia, setEstadoAsistencia] = useState('')
+        const [idAprendiz, setidAprendiz] = useState("")
+        const [idTematica, setidTematica] = useState("")
+        const { id } = useParams()
+        const update = async (e) => {
+            e.preventDefault()
+            await axios.put('${endpoint}${id}', {
+                fechaAsistencia: fechaAsistencia,
+                estadoAsistencia: estadoAsistencia,
+                id_aprendiz: idAprendiz,
+                id_tematica: idTematica
+            })
+        }
+        useEffect(() => {
+            const getAsistenciaById = async () => {
+                const response = await axios.get('${endpoint}${id}')
+                await axios.get('${endpoint}${id}')
+                setAprendices(response.data.Aprendices)
+                setTematicas(response.data.Tematicas)
+                setfechaAsistencia(response.data.fechaAsistencia)
+                setEstadoAsistencia(response.data.estadoAsistencia)
+                setidAprendiz(response.data.idAprendiz)
+                setidTematica(response.data.idTematica)
+            }
+            getAsistenciaById()
+        })
+    }
+
     useEffect(() => {
         getAllDatosAsistencias()
     }, [])
 
+
+
     const getAllDatosAsistencias = async () => {
-        const response = await axios.get(`${endpoint}/asistencia`)
+        const response = await axios.get(`${endpoint}`)
         setAsistenciasFechaDesc(response.data[0])
         setAsistenciasFechaAsc(response.data[1])
         setAsistenciasEstadoAsc(response.data[2])
@@ -56,12 +89,12 @@ const Lista = () => {
             })
             return (
                 AsistenciasFechaAsc.map((Asistencia, index) => (
-                    <tr key={index}>
-                        <td className={Asistencia.color}>{Asistencia.numFicha}</td>
-                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    <div className="container-fluid row h5" key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                    </div>
                 ))
             )
         }
@@ -86,12 +119,12 @@ const Lista = () => {
             })
             return (
                 AsistenciasFechaDesc.map((Asistencia, index) => (
-                    <tr key={index}>
-                        <td className={Asistencia.color}>{Asistencia.numFicha}</td>
-                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    <div className="container-fluid row h5" key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                    </div>
                 ))
             )
         }
@@ -116,12 +149,12 @@ const Lista = () => {
             })
             return (
                 AsistenciaFichaAsc.map((Asistencia, index) => (
-                    <tr key={index}>
-                        <td className={Asistencia.color}>{Asistencia.numFicha}</td>
-                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    <div className="container-fluid row h5" key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                    </div>
                 ))
             )
         }
@@ -146,12 +179,18 @@ const Lista = () => {
             })
             return (
                 AsistenciaFichaDesc.map((Asistencia, index) => (
-                    <tr key={index}>
-                        <td className={Asistencia.color}>{Asistencia.numFicha}</td>
-                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    <div className='container-fluid row h5' key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                    </div>
+                    /* <div className="row" key={index}>
+                            <div className={Asistencia.color}>{Asistencia.numFicha}</div>
+                            <div className={Asistencia.color}>{Asistencia.fechaAsistencia}</div>
+                            <div className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</div>
+                            <div className={Asistencia.color}>{Asistencia.estadoAsistencia}</div>
+                        </div> */
                 ))
             )
         }
@@ -176,12 +215,12 @@ const Lista = () => {
             })
             return (
                 AsistenciasNombreAsc.map((Asistencia, index) => (
-                    <tr key={index}>
-                        <td className={Asistencia.color}>{Asistencia.numFicha}</td>
-                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    <div className="container-fluid row h5" key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                    </div>
                 ))
             )
         }
@@ -206,12 +245,12 @@ const Lista = () => {
             })
             return (
                 AsistenciasNombreDesc.map((Asistencia, index) => (
-                    <tr key={index}>
-                        <td className={Asistencia.color}>{Asistencia.numFicha}</td>
-                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    <div className="container-fluid row h5" key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                    </div>
                 ))
             )
         }
@@ -236,12 +275,12 @@ const Lista = () => {
             })
             return (
                 AsistenciasEstadoAsc.map((Asistencia, index) => (
-                    <tr key={index}>
-                        <td className={Asistencia.color}>{Asistencia.numFicha}</td>
-                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    <div className="container-fluid row h5" key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                    </div>
                 ))
             )
         }
@@ -266,12 +305,12 @@ const Lista = () => {
             })
             return (
                 AsistenciasEstadoDesc.map((Asistencia, index) => (
-                    <tr key={index}>
-                        <td className={Asistencia.color}>{Asistencia.numFicha}</td>
-                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    <div className="container-fluid row h5" key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                    </div>
                 ))
             )
         }
@@ -296,12 +335,12 @@ const Lista = () => {
             })
             return (
                 AsistenciaFichaDesc.map((Asistencia, index) => (
-                    <tr key={index}>
-                        <td className={Asistencia.color}>{Asistencia.numFicha}</td>
-                        <td className={Asistencia.color}>{Asistencia.fechaAsistencia}</td>
-                        <td className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</td>
-                        <td className={Asistencia.color}>{Asistencia.estadoAsistencia}</td>
-                    </tr>
+                    <div className="container-fluid row h5" key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                    </div>
                 ))
             )
         }
