@@ -307,10 +307,29 @@ const Lista = () => {
         }
     }
     return (
+        <>
+        <nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">
+        <img src='./Logo' class="d-inline-block align-top"/>
+    </a>
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      
+      <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link navbar-brand text-white " aria-current="page" href='/create'><i class="bi bi-plus-lg"> Crear</i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-brand text-white " aria-current="page" href='http://localhost:8000/index'><i class="bi bi-unindent"> Atras</i></a>
+        </li>
+    </ul>
+    </div>
+  </div>
+</nav>
         <div>
-            <div className='d-grid gap-2'>
-                <a href='/create' className='btn btn-success btn-lg mt-2 mb-2 text-white'>Crear asistencia de una fecha especifica</a>
-            </div>
             <table className='bg-primary table-bordered text-white container '>
                 <thead>
                     <tr>
@@ -360,7 +379,7 @@ const Lista = () => {
                     {mostrarAsistencia()}
                 </tbody>
             </table>
-        </div>
+        </div></>
     )
 }
 
