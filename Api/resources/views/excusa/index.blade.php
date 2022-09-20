@@ -9,22 +9,27 @@
     <title>Excusas</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg text-uppercase fixed-top login-nav">
-            <div class="container">
-            <img src="https://lostramites.com.co/wp-content/uploads/logo-de-SENA-png-Negro-300x300.png" width="40" height="40" class="d-inline-block align-top" alt="">
-                <a class="navbar-brand" href="#page-top">CherPro</a>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                <li class="login-nav-li">
-                    <a class="login-nav-a" href="{{ url('excusa/create') }}">Crear</a>
-                </li>
-                <li class="login-nav-li">
-                    <a class="login-nav-a" href="{{ url('index') }}">Salir</a>
-                </li>
-        </ul>
-                </div>
-            </div>
-</nav><br><br>
+<nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">
+        <img src="{{ url('img/logo.png')}}" class="d-inline-block align-top" alt="logo">
+    </a>
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      
+      <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ url('excusa/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
+        </li>
+    </ul>
+    </div>
+  </div>
+</nav>
     <table class="table table-light">
         <thead>
             <tr>
@@ -60,5 +65,8 @@
             @endforeach
         </tbody>
     </table>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
+
 </body>
 </html>
