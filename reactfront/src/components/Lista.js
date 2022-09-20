@@ -346,62 +346,79 @@ const Lista = () => {
         }
     }
     return (
+        <>
+        <nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">
+        <img src='./Logo' class="d-inline-block align-top"/>
+    </a>
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      
+      <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link navbar-brand text-white " aria-current="page" href='/create'><i class="bi bi-plus-lg"> Crear</i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navbar-brand text-white " aria-current="page" href='http://localhost:8000/index'><i class="bi bi-unindent"> Atras</i></a>
+        </li>
+    </ul>
+    </div>
+  </div>
+</nav>
         <div>
-            <h1 className="mt-3 mb-5">Listado de asistencia</h1>
-            <ul className="nav nav-tabs">
-                <li className="nav-item">
-                    <a className="nav-link active" href="/">Lista</a>
-                </li>
-            </ul>
-
-            <table className='bg-primary table-bordered text-white container'>
-                <div className="row">
-                    <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {
-                        if (OrdenAsistencia == "FichaAsc") {
-                            setOrdenAsistencia("FichaDesc")
-                            document.getElementById("flechaFicha").className = down
-                        } else {
-                            setOrdenAsistencia("FichaAsc")
-                            document.getElementById("flechaFicha").className = up
-                        }
-                    }}>Ficha <i className={down} id='flechaFicha'></i>
-                    </button></div>
-                    <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {
-                        if (OrdenAsistencia == "AsistenciaAntigua") {
-                            setOrdenAsistencia("AsistenciaReciente")
-                            document.getElementById("flechaAsistencia").className = down
-                        } else {
-                            setOrdenAsistencia("AsistenciaAntigua")
-                            document.getElementById("flechaAsistencia").className = up
-                        }
-                    }}>Asistencia <i className={down} id='flechaAsistencia'></i>
-                    </button></div>
-                    <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {
-                        if (OrdenAsistencia == "NombreAsc") {
-                            setOrdenAsistencia("NombreDesc")
-                            document.getElementById("flechaNombre").className = down
-                        } else {
-                            setOrdenAsistencia("NombreAsc")
-                            document.getElementById("flechaNombre").className = up
-                        }
-                    }}>Nombre <i className={down} id='flechaNombre'></i>
-                    </button></div>
-                    <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {
-                        if (OrdenAsistencia == "EstadoAsc") {
-                            setOrdenAsistencia("EstadoDesc")
-                            document.getElementById("flechaEstado").className = down
-                        } else {
-                            setOrdenAsistencia("EstadoAsc")
-                            document.getElementById("flechaEstado").className = up
-                        }
-                    }}>Estado <i className={down} id='flechaEstado'></i>
-                    </button></div>
-                </div>
+            <table className='bg-primary table-bordered text-white container '>
+                <thead>
+                    <tr>
+                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                            if (OrdenAsistencia == "FichaAsc") {
+                                setOrdenAsistencia("FichaDesc")
+                                document.getElementById("flechaFicha").className = down
+                            } else {
+                                setOrdenAsistencia("FichaAsc")
+                                document.getElementById("flechaFicha").className = up
+                            }
+                        }}>Ficha <i className={down} id='flechaFicha'></i>
+                        </button></th>
+                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                            if (OrdenAsistencia == "AsistenciaAntigua") {
+                                setOrdenAsistencia("AsistenciaReciente")
+                                document.getElementById("flechaAsistencia").className = down
+                            } else {
+                                setOrdenAsistencia("AsistenciaAntigua")
+                                document.getElementById("flechaAsistencia").className = up
+                            }
+                        }}>Asistencia <i className={down} id='flechaAsistencia'></i>
+                        </button></th>
+                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                            if (OrdenAsistencia == "NombreAsc") {
+                                setOrdenAsistencia("NombreDesc")
+                                document.getElementById("flechaNombre").className = down
+                            } else {
+                                setOrdenAsistencia("NombreAsc")
+                                document.getElementById("flechaNombre").className = up
+                            }
+                        }}>Nombre <i className={down} id='flechaNombre'></i>
+                        </button></th>
+                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                            if (OrdenAsistencia == "EstadoAsc") {
+                                setOrdenAsistencia("EstadoDesc")
+                                document.getElementById("flechaEstado").className = down
+                            } else {
+                                setOrdenAsistencia("EstadoAsc")
+                                document.getElementById("flechaEstado").className = up
+                            }
+                        }}>Estado <i className={down} id='flechaEstado'></i>
+                        </button></th>
+                    </tr>
+                </thead>
                 <tbody>
                     {mostrarAsistencia()}
                 </tbody>
             </table>
-        </div>
+        </div></>
     )
 }
 
