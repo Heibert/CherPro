@@ -16,7 +16,7 @@ use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EnviarExcusaController;
-
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ Route::get('/excusa/create',[ExcusaController::class,'create'])->middleware('aut
 
 Route::resource('excusa',ExcusaController::class)->middleware('auth');
 
-Route::resource('coordinador',CoordinadorController::class)->middleware('auth'); 
+Route::resource('coordinador',CoordinadorController::class)->middleware('auth.admin'); 
 
 Route::resource('programa',ProgramaController::class)->middleware('auth');
 
@@ -78,6 +78,8 @@ Route::get('/login', [SessionsController::class, 'create'])->name('login.index')
 Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
 
 Route::get('/sesion', [SessionsController::class, 'destroy'])->name('login.destroy');
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth.admin');
 
 //-------------------------------- Mail ---------------------------------------
 

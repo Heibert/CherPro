@@ -11,7 +11,7 @@
             <h1 class="formulario__titulo">Iniciar Sesión</h1>
             <br>
             <div class="formulario__grupo" id="formulario__correo">
-                <label for="Correo" class="formulario__label">Correo</label><br>
+                <label for="Correo" class="formulario__label">Correo electrénico</label><br>
                 <div class="formulario__grupo-input">
                     <input type="email" class="formulario__input" name="email" id="email" placeholder="Correo" value="{{old('email')}}">
                 </div>
