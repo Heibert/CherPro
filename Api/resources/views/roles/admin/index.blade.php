@@ -27,8 +27,22 @@
     </div>
   </div>
 </nav>
-<main>
-  <div class="container">
+  <main>
+    <div class="container">
+        <li class="card">
+          <div class="contenido">
+            <h3>COORDINACIÓN</h3>
+            <a href="{{ url('coordinacion')}}">Coordinación</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+              <h3>COORDINADOR</h3>
+                <a href="{{ url('coordinador')}}">Coordinador</a>
+          </div>
+        </li>
+
         <li class="card">
           <div class="contenido">
             <h3>EXCUSA</h3>
@@ -45,6 +59,13 @@
 
         <li class="card">
           <div class="contenido">
+            <h3>REPORTE</h3>
+            <a href="{{ url('reporte')}}">Reporte</a>
+          </div>         
+        </li>
+
+        <li class="card">
+          <div class="contenido">
             <h3>TEMÁTICA</h3>
               <a href="{{ url('tematica')}}">Temática</a>
           </div>
@@ -57,8 +78,21 @@
           </div>
         </li>
 
+        <li class="card">
+          <div class="contenido">
+            <h3>ADMINISTRADOR</h3>
+              <a href="{{ url('administrador')}}">Administrador</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>ASISTENCIA</h3>
+              <a href="{{ url('asistencia')}}">Asistencia</a>
+          </div>
+        </li>
     </div>
-  </main> 
+  </main>  
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
