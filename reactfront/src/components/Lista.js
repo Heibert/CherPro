@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios/* , { AxiosError } */ from 'axios'
-import { Link, useParams, useNavigate } from "react-router-dom"; 
-
+import { Link, useParams, useNavigate } from "react-router-dom";
 const endpoint = 'http://localhost:8000/api/asistencia'
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
@@ -346,6 +345,7 @@ const Lista = () => {
   <div class="container-fluid">
     <a class="navbar-brand" href="">
         <img src='./Logo.png' class="d-inline-block align-top"/>
+
     </a>
     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

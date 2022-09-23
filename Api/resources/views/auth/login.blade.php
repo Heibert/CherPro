@@ -6,7 +6,7 @@
 
         
 
-        <form class="login" id="login" action="" method="POST">
+        <br><form class="login" id="login" action="" method="POST">
             @csrf
             <h1 class="formulario__titulo">Iniciar Sesión</h1>
             <br>
