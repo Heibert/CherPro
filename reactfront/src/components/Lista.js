@@ -92,7 +92,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -122,7 +122,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -152,12 +152,13 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
             )
         }
+        /*  */
         if (OrdenAsistencia == "FichaDesc") {
             AsistenciaFichaDesc.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
@@ -177,17 +178,20 @@ const Lista = () => {
                         break;
                 }
             })
+
+            /*  */
             return (
                 AsistenciaFichaDesc.map((Asistencia, index) => (
                     <div className='row h5' key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
             )
         }
+        /*  */
         if (OrdenAsistencia == "NombreAsc") {
             AsistenciasNombreAsc.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
@@ -212,7 +216,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -242,7 +246,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -272,7 +276,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -302,7 +306,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))

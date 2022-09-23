@@ -19,8 +19,7 @@ class FichaFactory extends Factory
     public function definition()
     {
         return [
-            "numFicha" => $this->faker->unique(true)->numberBetween(2250, 5000),
-
+            "numFicha" => $this->faker->unique(true)->numberBetween(1, 500),
             "cantAprendiz" => $this->faker->numberBetween(1,40),
             "id_instructor" => Instructor::all()->random()->id,
             "id_programa" => Programa::all()->random()->id,

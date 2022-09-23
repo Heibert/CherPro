@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             AprendizSeeder::class,
             TematicaSeeder::class,
             AsistenciaSeeder::class,
-            CoordinacionSeeder::class
+            CoordinacionSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

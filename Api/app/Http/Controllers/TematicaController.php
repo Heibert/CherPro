@@ -34,7 +34,7 @@ class TematicaController extends Controller
         $instructors = Instructor::all();
         $programas = Programa::all();
         $fichas = Ficha::all(); 
-        return view ('tematica.create', compact('instructors', 'programas', 'fichas'));
+        return view ('tematica.create');
     }
 
     /**
