@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css'])
 </head>
 <body>
-<nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+<nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="">
         <img src="{{ url('img/Logo.png')}}" class="d-inline-block align-top" alt="logo">
@@ -20,10 +20,10 @@
       
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ route('login.index') }}"><i class="bi bi-person"> Iniciar Secion</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ route('login.index') }}"><i class="bi bi-person"> Iniciar sesión</i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white" aria-current="page" href="{{ route('register.index') }}"><i class="bi bi-person-plus"> Registrarse</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ route('register.index') }}"><i class="bi bi-person-plus"> Registrarse</i></a>
         </li>
     </ul>
     </div>
