@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('password_confirmation');
-            $table->rememberToken();
+            $table->string('rol')->nullable();
             $table->timestamps();
         });
     }

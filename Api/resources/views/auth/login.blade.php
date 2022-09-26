@@ -24,7 +24,6 @@
                     <input type="password" class="formulario__input" name="password" id="password" placeholder="Contraseña">
                 </div>
             </div>
-
             @error('message')
                 <span>
                     <br>
@@ -33,6 +32,11 @@
             @enderror
             <br>
             <br>
+            <div class="formulario__grupo" id="">
+                <div class="formulario__grupo-input">
+                    <a href="">¿Olvidaste tu contraseña?</a>
+                </div>
+            </div>
 
             <div class="formulario__grupo formulario__grupo-btn-enviar">
                 <button type="submit" class="formulario__btn" name="" id="">Ingresar</button>
