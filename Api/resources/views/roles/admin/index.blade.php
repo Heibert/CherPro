@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ url('css/tarjeta.css')}}">
 </head>
 <body>
-<nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
+<nav class="navbar text-uppercase navbar-expand-md  bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="">
         <img src="{{ url('img/logo.png')}}" class="d-inline-block align-top" alt="logo">
@@ -21,14 +21,28 @@
       
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href="{{ route('login.index') }}"><i class="bi bi-box-arrow-left"> Salir</i></a>
+          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ route('login.destroy') }}"><i class="bi bi-box-arrow-left"> Cerra Sesión</i></a>
         </li>
     </ul>
     </div>
   </div>
 </nav>
-<main>
-  <div class="container">
+  <main>
+    <div class="container">
+        <li class="card">
+          <div class="contenido">
+            <h3>COORDINACIÓN</h3>
+            <a href="{{ url('coordinacion')}}">Coordinación</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+              <h3>COORDINADOR</h3>
+                <a href="{{ url('coordinador')}}">Coordinador</a>
+          </div>
+        </li>
+
         <li class="card">
           <div class="contenido">
             <h3>EXCUSA</h3>
@@ -45,6 +59,13 @@
 
         <li class="card">
           <div class="contenido">
+            <h3>REPORTE</h3>
+            <a href="{{ url('reporte')}}">Reporte</a>
+          </div>         
+        </li>
+
+        <li class="card">
+          <div class="contenido">
             <h3>TEMÁTICA</h3>
               <a href="{{ url('tematica')}}">Temática</a>
           </div>
@@ -57,8 +78,21 @@
           </div>
         </li>
 
+        <li class="card">
+          <div class="contenido">
+            <h3>ADMINISTRADOR</h3>
+              <a href="{{ url('administrador')}}">Administrador</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>ASISTENCIA</h3>
+              <a href="{{ url('asistencia')}}">Asistencia</a>
+          </div>
+        </li>
     </div>
-  </main> 
+  </main>  
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  

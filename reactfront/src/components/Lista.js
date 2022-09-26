@@ -92,7 +92,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -122,7 +122,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -152,12 +152,13 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
             )
         }
+        /*  */
         if (OrdenAsistencia == "FichaDesc") {
             AsistenciaFichaDesc.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
@@ -177,23 +178,20 @@ const Lista = () => {
                         break;
                 }
             })
+
+            /*  */
             return (
                 AsistenciaFichaDesc.map((Asistencia, index) => (
-                    <div className='container-fluid row h5' key={index}>
+                    <div className='row h5' key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
-                    /* <div className="row" key={index}>
-                            <div className={Asistencia.color}>{Asistencia.numFicha}</div>
-                            <div className={Asistencia.color}>{Asistencia.fechaAsistencia}</div>
-                            <div className={Asistencia.color}>{Asistencia.nombreAprend + " " + Asistencia.apelliAprend}</div>
-                            <div className={Asistencia.color}>{Asistencia.estadoAsistencia}</div>
-                        </div> */
                 ))
             )
         }
+        /*  */
         if (OrdenAsistencia == "NombreAsc") {
             AsistenciasNombreAsc.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
@@ -218,7 +216,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -248,7 +246,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -278,7 +276,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -308,7 +306,7 @@ const Lista = () => {
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
-                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
                     </div>
                 ))
@@ -347,10 +345,11 @@ const Lista = () => {
     }
     return (
         <>
-        <nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+<nav class="navbar text-uppercase navbar-expand-md  bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="">
-        <img src='./Logo' class="d-inline-block align-top"/>
+        <img src='./Logo.png' class="d-inline-block align-top"/>
+
     </a>
     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -367,58 +366,53 @@ const Lista = () => {
     </ul>
     </div>
   </div>
-</nav>
-        <div>
-            <table className='bg-primary table-bordered text-white container '>
-                <thead>
-                    <tr>
-                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
-                            if (OrdenAsistencia == "FichaAsc") {
-                                setOrdenAsistencia("FichaDesc")
-                                document.getElementById("flechaFicha").className = down
-                            } else {
-                                setOrdenAsistencia("FichaAsc")
-                                document.getElementById("flechaFicha").className = up
-                            }
-                        }}>Ficha <i className={down} id='flechaFicha'></i>
-                        </button></th>
-                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
-                            if (OrdenAsistencia == "AsistenciaAntigua") {
-                                setOrdenAsistencia("AsistenciaReciente")
-                                document.getElementById("flechaAsistencia").className = down
-                            } else {
-                                setOrdenAsistencia("AsistenciaAntigua")
-                                document.getElementById("flechaAsistencia").className = up
-                            }
-                        }}>Asistencia <i className={down} id='flechaAsistencia'></i>
-                        </button></th>
-                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
-                            if (OrdenAsistencia == "NombreAsc") {
-                                setOrdenAsistencia("NombreDesc")
-                                document.getElementById("flechaNombre").className = down
-                            } else {
-                                setOrdenAsistencia("NombreAsc")
-                                document.getElementById("flechaNombre").className = up
-                            }
-                        }}>Nombre <i className={down} id='flechaNombre'></i>
-                        </button></th>
-                        <th><button className='btn btn-primary w-100 text-white' onClick={(e) => {
-                            if (OrdenAsistencia == "EstadoAsc") {
-                                setOrdenAsistencia("EstadoDesc")
-                                document.getElementById("flechaEstado").className = down
-                            } else {
-                                setOrdenAsistencia("EstadoAsc")
-                                document.getElementById("flechaEstado").className = up
-                            }
-                        }}>Estado <i className={down} id='flechaEstado'></i>
-                        </button></th>
-                    </tr>
-                </thead>
-                <tbody>
+</nav>        
+        <div className='container-fluid'>
+                <div className="row">
+                    <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                        if (OrdenAsistencia == "FichaAsc") {
+                            setOrdenAsistencia("FichaDesc")
+                            document.getElementById("flechaFicha").className = down
+                        } else {
+                            setOrdenAsistencia("FichaAsc")
+                            document.getElementById("flechaFicha").className = up
+                        }
+                    }}>Ficha <i className={down} id='flechaFicha'></i>
+                    </button></div>
+                    <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                        if (OrdenAsistencia == "AsistenciaAntigua") {
+                            setOrdenAsistencia("AsistenciaReciente")
+                            document.getElementById("flechaAsistencia").className = down
+                        } else {
+                            setOrdenAsistencia("AsistenciaAntigua")
+                            document.getElementById("flechaAsistencia").className = up
+                        }
+                    }}>Asistencia <i className={down} id='flechaAsistencia'></i>
+                    </button></div>
+                    <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                        if (OrdenAsistencia == "NombreAsc") {
+                            setOrdenAsistencia("NombreDesc")
+                            document.getElementById("flechaNombre").className = down
+                        } else {
+                            setOrdenAsistencia("NombreAsc")
+                            document.getElementById("flechaNombre").className = up
+                        }
+                    }}>Nombre <i className={down} id='flechaNombre'></i>
+                    </button></div>
+                    <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {
+                        if (OrdenAsistencia == "EstadoAsc") {
+                            setOrdenAsistencia("EstadoDesc")
+                            document.getElementById("flechaEstado").className = down
+                        } else {
+                            setOrdenAsistencia("EstadoAsc")
+                            document.getElementById("flechaEstado").className = up
+                        }
+                    }}>Estado <i className={down} id='flechaEstado'></i>
+                    </button></div>
+                </div>
                     {mostrarAsistencia()}
-                </tbody>
-            </table>
-        </div></>
+        </div>
+</>
     )
 }
 
