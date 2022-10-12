@@ -11,7 +11,7 @@
             <h1 class="formulario__titulo">Iniciar Sesión</h1>
             <br>
             <div class="formulario__grupo" id="formulario__correo">
-                <label for="Correo" class="formulario__label">Correo</label><br>
+                <label for="Correo" class="formulario__label">Correo electrénico</label><br>
                 <div class="formulario__grupo-input">
                     <input type="email" class="formulario__input" name="email" id="email" placeholder="Correo" value="{{old('email')}}">
                 </div>
@@ -24,7 +24,6 @@
                     <input type="password" class="formulario__input" name="password" id="password" placeholder="Contraseña">
                 </div>
             </div>
-
             @error('message')
                 <span>
                     <br>
@@ -33,6 +32,11 @@
             @enderror
             <br>
             <br>
+            <div class="formulario__grupo" id="">
+                <div class="formulario__grupo-input">
+                    <a href="">¿Olvidaste tu contraseña?</a>
+                </div>
+            </div>
 
             <div class="formulario__grupo formulario__grupo-btn-enviar">
                 <button type="submit" class="formulario__btn" name="" id="">Ingresar</button>

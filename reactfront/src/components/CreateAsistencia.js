@@ -11,7 +11,6 @@ var fecha_ISOPasado = fecha_Actual.toISOString().split("T", 1)
 const endpoint = 'http://localhost:8000/api/asistencia'
 
 const CreateAsistencia = () => {
-
   const [Tematicas, setTematicas] = useState([])
   const [Fichas, setFichas] = useState([])
   const [Ficha, setFicha] = useState([])
@@ -115,6 +114,7 @@ console.log(erroresAxio)
   <div className="row">
     <div className="col">
       <label className="col-sm-2 col-form-label mt-4 mb-3">Tematica:</label>
+
           <select type='select' onChange={(e) => setidTematica(e.target.value)} className="form-control">
             <option value="">Selecciona una tematica</option>
             {Tematicas.map((Tematica) => (

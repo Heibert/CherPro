@@ -9,9 +9,9 @@
     <title>Trimestres</title>
 </head>
 <body>
-<nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+<nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="">
+    <a class="navbar-brand" href="{{ url('index') }}">
         <img src="{{ url('img/logo.png')}}" class="d-inline-block align-top" alt="logo">
     </a>
     <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,17 +21,17 @@
       
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ url('trimestre/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
+        <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href="{{ url('trimestre/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
     </ul>
     </div>
   </div>
 </nav>
-    <table class="table table-light">
-    <thead class="thead-light">
+    <table class="table table-hover table-responsive-md">
+    <thead class="thead bg-light">
         <tr>
             <th>#</th>
             <th>Numero Trimestre</th>
