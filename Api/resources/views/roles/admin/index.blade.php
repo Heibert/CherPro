@@ -88,7 +88,7 @@
         <li class="card">
           <div class="contenido">
             <h3>ASISTENCIA</h3>
-              <a href="{{ url('asistencia')}}">Asistencia</a>
+              <a href="{{ url('http://localhost:3000')}}">Asistencia</a>
           </div>
         </li>
     </div>

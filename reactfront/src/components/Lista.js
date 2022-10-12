@@ -345,7 +345,7 @@ const Lista = () => {
     }
     return (
         <>
-<nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+<nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="">
         <img src='./Logo.png' class="d-inline-block align-top"/>
@@ -358,15 +358,19 @@ const Lista = () => {
       
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href='/create'><i class="bi bi-plus-lg"> Crear</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href='/create'><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href='http://localhost:8000/index'><i class="bi bi-unindent"> Atras</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href='http://127.0.0.1:8000/admin'><i class="bi bi-unindent"> Atras</i></a>
         </li>
     </ul>
     </div>
   </div>
-</nav>        
+</nav>
+<form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search"/>
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Buscar</button>
+  </form>
         <div className='container-fluid'>
                 <div className="row">
                     <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {
