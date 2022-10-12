@@ -21,16 +21,13 @@
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
       @if(auth()->check())
         <li class="nav-item">
-
-//Ronald
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ route('login.index') }}"><i class="bi bi-person"> Iniciar sesión</i></a>
-//Master no supe cual dejar asi que deje ambos
           <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ route('login.destroy') }}"><i class="bi bi-box-arrow-left"> Cerra Sesión</i></a>
         </li>
       @else
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ route('login.index') }}"><i class="bi bi-person"> Iniciar Sesión</i></a>
-//Aqui termina master
+          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ route('login.index') }}"><i class="bi bi-person"> Iniciar Sesión</i></a>
+
         </li>
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ route('register.index') }}"><i class="bi bi-person-plus"> Registrarse</i></a>
