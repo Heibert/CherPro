@@ -1,24 +1,27 @@
 <?php
 
 namespace App\Mail;
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ReporteMaillable extends Mailable
-{
+class ReporteMail extends Mailable{
+
     use Queueable, SerializesModels;
+
+    public $subject = 'Informacion';
+
+    public $enviado;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($enviado)
     {
-        //
+        $this->enviado = $enviado;
     }
 
     /**
@@ -28,6 +31,7 @@ class ReporteMaillable extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.savereport');
     }
+
 }

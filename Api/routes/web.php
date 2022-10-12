@@ -16,6 +16,7 @@ use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EnviarExcusaController;
+use App\Http\Controllers\EnviarReporteController;
 use App\Http\Controllers\AdminController;
 
 /*
@@ -81,8 +82,12 @@ Route::get('/sesion', [SessionsController::class, 'destroy'])->name('login.destr
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth.admin');
 
-//-------------------------------- Mail ---------------------------------------
+//-------------------------------- Excuse mail ---------------------------------------//
 
 Route::get('excusaenv', [EnviarExcusaController::class, 'index'])->name('enviar.index');
-
 Route::post('excusa', [EnviarExcusaController::class, 'store'])->name('enviar.store');
+
+//-------------------------------- Report mail ---------------------------------------//
+
+Route::get('reportenv', [EnviarReporteController::class, 'index'])->name('enviar.index');
+Route::post('reporte', [EnviarReporteController::class, 'store'])->name('enviar.store');
