@@ -86,15 +86,16 @@ class AsistenciaController extends Controller
     {
         $request->validate([
             'fechaAsistencia' => 'bail|required|Date',
-            'estadoAsistencia'=> 'bail|required|size:1|string',
-            'id_aprendiz' => 'bail|required|numeric',
             'id_tematica' => 'bail|required|numeric',
-
-            'ficha' => 'bail|required|numeric'
+            'id_ficha' => 'bail|required|numeric'
         ]);
+        $nAprendices = DB::table('fichas')->select('cantAprendiz')->where('id','=',$request->id_ficha)->get();
+        foreach ($idA as $nAprendices => $nAprendices[]) {
+            # code...
+        }
         $asistencia = new Asistencia;
         $asistencia->fechaAsistencia = $request->fechaAsistencia;
-        $asistencia->estadoAsistencia = $request->estadoAsistencia;
+        $asistencia->estadoAsistencia = A;
         $asistencia->id_aprendiz = $request->id_aprendiz;
         $asistencia->id_tematica = $request->id_tematica;
         $asistencia->save();

@@ -62,12 +62,14 @@ const Lista = () => {
         setAsistenciasNombreDesc(response.data[5])
         setAsistenciaFichaAsc(response.data[6])
         setAsistenciaFichaDesc(response.data[7])
+        console.log(response.data)
     }
 
     const up = "bi bi-caret-up-fill"
     const down = "bi bi-caret-down-fill"
 
     function mostrarAsistencia() {
+        
         if (OrdenAsistencia == "AsistenciaAntigua") {
             AsistenciasFechaAsc.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
@@ -349,13 +351,11 @@ const Lista = () => {
   <div class="container-fluid">
     <a class="navbar-brand" href="">
         <img src='./Logo.png' class="d-inline-block align-top"/>
-
     </a>
-    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      
+    <div className="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href='/create'><i class="bi bi-plus-lg"> Crear</i></a>
