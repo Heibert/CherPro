@@ -29,19 +29,6 @@
 </nav>
   <main>
     <div class="container">
-        <li class="card">
-          <div class="contenido">
-            <h3>COORDINACIÓN</h3>
-            <a href="{{ url('coordinacion')}}">Coordinación</a>
-          </div>
-        </li>
-
-        <li class="card">
-          <div class="contenido">
-              <h3>COORDINADOR</h3>
-                <a href="{{ url('coordinador')}}">Coordinador</a>
-          </div>
-        </li>
 
         <li class="card">
           <div class="contenido">
@@ -78,12 +65,6 @@
           </div>
         </li>
 
-        <li class="card">
-          <div class="contenido">
-            <h3>ADMINISTRADOR</h3>
-              <a href="{{ url('administrador')}}">Administrador</a>
-          </div>
-        </li>
 
         <li class="card">
           <div class="contenido">
