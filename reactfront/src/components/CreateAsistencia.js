@@ -11,13 +11,11 @@ var fecha_ISOPasado = fecha_Actual.toISOString().split("T", 1)
 const endpoint = 'http://localhost:8000/api/asistencia'
 
 const CreateAsistencia = () => {
-
-
   const [Tematicas, setTematicas] = useState([])
   const [Fichas, setFichas] = useState([])
+  const [Ficha, setFicha] = useState([])
   const [erroresAxio, setErroresAxio] = useState("");
   const [fechaAsistencia, setfechaAsistencia] = useState('')
-  const [fichaAsistencia, setfichaAsistencia] = useState('')
   const [idTematica, setidTematica] = useState("")
 
   const navigate = useNavigate()
@@ -30,8 +28,9 @@ const CreateAsistencia = () => {
   const Store = async (e) => {
     e.preventDefault()
     const response = await axios.get(`${endpoint}/store`)
-    await axios.post(endpoint, {
+    await axios.post(`${endpoint}/store`, {
       fechaAsistencia: fechaAsistencia,
+      id_ficha: Ficha,
       id_tematica: idTematica
     })
       .then(() => {
@@ -68,19 +67,18 @@ console.log(erroresAxio)
   }, [])
   return (
     <>
-    <nav class="navbar text-uppercase navbar-expand-md  bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="">
-        <img src="{{ url('img/logo.png')}}" class="d-inline-block align-top" alt="logo"/>
+    <nav className="navbar text-uppercase navbar-expand-md  bg-dark">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="">
+        <img src="{{ url('img/logo.png')}}" className="d-inline-block align-top" alt="logo"/>
     </a>
-    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      
-      <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href='/'><i class="bi bi-unindent"> Atras</i></a>
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
+        <li className="nav-item">
+          <a className="nav-link navbar-brand text-white " aria-current="page" href='/'><i className="bi bi-unindent"> Atras</i></a>
         </li>
     </ul>
     </div>
@@ -88,7 +86,6 @@ console.log(erroresAxio)
 </nav>
     <div>
       <h1 className="mt-3 mb-5">Selecione Una Fecha Expecifica</h1>
-      
       <form onSubmit={Store}>
         <div className="row">
           <div className="col">
@@ -105,7 +102,7 @@ console.log(erroresAxio)
         <div className="row">
           <div className="col">
             <label className="form-label mt-5 mb-3">Ficha:</label>
-            <select type='select' onChange={(e) => setFichas(e.target.value)} className="form-control">
+            <select type='select' onChange={(e) => setFicha(e.target.value)} className="form-control">
               <option value="">Selecciona una Ficha</option>
               {Fichas.map((Ficha) => (
                 <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
@@ -116,7 +113,8 @@ console.log(erroresAxio)
         </div>
   <div className="row">
     <div className="col">
-    <label className="col-sm-2 col-form-label mt-4 mb-3">Tematica:</label>
+      <label className="col-sm-2 col-form-label mt-4 mb-3">Tematica:</label>
+
           <select type='select' onChange={(e) => setidTematica(e.target.value)} className="form-control">
             <option value="">Selecciona una tematica</option>
             {Tematicas.map((Tematica) => (
@@ -126,9 +124,7 @@ console.log(erroresAxio)
           <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div>
     </div>
   </div>
-              
         <button type="submit" className="btn btn-primary mt-5 mb-3">Crear</button>
-
       </form>
     </div></>
   )

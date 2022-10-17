@@ -25,4 +25,5 @@ class UserSeeder extends Seeder
         $u->rol = 'admin';
         $u->save();
     }
+       
 }
