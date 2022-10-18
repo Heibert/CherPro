@@ -35,8 +35,8 @@ Route::resource('/reporte', ReporteController::class)->middleware('auth');
 Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy')->middleware('auth');
 Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update')->middleware('auth');
 
-Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth');
-Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth');
+Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth.admin');
+Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth.admin');
 
 Route::get('/', function () {
     return view('index');
@@ -51,13 +51,13 @@ Route::resource('coordinador',CoordinadorController::class)->middleware('auth.ad
 
 Route::resource('programa',ProgramaController::class)->middleware('auth');
 
-Route::resource('administrador', AdministradorController::class)->middleware('auth');
+Route::resource('administrador', AdministradorController::class)->middleware('auth.admin');
 Route::resource('tematica', TematicaController::class)->middleware('auth');
 Route::resource('trimestre', TrimestreController::class)->middleware('auth');
 
 Route::resource('ficha', FichaController::class)->middleware('auth');
 Route::resource('aprendiz', AprendizController::class)->middleware('auth');
-Route::resource('instructor', InstructorController::class)->middleware('auth');
+Route::resource('instructor', InstructorController::class)->middleware('auth.admin');
 
 //---------------------------------- Login -----------------------------------
 

@@ -65,7 +65,20 @@
           </div>
         </li>
 
+        <li class="card">
+          <div class="contenido">
+            <h3>FICHA</h3>
+            <a href="{{ url('ficha')}}">Ficha</a>
+          </div>
+        </li>
 
+        <li class="card">
+          <div class="contenido">
+            <h3>APRENDIZ</h3>
+            <a href="{{ url('aprendiz')}}">Aprendiz</a>
+          </div>
+        </li>
+        
         <li class="card">
           <div class="contenido">
             <h3>ASISTENCIA</h3>
