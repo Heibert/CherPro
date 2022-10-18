@@ -67,10 +67,10 @@ console.log(erroresAxio)
   }, [])
   return (
     <>
-    <nav className="navbar text-uppercase navbar-expand-md  bg-dark">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="">
-        <img src="{{ url('img/logo.png')}}" className="d-inline-block align-top" alt="logo"/>
+    <nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">
+        <img src='./Logo.png' class="d-inline-block align-top"/>
     </a>
     <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
@@ -78,7 +78,7 @@ console.log(erroresAxio)
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link navbar-brand text-white " aria-current="page" href='/'><i className="bi bi-unindent"> Atras</i></a>
+          <a className="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href='/'><i className="bi bi-unindent"> Atras</i></a>
         </li>
     </ul>
     </div>

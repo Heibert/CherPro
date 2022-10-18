@@ -10,7 +10,7 @@
     @vite(['resources/css/app.css'])
 </head>
 <body>
-<nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+<nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="">
         <img src="{{ url('img/logo.png')}}" class="d-inline-block align-top" alt="logo">
@@ -22,10 +22,10 @@
       
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ url('tematica/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('tematica/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('admin') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
     </ul>
     </div>

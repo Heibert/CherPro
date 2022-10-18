@@ -24,7 +24,7 @@
         <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href="{{ url('trimestre/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href="{{ url('admin') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
     </ul>
     </div>

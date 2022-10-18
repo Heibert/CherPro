@@ -21,6 +21,7 @@
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
       @if(auth()->check())
         <li class="nav-item">
+          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ route('login.index') }}"><i class="bi bi-person"> Iniciar sesión</i></a>
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ route('login.destroy') }}"><i class="bi bi-box-arrow-left"> Cerra Sesión</i></a>
         </li>
       @else
