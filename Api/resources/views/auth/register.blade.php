@@ -5,6 +5,8 @@
     @section('content')
     <link rel="stylesheet" href="{{ url('css/login-auth.css')}}">
     <main>  
+
+    <h1 class="formulario__titulo">Registrarse</h1>
         <form class="formulario" id="formulario" action="" method="POST">
             @csrf
             <div class="formulario__grupo" id="formulario__nombre">
