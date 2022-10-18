@@ -17,6 +17,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EnviarExcusaController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\IInstructorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,13 @@ Route::post('/login', [SessionsController::class, 'store'])->name('login.store')
 Route::get('/sesion', [SessionsController::class, 'destroy'])->name('login.destroy');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth.admin');
+Route::get('/instructor', [IInstructorController::class, 'index'])->name('instructor.index')->middleware('auth.instructor');
+//------------------------------------ Restablecer ----------------------------
+
+Route::get('/restablecer', function () {
+    return view('password_reset/mail_reset');
+});
+
 
 //-------------------------------- Mail ---------------------------------------
 
