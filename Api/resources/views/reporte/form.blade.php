@@ -26,7 +26,6 @@
                     </div>
                 </div>
             </nav>
-        </form>
     </div>
         <br>
     <div>
@@ -62,6 +61,22 @@
                     @endforeach
                 </select>
                 @error('id_instructor') 
+                    <small>{{$message}}</small>
+                @enderror 
+            </div>
+        </div>
+        <br>
+        <div>
+            <label for="id_coordinador">Coordinador</label>
+            <div>
+                <select name="id_coordinador" id="id_coordinador" value="{{ isset ($reporte->id_coordinador)?$reporte->id_coordinador:''}}">
+                    @foreach ($coordi as $coo)
+                        <option value="{{ $coo['id'] }}">
+                            {{ $coo['nomCoordinador'] }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_coordinador') 
                     <small>{{$message}}</small>
                 @enderror 
             </div>

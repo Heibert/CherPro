@@ -30,6 +30,8 @@ use App\Http\Controllers\EstadoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//----------------------------- Reporte PDF ----------------------------------------------------------//
+Route::get('reporte/pdf', [App\Http\Controllers\ReporteController::class, 'pdf'] )->name('reporte.pdf');
 
 Route::resource('/index', IndexController::class)->middleware('auth');
 Route::resource('/reporte', ReporteController::class)->middleware('auth');
@@ -86,4 +88,5 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->mi
 Route::get('excusaenv', [EnviarExcusaController::class, 'index'])->name('enviar.index');
 Route::post('excusa', [EnviarExcusaController::class, 'store'])->name('enviar.store');
 
-//-------------------------------- Report mail ---------------------------------------//
+//-------------------------------- Report PDF ---------------------------------------//
+

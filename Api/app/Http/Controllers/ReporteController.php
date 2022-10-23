@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 /* Heibert */
 use Illuminate\Http\Request;
 use App\Models\Instructor;
-//use App\Models\Coordinador;
+use PDF;
+use App\Models\Coordinador;
 use App\Models\Reporte;
 use App\Http\Requests\ReporteCreateRequest;
 use App\Http\Requests\ReporteEditRequest;
@@ -22,6 +23,14 @@ class ReporteController extends Controller
         $datos['reporte']=Reporte::paginate();
         return view('reporte.index', $datos);
     }
+
+    public function pdf()
+    {
+        $reporte = Reporte::paginate();
+        $pdf = PDF::loadView('reporte.pdf', ['reporte'=>$reporte]);
+        return $pdf->stream();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -30,8 +39,8 @@ class ReporteController extends Controller
     public function create()
     {
         $inst = Instructor::all();
-        //$coordi = Coordinador::all();
-        return view('reporte.create', compact('inst'));
+        $coordi = Coordinador::all();
+        return view('reporte.create', compact('inst', 'coordi'));
     }
 
     /**
@@ -71,7 +80,7 @@ class ReporteController extends Controller
         return view('reporte.edit')->with([
             'reporte' => Reporte::find($id),
             'inst' => Instructor::all(),
-            //'coordi' => Coordinador::all()
+            'coordi' => Coordinador::all()
         ]);
     }
 
@@ -90,7 +99,7 @@ class ReporteController extends Controller
         return redirect('reporte')->with([
             'reporte' => Reporte::find($id),
             'inst' => Instructor::find('id'),
-            //'coordi' => Coordinador::find('id')
+            'coordi' => Coordinador::find('id')
         ]);
     }
 
