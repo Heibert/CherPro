@@ -41,6 +41,7 @@
                     <th>Correo Misena</th>
                     <th>Telefono</th>
                     <th>Nombre coordinación</th>
+                    <th>Estado</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
@@ -57,6 +58,7 @@
                     <td>{{ $coordinador->correoMisena }}</td>
                     <td>{{ $coordinador->telefonoCoordinador }}</td>
                     <td>{{ $coordinador->coordinacions->nomCoordinacion}}</td>
+                    <td>{{ $coordinador->estados->nomEstado}}</td>
                     <td>
                         <a href="{{url('/coordinador/'.$coordinador->id.'/edit')}}">
                             <button class="btn btn-outline-warning">Editar</button>

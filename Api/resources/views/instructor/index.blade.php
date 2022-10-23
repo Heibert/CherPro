@@ -40,6 +40,7 @@
                 <th>Correo Misena</th>
                 <th>Telefono</th>
                 <th>Programa</th>
+                <th>Estado</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
@@ -56,6 +57,7 @@
                 <td>{{ $i-> correoMisena}}</td>
                 <td>{{ $i-> telefonoInst}}</td>
                 <td>{{ $i-> programas->nombrePrograma}}</td>
+                <td>{{ $i-> estados->nomEstado}}</td>
                 <td>
                     <a href="{{url('/instructor/'.$i->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>

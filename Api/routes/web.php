@@ -18,6 +18,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EnviarExcusaController;
 use App\Http\Controllers\EnviarReporteController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EstadoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,6 @@ use App\Http\Controllers\AdminController;
 
 Route::resource('/index', IndexController::class)->middleware('auth');
 Route::resource('/reporte', ReporteController::class)->middleware('auth');
-Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy')->middleware('auth');
-Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update')->middleware('auth');
-
 Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth');
 Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth');
 
@@ -58,6 +56,7 @@ Route::resource('trimestre', TrimestreController::class)->middleware('auth');
 Route::resource('ficha', FichaController::class)->middleware('auth');
 Route::resource('aprendiz', AprendizController::class)->middleware('auth');
 Route::resource('instructor', InstructorController::class)->middleware('auth');
+Route::resource('estados', EstadoController::class)->middleware('auth');
 
 //---------------------------------- Login -----------------------------------
 
@@ -88,6 +87,3 @@ Route::get('excusaenv', [EnviarExcusaController::class, 'index'])->name('enviar.
 Route::post('excusa', [EnviarExcusaController::class, 'store'])->name('enviar.store');
 
 //-------------------------------- Report mail ---------------------------------------//
-
-Route::get('reportenv', [EnviarReporteController::class, 'index'])->name('enviar.index');
-Route::post('reporte', [EnviarReporteController::class, 'store'])->name('enviar.store');

@@ -10,8 +10,6 @@
 <body>
     <div>
         <center>
-        <form method="POST" action="{{route('reporte.store')}}" enctype="multipart/form-data">
-            @csrf
             <nav class="navbar text-uppercase navbar-expand-md  bg-dark">
                 <div class="container-fluid">
                         <a class="navbar-brand" href="">
@@ -54,22 +52,6 @@
         </div>
         <br>
         <div>
-            <label for="id_coordinador">Coordinador</label>
-            <div>
-                <select name="id_coordinador" id="id_coordinador" value="{{ isset ($reporte->id_coordinador)?$reporte->id_coordinador:''}}">
-                    @foreach ($coordi as $coor)
-                        <option value="{{ $coor['id'] }}">
-                            {{ $coor['nomCoordinador'] }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('id_coordinador') 
-                    <small>{{$message}}</small>
-                @enderror 
-            </div>
-        </div>
-        <br>
-        <div>
             <label for="id_instructor">Instructor</label>
             <div>
                 <select name="id_instructor" id="id_instructor" value="{{ isset ($reporte->id_instructor)?$reporte->id_instructor:''}}">
@@ -86,7 +68,7 @@
         </div>
         <br>
         <div>
-            <input type="submit" value="Enviar mensaje">
+            <input type="submit" value="Guardar">
         </div>
     </div>
     </center>

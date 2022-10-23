@@ -108,6 +108,22 @@
             </div>
             <br>
             <div>
+                <label for="id_estados"> Estados </label>
+                <div>
+                    <select name="id_estados" id="id_programa" value="{{ isset($instructor-> id_estados)?$instructor-> id_estados: '' }}">
+                        @foreach ($estados as $e)
+                            <option value="{{ $e['id'] }}">
+                                {{ $e['nomEstado'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                @error('id_estados')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <br>
+            <div>
                 <input type="submit" value="Guardar">
             </div>
             </center>

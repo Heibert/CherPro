@@ -104,6 +104,21 @@
             @enderror
             <div>
             <button type="submit" class="btn btn-primary" value="Guardar">Crear</button>
+            </div>
+            <br>
+            <select class="custom-select" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="id_estados" id="id_estados" value="{{ isset($coordinador-> id_estados)?$coordinador-> id_estados: ''}}">
+                    @foreach ($estados as $e)
+                        <option value="{{ $e['id'] }}">
+                            {{ $e['nomEstado'] }}
+                        </option>
+                    @endforeach
+                </select> 
+            </div>
+            @error('id_estados')
+                <small>{{$message}}</small>
+            @enderror
+            <div>
+            <button type="submit" class="btn btn-primary" value="Guardar">Crear</button>
             </div><br>
         </center>
     </div>
