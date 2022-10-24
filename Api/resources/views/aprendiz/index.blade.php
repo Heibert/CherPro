@@ -52,6 +52,7 @@
                 <th>Correo Personal</th>
                 <th>Telefono</th>
                 <th>Ficha</th>
+                <th>Estado</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
@@ -69,6 +70,7 @@
                 <td>{{ $a->correoAprend}}</td>
                 <td>{{ $a->telefonoAprend}}</td>
                 <td>{{ $a->fichas->numFicha}}</td>
+                <td>{{ $a->estados->nomEstado}}</td>
                 <td>
                     <a href="{{url('/aprendiz/'.$a->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>

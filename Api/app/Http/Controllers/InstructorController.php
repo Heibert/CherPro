@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Instructor;
 use App\Models\Programa;
+use App\Models\Estado;
 use App\Http\Requests\InstructorCreateRequest;
 use App\Http\Requests\InstructorEditRequest;
 use Illuminate\Http\Request;
@@ -30,8 +31,9 @@ class InstructorController extends Controller
     public function create()
     {
         //
+        $estados = Estado::all();
         $programas = Programa::all();
-        return view('instructor.create', compact('programas'));
+        return view('instructor.create', compact('programas', 'estados'));
     }
 
     /**
@@ -71,7 +73,8 @@ class InstructorController extends Controller
         //
         return view('instructor.edit')->with([
             'instructor' => Instructor::find($id),
-            'programas' => Programa::all()
+            'programas' => Programa::all(),
+            'estados' => Estado::all()
         ]);
     }
 
@@ -89,7 +92,8 @@ class InstructorController extends Controller
 
         return redirect('instructor')->with([
             'instructor' => Instructor::find($id),
-            'programas' => Programa::find('id')
+            'programas' => Programa::find('id'),
+            'estados' => Estado::find('id')
         ]);
     }
 

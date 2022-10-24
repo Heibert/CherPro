@@ -45,18 +45,19 @@
             <th>#</th>
             <th>Fecha</th>
             <th>Descripcion</th>
-            <th>Coordinador</th>
             <th>Instructor</th>
+            <th>Coordinador</th>
             <th>Editar</th>
             <th>Eliminar</th>
+            <th>Convertir PDF</th>
         </tr>
         @foreach ($reporte as $repor)
             <tr>
                 <td>{{$repor->id}}</td>
                 <td>{{$repor->fechaReporte}}</td>
                 <td>{{$repor->descReporte}}</td>
-                <td>{{$repor->coordinadores->nomCoordinador}}</td>
                 <td>{{$repor->instructores->nombreInst}}</td>
+                <td>{{$repor->coordinadores->nomCoordinador}}</td>
                 <td>
                     <a href="{{url('/reporte/'.$repor->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>
@@ -69,6 +70,15 @@
                         {{method_field('DELETE')}}
                         <button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>
                     </form>
+                </td>
+                <br>
+                <td>
+                  <div>
+                    <a href="{{ route('reporte.pdf') }}">
+                        <button class="btn btn-outline-warning">Archivo PDF</button>
+                    </a>
+                  </div>
+                </td>
                 </td>
             </tr>
         @endforeach

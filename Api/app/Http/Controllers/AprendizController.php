@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Aprendiz;
 use App\Models\Ficha;
+use App\Models\Estado;
 use App\Http\Requests\AprendizCreateRequest;
 use App\Http\Requests\AprendizEditRequest;
 use Illuminate\Http\Request;
@@ -19,7 +20,6 @@ class AprendizController extends Controller
      */
     public function index()
     {
-     
         $datos['aprendiz']=Aprendiz::paginate();
         return view('aprendiz.index', $datos);
     }
@@ -33,7 +33,8 @@ class AprendizController extends Controller
     {
         //
         $fichas = Ficha::all(); 
-        return view('aprendiz.create', compact('fichas'));
+        $estado = Estado::all();
+        return view('aprendiz.create', compact('fichas', 'estado'));
     }
 
     /**
@@ -73,7 +74,8 @@ class AprendizController extends Controller
     {
         return view('aprendiz.edit')->with([
             'aprendiz' => Aprendiz::find($id),
-            'fichas' => Ficha::all()
+            'fichas' => Ficha::all(),
+            'estados' => Estado::all()
         ]);
     }
 
@@ -92,7 +94,8 @@ class AprendizController extends Controller
 
         return redirect('aprendiz')->with([
             'aprendiz' => Aprendiz::find($id),
-            'fichas' => Ficha::find('id')
+            'fichas' => Ficha::find('id'),
+            'estados' => Estado::find('id')
         ]);
 
     }

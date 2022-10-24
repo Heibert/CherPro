@@ -34,7 +34,7 @@ class AprendizEditRequest extends FormRequest
             'correoAprend' => 'unique:aprendices,correoAprend,'.$this->aprendiz.'|required|email',
             'telefonoAprend' => 'required|numeric',
             'id_ficha' => 'required|numeric',
-            'password' => 'sometimes'
+            'id_estados' => 'required'
         ];
     }
 
@@ -49,6 +49,7 @@ class AprendizEditRequest extends FormRequest
             'correoAprend.required' => 'Su correo personal es requerido',
             'telefonoAprend.required' => 'Este campo es requerido',
             'id_ficha.required' => 'Esta opción es requerida',
+            'id_estados.required' => 'Opción obligatoria'   
         ];
     }
 }

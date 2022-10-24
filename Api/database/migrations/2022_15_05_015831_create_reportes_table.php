@@ -18,14 +18,14 @@ return new class extends Migration
             $table->id();
             $table->date('fechaReporte');
             $table->text('descReporte');
-            $table->foreignId('id_coordinador')
-                            ->nullable()
-                            ->constrained('coordinadors')
-                            ->cascadeOnUpdate()
-                            ->nullOnDelete();
             $table->foreignId('id_instructor')
                             ->nullable()
                             ->constrained('instructores')
+                            ->cascadeOnUpdate()
+                            ->nullOnDelete();
+            $table->foreignId('id_coordinador')
+                            ->nullable()
+                            ->constrained('coordinadors')
                             ->cascadeOnUpdate()
                             ->nullOnDelete();
             $table->timestamps();
