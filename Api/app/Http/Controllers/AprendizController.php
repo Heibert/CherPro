@@ -112,4 +112,9 @@ class AprendizController extends Controller
         Aprendiz::destroy($id); 
         return redirect('aprendiz');
     }
+
+    public function importExcel(Request $request){
+        $file = $request->file('file');
+        
+    }
 }

@@ -59,6 +59,7 @@ Route::resource('ficha', FichaController::class)->middleware('auth');
 Route::resource('aprendiz', AprendizController::class)->middleware('auth');
 Route::resource('instructor', InstructorController::class)->middleware('auth');
 Route::resource('estados', EstadoController::class)->middleware('auth');
+
 //---------------------------------- Login -----------------------------------
 
 Route::get('/', function () {
@@ -81,13 +82,16 @@ Route::post('/login', [SessionsController::class, 'store'])->name('login.store')
 Route::get('/sesion', [SessionsController::class, 'destroy'])->name('login.destroy');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth.admin');
-Route::get('/instructor', [IInstructorController::class, 'index'])->name('instructor.index')->middleware('auth.instructor');
+Route::get('/instructorSesion', [IInstructorController::class, 'index'])->name('instructor.index')->middleware('auth.instructor');
 //------------------------------------ Restablecer ----------------------------
 
 Route::get('/restablecer', function () {
     return view('password_reset/mail_reset');
 });
 
+//------------------------------------ Carga masiva ---------------------------
+
+Route::post('import-list-excel', 'AprendizController@importExcel')->name('aprendiz.import.excel');
 
 //-------------------------------- Excuse mail ---------------------------------------//
 

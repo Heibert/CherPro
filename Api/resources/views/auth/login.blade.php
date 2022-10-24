@@ -34,7 +34,7 @@
             <br>
             <div class="formulario__grupo" id="">
                 <div class="formulario__grupo-input">
-                    <a href="">¿Olvidaste tu contraseña?</a>
+                    <a href="{{url ('restablecer')}}">¿Olvidaste tu contraseña?</a>
                 </div>
             </div>
 

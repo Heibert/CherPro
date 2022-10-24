@@ -30,7 +30,7 @@
         </li>
         @elseif(auth()->user()->rol == 'instructor')
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('instructor') }}"><i class="bi bi-unindent"> Atras</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('instructorSesion') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
         @else(auth()->user()->rol == '')
         <li class="nav-item">
