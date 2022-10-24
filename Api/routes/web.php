@@ -19,6 +19,8 @@ use App\Http\Controllers\EnviarExcusaController;
 use App\Http\Controllers\EnviarReporteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstadoController;
+use App\Http\Controllers\IInstructorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,11 +39,9 @@ Route::resource('/index', IndexController::class)->middleware('auth');
 Route::resource('/reporte', ReporteController::class)->middleware('auth');
 Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth');
 Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth');
-
 Route::get('/', function () {
     return view('index');
 });
-
 
 Route::get('/excusa/create',[ExcusaController::class,'create'])->middleware('auth');
 
@@ -51,7 +51,7 @@ Route::resource('coordinador',CoordinadorController::class)->middleware('auth.ad
 
 Route::resource('programa',ProgramaController::class)->middleware('auth');
 
-Route::resource('administrador', AdministradorController::class)->middleware('auth');
+Route::resource('administrador', AdministradorController::class)->middleware('auth.admin');
 Route::resource('tematica', TematicaController::class)->middleware('auth');
 Route::resource('trimestre', TrimestreController::class)->middleware('auth');
 
@@ -59,7 +59,6 @@ Route::resource('ficha', FichaController::class)->middleware('auth');
 Route::resource('aprendiz', AprendizController::class)->middleware('auth');
 Route::resource('instructor', InstructorController::class)->middleware('auth');
 Route::resource('estados', EstadoController::class)->middleware('auth');
-
 //---------------------------------- Login -----------------------------------
 
 Route::get('/', function () {
@@ -82,6 +81,13 @@ Route::post('/login', [SessionsController::class, 'store'])->name('login.store')
 Route::get('/sesion', [SessionsController::class, 'destroy'])->name('login.destroy');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->middleware('auth.admin');
+Route::get('/instructor', [IInstructorController::class, 'index'])->name('instructor.index')->middleware('auth.instructor');
+//------------------------------------ Restablecer ----------------------------
+
+Route::get('/restablecer', function () {
+    return view('password_reset/mail_reset');
+});
+
 
 //-------------------------------- Excuse mail ---------------------------------------//
 

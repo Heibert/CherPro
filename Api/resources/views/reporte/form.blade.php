@@ -23,6 +23,7 @@
                         <li class="nav-item">
                             <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ url('reporte')}}"><i class="bi bi-unindent"> Atras</i></a>
                         </li>
+
                     </div>
                 </div>
             </nav>

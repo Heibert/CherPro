@@ -22,6 +22,8 @@ class UserSeeder extends Seeder
         $u->email = 'admin@gmail.com';
         $u->password = 'admin';
         $u->password_confirmation = 'admin';
+        $u->rol = 'admin';
         $u->save();
     }
+       
 }

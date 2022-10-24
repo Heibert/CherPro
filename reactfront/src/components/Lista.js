@@ -62,12 +62,14 @@ const Lista = () => {
         setAsistenciasNombreDesc(response.data[5])
         setAsistenciaFichaAsc(response.data[6])
         setAsistenciaFichaDesc(response.data[7])
+        console.log(response.data)
     }
 
     const up = "bi bi-caret-up-fill"
     const down = "bi bi-caret-down-fill"
 
     function mostrarAsistencia() {
+        
         if (OrdenAsistencia == "AsistenciaAntigua") {
             AsistenciasFechaAsc.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
@@ -345,28 +347,44 @@ const Lista = () => {
     }
     return (
         <>
-<nav class="navbar text-uppercase navbar-expand-md  bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="">
-        <img src='./Logo.png' class="d-inline-block align-top"/>
-
+<nav className="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="">
+        <img src='./Logo.png' className="d-inline-block align-top"/>
     </a>
-    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      
-      <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href='/create'><i class="bi bi-plus-lg"> Crear</i></a>
+    <div className="collapse navbar-collapse" id="navbarNav">
+      <ul className="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
+        <li className="nav-item">
+          <a className="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href='/create'><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href='http://localhost:8000/index'><i class="bi bi-unindent"> Atras</i></a>
+        <li className="nav-item">
+          <a className="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href='http://127.0.0.1:8000/admin'><i class="bi bi-unindent"> Atras</i></a>
         </li>
     </ul>
     </div>
   </div>
-</nav>        
+</nav>
+
+<form className="">
+<div className="container-fluid row h1">
+  <div className="col">
+    <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+    <option selected>Selecione Ficha</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    </select></div>
+    <div className="col">
+    <input className="form-control form-control-lg mb-3" type="search" placeholder="Buscar" aria-label="Search"/>
+    </div>
+    <div className="col">
+    <button className="btn-success btn btn-success-lg" type="submit">Buscar</button>
+    </div>
+    </div>
+  </form>
         <div className='container-fluid'>
                 <div className="row">
                     <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {

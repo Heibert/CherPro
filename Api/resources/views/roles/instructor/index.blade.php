@@ -29,40 +29,6 @@
 </nav>
   <main>
     <div class="container">
-        <li class="card">
-          <div class="contenido">
-            <h3>COORDINACIÓN</h3>
-            <a href="{{ url('coordinacion')}}">Coordinación</a>
-          </div>
-        </li>
-
-        <li class="card">
-          <div class="contenido">
-            <h3>FICHA</h3>
-            <a href="{{ url('ficha')}}">Ficha</a>
-          </div>
-        </li>
-
-        <li class="card">
-          <div class="contenido">
-            <h3>APRENDIZ</h3>
-            <a href="{{ url('aprendiz')}}">Aprendiz</a>
-          </div>
-        </li>
-
-        <li class="card">
-          <div class="contenido">
-            <h3>INSTRUCTOR</h3>
-            <a href="{{ url('instructor')}}">Instructor</a>
-          </div>
-        </li>
-
-        <li class="card">
-          <div class="contenido">
-              <h3>COORDINADOR</h3>
-                <a href="{{ url('coordinador')}}">Coordinador</a>
-          </div>
-        </li>
 
         <li class="card">
           <div class="contenido">
@@ -101,11 +67,18 @@
 
         <li class="card">
           <div class="contenido">
-            <h3>ADMINISTRADOR</h3>
-              <a href="{{ url('administrador')}}">Administrador</a>
+            <h3>FICHA</h3>
+            <a href="{{ url('ficha')}}">Ficha</a>
           </div>
         </li>
 
+        <li class="card">
+          <div class="contenido">
+            <h3>APRENDIZ</h3>
+            <a href="{{ url('aprendiz')}}">Aprendiz</a>
+          </div>
+        </li>
+        
         <li class="card">
           <div class="contenido">
             <h3>ASISTENCIA</h3>
