@@ -39,7 +39,6 @@ class CoordinacionController extends Controller
      */
     public function store(CoordinacionCreateRequest $request)
     {
-
         $datosCoordi = $request->except('_token'); 
         Coordinacion::insert($datosCoordi); 
         return redirect('coordinacion')->with("Coordinacion registrada");

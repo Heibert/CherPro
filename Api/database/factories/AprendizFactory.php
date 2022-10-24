@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Ficha;
+use App\Models\Estado;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Aprendiz>
@@ -29,6 +30,7 @@ class AprendizFactory extends Factory
             "correoAprend" => $this->faker->unique()->email,
             "telefonoAprend" => $this->faker->randomNumber(5, true),
             "id_ficha" => Ficha::all()->random()->id,
+            "id_estados" => Estado::all()->random()->id,
             /* "password" => $this->faker->sha1(), */
         ];
     }

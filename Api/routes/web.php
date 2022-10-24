@@ -16,8 +16,11 @@ use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EnviarExcusaController;
+use App\Http\Controllers\EnviarReporteController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\IInstructorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,19 +32,16 @@ use App\Http\Controllers\IInstructorController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//----------------------------- Reporte PDF ----------------------------------------------------------//
+Route::get('reporte/pdf', [App\Http\Controllers\ReporteController::class, 'pdf'] )->name('reporte.pdf');
 
 Route::resource('/index', IndexController::class)->middleware('auth');
 Route::resource('/reporte', ReporteController::class)->middleware('auth');
-Route::delete('/reportes/{id}', [ReporteController::class, 'destroy'])->name('reportes.destroy')->middleware('auth');
-Route::put('reportes/{id}', 'ReportesController@update')->name('reportes.update')->middleware('auth');
-
-Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth.admin');
-Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth.admin');
-
+Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth');
+Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth');
 Route::get('/', function () {
     return view('index');
 });
-
 
 Route::get('/excusa/create',[ExcusaController::class,'create'])->middleware('auth');
 
@@ -58,6 +58,7 @@ Route::resource('trimestre', TrimestreController::class)->middleware('auth');
 Route::resource('ficha', FichaController::class)->middleware('auth');
 Route::resource('aprendiz', AprendizController::class)->middleware('auth');
 Route::resource('instructor', InstructorController::class)->middleware('auth');
+Route::resource('estados', EstadoController::class)->middleware('auth');
 
 //---------------------------------- Login -----------------------------------
 
@@ -92,8 +93,10 @@ Route::get('/restablecer', function () {
 
 Route::post('import-list-excel', 'AprendizController@importExcel')->name('aprendiz.import.excel');
 
-//-------------------------------- Mail ---------------------------------------
+//-------------------------------- Excuse mail ---------------------------------------//
 
 Route::get('excusaenv', [EnviarExcusaController::class, 'index'])->name('enviar.index');
-
 Route::post('excusa', [EnviarExcusaController::class, 'store'])->name('enviar.store');
+
+//-------------------------------- Report PDF ---------------------------------------//
+

@@ -20,4 +20,10 @@ class Aprendiz extends Model
     public function asistencias(){
         return $this->hasMany(Asistencia::class, 'id');
     }
+
+    //Relacion con estados 
+
+    public function estados(){
+        return $this->belongsTo(Estado::class, 'id_estados');
+    }
 }
