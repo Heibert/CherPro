@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css'])
 </head>
 <body>
-<nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
+<!-- <nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="">
         <img src="{{ url('img/logo.png')}}" class="d-inline-block align-top" alt="logo">
@@ -34,7 +34,7 @@
     </ul>
     </div>
   </div>
-</nav>
+</nav> -->
     @yield('content')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
