@@ -378,6 +378,13 @@ const Lista = () => {
     <option value="3">Three</option>
     </select></div>
     <div className="col">
+    <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+    <option selected>Selecione Ficha</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+    </select></div>
+    <div className="col">
     <input className="form-control form-control-lg mb-3" type="search" placeholder="Buscar" aria-label="Search"/>
     </div>
     <div className="col">
