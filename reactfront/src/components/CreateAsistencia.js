@@ -27,8 +27,7 @@ const CreateAsistencia = () => {
   }
   const Store = async (e) => {
     e.preventDefault()
-    const response = await axios.get(`${endpoint}/store`)
-    await axios.post(`${endpoint}/store`, {
+    await axios.post(`${endpoint}`, {
       fechaAsistencia: fechaAsistencia,
       id_ficha: Ficha,
       id_tematica: idTematica
@@ -40,6 +39,7 @@ const CreateAsistencia = () => {
         setErroresAxio(error.response.data.errors)
         let errores = error.response.data.errors
         console.log(errores)
+        console.log(erroresAxio.id_ficha)
         if (errores.fechaAsistencia != undefined) {
           document.getElementById("fechaError").classList.remove('d-none')
         }
@@ -52,7 +52,7 @@ const CreateAsistencia = () => {
         else {
           document.getElementById("tematicaError").classList.add('d-none')
         }
-        if (errores.ficha != undefined) {
+        if (errores.id_ficha != undefined) {
           document.getElementById("fichaError").classList.remove('d-none')
         }
         else {
@@ -108,7 +108,7 @@ console.log(erroresAxio)
                 <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
               ))}
             </select>
-            <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.ficha}</div>
+            <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.id_ficha}</div>
           </div>
         </div>
   <div className="row">

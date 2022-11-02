@@ -15,6 +15,6 @@ class TematicaSeeder extends Seeder
      */
     public function run()
     {
-        Tematica::factory(10)->create();
+        Tematica::factory(8)->create();
     }
 }
