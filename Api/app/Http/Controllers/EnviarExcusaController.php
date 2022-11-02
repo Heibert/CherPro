@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Mail\ExcusaMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ExcusaCreateRequest;
+use App\Models\Excusa;
 
 class EnviarExcusaController extends Controller
 {
@@ -20,6 +21,8 @@ class EnviarExcusaController extends Controller
         $correo = new ExcusaMail($request->all());
         Mail::to('cristiancamilo.bravo29@gmail.com')->send($correo);
 
+           Excusa::insert($request->except('_token'));
+           //return redirect('excusa');
         return redirect('excusa/create')->with('info', 'Excusa enviada');
     }
 }

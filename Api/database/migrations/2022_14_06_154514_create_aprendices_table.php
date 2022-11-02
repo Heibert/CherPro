@@ -32,6 +32,7 @@ return new class extends Migration
                         ->constrained('estados')
                         ->cascadeOnUpdate()
                         ->nullOnDelete();
+            $table->boolean('estado');
             $table->timestamps();
         });
     }
