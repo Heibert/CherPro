@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ url('css/tarjeta.css')}}">
 </head>
 <body>
-<nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+<nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="">
         <img src="{{ url('img/logo.png')}}" class="d-inline-block align-top" alt="logo">
@@ -21,7 +21,7 @@
       
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ route('login.destroy') }}"><i class="bi bi-box-arrow-left"> Cerra Sesión</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href="{{ route('login.destroy') }}"><i class="bi bi-box-arrow-left"> Cerra Sesión</i></a>
         </li>
     </ul>
     </div>
@@ -33,6 +33,27 @@
           <div class="contenido">
             <h3>COORDINACIÓN</h3>
             <a href="{{ url('coordinacion')}}">Coordinación</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>FICHA</h3>
+            <a href="{{ url('ficha')}}">Ficha</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>APRENDIZ</h3>
+            <a href="{{ url('aprendiz')}}">Aprendiz</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>INSTRUCTOR</h3>
+            <a href="{{ url('instructor')}}">Instructor</a>
           </div>
         </li>
 
@@ -88,7 +109,7 @@
         <li class="card">
           <div class="contenido">
             <h3>ASISTENCIA</h3>
-              <a href="{{ url('asistencia')}}">Asistencia</a>
+              <a href="{{ url('http://localhost:3000')}}">Asistencia</a>
           </div>
         </li>
     </div>

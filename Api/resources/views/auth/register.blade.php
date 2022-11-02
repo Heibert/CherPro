@@ -1,10 +1,12 @@
 
 @extends('layouts.app')
-
+@vite(['resources/css/app.css'])
     @section('title', 'Registrarse')
     @section('content')
     <link rel="stylesheet" href="{{ url('css/login-auth.css')}}">
     <main>  
+
+    <h1 class="formulario__titulo">Registrarse</h1>
         <form class="formulario" id="formulario" action="" method="POST">
             @csrf
             <div class="formulario__grupo" id="formulario__nombre">
@@ -80,7 +82,11 @@
             </div>
 
             <div class="formulario__grupo formulario__grupo-btn-enviar">
-                <button type="submit" class="formulario__btn" name="" id="">Registrarse</button>
+                <button type="submit" class="formulario__btn" name="" id="">Registrarse</button><br>
+                <div class="formulario__titulo text-center"></div>
+                <div class="formulario__grupo-input">
+                <a href="{{ route('login.index') }}" class="text-black btn btn-outline-primary"><i class="bi bi-person"> Iniciar Sesión</i></a>
+            </div>
             </div>
         </form>  
     </main>    

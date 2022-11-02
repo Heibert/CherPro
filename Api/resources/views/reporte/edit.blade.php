@@ -14,7 +14,7 @@
         <form action="{{ url('/reporte/'.$reporte->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{ method_field('PATCH') }}
-                <nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+                <nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
   <div class="container-fluid">
     <a class="navbar-brand" href="">
         <img src="{{ url('img/logo.png')}}" class="d-inline-block align-top" alt="logo">
@@ -26,7 +26,7 @@
       
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ url('reporte')}}"><i class="bi bi-unindent"> Atras</i></a>
+          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('reporte')}}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
     </ul>
     </div>
@@ -55,22 +55,6 @@
                 </div>
                 <br>
                 <div>
-                    <label for="id_coordinador">Coordinador</label>
-                    <div>
-                        <select name="id_coordinador" id="id_coordinador" value="{{ isset ($reporte->id_coordinador)?$reporte->id_coordinador:''}}">
-                            @foreach ($coordi as $coor)
-                                <option value="{{ $coor['id'] }}">
-                                    {{ $coor['nomCoordinador'] }}
-                                </option>
-                            @endforeach
-                        </select>
-                        @error('id_coordinador') 
-                            <small>{{$message}}</small>
-                        @enderror 
-                    </div>
-                </div>
-                <br>
-                <div>
                     <label for="id_instructor">Instructor</label>
                     <div>
                         <select name="id_instructor" id="id_instructor" value="{{ isset ($reporte->id_instructor)?$reporte->id_instructor:''}}">
@@ -86,6 +70,22 @@
                     </div>
                 </div>
                 <br>
+                <div>
+                    <label for="id_coordinador">Coordinador</label>
+                    <div>
+                        <select name="id_coordinador" id="id_coordinador" value="{{ isset ($reporte->id_coordinador)?$reporte->id_coordinador:''}}">
+                            @foreach ($coordi as $coo)
+                                <option value="{{ $coo['id'] }}">
+                                    {{ $coo['nomCoordinador'] }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('id_coordinador') 
+                            <small>{{$message}}</small>
+                        @enderror 
+                </div>
+            </div>
+            <br>
                 <div>
                     <input type="submit" value="Enviar mensaje">
                 </div>

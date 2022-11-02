@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@vite(['resources/css/app.css'])
 @section('title', 'Iniciar Sesión')
  @section('content')
     <link rel="stylesheet" href="{{ url('css/login-auth.css')}}">
@@ -11,7 +12,7 @@
             <h1 class="formulario__titulo">Iniciar Sesión</h1>
             <br>
             <div class="formulario__grupo" id="formulario__correo">
-                <label for="Correo" class="formulario__label">Correo electrénico</label><br>
+                <label for="Correo" class="formulario__label">Correo electronico</label><br>
                 <div class="formulario__grupo-input">
                     <input type="email" class="formulario__input" name="email" id="email" placeholder="Correo" value="{{old('email')}}">
                 </div>
@@ -34,12 +35,17 @@
             <br>
             <div class="formulario__grupo" id="">
                 <div class="formulario__grupo-input">
-                    <a href="">¿Olvidaste tu contraseña?</a>
+                    <a href="{{url ('restablecer')}}">¿Olvidaste tu contraseña?</a>
                 </div>
             </div>
 
             <div class="formulario__grupo formulario__grupo-btn-enviar">
                 <button type="submit" class="formulario__btn" name="" id="">Ingresar</button>
+            </div>
+            <div class="formulario__grupo text-center">
+                <div class="formulario__grupo-input"><hr class="shadow p-13 mb-15">
+                <a href="{{ route('register.index') }}" class="text-black btn btn-outline-primary"><i class="bi bi-person-plus"> Registrarse</i></a>
+                </div>
             </div>
         </form>
     </div>
