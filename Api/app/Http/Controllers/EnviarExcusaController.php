@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Mail\ExcusaMail;
 use Illuminate\Support\Facades\Mail;
@@ -23,6 +22,6 @@ class EnviarExcusaController extends Controller
 
            Excusa::insert($request->except('_token'));
            //return redirect('excusa');
-        return redirect('excusa/create')->with('info', 'Excusa enviada');
+        redirect('excusa/index')->with('info', 'Excusa enviada');
     }
 }

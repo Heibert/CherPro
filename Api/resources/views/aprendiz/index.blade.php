@@ -26,14 +26,6 @@
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('admin') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
-        <form action="{{route('aprendiz.import.excel')}}" method="POST" enctype="multipart/form-data">
-          @csrf
-          @if(Session::has('message'))
-          <p>{{Session::get('message')}}</p>
-          @endif
-          <input type="file" name="file">
-          <button>Importar</button>
-        </form>
         @elseif(auth()->user()->rol == 'instructor')
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('instructorSesion') }}"><i class="bi bi-unindent"> Atras</i></a>
@@ -78,7 +70,7 @@
                 <td>{{ $a->correoAprend}}</td>
                 <td>{{ $a->telefonoAprend}}</td>
                 <td>{{ $a->fichas->numFicha}}</td>
-                <td>{{ $a->estados->nomEstado}}</td>
+                <td>{{ $a->estado}}</td>
                 <td>
                     <a href="{{url('/aprendiz/'.$a->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>

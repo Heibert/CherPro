@@ -91,8 +91,6 @@ Route::get('/restablecer', function () {
 
 //------------------------------------ Carga masiva ---------------------------
 
-//Route::post('import-list-excel', 'AprendizController@importExcel')->name('aprendiz.import.excel');
-
 //-------------------------------- Excuse mail ---------------------------------------//
 
 Route::get('excusaenv', [EnviarExcusaController::class, 'index'])->name('enviar.index');
