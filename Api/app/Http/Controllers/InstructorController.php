@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Instructor;
 use App\Models\Programa;
 use App\Models\Estado;
+use App\Models\Ficha;
 use App\Http\Requests\InstructorCreateRequest;
 use App\Http\Requests\InstructorEditRequest;
 use Illuminate\Http\Request;
@@ -18,7 +19,6 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        //
         $datos['instructor']=Instructor::paginate(); 
         return view('instructor.index', $datos); 
     }
@@ -108,5 +108,13 @@ class InstructorController extends Controller
         //
         Instructor::destroy($id); 
         return redirect('instructor'); 
+    }
+
+    public function asignarFichas(Request $request){
+
+        $ficha = Ficha::create($request->all());
+        $ficha->instructores()->attach($request->get('instructores'));
+
+        return view('instructor.asignarficha', compact('ficha'));
     }
 }

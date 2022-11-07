@@ -24,9 +24,10 @@ class ReporteController extends Controller
         return view('reporte.index', $datos);
     }
 
-    public function pdf()
+    public function pdf(Reporte $id)
     {
         $reporte = Reporte::paginate();
+        Reporte::find($id);
         $pdf = PDF::loadView('reporte.pdf', ['reporte'=>$reporte]);
         return $pdf->stream();
     }

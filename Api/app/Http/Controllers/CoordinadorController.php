@@ -6,7 +6,7 @@ use App\Models\Coordinador;
 use App\Http\Requests\CoordinadorCreateRequest;
 use App\Http\Requests\CoordinadorEditRequest;
 use App\Models\Coordinacion;
-use App\Models\Estados;
+use App\Models\Estado;
 use Illuminate\Http\Request;
 
 class CoordinadorController extends Controller

@@ -17,7 +17,7 @@
                     {{$repor->fechaReporte}} a causa de la acumulación de inasistencias en la formación academica.
                     <br>
                     <br>
-                    Firma el coordinador {{repor->coordinadores->nomCoordinador}}, perteneciente a la Coordinación de logistica. 
+                    Firma el coordinador {{$repor->coordinadores->nomCoordinador}}, perteneciente a la Coordinación de logistica. 
                 </p>
             @endforeach
         </div>
