@@ -19,7 +19,7 @@ class AsistenciaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $asistencias = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
@@ -89,16 +89,16 @@ class AsistenciaController extends Controller
             'id_tematica' => 'bail|required|numeric',
             'id_ficha' => 'bail|required|numeric'
         ]);
-        $nAprendices = DB::table('fichas')->select('cantAprendiz')->where('id','=',$request->id_ficha)->get();
-        var_dump($nAprendices);
-
-        $asistencia = new Asistencia;
-        $asistencia->fechaAsistencia = $request->fechaAsistencia;
-        $asistencia->estadoAsistencia = "A";
-        $asistencia->id_aprendiz = $request->id_aprendiz;
-        $asistencia->id_tematica = $request->id_tematica;
-        $asistencia->save();
-
+        $aprendices = DB::table('aprendices')->where('id_ficha','=',$request->id_ficha)->pluck('id');
+        $nAprendices = DB::table('fichas')->where('id','=',$request->id_ficha)->value("cantAprendiz");
+        for ($i=0; $i < count($aprendices); $i++) {
+            $asistencia = new Asistencia;
+            $asistencia->fechaAsistencia = $request->fechaAsistencia;
+            $asistencia->estadoAsistencia = "A";
+            $asistencia->id_aprendiz = $aprendices[$i];
+            $asistencia->id_tematica = $request->id_tematica;
+            $asistencia->save();
+        }
     }
 
     /**
