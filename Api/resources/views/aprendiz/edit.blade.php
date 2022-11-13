@@ -119,21 +119,19 @@
             </div>
             <br>
             <div>
-            <label for="id_estados"> Estado </label>
-            <div>
-                <select name="id_estados" id="id_estados" value="{{ isset($aprendiz-> id_estados)?$aprendiz-> id_estados: '' }}">
-                    @foreach ($estado as $e)
-                        <option value="{{ $e['id'] }}">
-                            {{ $e['nomEstado'] }}
-                        </option>
-                    @endforeach
-                </select>
+                <label for="estado"> Estado </label>
+                <div>
+                    <select name="estado" value="{{isset($aprendiz-> estado)?$aprendiz-> estado: ''}}">
+                        <option> </option>
+                        <option name="estado" value="En formacion">En formación</option>
+                        <option name="estado" value="Desertado">Desertado</option>
+                        <option name="estado" value="Proceso de formación aplazado">En aplazamiento</option>
+                    </select>
+                </div>
+                @error('estado')
+                    <small>{{$message}}</small>
+                @enderror
             </div>
-            @error('id_estados')
-                <small>{{$message}}</small>
-            @enderror
-        </div>
-        <br>
             <div>
                 <input type="submit" value="Guardar">
             </div>

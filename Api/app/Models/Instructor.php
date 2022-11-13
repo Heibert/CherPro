@@ -38,9 +38,10 @@ class Instructor extends Model
         return $this->hasMany(Reporte::class, 'id');
     }
 
-    //Relacion con estados 
+    // Relacion con excusa (1:M)
 
-    public function estados(){
-        return $this->belongsTo(Estado::class, 'id_estados');
+    public function excusa()
+    {
+        return $this->hasMany(Excusa::class, 'id');
     }
 }

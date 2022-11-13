@@ -27,12 +27,7 @@ return new class extends Migration
                         ->constrained('fichas')
                         ->cascadeOnUpdate()
                         ->nullOnDelete();
-            $table->foreignId('id_estado')
-                        ->nullable()
-                        ->constrained('estados')
-                        ->cascadeOnUpdate()
-                        ->nullOnDelete();
-            
+            $table->text('estado');
             $table->timestamps();
         });
     }

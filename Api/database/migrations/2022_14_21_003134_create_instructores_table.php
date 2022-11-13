@@ -26,11 +26,7 @@ return new class extends Migration
                         ->constrained('programas')
                         ->cascadeOnUpdate()
                         ->nullOnDelete();
-            $table->foreignId('id_estados')
-                        ->nullable()
-                        ->constrained('estados')
-                        ->cascadeOnUpdate()
-                        ->nullOnDelete();
+            $table->text('estado');
             $table->timestamps();
         });
     }

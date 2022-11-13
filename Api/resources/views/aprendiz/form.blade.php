@@ -26,6 +26,7 @@
     </div>
   </div>
 </nav>
+<br>
     <div>
         <center>
         <div>
@@ -51,7 +52,10 @@
         <div>
             <label for="tipoDoc"> Tipo de documento </label>
             <div>
-                <input type="text" name="tipoDoc"  id="tipoDoc" value="{{ isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: '' }}">
+                <select name="tipoDoc">
+                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">TI</option>
+                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">CC</option>
+                </select>
             </div>
             @error('tipoDoc')
                 <small>{{$message}}</small>
@@ -115,19 +119,18 @@
             </div>
             <br>
             <div>
-                <label for="id_estado"> Estado </label>
+                <label for="estado"> Estado </label>
                 <div>
-                    <select name="id_estado" id="id_estado" value="{{ isset($aprendiz-> id_estado)?$aprendiz-> id_estado: '' }}">
-                        @foreach ($estado as $e)
-                            <option value="{{ $e['id'] }}">
-                                {{ $e['nomEstado'] }}
-                            </option>
-                        @endforeach
+                    <select name="estado" value="{{isset($aprendiz-> estado)?$aprendiz-> estado: ''}}">
+                        <option> </option>
+                        <option name="estado" value="En formacion">En formación</option>
+                        <option name="estado" value="Desertado">Desertado</option>
+                        <option name="estado" value="Proceso de formación aplazado">En aplazamiento</option>
                     </select>
-                    <br>
-                    @error('id_estado')
-                        <small>{{$message}}</small>
-                    @enderror
+                </div>
+                @error('estado')
+                    <small>{{$message}}</small>
+                @enderror
             </div>
             <br>
             <div>
@@ -135,9 +138,9 @@
             </div>
         </center>
     </div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
-
 </body>
 </html>
 

@@ -31,7 +31,7 @@ class InstructorCreateRequest extends FormRequest
             'correoMisena' => 'required|unique:instructores',
             'telefonoInst' => 'required|numeric',
             'id_programa' => 'required|numeric',
-            'id_estados' => 'required'
+            'estado' => 'required'
         ];
     }
 
@@ -47,7 +47,7 @@ class InstructorCreateRequest extends FormRequest
             'correoMisena.required' => 'Este campo es obligatorio',
             'telefonoInst.required' => 'Su telefono es obligatorio',
             'id_programa.required' => 'Este campo es obligatorio',
-            'id_estados.required' => 'Opción obligatoria'
+            'estado.required' => 'Opción obligatoria'
         ];
     }
 }

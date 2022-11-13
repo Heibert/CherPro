@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Instructor;
 use App\Models\Programa;
-use App\Models\Estado;
 use App\Models\Ficha;
 use App\Http\Requests\InstructorCreateRequest;
 use App\Http\Requests\InstructorEditRequest;
@@ -30,10 +29,8 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        //
-        $estados = Estado::all();
         $programas = Programa::all();
-        return view('instructor.create', compact('programas', 'estados'));
+        return view('instructor.create', compact('programas'));
     }
 
     /**
@@ -57,7 +54,6 @@ class InstructorController extends Controller
      */
     public function show(Instructor $instructor)
     {
-        //
         $datos['instructor']=Instructor::paginate();
         return view('instructor.index', $datos);
     }
@@ -70,11 +66,9 @@ class InstructorController extends Controller
      */
     public function edit($id)
     {
-        //
         return view('instructor.edit')->with([
             'instructor' => Instructor::find($id),
-            'programas' => Programa::all(),
-            'estados' => Estado::all()
+            'programas' => Programa::all()
         ]);
     }
 
@@ -92,8 +86,7 @@ class InstructorController extends Controller
 
         return redirect('instructor')->with([
             'instructor' => Instructor::find($id),
-            'programas' => Programa::find('id'),
-            'estados' => Estado::find('id')
+            'programas' => Programa::find('id')
         ]);
     }
 
@@ -105,16 +98,7 @@ class InstructorController extends Controller
      */
     public function destroy($id)
     {
-        //
         Instructor::destroy($id); 
         return redirect('instructor'); 
-    }
-
-    public function asignarFichas(Request $request){
-
-        $ficha = Ficha::create($request->all());
-        $ficha->instructores()->attach($request->get('instructores'));
-
-        return view('instructor.asignarficha', compact('ficha'));
     }
 }

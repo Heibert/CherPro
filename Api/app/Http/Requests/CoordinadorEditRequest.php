@@ -32,7 +32,7 @@ class CoordinadorEditRequest extends FormRequest
             'correoMisena' => 'unique:coordinadors,correoMisena,'.$this->coordinador.'|required',
             'telefonoCoordinador' => 'required|numeric',
             'id_coordinacion' => 'required|numeric',
-            'id_estados' => 'required'
+            'estado' => 'required'
         ];
     }
 
@@ -48,7 +48,7 @@ class CoordinadorEditRequest extends FormRequest
             'correoMisena.required' => 'Este campo es obligatorio',
             'telefonoCoordinador.required' => 'Su telefono es obligatorio',
             'id_coordinacion.required' => 'Este campo es obligatorio',
-            'id_estados.required' => 'Opción obligatoria'
+            'estado.required' => 'Opción obligatoria'
         ];
     }
 }

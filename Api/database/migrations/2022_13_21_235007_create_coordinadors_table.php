@@ -24,11 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_coordinacion')->unique();
             $table->foreign('id_coordinacion')->references('id')->on('coordinacions')
                                                 ->onDelete('cascade');
-            $table->foreignId('id_estados')
-                        ->nullable()
-                        ->constrained('estados')
-                        ->cascadeOnUpdate()
-                        ->nullOnDelete();
+            $table->text('estado');
             $table->timestamps();
 
             

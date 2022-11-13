@@ -31,12 +31,22 @@
         <center>
         <h3>Enviar excusa</h3>
         <form action="{{ route('enviar.store') }}">
+            <br>
             <div>
-                <label for="text">Destinatario</label>
-                <div>
-                    <input type="text">
-                </div>
+            <label for="id_instructor"> Destinatario </label>
+            <div>
+                <select name="id_instructor" id="id_instructor" value="{{ isset($excusa-> id_instructor)?$excusa-> id_instructor: '' }}">
+                    @foreach ($instruc as $ins)
+                        <option value="{{ $ins['id'] }}">
+                            {{ $ins['correoMisena'] }}
+                        </option>
+                    @endforeach
+                </select> 
             </div>
+            @error('id_instructor')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
             <br>
             <div>
                 <label for="fechaExcusa"> Fecha </label>

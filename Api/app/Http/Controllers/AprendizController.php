@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Aprendiz;
-use App\Models\Ficha;
-use App\Models\Estado;  
+use App\Models\Ficha; 
 use App\Http\Requests\AprendizCreateRequest;
 use App\Http\Requests\AprendizEditRequest;
 use Illuminate\Http\Request;
@@ -29,9 +28,8 @@ class AprendizController extends Controller
      */
     public function create()
     {
-        $estado = Estado::all();
         $fichas = Ficha::all();
-        return view('aprendiz.create', compact('fichas', 'estado'));
+        return view('aprendiz.create', compact('fichas'));
     }
 
     /**
@@ -55,10 +53,8 @@ class AprendizController extends Controller
      */
     public function show(Aprendiz $aprendiz)
     {
-        
         $datos['aprendiz']=Aprendiz::paginate();
         return view('aprendiz.index', $datos);
-        
     }
 
     /**
@@ -71,8 +67,7 @@ class AprendizController extends Controller
     {
         return view('aprendiz.edit')->with([
             'aprendiz' => Aprendiz::find($id),
-            'fichas' => Ficha::all(),
-            'estados' => Estado::all()
+            'fichas' => Ficha::all()
         ]);
     }
 
@@ -85,16 +80,13 @@ class AprendizController extends Controller
      */
     public function update(AprendizEditRequest $request, $id)
     {
-        
         $datosAprend = $request->except('_token','_method');
         Aprendiz::where('id', '=', $id)->update($datosAprend);
 
         return redirect('aprendiz')->with([
             'aprendiz' => Aprendiz::find($id),
-            'fichas' => Ficha::find('id'),
-            'estados' => Estado::find('id')
+            'fichas' => Ficha::find('id')
         ]);
-
     }
 
     /**
@@ -105,7 +97,6 @@ class AprendizController extends Controller
      */
     public function destroy($id)
     {       
-        //
         Aprendiz::destroy($id); 
         return redirect('aprendiz');
     }
