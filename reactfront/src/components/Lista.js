@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios/* , { AxiosError } */ from 'axios'
 import { Link, useParams, useNavigate } from "react-router-dom";
 const endpoint = 'http://localhost:8000/api/asistencia'
+
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
     const [AsistenciasFechaDesc, setAsistenciasFechaDesc] = useState([])
@@ -12,6 +13,17 @@ const Lista = () => {
     const [AsistenciasNombreDesc, setAsistenciasNombreDesc] = useState([])
     const [AsistenciaFichaAsc, setAsistenciaFichaAsc] = useState([])
     const [AsistenciaFichaDesc, setAsistenciaFichaDesc] = useState([])
+    const [Tematicas, setTematicas] = useState([])
+    const [Fichas, setFichas] = useState([])
+    const [Ficha, setFicha] = useState([])
+    const [idTematica, setidTematica] = useState("")
+
+    const getAllTematicaAprendiz = async () => {
+        const response = await axios.get(`${endpoint}/create`)
+        setTematicas(response.data[0])
+        setFichas(response.data[2])
+        
+      }
 
     const EditAsistencia = () => {
         const [Aprendices, setAprendices] = useState([])
@@ -48,10 +60,11 @@ const Lista = () => {
 
     useEffect(() => {
         getAllDatosAsistencias()
+        getAllTematicaAprendiz()
     }, [])
 
 
-
+    
     const getAllDatosAsistencias = async () => {
         const response = await axios.get(`${endpoint}`)
         setAsistenciasFechaDesc(response.data[0])
@@ -62,7 +75,7 @@ const Lista = () => {
         setAsistenciasNombreDesc(response.data[5])
         setAsistenciaFichaAsc(response.data[6])
         setAsistenciaFichaDesc(response.data[7])
-        console.log(response.data)
+        console.log("Las asistencias son:",response.data)
     }
 
     const up = "bi bi-caret-up-fill"
@@ -372,17 +385,17 @@ const Lista = () => {
 <div className="container-fluid row h1">
   <div className="col">
     <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-    <option selected>Selecione Ficha</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+    <option value="">Selecciona una Ficha</option>
+              {Fichas.map((Ficha) => (
+                <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
+              ))}
     </select></div>
     <div className="col">
     <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-    <option selected>Selecione Ficha</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
+    <option value="">Selecciona una tematica</option>
+            {Tematicas.map((Tematica) => (
+              <option key={Tematica.id} value={Tematica.id}>{Tematica.nombreTematica}</option>
+            ))}
     </select></div>
     <div className="col">
     <input className="form-control form-control-lg mb-3" type="search" placeholder="Buscar" aria-label="Search"/>

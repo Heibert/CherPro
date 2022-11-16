@@ -61,7 +61,6 @@
                         <button class="btn btn-outline-warning">Editar</button>
                     </a> 
                 </td>
-                <br>
                 <td>
                     <form action="{{url('/programa/'.$prog->id)}}" method="post">
                         @csrf
@@ -73,9 +72,6 @@
             @endforeach
         </tbody>
     </table>
-    <button type="submit">
-        <a href="{{ url('/index')}}">Regresar</a>
-    </button>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 
