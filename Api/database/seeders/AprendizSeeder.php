@@ -15,6 +15,6 @@ class AprendizSeeder extends Seeder
      */
     public function run()
     {
-        Aprendiz::factory(10)->create();
+        Aprendiz::factory(30)->create();
     }
 }

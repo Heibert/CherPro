@@ -18,4 +18,4 @@ use App\Http\Controllers\AsistenciaController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('/asistencia', AsistenciaController::class);
+Route::resource('/asistencia', AsistenciaController::class)->middleware('auth');

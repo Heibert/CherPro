@@ -9,6 +9,7 @@ use App\Models\Aprendiz;
 use App\Models\Asistencia;
 use App\Models\Ficha;
 use Illuminate\Support\Facades\validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AsistenciaController extends Controller
@@ -20,47 +21,59 @@ class AsistenciaController extends Controller
      */
     public function index()
     {   
+        $user = "No logeado";
+        if (Auth::check()) {
+            $user = Auth::user();
+        }
+    /* if(auth()->user()->rol == 'admin'){ */
         $asistencias = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
-            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('fechaAsistencia', 'desc')
-            ->orderBy('numFicha', 'desc')->get();
-        $asistenciasA = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
-            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('fechaAsistencia', 'asc')
-            ->orderBy('numFicha', 'desc')->get();
-        $estadoasc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
-            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('estadoAsistencia', 'asc')
-            ->orderBy('nombreAprend', 'asc')->get();
-        $estadodesc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
-            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('estadoAsistencia', 'desc')
-            ->orderBy('nombreAprend', 'asc')->get();
-        $nombreasc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
-            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('nombreAprend', 'asc')
-            ->orderBy('estadoAsistencia', 'asc')->get();
-        $nombredesc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
-            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('nombreAprend', 'desc')
-            ->orderBy('estadoAsistencia', 'asc')->get();
-        $fichaAsc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
-            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('numFicha', 'desc')
-            ->orderBy('nombreAprend', 'desc')->get();
-        $fichaDesc = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
-            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('numFicha', 'Asc')
-            ->orderBy('nombreAprend', 'desc')->get();
-        return  array($asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc, $fichaAsc, $fichaDesc);
+        ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+        ->orderBy('fechaAsistencia', 'desc')
+        ->orderBy('numFicha', 'desc')->get();
+    $asistenciasA = DB::table('asistencias')
+        ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+        ->orderBy('fechaAsistencia', 'asc')
+        ->orderBy('numFicha', 'desc')->get();
+    $estadoasc = DB::table('asistencias')
+        ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+        ->orderBy('estadoAsistencia', 'asc')
+        ->orderBy('nombreAprend', 'asc')->get();
+    $estadodesc = DB::table('asistencias')
+        ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+        ->orderBy('estadoAsistencia', 'desc')
+        ->orderBy('nombreAprend', 'asc')->get();
+    $nombreasc = DB::table('asistencias')
+        ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+        ->orderBy('nombreAprend', 'asc')
+        ->orderBy('estadoAsistencia', 'asc')->get();
+    $nombredesc = DB::table('asistencias')
+        ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+        ->orderBy('nombreAprend', 'desc')
+        ->orderBy('estadoAsistencia', 'asc')->get();
+    $fichaAsc = DB::table('asistencias')
+        ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+        ->orderBy('numFicha', 'desc')
+        ->orderBy('nombreAprend', 'desc')->get();
+    $fichaDesc = DB::table('asistencias')
+        ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+        ->orderBy('numFicha', 'Asc')
+        ->orderBy('nombreAprend', 'desc')->get();
+    return  array($user);
+    /* else {
+        if(auth()->user()->rol == 'instructor'){
+            return redirect()->route('instructor.index');
+        } else{
+            
+        }
+    } */
     }
 
     /**
