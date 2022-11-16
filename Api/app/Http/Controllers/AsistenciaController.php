@@ -25,7 +25,6 @@ class AsistenciaController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
         }
-    /* if(auth()->user()->rol == 'admin'){ */
         $asistencias = DB::table('asistencias')
         ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
         ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
