@@ -47,6 +47,7 @@
             <th>Descripcion</th>
             <th>Instructor</th>
             <th>Coordinador</th>
+            <th>Aprendiz</th>
             <th>Editar</th>
             <th>Eliminar</th>
             <th>Convertir PDF</th>
@@ -58,6 +59,7 @@
                 <td>{{$repor->descReporte}}</td>
                 <td>{{$repor->instructores->nombreInst}}</td>
                 <td>{{$repor->coordinadores->nomCoordinador}}</td>
+                <td>{{$repor->aprendices->nombreAprend}}</td>
                 <td>
                     <a href="{{url('/reporte/'.$repor->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>
@@ -74,7 +76,7 @@
                 <br>
                 <td>
                   <div>
-                    <a href="{{ route('reporte.pdf') }}">
+                    <a href="{{ route('reporte.pdf' , $repor->id) }}">
                         <button class="btn btn-outline-warning">Archivo PDF</button>
                     </a>
                   </div>

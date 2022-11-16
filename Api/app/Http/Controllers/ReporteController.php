@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Instructor;
 use PDF;
 use App\Models\Coordinador;
+use App\Models\Aprendiz;
 use App\Models\Reporte;
 use App\Http\Requests\ReporteCreateRequest;
 use App\Http\Requests\ReporteEditRequest;
@@ -24,11 +25,15 @@ class ReporteController extends Controller
         return view('reporte.index', $datos);
     }
 
-    public function pdf(Reporte $id)
+    //Generar reporte por pdf ***
+
+    public function pdf( $id)
     {
-        $reporte = Reporte::paginate();
-        Reporte::find($id);
-        $pdf = PDF::loadView('reporte.pdf', ['reporte'=>$reporte]);
+        $reporte = Reporte::find($id);
+        //echo '<pre>';
+        //var_dump($reporte->id);
+        //echo '</pre>';
+       $pdf = PDF::loadView('reporte.pdf', ['reporte'=>$reporte]);
         return $pdf->stream();
     }
 
@@ -39,9 +44,10 @@ class ReporteController extends Controller
      */
     public function create()
     {
+        $apren = Aprendiz::all();
         $inst = Instructor::all();
         $coordi = Coordinador::all();
-        return view('reporte.create', compact('inst', 'coordi'));
+        return view('reporte.create', compact('inst', 'coordi', 'apren'));
     }
 
     /**
@@ -81,7 +87,8 @@ class ReporteController extends Controller
         return view('reporte.edit')->with([
             'reporte' => Reporte::find($id),
             'inst' => Instructor::all(),
-            'coordi' => Coordinador::all()
+            'coordi' => Coordinador::all(),
+            'apren' => Aprendiz::all(),
         ]);
     }
 
@@ -100,7 +107,8 @@ class ReporteController extends Controller
         return redirect('reporte')->with([
             'reporte' => Reporte::find($id),
             'inst' => Instructor::find('id'),
-            'coordi' => Coordinador::find('id')
+            'coordi' => Coordinador::find('id'),
+            'apren' => Aprendiz::find('id'),
         ]);
     }
 

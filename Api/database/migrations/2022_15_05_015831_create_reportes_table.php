@@ -28,6 +28,11 @@ return new class extends Migration
                             ->constrained('coordinadors')
                             ->cascadeOnUpdate()
                             ->nullOnDelete();
+            $table->foreignId('id_aprendiz')
+                            ->nullable()
+                            ->constrained('aprendices')
+                            ->cascadeOnUpdate()
+                            ->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -22,12 +22,12 @@ class InstructorFactory extends Factory
         return [
             "nombreInst" => $this->faker->firstName(),
             "apellidoInst" => $this->faker->lastName(),
-            "tipoDoc" => $this->faker->randomElement(['Cedula', 'TI']),
+            "tipoDoc" => $this->faker->randomElement(['CC', 'TI']),
             "numDoc" => $this->faker->unique(true)->numberBetween(1, 500),
             "correoMisena" => $nombre . $correoSena,
             "telefonoInst" => $this->faker->randomNumber(5, true),
             "id_programa" => Programa::all()->random()->id,
-            /* "password" => $this->faker->sha1(), */
+            "estado" => $this->faker->randomElement(['Activo', 'Inactivo'])
         ];
     }
 }

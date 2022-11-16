@@ -30,8 +30,7 @@ class AprendizFactory extends Factory
             "correoAprend" => $this->faker->unique()->email,
             "telefonoAprend" => $this->faker->randomNumber(5, true),
             "id_ficha" => Ficha::all()->random()->id,
-            "id_estados" => Estado::all()->random()->id,
-            /* "password" => $this->faker->sha1(), */
+            "estado" => $this->faker->randomElement(['En formacion', 'Desertrado', 'En aplazamiento']),
         ];
     }
 }

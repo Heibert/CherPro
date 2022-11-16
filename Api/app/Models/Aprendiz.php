@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Reporte;
 
 class Aprendiz extends Model
 {
@@ -19,5 +20,9 @@ class Aprendiz extends Model
 
     public function asistencias(){
         return $this->hasMany(Asistencia::class, 'id');
+    }
+
+    public function reportes(){
+        return $this->hasMany(Reporte::class, 'id');
     }
 }
