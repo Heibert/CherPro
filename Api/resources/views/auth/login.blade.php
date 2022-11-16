@@ -44,7 +44,7 @@
             </div>
             <div class="formulario__grupo text-center">
                 <div class="formulario__grupo-input"><hr class="shadow p-13 mb-15">
-                <a href="{{ route('register.index') }}" class="text-black btn btn-outline-primary"><i class="bi bi-person-plus"> Registrarse</i></a>
+                <a href="{{ route('register') }}" class="text-black btn btn-outline-primary"><i class="bi bi-person-plus"> Registrarse</i></a>
                 </div>
             </div>
         </form>

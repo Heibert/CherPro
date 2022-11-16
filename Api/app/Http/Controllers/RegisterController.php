@@ -13,9 +13,8 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        
     }
 
     /**
@@ -25,7 +24,6 @@ class RegisterController extends Controller
      */
     public function create()
     {
-        //
         return view('auth.register');
     }
 
@@ -38,7 +36,6 @@ class RegisterController extends Controller
     public function store(Request $request)
     {
         //
-
         $request->validate([
             'name' => 'required|min:5|max:16',
             'apellido' => 'required',
@@ -47,11 +44,8 @@ class RegisterController extends Controller
             'password' => 'required |confirmed|min:5|max:16',
             'password_confirmation' => 'required|min:5|max:16'
         ]);
-
         $admin = User::create(request(['name','apellido','telefono','email','password','password_confirmation']));
         auth()->login($admin);
         return redirect()->to('/index');
     }
-
-    
 }

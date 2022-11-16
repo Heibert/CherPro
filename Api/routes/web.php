@@ -75,7 +75,7 @@ Route::get('/register', [RegisterController::class, 'create'])->name('register.i
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 
-Route::get('/login', [SessionsController::class, 'create'])->name('login.index');
+/* Route::get('/login', [SessionsController::class, 'create'])->name('login.index'); */
 
 Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
 

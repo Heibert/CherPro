@@ -85,7 +85,7 @@
                 <button type="submit" class="formulario__btn" name="" id="">Registrarse</button><br>
                 <div class="formulario__titulo text-center"></div>
                 <div class="formulario__grupo-input">
-                <a href="{{ route('login.index') }}" class="text-black btn btn-outline-primary"><i class="bi bi-person"> Iniciar Sesión</i></a>
+                <a href="" class="text-black btn btn-outline-primary"><i class="bi bi-person"> Iniciar Sesión</i></a>
             </div>
             </div>
         </form>  
