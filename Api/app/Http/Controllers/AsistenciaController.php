@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\validator;
 use Illuminate\Support\Facades\DB;
 
 class AsistenciaController extends Controller
-{
+{/* Borrar */
     /**
      * Display a listing of the resource.
      *
