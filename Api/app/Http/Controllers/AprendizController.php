@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Aprendiz;
 use App\Models\Ficha;
 use App\Models\Estado;
+use App\Imports\AprendizImport;
 use App\Http\Requests\AprendizCreateRequest;
 use App\Http\Requests\AprendizEditRequest;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 //use Illuminate\Support\Facades\Validator;
 
 
@@ -113,8 +115,12 @@ class AprendizController extends Controller
         return redirect('aprendiz');
     }
 
-    public function importExcel(Request $request){
+    public function import(Request $request){
         $file = $request->file('file');
-        
+        Excel::import(new AprendizImport, $file);
+
+        return redirect()->route('aprendiz.index')->with('success','aprendizes importadas con exito'); 
     }
+
+    
 }

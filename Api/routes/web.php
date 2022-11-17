@@ -20,6 +20,7 @@ use App\Http\Controllers\EnviarReporteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\IInstructorController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 
 
 /*
@@ -37,7 +38,7 @@ Route::get('reporte/pdf', [App\Http\Controllers\ReporteController::class, 'pdf']
 
 Route::resource('/index', IndexController::class)->middleware('auth');
 Route::resource('/reporte', ReporteController::class)->middleware('auth');
-Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth');
+Route::resource('/coordinacion', CoordinacionController::class)->middleware('auth.admin');
 Route::delete('/coordinacion/{id}', [CoordinacionController::class, 'destroy'])->name('coordinacion.destroy')->middleware('auth');
 Route::get('/', function () {
     return view('index');
@@ -85,13 +86,22 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index')->mi
 Route::get('/instructorSesion', [IInstructorController::class, 'index'])->name('instructor.index')->middleware('auth.instructor');
 //------------------------------------ Restablecer ----------------------------
 
-Route::get('/restablecer', function () {
-    return view('password_reset/mail_reset');
-});
+Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
+->name('password.request');
+
+Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+->name('password.email');
+
+Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
+->name('password.reset');
+
 
 //------------------------------------ Carga masiva ---------------------------
 
-Route::post('import-list-excel', 'AprendizController@importExcel')->name('aprendiz.import.excel');
+Route::post('aprendiz-import', [AprendizController::class, 'import'])->name('aprendiz.import');
+Route::post('coordinacion-import', [CoordinacionController::class, 'import'])->name('coordinacion.import');
+
+
 
 //-------------------------------- Excuse mail ---------------------------------------//
 

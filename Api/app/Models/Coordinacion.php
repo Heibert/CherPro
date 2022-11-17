@@ -9,6 +9,10 @@ class Coordinacion extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nomCoordinacion'
+    ];
+
     // Relacion con coordinador (1:1)
     protected $table = "coordinacions";
     public function coordinadores(){
