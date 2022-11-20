@@ -89,6 +89,7 @@ Route::get('/restablecer', function () {
 
 //------------------------------------ Carga masiva ---------------------------
 
+
 //-------------------------------- Excuse mail ---------------------------------------//
 
 Route::get('excusaenv', [EnviarExcusaController::class, 'index'])->name('enviar.index');

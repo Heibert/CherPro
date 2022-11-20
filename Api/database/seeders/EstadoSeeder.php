@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Tematica;
+use App\Models\Estado;
 
-class TematicaSeeder extends Seeder
+class EstadoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class TematicaSeeder extends Seeder
      */
     public function run()
     {
-        Tematica::factory(8)->create();
+        Estado::factory(2)->create();
     }
 }
