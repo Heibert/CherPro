@@ -84,6 +84,22 @@
         </div>
         <br>
         <div>
+            <label for="id_aprendiz">Aprendiz</label>
+            <div>
+                <select name="id_aprendiz" id="id_aprendiz" value="{{ isset ($reporte->id_aprendiz)?$reporte->id_aprendiz:''}}">
+                    @foreach ($apren as $a)
+                        <option value="{{ $a['id'] }}">
+                            {{ $a['nombreAprend'] }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_coordinador') 
+                    <small>{{$message}}</small>
+                @enderror 
+            </div>
+        </div>
+        <br>
+        <div>
             <input type="submit" value="Guardar">
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Reporte;
 
 class Aprendiz extends Model
 {
@@ -21,9 +22,11 @@ class Aprendiz extends Model
         return $this->hasMany(Asistencia::class, 'id');
     }
 
-    //Relacion con estados 
+    public function reportes(){
+        return $this->hasMany(Reporte::class, 'id');
+    }
 
-    public function estados(){
-        return $this->belongsTo(Estado::class, 'id_estados');
+    public function users(){
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

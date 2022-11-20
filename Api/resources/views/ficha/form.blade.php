@@ -39,16 +39,6 @@
         </div>
         <br>
         <div>
-            <label for="cantAprendiz"> Cantidad de aprendices </label>
-            <div>
-                <input type="number" name="cantAprendiz" id="cantAprendiz" value="{{ isset($ficha-> cantAprendiz)?$ficha-> cantAprendiz: '' }}">
-            </div>
-            @error('cantAprendiz')
-                <small>{{$message}}</small>
-            @enderror
-        </div>
-        <br>
-        <div>
             <label for="id_instructor"> Instructor encargado </label>
             <div>
                 <select name="id_instructor" id="id_instructor" value="{{ isset($ficha-> id_instructor)?$ficha-> id_instructor: '' }}">

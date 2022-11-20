@@ -19,12 +19,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('apellido');
             $table->string('telefono')->unique();  
-            $table->string('email')->unique();
+            $table->unsignedBigInteger('id_user')->unique();
+            $table->foreign('id_user')->references('id')
+                                        ->on('users')
+                                        ->onDelete('cascade');
             $table->foreignId('id_programa')
-            ->nullable()
-            ->constrained('programas')
-            ->cascadeOnUpdate()
-            ->nullOnDelete();
+                            ->nullable()
+                            ->constrained('programas')
+                            ->cascadeOnUpdate()
+                            ->nullOnDelete();
             $table->timestamps();
         });
     }

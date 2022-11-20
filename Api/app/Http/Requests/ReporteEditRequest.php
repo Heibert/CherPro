@@ -28,7 +28,8 @@ class ReporteEditRequest extends FormRequest
             'fechaReporte' => 'required',
             'descReporte' =>  'required',
             'id_coordinador' => 'required',                        
-            'id_instructor' => 'required'
+            'id_instructor' => 'required',
+            'id_aprendiz' => 'required'
         ];                      
     }
 
@@ -38,6 +39,7 @@ class ReporteEditRequest extends FormRequest
             'descReporte.required' => 'El asunto es requerido',
             'id_coordinador.required' => 'Este campo es requerido',
             'id_instructor.required' => 'Este campo es requerido',
+            'id_aprendiz.required' => 'Este campo es requerido',
         ];
     }
 }

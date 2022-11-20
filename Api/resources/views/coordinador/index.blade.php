@@ -68,7 +68,7 @@
                     <td>{{ $coordinador->correoMisena }}</td>
                     <td>{{ $coordinador->telefonoCoordinador }}</td>
                     <td>{{ $coordinador->coordinacions->nomCoordinacion}}</td>
-                    <td>{{ $coordinador->estados->nomEstado}}</td>
+                    <td>{{ $coordinador->estado}}</td>
                     <td>
                         <a href="{{url('/coordinador/'.$coordinador->id.'/edit')}}">
                             <button class="btn btn-outline-warning">Editar</button>

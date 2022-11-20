@@ -75,12 +75,12 @@
                 @enderror   
             </div>
             <br>
-            <div>  
-                <label for="correoMisena">Correo Misena</label>
+            <div>
+                <label for="id_user"> Correo Misena </label>
                 <div>
-                    <input type="email" name="correoMisena" id="correoMisena" value="{{ isset($coordinador->correoMisena)?$coordinador->correoMisena:''}}">
+                    <input type="text" name="id_user" id="id_user" value="{{ isset($coordinador-> id_user)?$coordinador-> id_user: '' }}">
                 </div>
-                @error('correoMisena')
+                @error('id_user')
                     <small>{{$message}}</small>
                 @enderror
             </div>
@@ -112,20 +112,21 @@
             </div>
             <br>
             <div>
-                <select class="custom-select" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="id_estados" id="id_estados" value="{{ isset($coordinador-> id_estados)?$coordinador-> id_estados: ''}}">
-                        @foreach ($estados as $e)
-                            <option value="{{ $e['id'] }}">
-                                {{ $e['nomEstado'] }}
-                            </option>
-                        @endforeach
-                    </select> 
+                <label for="estado"> Estado </label>
+                <div>
+                    <select name="estado" value="{{ isset($coordinador-> estado)?$coordinador-> estado: ''}}">
+                        <option> </option>
+                        <option name="estado" value="Activo">Activo</option>
+                        <option name="estado" value="Inactivo">Inactivo</option>
+                    </select>
                 </div>
-                @error('id_estados')
+                @error('estado')
                     <small>{{$message}}</small>
                 @enderror
             </div>
+            <br>
             <div>
-            <button type="submit" class="btn btn-primary" value="Guardar">Guardar</button>
+                <button type="submit" class="btn btn-primary" value="Guardar">Guardar</button>
             </div>
             </center>
         </div>

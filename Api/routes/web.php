@@ -18,7 +18,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EnviarExcusaController;
 use App\Http\Controllers\EnviarReporteController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\IInstructorController;
 
 
@@ -33,7 +32,7 @@ use App\Http\Controllers\IInstructorController;
 |
 */
 //----------------------------- Reporte PDF ----------------------------------------------------------//
-Route::get('reporte/pdf', [App\Http\Controllers\ReporteController::class, 'pdf'] )->name('reporte.pdf');
+Route::get('reporte/pdf/{id}', [App\Http\Controllers\ReporteController::class, 'pdf'] )->name('reporte.pdf');
 
 Route::resource('/index', IndexController::class)->middleware('auth');
 Route::resource('/reporte', ReporteController::class)->middleware('auth');
@@ -58,7 +57,6 @@ Route::resource('trimestre', TrimestreController::class)->middleware('auth');
 Route::resource('ficha', FichaController::class)->middleware('auth');
 Route::resource('aprendiz', AprendizController::class)->middleware('auth');
 Route::resource('instructor', InstructorController::class)->middleware('auth');
-Route::resource('estados', EstadoController::class)->middleware('auth');
 
 //---------------------------------- Login -----------------------------------
 
@@ -91,7 +89,6 @@ Route::get('/restablecer', function () {
 
 //------------------------------------ Carga masiva ---------------------------
 
-/* Route::post('import-list-excel', 'AprendizController@importExcel')->name('aprendiz.import.excel'); */
 
 //-------------------------------- Excuse mail ---------------------------------------//
 

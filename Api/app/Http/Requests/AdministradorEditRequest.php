@@ -30,7 +30,7 @@ class AdministradorEditRequest extends FormRequest
             'name' => 'required|min:5|max:16|alpha',
             'apellido' => 'required|min:3|max:20|alpha',
             'telefono' => 'unique:administradors,telefono,'.$this->administrador.'|required|numeric',
-            'email' => 'unique:administradors,email,'.$this->administrador.'required|email',
+            'id_user' => 'unique:administradors,email,'.$this->administrador.'required|email',
             'id_programa' => 'required'
         ];
     }
@@ -41,7 +41,7 @@ class AdministradorEditRequest extends FormRequest
             'name.required' => 'El nombre es obligatorio',
             'apellido.required' => 'El apellido es obligatorio',
             'telefono.required' => 'Este numero de telefono ya esta en uso',
-            'email.required' => 'Este correo ya esta en uso',
+            'id_user.required' => 'Este correo ya esta en uso',
             'id_programa.required' => 'Esta opción es requerida',
         ];
     }

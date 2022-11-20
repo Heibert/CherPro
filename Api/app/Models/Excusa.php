@@ -14,5 +14,10 @@ class Excusa extends Model
      public function asistencias(){
         return $this->belongsTo(Asistencia::class, 'id_asistencia');
     }
+                                  
+    // Relacion con instructor (1:M)
 
+    public function instructores(){
+        return $this->belongsTo(Instructor::class, 'id_instructor');
+    }
 }

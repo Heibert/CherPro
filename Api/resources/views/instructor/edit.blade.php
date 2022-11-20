@@ -72,11 +72,11 @@
             </div>
             <br>
             <div>
-                <label for="correoMisena"> Correo Misena </label>
+                <label for="id_user"> Correo Misena </label>
                 <div>
-                    <input type="text" name="correoMisena" id="correoMisena" value="{{ isset($instructor-> correoMisena)?$instructor-> correoMisena: '' }}">
+                    <input type="text" name="id_user" id="id_user" value="{{ isset($instructor-> id_user)?$instructor-> id_user: '' }}">
                 </div>
-                @error('correoMisena')
+                @error('id_user')
                     <small>{{$message}}</small>
                 @enderror
             </div>
@@ -108,21 +108,18 @@
             </div>
             <br>
             <div>
-                <label for="id_estados"> Estados </label>
-                <div>
-                    <select name="id_estados" id="id_programa" value="{{ isset($instructor-> id_estados)?$instructor-> id_estados: '' }}">
-                        @foreach ($estados as $e)
-                            <option value="{{ $e['id'] }}">
-                                {{ $e['nomEstado'] }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                @error('id_estados')
-                    <small>{{$message}}</small>
-                @enderror
+            <label for="estado"> Estado </label>
+            <div>
+                <select name="estado" value="{{isset($instructor-> estado)?$instructor-> estado: ''}}">
+                    <option> </option>
+                    <option name="estado" value="Activo">Activo</option>
+                    <option name="estado" value="Inactivo">Inactivo</option>
+                </select>
             </div>
-            <br>
+            @error('estado')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
             <div>
                 <input type="submit" value="Guardar">
             </div>
