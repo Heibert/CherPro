@@ -29,7 +29,7 @@ class InstructorEditRequest extends FormRequest
             'apellidoInst' => 'required',
             'tipoDoc' => 'required',
             'numDoc' => 'unique:instructores,numDoc,'.$this->instructor.'|required|numeric|max:15',
-            'correoMisena' => 'unique:instructores,correoMisena,'.$this->instructor.'|required',
+            'id_user' => 'unique:instructores,correoMisena,'.$this->instructor.'|required',
             'telefonoInst' => 'required|numeric',
             'id_programa' => 'required|numeric',
             'id_estados' => 'required'
@@ -45,8 +45,8 @@ class InstructorEditRequest extends FormRequest
             'numDoc.unique' => 'Este numero ya esta registrado',
             'numDoc.required' => 'Este campo es obligatorio',
             'numDoc.max' => 'Este campo tiene que ser maximo de 15 numeros',
-            'correoMisena.unique' => 'Este correo ya esta en uso',
-            'correoMisena.required' => 'Este campo es obligatorio',
+            'id_user.unique' => 'Este correo ya esta en uso',
+            'id_user.required' => 'Este campo es obligatorio',
             'telefonoInst.required' => 'Su telefono es obligatorio',
             'id_programa.required' => 'Este campo es obligatorio',
             'id_estados.required' => 'Opción obligatoria'

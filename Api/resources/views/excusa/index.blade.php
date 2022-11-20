@@ -43,11 +43,11 @@
     <table class="table table-light">
         <thead>
             <tr>
-                <th>#</th>     
+                <th>#</th>
+                <th>Destinatario</th>
                 <th>Fecha Excusa</th>
                 <th>Descripción Excusa</th>
                 <th>Archivo</th>
-                <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
@@ -55,14 +55,10 @@
             @foreach ($excusas as $ex)
             <tr>
                 <td>{{ $ex->id }}</td>
+                <td>{{ $ex->instructores->nombreInst}}</td>
                 <td>{{ $ex->fechaExcusa }}</td>
                 <td>{{ $ex->descExcusa }}</td>
                 <td>{{ $ex->archivo }}</td>
-                <td>
-                    <a href="{{url('/excusa/'.$ex->id.'/edit')}}">
-                        <button class="btn btn-outline-warning">Editar</button>
-                    </a> 
-                </td>
                 <br>
                 <td>
                     <form action="{{url('/excusa/'.$ex->id)}}" method="post">

@@ -28,10 +28,10 @@ class InstructorCreateRequest extends FormRequest
             'apellidoInst' => 'required',
             'tipoDoc' => 'required',
             'numDoc' => 'required|numeric|unique:instructores',
-            'correoMisena' => 'required|unique:instructores',
+            'id_user' => 'required|unique:instructores',
             'telefonoInst' => 'required|numeric',
             'id_programa' => 'required|numeric',
-            'id_estados' => 'required'
+            'estado' => 'required'
         ];
     }
 
@@ -43,11 +43,11 @@ class InstructorCreateRequest extends FormRequest
             'tipoDoc.required' => 'Este campo es requerido',
             'numDoc.unique' => 'Este numero ya esta registrado',
             'numDoc.required' => 'Este campo es obligatorio',
-            'correoMisena.unique' => 'Este correo ya esta en uso',
-            'correoMisena.required' => 'Este campo es obligatorio',
+            'id_user.unique' => 'Este correo ya esta en uso',
+            'id_user.required' => 'Este campo es obligatorio',
             'telefonoInst.required' => 'Su telefono es obligatorio',
             'id_programa.required' => 'Este campo es obligatorio',
-            'id_estados.required' => 'Opción obligatoria'
+            'estado.required' => 'Opción obligatoria'
         ];
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Excusa;
+use App\Models\Instructor;
 use Illuminate\Http\Request;
 use App\Http\Requests\ExcusaCreateRequest;
 use App\Http\Requests\ExcusaEditRequest;
@@ -16,10 +16,8 @@ class ExcusaController extends Controller
      */
     public function index()
     {
-        //
         $datos['excusas']= Excusa::paginate();
         return view('excusa.index', $datos);
-
     }
 
     /**
@@ -29,8 +27,8 @@ class ExcusaController extends Controller
      */
     public function create()
     {
-        //
-        return view('excusa.create');
+        $instruc = Instructor::all();
+        return view('excusa.create', compact('instruc'));
     }
 
     /**
@@ -41,7 +39,6 @@ class ExcusaController extends Controller
      */
     public function store(ExcusaCreateRequest $request)
     {
-        //
         $datosExcusa = $request->except('_token');
         Excusa::insert($datosExcusa);
         return redirect('excusa');
@@ -55,7 +52,6 @@ class ExcusaController extends Controller
      */
     public function show(Excusa $excusa)
     {
-        //
         $datos['excusas']= Excusa::paginate();
         return view('excusa.index', $datos);
     }
@@ -68,10 +64,7 @@ class ExcusaController extends Controller
      */
     public function edit($id)
     {
-        //
-        $excusa=Excusa::findOrFail($id);
-        return view('excusa.edit', compact('excusa'));
-
+        // No se puede editar una excusa
     }
 
     /**
@@ -81,15 +74,9 @@ class ExcusaController extends Controller
      * @param  \App\Models\Excusa  $excusa
      * @return \Illuminate\Http\Response
      */
-    public function update(ExcusaEditRequest $request, $id)
+    public function update($request)
     {
-        //
-        $datosExcusa = $request->except(['_token','_method']);
-        Excusa::where('id','=',$id)->update($datosExcusa);
-
-        $excusa=Excusa::findOrFail($id);
-        return view('excusa.edit', compact('excusa'));
-        
+        //No se puede mirar una excusa
     }
 
     /**
@@ -100,7 +87,6 @@ class ExcusaController extends Controller
      */
     public function destroy($id)
     {
-        //
         Excusa::destroy($id);
         return redirect('excusa');
     }

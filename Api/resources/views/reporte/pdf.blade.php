@@ -10,17 +10,16 @@
     <div>
         <div>
             <h2>Reporte de deserción</h2>
-            @foreach ($reporte as $repor)
+            
                 <p>
-                    El contenido de este reporte con numero de identificación {{$repor->id}}, informa que el
-                    instructor {{$repor->instructores->nombreInst}} solicita la {{$repor->descReporte}} de la ficha 2465903 el dia 
-                    {{$repor->fechaReporte}} a causa de la acumulación de inasistencias en la formación academica.
+                    El contenido de este reporte con numero de identificación {{$reporte->id}}, informa que el
+                    instructor {{$reporte->instructores->nombreInst}} solicita la {{$reporte->descReporte}} del aprendiz {{$reporte->aprendices->nombreAprend}}, de la ficha 2465903 el dia 
+                    {{$reporte->fechaReporte}} a causa de la acumulación de inasistencias en la formación academica.
                     <br>
                     <br>
-                    Firma el coordinador {{repor->coordinadores->nomCoordinador}}, perteneciente a la Coordinación de logistica. 
+                    Firma el coordinador {{$reporte->coordinadores->nomCoordinador}}, perteneciente a la Coordinación de logistica. 
                 </p>
-            @endforeach
-        </div>
+                    </div>
     </div>
 </body>
 </html>

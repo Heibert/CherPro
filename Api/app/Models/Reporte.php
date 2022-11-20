@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Aprendiz;
 
 class Reporte extends Model
 {
@@ -19,6 +20,10 @@ class Reporte extends Model
 
     public function coordinadores(){
         return $this->belongsTo(Coordinador::class, 'id_coordinador');
+    }
+
+    public function aprendices(){
+        return $this->belongsTo(Aprendiz::class, 'id_aprendiz');
     }
     
 }

@@ -58,7 +58,7 @@
                 <th>Eliminar</th>
             </tr>
         </thead>
-
+        
         <tbody>
             @foreach($aprendiz as $a)
             <tr>
@@ -67,11 +67,11 @@
                 <td>{{ $a->apelliAprend}}</td>
                 <td>{{ $a->tipoDoc}}</td>
                 <td>{{ $a->numDoc}}</td>
-                <td>{{ $a->correoMisena}}</td>
+                <td>{{ $a->users}}</td>
                 <td>{{ $a->correoAprend}}</td>
-                <td>{{ $a->telefonoAprend}}</td>
+                <td>{{ $a->telefonoAprend}}</td >
                 <td>{{ $a->fichas->numFicha}}</td>
-                <td>{{ $a->estados->nomEstado}}</td>
+                <td>{{ $a->estado}}</td>
                 <td>
                     <a href="{{url('/aprendiz/'.$a->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>
@@ -91,8 +91,6 @@
     </table>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
-
-
 @if (isset($errors) && $errors->any())
             <div class="alert-danger" role="alert">
               @foreach ($errors->all() as $error)
@@ -120,8 +118,6 @@
         <label for="btn-modal" class="cerrar-modal"></label>
     </div>
 </form>
-
-
 </body>
 </html>
 

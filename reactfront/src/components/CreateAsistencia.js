@@ -19,7 +19,7 @@ const CreateAsistencia = () => {
   const [idTematica, setidTematica] = useState("")
 
   const navigate = useNavigate()
-
+  
   const getAllTematicaAprendiz = async () => {
     const response = await axios.get(`${endpoint}/create`)
     setTematicas(response.data[0])
@@ -27,8 +27,7 @@ const CreateAsistencia = () => {
   }
   const Store = async (e) => {
     e.preventDefault()
-    const response = await axios.get(`${endpoint}/store`)
-    await axios.post(`${endpoint}/store`, {
+    await axios.post(`${endpoint}`, {
       fechaAsistencia: fechaAsistencia,
       id_ficha: Ficha,
       id_tematica: idTematica
@@ -37,31 +36,32 @@ const CreateAsistencia = () => {
         navigate('/')
       })
       .catch(function (error) {
+        console.log(error.response.data.message)
         setErroresAxio(error.response.data.errors)
         let errores = error.response.data.errors
-        console.log(errores)
-        if (errores.fechaAsistencia != undefined) {
-          document.getElementById("fechaError").classList.remove('d-none')
-        }
-        else {
-          document.getElementById("fechaError").classList.add('d-none')
-        }
-        if (errores.id_tematica != undefined) {
-          document.getElementById("tematicaError").classList.remove('d-none')
-        }
-        else {
-          document.getElementById("tematicaError").classList.add('d-none')
-        }
-        if (errores.ficha != undefined) {
-          document.getElementById("fichaError").classList.remove('d-none')
-        }
-        else {
-          document.getElementById("fichaError").classList.add('d-none')
+        if(errores != undefined){
+          if (errores.fechaAsistencia != undefined) {
+            document.getElementById("fechaError").classList.remove('d-none')
+          }
+          else {
+            document.getElementById("fechaError").classList.add('d-none')
+          }
+          if (errores.id_tematica != undefined) {
+            document.getElementById("tematicaError").classList.remove('d-none')
+          }
+          else {
+            document.getElementById("tematicaError").classList.add('d-none')
+          }
+          if (errores.id_ficha != undefined) {
+            document.getElementById("fichaError").classList.remove('d-none')
+          }
+          else {
+            document.getElementById("fichaError").classList.add('d-none')
+          }
         }
       })
   }
   var div = <div className="alert alert-danger"></div>
-console.log(erroresAxio)
   useEffect(() => {
     getAllTematicaAprendiz()
   }, [])
@@ -96,7 +96,7 @@ console.log(erroresAxio)
               value={fechaAsistencia}
               onChange={(e) => setfechaAsistencia(e.target.value)}
               type='date' />
-            <div className="alert alert-danger d-none" id="fechaError">{erroresAxio.fechaAsistencia}</div>
+            {/* <div className="alert alert-danger d-none" id="fechaError">{erroresAxio.fechaAsistencia}</div> */}
           </div>
         </div>
         <div className="row">
@@ -108,7 +108,7 @@ console.log(erroresAxio)
                 <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
               ))}
             </select>
-            <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.ficha}</div>
+            {/* <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.id_ficha}</div> */}
           </div>
         </div>
   <div className="row">
@@ -121,7 +121,7 @@ console.log(erroresAxio)
               <option key={Tematica.id} value={Tematica.id}>{Tematica.nombreTematica}</option>
             ))}
           </select>
-          <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div>
+          {/* <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div> */}
     </div>
   </div>
         <button type="submit" className="btn btn-primary mt-5 mb-3">Crear</button>
