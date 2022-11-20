@@ -75,12 +75,12 @@
                 @enderror   
             </div>
             <br>
-            <div>  
-                <label for="correoMisena">Correo Misena</label>
+            <div>
+                <label for="id_user"> Correo Misena </label>
                 <div>
-                    <input type="email" name="correoMisena" id="correoMisena" value="{{ isset($coordinador->correoMisena)?$coordinador->correoMisena:''}}">
+                    <input type="text" name="id_user" id="id_user" value="{{ isset($coordinador-> id_user)?$coordinador-> id_user: '' }}">
                 </div>
-                @error('correoMisena')
+                @error('id_user')
                     <small>{{$message}}</small>
                 @enderror
             </div>

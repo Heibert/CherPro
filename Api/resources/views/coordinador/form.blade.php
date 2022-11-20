@@ -69,14 +69,15 @@
             @enderror   
         </div>
         <div class="input-group mb-3 w-50">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="correoMisena">Correo Misena</label>
-  </div>
-  <input type="email" class="form-control" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="correoMisena" id="correoMisena" value="{{ isset($coordinador->correoMisena)?$coordinador->correoMisena:''}}">
+        <div>
+            <label for="id_user"> Correo Misena </label>
+            <div>
+                <input type="text" name="id_user" id="id_user" value="{{ isset($coordinador-> id_user)?$coordinador-> id_user: '' }}">
             </div>
-            @error('correoMisena')
+            @error('id_user')
                 <small>{{$message}}</small>
             @enderror
+        </div>
         <div class="input-group mb-3 w-50">
   <div class="input-group-prepend">
     <label class="input-group-text" for="telefonoCoordinador">Telefono</label>

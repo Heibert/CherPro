@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Instructor;
 use App\Models\Programa;
 use App\Models\Ficha;
+use App\Models\User;
 use App\Http\Requests\InstructorCreateRequest;
 use App\Http\Requests\InstructorEditRequest;
 use Illuminate\Http\Request;
@@ -29,8 +30,9 @@ class InstructorController extends Controller
      */
     public function create()
     {
+        $user = User::all();
         $programas = Programa::all();
-        return view('instructor.create', compact('programas'));
+        return view('instructor.create', compact('programas', 'user'));
     }
 
     /**
@@ -68,7 +70,8 @@ class InstructorController extends Controller
     {
         return view('instructor.edit')->with([
             'instructor' => Instructor::find($id),
-            'programas' => Programa::all()
+            'programas' => Programa::all(),
+            'user' => User::all()
         ]);
     }
 
@@ -86,7 +89,8 @@ class InstructorController extends Controller
 
         return redirect('instructor')->with([
             'instructor' => Instructor::find($id),
-            'programas' => Programa::find('id')
+            'programas' => Programa::find('id'),
+            'user' => User::find('id')
         ]);
     }
 

@@ -6,6 +6,7 @@ use App\Models\Coordinador;
 use App\Http\Requests\CoordinadorCreateRequest;
 use App\Http\Requests\CoordinadorEditRequest;
 use App\Models\Coordinacion;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CoordinadorController extends Controller
@@ -28,8 +29,9 @@ class CoordinadorController extends Controller
      */
     public function create()
     {
+        $user = User::all();
         $coordinaciones = Coordinacion::all();
-        return view('coordinador.create', compact('coordinaciones'));
+        return view('coordinador.create', compact('coordinaciones', 'user'));
     }
 
     /**
@@ -67,7 +69,8 @@ class CoordinadorController extends Controller
     {
         return view('coordinador.edit')->with([
             'coordinador' => Coordinador::find($id),
-            'coordinacion' => Coordinacion::all()
+            'coordinacion' => Coordinacion::all(),
+            'user' => User::all()
         ]); 
     }
 
@@ -85,7 +88,8 @@ class CoordinadorController extends Controller
 
         return redirect('coordinador')->with([
             'coordinador' => Coordinador::find($id),
-            'coordinacion' => Coordinacion::find('id')
+            'coordinacion' => Coordinacion::find('id'),
+            'user' => User::find('id')
         ]); 
     }
 

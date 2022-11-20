@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,10 +8,9 @@ class Coordinador extends Model
 {
     use HasFactory;
 
-
     // Relacion con coordinacion (1:1)
     
-     public function coordinacions(){
+    public function coordinacions(){
         return $this->belongsTo(Coordinacion::class, 'id_coordinacion');
     }
 
@@ -20,5 +18,9 @@ class Coordinador extends Model
     
     public function reportes(){
         return $this->hasMany(Reporte::class, 'id');
+    }
+
+    public function users(){
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

@@ -27,13 +27,10 @@ class ReporteController extends Controller
 
     //Generar reporte por pdf ***
 
-    public function pdf( $id)
+    public function pdf($id)
     {
         $reporte = Reporte::find($id);
-        //echo '<pre>';
-        //var_dump($reporte->id);
-        //echo '</pre>';
-       $pdf = PDF::loadView('reporte.pdf', ['reporte'=>$reporte]);
+        $pdf = PDF::loadView('reporte.pdf', ['reporte'=>$reporte]);
         return $pdf->stream();
     }
 

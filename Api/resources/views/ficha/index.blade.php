@@ -44,7 +44,6 @@
             <tr>
                 <th>#</th>
                 <th>Numero de ficha</th>
-                <th>Cantidad de aprendices</th>
                 <th>Instructor Encargado</th>
                 <th>Programa</th>
                 <th>Editar</th>
@@ -57,7 +56,6 @@
             <tr>
                 <td>{{ $f->id }}</td>
                 <td>{{ $f->numFicha }}</td>
-                <td>{{ $f->cantAprendiz }}</td>
                 <td>{{ $f->id_instructor}}</td>
                 <td>{{ $f->programas->nombrePrograma}}</td>
                 <td>

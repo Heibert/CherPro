@@ -72,11 +72,11 @@
             </div>
             <br>
             <div>
-                <label for="correoMisena"> Correo Misena </label>
+                <label for="id_user"> Correo Misena </label>
                 <div>
-                    <input type="text" name="correoMisena" id="correoMisena" value="{{ isset($instructor-> correoMisena)?$instructor-> correoMisena: '' }}">
+                    <input type="text" name="id_user" id="id_user" value="{{ isset($instructor-> id_user)?$instructor-> id_user: '' }}">
                 </div>
-                @error('correoMisena')
+                @error('id_user')
                     <small>{{$message}}</small>
                 @enderror
             </div>

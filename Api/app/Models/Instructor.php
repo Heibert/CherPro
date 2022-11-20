@@ -44,4 +44,8 @@ class Instructor extends Model
     {
         return $this->hasMany(Excusa::class, 'id');
     }
+
+    public function users(){
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

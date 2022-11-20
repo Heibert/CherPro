@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('apelliAprend');
             $table->char('tipoDoc');
             $table->integer('numDoc')->unique();
-            $table->string('correoMisena');
+            $table->unsignedBigInteger('id_user')->unique();
+            $table->foreign('id_user')->references('id')
+                                      ->on('users')
+                                      ->onDelete('cascade');
             $table->string('correoAprend')->unique();
             $table->integer('telefonoAprend');
             $table->foreignId('id_ficha')

@@ -66,7 +66,7 @@
                 <td>{{ $a->apelliAprend}}</td>
                 <td>{{ $a->tipoDoc}}</td>
                 <td>{{ $a->numDoc}}</td>
-                <td>{{ $a->correoMisena}}</td>
+                <td>{{ $a->users}}</td>
                 <td>{{ $a->correoAprend}}</td>
                 <td>{{ $a->telefonoAprend}}</td >
                 <td>{{ $a->fichas->numFicha}}</td>

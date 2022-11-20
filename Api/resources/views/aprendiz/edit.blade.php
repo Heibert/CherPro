@@ -72,14 +72,14 @@
             </div>
             <br>
             <div>
-                <label for="correoMisena"> Correo Misena </label>
-                <div>
-                    <input type="text" name="correoMisena" id="correoMisena" value="{{ isset($aprendiz-> correoMisena)?$aprendiz-> correoMisena: '' }}">
-                </div>
-                @error('correoMisena')
-                    <small>{{$message}}</small>
-                @enderror
+            <label for="id_user"> Correo Misena </label>
+            <div>
+                <input type="text" name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
             </div>
+            @error('id_user')
+                <small>{{$message}}</small>
+            @enderror
+        </div>
             <br>
             <div>
                 <label for="correoAprend"> Correo personal </label>

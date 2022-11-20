@@ -25,4 +25,8 @@ class Aprendiz extends Model
     public function reportes(){
         return $this->hasMany(Reporte::class, 'id');
     }
+
+    public function users(){
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

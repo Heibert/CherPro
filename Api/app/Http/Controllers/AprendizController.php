@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Aprendiz;
 use App\Models\Ficha; 
+use App\Models\User; 
 use App\Http\Requests\AprendizCreateRequest;
 use App\Http\Requests\AprendizEditRequest;
 use Illuminate\Http\Request;
@@ -28,8 +29,9 @@ class AprendizController extends Controller
      */
     public function create()
     {
+        $user = User::all();
         $fichas = Ficha::all();
-        return view('aprendiz.create', compact('fichas'));
+        return view('aprendiz.create', compact('fichas', 'user'));
     }
 
     /**
@@ -67,7 +69,8 @@ class AprendizController extends Controller
     {
         return view('aprendiz.edit')->with([
             'aprendiz' => Aprendiz::find($id),
-            'fichas' => Ficha::all()
+            'fichas' => Ficha::all(),
+            'user' => User::all()
         ]);
     }
 
@@ -85,7 +88,8 @@ class AprendizController extends Controller
 
         return redirect('aprendiz')->with([
             'aprendiz' => Aprendiz::find($id),
-            'fichas' => Ficha::find('id')
+            'fichas' => Ficha::find('id'),
+            'user' => User::find('id')
         ]);
     }
 

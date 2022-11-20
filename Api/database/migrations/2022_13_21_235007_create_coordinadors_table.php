@@ -19,11 +19,16 @@ return new class extends Migration
             $table->string('apeCoordinador');
             $table->char('tipoDoc');
             $table->integer('numDoc')->unique();
-            $table->string('correoMisena')->unique();
+            $table->unsignedBigInteger('id_user')->unique();
+            $table->foreign('id_user')->references('id')
+                                      ->on('users')
+                                      ->onDelete('cascade');
             $table->integer('telefonoCoordinador');
             $table->unsignedBigInteger('id_coordinacion')->unique();
-            $table->foreign('id_coordinacion')->references('id')->on('coordinacions')
-                                                ->onDelete('cascade');
+            $table->foreign('id_coordinacion')->references('id')
+                                              ->on('coordinacions')
+                                              ->onDelete('cascade');
+    
             $table->text('estado');
             $table->timestamps();
 
