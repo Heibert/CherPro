@@ -33,10 +33,14 @@
             @enderror
             <br>
             <br>
-            <div class="formulario__grupo" id="">
-                <div class="formulario__grupo-input">
-                    <a href="{{url ('restablecer')}}">¿Olvidaste tu contraseña?</a>
-                </div>
+            <div class="formulario__grupo">
+                @if (Route::has('password.request'))
+                    <div class="formulario__grupo-input">
+                        <a href="{{ route('password.request') }}">
+                            {{ __('¿Olvidaste tu contraseña?') }}
+                        </a>
+                    </div>
+                @endif
             </div>
 
             <div class="formulario__grupo formulario__grupo-btn-enviar">

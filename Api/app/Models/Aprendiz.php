@@ -10,6 +10,18 @@ class Aprendiz extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+    'nombreAprend',
+    'apelliAprend',
+    'tipoDoc',
+    'numDoc',
+    'correoMisena',
+    'correoAprend',
+    'telefonoAprend',
+    'id_ficha',
+    'id_estados'
+    ];
+
     // Relacion con ficha (m:1)
     protected $table = "aprendices";
     public function fichas(){

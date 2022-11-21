@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
         $u->apellido = 'admin';
         $u->telefono = '12345';
         $u->email = 'admin@gmail.com';
-        $u->password = 'admin';
-        $u->password_confirmation = 'admin';
+        $u->password = '12345';
+        $u->password_confirmation = '12345';
         $u->rol = 'admin';
         $u->save();
     }

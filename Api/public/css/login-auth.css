@@ -37,10 +37,6 @@ main{
     padding: 30px;
 }
 
-
-
-
-
 a{
 	text-decoration: none;
 }
@@ -48,10 +44,6 @@ li{
 	list-style: none;
 	margin: 10px;
 }
-
-
-
-
 
 .formulario {
 	display: grid;
@@ -135,3 +127,28 @@ li{
 }
 
 
+.recuperar-container{
+	width: 50%;
+	height: 400px;
+	background-color: #fff;
+	font-size: 12px;
+	
+}
+
+.message-recuperar{
+	width: 100%;
+	border-bottom: solid 1px #cccbcb;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+
+.recuperar-input{
+	width: 90%;
+	margin-right: 5%; margin-left: 5%;
+}
+
+.recuperar-button{
+	width: 90%;
+	margin-right: 5%; margin-left: 5%; margin-top: 10px;
+}
