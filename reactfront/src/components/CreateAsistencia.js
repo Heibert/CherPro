@@ -67,9 +67,9 @@ const CreateAsistencia = () => {
   }, [])
   return (
     <>
-    <nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="">
+    <nav className="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="">
         <img src='./Logo.png' class="d-inline-block align-top"/>
     </a>
     <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,8 +83,51 @@ const CreateAsistencia = () => {
     </ul>
     </div>
   </div>
-</nav>
-    <div>
+</nav><br></br>
+<section className="d-flex justify-content-center">
+    <div className="card col-sm-6 p-3 shadow-lg p-3 mb-5 bg-white rounded ">
+        <div className="mb-3">
+            <h4 className="text-center">Selecione una fecha expecifica</h4>
+        </div>
+        <div className="mb-2">
+            <form onSubmit={Store}>
+                <div classclassName="row mb-4">
+                  <label>Fecha</label>
+                  <input className="form-control" placeholder="Fecha" autoFocus
+                  min={fecha_ISOPasado}
+                  max={fecha_ISO}
+                  value={fechaAsistencia}
+                  onChange={(e) => setfechaAsistencia(e.target.value)}
+                  type='date' />
+                  {/* <div className="alert alert-danger d-none" id="fechaError">{erroresAxio.fechaAsistencia}</div> */}
+                </div>
+                <div className="row mb-4">
+                  <label>Ficha</label>
+                  <select type='select' onChange={(e) => setFicha(e.target.value)} className="form-control">
+                  <option value="">Selecciona una Ficha</option>
+                  {Fichas.map((Ficha) => (
+                  <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
+                  ))}</select>
+                  {/* <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.id_ficha}</div> */}
+                </div>
+                <div className="row mb-4">
+                  <label>Tematica</label>
+                  <select type='select' onChange={(e) => setidTematica(e.target.value)} className="form-control">
+                  <option value="">Selecciona una tematica</option>
+                  {Tematicas.map((Tematica) => (
+                  <option key={Tematica.id} value={Tematica.id}>{Tematica.nombreTematica}</option>
+                  ))}</select>
+                  {/* <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div> */}  
+                </div>
+                <div className="row mb-3">
+                <button type="submit" className="btn btn-primary">Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+    {/* <div>
       <h1 className="mt-3 mb-5">Selecione Una Fecha Expecifica</h1>
       <form onSubmit={Store}>
         <div className="row">
@@ -96,7 +139,7 @@ const CreateAsistencia = () => {
               value={fechaAsistencia}
               onChange={(e) => setfechaAsistencia(e.target.value)}
               type='date' />
-            {/* <div className="alert alert-danger d-none" id="fechaError">{erroresAxio.fechaAsistencia}</div> */}
+            <div className="alert alert-danger d-none" id="fechaError">{erroresAxio.fechaAsistencia}</div>
           </div>
         </div>
         <div className="row">
@@ -108,7 +151,7 @@ const CreateAsistencia = () => {
                 <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
               ))}
             </select>
-            {/* <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.id_ficha}</div> */}
+            <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.id_ficha}</div>
           </div>
         </div>
   <div className="row">
@@ -121,12 +164,12 @@ const CreateAsistencia = () => {
               <option key={Tematica.id} value={Tematica.id}>{Tematica.nombreTematica}</option>
             ))}
           </select>
-          {/* <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div> */}
+          <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div>
     </div>
   </div>
         <button type="submit" className="btn btn-primary mt-5 mb-3">Crear</button>
       </form>
-    </div></>
+    </div> */}</>
   )
 }
 export default CreateAsistencia
