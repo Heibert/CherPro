@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Aprendiz;
 use App\Models\Ficha;
-use App\Models\Estado;
+use App\Models\User;
+use App\Imports\AprendizImport;
 use App\Http\Requests\AprendizCreateRequest;
 use App\Http\Requests\AprendizEditRequest;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 //use Illuminate\Support\Facades\Validator;
-
 
 class AprendizController extends Controller
 {
@@ -31,10 +31,9 @@ class AprendizController extends Controller
      */
     public function create()
     {
-        //
-        $fichas = Ficha::all(); 
-        $estado = Estado::all();
-        return view('aprendiz.create', compact('fichas', 'estado'));
+        $user = User::all();
+        $fichas = Ficha::all();
+        return view('aprendiz.create', compact('fichas', 'user'));
     }
 
     /**
@@ -58,10 +57,8 @@ class AprendizController extends Controller
      */
     public function show(Aprendiz $aprendiz)
     {
-        
         $datos['aprendiz']=Aprendiz::paginate();
         return view('aprendiz.index', $datos);
-        
     }
 
     /**
@@ -75,7 +72,7 @@ class AprendizController extends Controller
         return view('aprendiz.edit')->with([
             'aprendiz' => Aprendiz::find($id),
             'fichas' => Ficha::all(),
-            'estados' => Estado::all()
+            'user' => User::all()
         ]);
     }
 
@@ -88,16 +85,14 @@ class AprendizController extends Controller
      */
     public function update(AprendizEditRequest $request, $id)
     {
-        
         $datosAprend = $request->except('_token','_method');
         Aprendiz::where('id', '=', $id)->update($datosAprend);
 
         return redirect('aprendiz')->with([
             'aprendiz' => Aprendiz::find($id),
             'fichas' => Ficha::find('id'),
-            'estados' => Estado::find('id')
+            'user' => User::find('id')
         ]);
-
     }
 
     /**
@@ -108,13 +103,15 @@ class AprendizController extends Controller
      */
     public function destroy($id)
     {       
-        //
         Aprendiz::destroy($id); 
         return redirect('aprendiz');
     }
-
-    public function importExcel(Request $request){
+    
+    public function import(Request $request){
         $file = $request->file('file');
-        
+        Excel::import(new AprendizImport, $file);
+
+        return redirect()->route('aprendiz.index')->with('success','aprendizes importadas con exito'); 
     }
+
 }

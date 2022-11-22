@@ -28,11 +28,11 @@ class AprendizCreateRequest extends FormRequest
             'apelliAprend' => 'required|min:3|max:20|alpha',
             'tipoDoc' => 'required',
             'numDoc' => 'required|numeric|unique:aprendices',
-            'correoMisena' => 'required',
+            'id_user' => 'required',
             'correoAprend' => 'required|unique:aprendices',
             'telefonoAprend' => 'required|numeric',
             'id_ficha' => 'required|numeric',
-            'id_estados' => 'required'
+            'estado' => 'required'
         ];
     }
         public function messages(){
@@ -42,11 +42,11 @@ class AprendizCreateRequest extends FormRequest
                 'apelliAprend.required' => 'El apellido es obligatorio',
                 'tipoDoc.required' => 'El tipo de documento es obligatorio',
                 'numDoc.required' => 'El número es requerido',
-                'correoMisena.required' => 'El correo es obligatorio',
+                'id_user.required' => 'El correo es obligatorio',
                 'correoAprend.required' => 'Su correo personal es requerido',
                 'telefonoAprend.required' => 'Este campo es requerido',
                 'id_ficha.required' => 'Esta opción es requerida',
-                'id_estados.required' => 'Opción obligatoria'
+                'estado.required' => 'Opción obligatoria'
             ];
         }
     }

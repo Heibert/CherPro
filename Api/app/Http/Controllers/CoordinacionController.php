@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 /* Heibert */
 use Illuminate\Http\Request;
 use App\Models\Coordinacion;
+use App\Imports\CoordinacionImport;
 use App\Http\Requests\CoordinacionCreateRequest;
 use App\Http\Requests\CoordinacionEditRequest;
 use Illuminate\Support\Facades\validator;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CoordinacionController extends Controller
 {
@@ -99,5 +101,12 @@ class CoordinacionController extends Controller
     {
         Coordinacion::destroy($id);
         return redirect('coordinacion');
+    }
+
+    public function import(Request $request){
+        $file = $request->file('file');
+        Excel::import(new CoordinacionImport, $file);
+
+        return redirect()->route('coordinacion.index')->with('success','Coordinaciones importadas con exito'); 
     }
 }

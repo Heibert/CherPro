@@ -1,7 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { Component, useEffect, useState } from 'react'
 import axios/* , { AxiosError } */ from 'axios'
 import { Link, useParams, useNavigate } from "react-router-dom";
 const endpoint = 'http://localhost:8000/api/asistencia'
+
+
+function change(){
+    var datos = (document.getElementById("busqueda").value)
+    console.log(datos)
+}
+function mostrarBus(){
+    if (datos == $busqueda) {
+        
+    } else {
+        
+    }
+}
+
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
     const [AsistenciasFechaDesc, setAsistenciasFechaDesc] = useState([])
@@ -365,31 +379,16 @@ const Lista = () => {
     </div>
   </div>
 </nav>
-
-<form className="">
-<div className="container-fluid row h1">
-  <div className="col">
-    <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-    <option selected>Selecione Ficha</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-    </select></div>
-    <div className="col">
-    <select className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-    <option selected>Selecione Ficha</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-    </select></div>
-    <div className="col">
-    <input className="form-control form-control-lg mb-3" type="search" placeholder="Buscar" aria-label="Search"/>
-    </div>
-    <div className="col">
-    <button className="btn-success btn btn-success-lg" type="submit">Buscar</button>
-    </div>
-    </div>
-  </form>
+        <div className='row'>
+            <input type="text" 
+                onChange={change} 
+                placeholder="Buscar" 
+                className='textfield' 
+                name='busqueda'
+                id='busqueda' 
+                />
+            <button type='button' className='btnBuscar'>{" "}</button>
+        </div>
         <div className='container-fluid'>
                 <div className="row">
                     <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {

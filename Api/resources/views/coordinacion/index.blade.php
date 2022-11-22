@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url('css/login.css')}}">
+    <link rel="stylesheet" href="{{ url('css/tarjeta.css')}}">
     @vite(['resources/css/app.css'])
     <title>Coordinaciones</title>
 </head>
@@ -72,8 +72,38 @@
             @endforeach
         </tbody>
     </table>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
+
+          @if (isset($errors) && $errors->any())
+            <div class="alert-danger" role="alert">
+              @foreach ($errors->all() as $error)
+              @endforeach
+            </div>
+            @endif
+<form action="{{route('coordinacion.import')}}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="boton-modal">
+        <label for="btn-modal">
+            Importar
+        </label>
+    </div>
+    <input type="checkbox" id="btn-modal">
+    <div class="container-modal">
+        <div class="content-modal">
+            <h2>IMPORTAR</h2>
+            <div class="contenido-modal">
+                <input type="file" class="" name="file">
+            </div>
+            <div class="btn-cerrar">
+                <button class="btn-importar">Importar</button>
+            </div>
+        </div>
+        <label for="btn-modal" class="cerrar-modal"></label>
+    </div>
+</form>
+
+
 
 </body>
 </html>

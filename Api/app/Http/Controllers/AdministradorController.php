@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Administrador;
 use App\Models\Programa;
+use App\Models\User;
 use App\Http\Requests\AdministradorCreateRequest;
 use App\Http\Requests\AdministradorEditRequest;
 
@@ -29,8 +30,9 @@ class AdministradorController extends Controller
      */
     public function create()
     {
+        $user = User::all();
         $programa = Programa::all();
-        return view ('administrador.create', compact('programa'));
+        return view ('administrador.create', compact('programa', 'user'));
     }
 
     /**
@@ -70,7 +72,8 @@ class AdministradorController extends Controller
         return view('administrador.edit')->with([
 
             'administradors' => Administrador::find($id),
-            'programa' => Programa::all()
+            'programa' => Programa::all(),
+            'user' => User::all()
         ]);
     }
 
@@ -88,7 +91,8 @@ class AdministradorController extends Controller
         
         return redirect('administrador')->with([
             'administradors' => Administrador::find($id),
-            'programa' => Programa::find('id')
+            'programa' => Programa::find('id'),
+            'user' => User::find('id')
         ]);
     }
 

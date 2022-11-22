@@ -21,6 +21,6 @@ class InstructorAuth
                 return $next($request);
             }
         }
-        return redirect()->to('/login');
+        return redirect()->to('/');
     }
 }

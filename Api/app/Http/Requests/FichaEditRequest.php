@@ -28,7 +28,6 @@ class FichaEditRequest extends FormRequest
         return [
 
             'numFicha' => 'unique:fichas,numFicha,'.$this->ficha.'|required|numeric',
-            'cantAprendiz' => 'required|numeric',
             'id_instructor' => 'required',
             'id_programa' => 'required',
         ];
@@ -38,7 +37,6 @@ class FichaEditRequest extends FormRequest
 
         return [
             'numFicha.unique' => 'Esta ficha ya existe',
-            'cantAprendiz.required' => 'La cantidad es requerida',
             'id_instructor.required' => 'Esta opción es requerida',
             'id_programa.required' => 'Esta opción es requerida'
         ];

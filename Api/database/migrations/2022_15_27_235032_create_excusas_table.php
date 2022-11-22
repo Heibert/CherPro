@@ -23,6 +23,11 @@ return new class extends Migration
                             ->constrained('asistencias')
                             ->cascadeOnUpdate()
                             ->onDelete('cascade');*/
+            $table->foreignId('id_instructor')
+                            ->nullable()
+                            ->constrained('instructores')
+                            ->cascadeOnUpdate()
+                            ->nullOnDelete();
             $table->string('archivo');
             $table->timestamps();
         });

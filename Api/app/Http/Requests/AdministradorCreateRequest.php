@@ -28,7 +28,7 @@ class AdministradorCreateRequest extends FormRequest
             'name' => 'required|min:5|max:16|alpha',
             'apellido' => 'required|min:3|max:20|alpha',
             'telefono' => 'required|numeric|unique:administradors',
-            'email' => 'required|unique:administradors',
+            'id_user' => 'required|unique:administradors',
             'id_programa' => 'required'
         ];
     }
@@ -39,7 +39,7 @@ class AdministradorCreateRequest extends FormRequest
             'name.required' => 'El nombre es obligatorio',
             'apellido.required' => 'El apellido es obligatorio',
             'telefono.required' => 'Este campo es requerido',
-            'email.required' => 'Su correo personal es requerido',
+            'id_user.required' => 'Su correo personal es requerido',
             'id_programa.required' => 'Esta opción es requerida',
         ];
     }

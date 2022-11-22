@@ -50,15 +50,14 @@
             <div class="input-group mb-3 w-50">
 <div class="input-group-prepend">
     <label class="input-group-text" for="tipoDoc">Tipo de documento</label>
-  </div>
-  <select class="custom-select" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="tipoDoc" id="tipoDoc" value="{{ isset($coordinador->tipoDoc)?$coordinador->tipoDoc:''}}">
-                    <option name="tipoDoc" value="CC">CC</option>
-                    <option name="tipoDoc" value="CI">TI</option>
-                </select>
-            </div>
-            @error('tipoDoc')
-                <small>{{$message}}</small>
-            @enderror <div>
+      </div>
+      <select class="custom-select" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="tipoDoc" id="tipoDoc" value="{{ isset($coordinador->tipoDoc)?$coordinador->tipoDoc:''}}">
+        <option name="tipoDoc" value="CC">CC</option>
+      </select>
+  @error('tipoDoc')
+    <small>{{$message}}</small>
+  @enderror
+  <br>
 <div class="input-group mb-3 w-50">
   <div class="input-group-prepend">
     <label class="input-group-text" for="numDoc">Número de documento</label>
@@ -70,14 +69,15 @@
             @enderror   
         </div>
         <div class="input-group mb-3 w-50">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="correoMisena">Correo Misena</label>
-  </div>
-  <input type="email" class="form-control" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="correoMisena" id="correoMisena" value="{{ isset($coordinador->correoMisena)?$coordinador->correoMisena:''}}">
+        <div>
+            <label for="id_user"> Correo Misena </label>
+            <div>
+                <input type="text" name="id_user" id="id_user" value="{{ isset($coordinador-> id_user)?$coordinador-> id_user: '' }}">
             </div>
-            @error('correoMisena')
+            @error('id_user')
                 <small>{{$message}}</small>
             @enderror
+        </div>
         <div class="input-group mb-3 w-50">
   <div class="input-group-prepend">
     <label class="input-group-text" for="telefonoCoordinador">Telefono</label>
@@ -103,23 +103,41 @@
                 <small>{{$message}}</small>
             @enderror
             <div>
-            <button type="submit" class="btn btn-primary" value="Guardar">Crear</button>
+            <br>
+            <div>
+                <label for="estado"> Estado </label>
+                <div>
+                    <select name="estado" value="{{ isset($coordinador-> estado)?$coordinador-> estado: ''}}">
+                        <option> </option>
+                        <option name="estado" value="Activo">Activo</option>
+                        <option name="estado" value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+                @error('estado')
+                    <small>{{$message}}</small>
+                @enderror
             </div>
             <br>
-            <select class="custom-select" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="id_estados" id="id_estados" value="{{ isset($coordinador-> id_estados)?$coordinador-> id_estados: ''}}">
-                    @foreach ($estados as $e)
-                        <option value="{{ $e['id'] }}">
-                            {{ $e['nomEstado'] }}
-                        </option>
-                    @endforeach
-                </select> 
-            </div>
-            @error('id_estados')
-                <small>{{$message}}</small>
-            @enderror
             <div>
-            <button type="submit" class="btn btn-primary" value="Guardar">Crear</button>
-            </div><br>
+                <label for="id_user"> Usuario </label>
+                <div>
+                    <select name="id_user" id="id_user" value="{{ isset($coordinador-> id_user)?$coordinador-> id_user: '' }}">
+                        @foreach ($user as $u)
+                            <option value="{{ $u['id'] }}">
+                                {{ $u['name'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <br>
+                    @error('id_user')
+                        <small>{{$message}}</small>
+                    @enderror
+                </div>
+            <br>
+            <div>
+            <div>
+              <button type="submit" class="btn btn-primary" value="Guardar">Crear</button>
+            </div>
         </center>
     </div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
