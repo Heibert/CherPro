@@ -8,9 +8,7 @@
     @vite(['resources/css/app.css'])<title>Crear reporte</title>
 </head>
 <body>
-    <div>
-        <center>
-            <nav class="navbar text-uppercase navbar-expand-md  bg-dark">
+            <nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
                 <div class="container-fluid">
                         <a class="navbar-brand" href="">
                             <img src="{{ url('img/logo.png')}}" class="d-inline-block align-top" alt="logo">
@@ -21,16 +19,14 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link navbar-brand text-white " aria-current="page" href="{{ url('reporte')}}"><i class="bi bi-unindent"> Atras</i></a>
+                            <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('reporte')}}"><i class="bi bi-unindent"> Atras</i></a>
                         </li>
 
                     </div>
                 </div>
             </nav>
-    </div>
         <br>
-    <div>
-        <center>
+    <!-- <div>
         <div>
             <label for="fechaReporte">Fecha</label>
                 <div>
@@ -102,8 +98,7 @@
         <div>
             <input type="submit" value="Guardar">
         </div>
-    </div>
-    </center>
+    </div> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 </body>

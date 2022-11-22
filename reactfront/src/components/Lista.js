@@ -8,13 +8,13 @@ function change(){
     var datos = (document.getElementById("busqueda").value)
     console.log(datos)
 }
-function mostrarBus(){
+/* function mostrarBus(){
     if (datos == $busqueda) {
         
     } else {
         
     }
-}
+} */
 
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
@@ -26,20 +26,23 @@ const Lista = () => {
     const [AsistenciasNombreDesc, setAsistenciasNombreDesc] = useState([])
     const [AsistenciaFichaAsc, setAsistenciaFichaAsc] = useState([])
     const [AsistenciaFichaDesc, setAsistenciaFichaDesc] = useState([])
-    const [NumFicha, setNumFicha] = useState()
-    const [fechaAsistencia, setfechaAsistencia] = useState('')
-    const [estadoAsistencia, setEstadoAsistencia] = useState('')
-    const [idAprendiz, setidAprendiz] = useState("")
 
     const EditAsistencia = () => {
+        const [Aprendices, setAprendices] = useState([])
+        const [Tematicas, setTematicas] = useState([])
         /* const [erroresAxio, setErroresAxio] = useState(""); */
+        const [fechaAsistencia, setfechaAsistencia] = useState('')
+        const [estadoAsistencia, setEstadoAsistencia] = useState('')
+        const [idAprendiz, setidAprendiz] = useState("")
+        const [idTematica, setidTematica] = useState("")
+        const { id } = useParams()
         const update = async (e) => {
             e.preventDefault()
             await axios.put('${endpoint}${id}', {
                 fechaAsistencia: fechaAsistencia,
                 estadoAsistencia: estadoAsistencia,
                 id_aprendiz: idAprendiz,
-                numFicha: NumFicha
+                id_tematica: idTematica
             })
         }
         useEffect(() => {
@@ -73,7 +76,7 @@ const Lista = () => {
         setAsistenciasNombreDesc(response.data[5])
         setAsistenciaFichaAsc(response.data[6])
         setAsistenciaFichaDesc(response.data[7])
-        console.log("Response: ", response.data)
+        console.log(response.data)
     }
 
     const up = "bi bi-caret-up-fill"
@@ -103,7 +106,6 @@ const Lista = () => {
             return (
                 AsistenciasFechaAsc.map((Asistencia, index) => (
                     <div className="container-fluid row h5" key={index}>
-                        
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
                         <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
@@ -193,11 +195,11 @@ const Lista = () => {
                 }
             })
 
-            /* --------------------------------------------------------------------------------------- */
+            /*  */
             return (
                 AsistenciaFichaDesc.map((Asistencia, index) => (
                     <div className='row h5' key={index}>
-                        <input type="number" placeholder={Asistencia.numFicha} onChange={(e) => {setfechaAsistencia(e.target.value)}} id={"F"+Asistencia.id_aprendiz} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
                         <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
@@ -205,7 +207,7 @@ const Lista = () => {
                 ))
             )
         }
-        /*  -------------------------------------------------------------------------------------------*/
+        /*  */
         if (OrdenAsistencia == "NombreAsc") {
             AsistenciasNombreAsc.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
@@ -379,15 +381,29 @@ const Lista = () => {
     </div>
   </div>
 </nav>
-        <div className='row'>
+        <div className='input-group mb-3 mt-3'>
+        <div class="input-group-prepend">
+        <span class="input-group-text " id="basic-addon1"><i class="bi bi-search"></i></span>
+        </div>
             <input type="text" 
                 onChange={change} 
-                placeholder="Buscar" 
-                className='textfield' 
+                placeholder="Buscar aprendiz" 
+                className='textfield form-control' 
                 name='busqueda'
                 id='busqueda' 
                 />
-            <button type='button' className='btnBuscar'>{" "}</button>
+            <select className="form-select form-control" aria-label=".form-select-lg example">
+            <option selected>Selecione Ficha</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            </select>
+        {/* <div className="col">
+        <select type='select' onChange={(e) => setFicha(e.target.value)} className="form-control">
+                  <option value="" >Selecciona una Ficha</option>
+                  {Fichas.map((Ficha) => (
+                  <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
+                  ))}</select></div> */}
         </div>
         <div className='container-fluid'>
                 <div className="row">

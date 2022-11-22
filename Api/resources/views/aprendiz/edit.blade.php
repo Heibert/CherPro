@@ -28,133 +28,110 @@
     </ul>
     </div>
   </div>
-</nav>
-        <div>
-            <center>
-            <div>
-                <label for="nombreAprend" > Nombre del Aprendiz </label>
-                <div>
-                    <input type="text" name="nombreAprend" id="nombreAprend" value="{{ isset($aprendiz-> nombreAprend)?$aprendiz-> nombreAprend: '' }}"> 
-                </div>
-                @error('nombreAprend') 
-                    <small> {{$message}} </small> 
-                @enderror
-            </div>
-            <br>
-            <div>
-                <label for="apelliAprend"> Apellido del Aprendiz </label>
-                <div>
-                    <input type="text" name="apelliAprend" id="apelliAprend" value="{{ isset($aprendiz-> apelliAprend)?$aprendiz-> apelliAprend: '' }}">
-                </div>
-                @error('apelliAprend') 
-                    <small> {{$message}} </small>
-                @enderror
-            </div>
-            <br>
-            <div>
-                <label for="tipoDoc"> Tipo de documento </label>
-                <div>
-                    <input type="text" name="tipoDoc"  id="tipoDoc" value="{{ isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: '' }}">
-                </div>
-                @error('tipoDoc')
-                    <small>{{$message}}</small>
-                @enderror
-            </div>
-            <br>
-            <div>
-                <label for="numDoc"> Número de documento </label>
-                <div>
-                    <input type="number" name="numDoc"  id="numDoc" value="{{ isset($aprendiz-> numDoc)?$aprendiz-> numDoc: '' }}">
-                </div>
-                @error('numDoc')
-                    <small>{{$message}}</small>
-                @enderror
-            </div>
-            <br>
-            <div>
-            <label for="id_user"> Correo Misena </label>
-            <div>
-                <input type="text" name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
-            </div>
-            @error('id_user')
-                <small>{{$message}}</small>
-            @enderror
+</nav><br> 
+<section class="d-flex justify-content-center">
+    <div class="card col-sm-6 p-3 shadow-lg p-3 mb-5 bg-white rounded ">
+        <div class="mb-3">
+            <h4 class="text-center">Editar aprendiz</h4>
         </div>
-            <br>
-            <div>
+        <div class="mb-2">
+            <form action="">
+                <div class="row mb-3 mx-auto">
+                <label for="nombreAprend" > Nombre del Aprendiz </label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="nombreAprend" id="nombreAprend" value="{{ isset($aprendiz-> nombreAprend)?$aprendiz-> nombreAprend: '' }}">
+                @error('nombreAprend') 
+                <small> {{$message}} </small> 
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="apelliAprend"> Apellido del Aprendiz </label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="apelliAprend" id="apelliAprend" value="{{ isset($aprendiz-> apelliAprend)?$aprendiz-> apelliAprend: '' }}">
+                @error('apelliAprend') 
+                <small> {{$message}} </small>
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="tipoDoc"> Tipo de documento </label>
+                <select class="from-control rounded" name="tipoDoc">
+                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">TI</option>
+                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">CC</option>
+                </select>
+                @error('tipoDoc')
+                <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="numDoc"> Número de documento </label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="numDoc"  id="numDoc" value="{{ isset($aprendiz-> numDoc)?$aprendiz-> numDoc: '' }}">
+                @error('numDoc')
+                <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="id_user"> Correo Misena </label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
+                @error('id_user')
+                <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
                 <label for="correoAprend"> Correo personal </label>
-                <div>
-                    <input type="text" name="correoAprend" id="correoAprend" value="{{ isset($aprendiz-> correoAprend)?$aprendiz-> correoAprend: '' }}">
-                </div>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="correoAprend" id="correoAprend" value="{{ isset($aprendiz-> correoAprend)?$aprendiz-> correoAprend: '' }}">
                 @error('correoAprend')
-                    <small>{{$message}}</small>
+                <small>{{$message}}</small>
                 @enderror
-            </div>
-            <br>
-            <div>
+                </div>
+                <div class="row mb-3 mx-auto">
                 <label for="telefonoAprend"> Telefono </label>
-                <div>
-                    <input type="text" name="telefonoAprend" id="telefonoAprend" value="{{ isset($aprendiz-> telefonoAprend)?$aprendiz-> telefonoAprend: '' }}">
-                </div>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="telefonoAprend" id="telefonoAprend" value="{{ isset($aprendiz-> telefonoAprend)?$aprendiz-> telefonoAprend: '' }}">
                 @error('telefonoAprend')
+                <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="id_ficha">Ficha</label>
+                <select class="from-control rounded" name="id_ficha" id="id_ficha" value="{{ isset($aprendiz-> id_ficha)?$aprendiz-> id_ficha: '' }}">
+                    @foreach ($fichas as $ficha)
+                        <option value="{{ $ficha['id'] }}">
+                            {{ $ficha['numFicha'] }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_ficha')
                     <small>{{$message}}</small>
                 @enderror
-            </div>
-            <br>
-            <div>
-                <label for="id_ficha"> Fichas </label>
-                <div>
-                    <select name="id_ficha" id="id_ficha" value="{{ isset($aprendiz-> id_ficha)?$aprendiz-> id_ficha: '' }}">
-                        @foreach ($fichas as $ficha)
-                            <option value="{{ $ficha['id'] }}">
-                                {{ $ficha['numFicha'] }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <br>
-                    @error('id_ficha')
-                        <small>{{$message}}</small>
-                    @enderror
                 </div>
-            </div>
-            <br>
-            <div>
+                <div class="row mb-3 mx-auto">
                 <label for="estado"> Estado </label>
-                <div>
-                    <select name="estado" value="{{isset($aprendiz-> estado)?$aprendiz-> estado: ''}}">
-                        <option> </option>
+                <select class="from-control rounded" name="estado" value="{{isset($aprendiz-> estado)?$aprendiz-> estado: ''}}">
                         <option name="estado" value="En formacion">En formación</option>
                         <option name="estado" value="Desertado">Desertado</option>
                         <option name="estado" value="Proceso de formación aplazado">En aplazamiento</option>
                     </select>
-                </div>
                 @error('estado')
                     <small>{{$message}}</small>
                 @enderror
-            </div>
-            <br>
-            <div>
-                <label for="id_user"> Usuario </label>
-                <div>
-                    <select name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
-                        @foreach ($user as $u)
-                            <option value="{{ $u['id'] }}">
-                                {{ $u['name'] }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <br>
-                    @error('id_user')
-                        <small>{{$message}}</small>
-                    @enderror
                 </div>
-            <br>
-            <div>
-                <input type="submit" value="Guardar">
-            </div>
-            </center>
+                <div class="row mb-3 mx-auto">
+                <label for="id_user"> Usuario </label>
+                <select class="from-control rounded" name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
+                    @foreach ($user as $u)
+                        <option value="{{ $u['id'] }}">
+                            {{ $u['name'] }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_user')
+                    <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-2 mx-auto">
+                    <input class="btn btn-primary" type="submit" value="Guardar">
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
+</section>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 

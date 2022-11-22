@@ -29,24 +29,28 @@
     </ul>
     </div>
   </div>
-</nav>
-        <center>
-        <div class="border border-dark w-50 opacity-75" style="background-color: orangered ;">
-        <form><br>
-        @error('nomCoordinacion')
+</nav><br>
+<section class="d-flex justify-content-center">
+    <div class="card col-sm-6 p-3 shadow-lg p-3 mb-5 bg-white rounded ">
+        <div class="mb-3">
+            <h4 class="text-center">Editar Coordinacio</h4>
+        </div>
+        <div class="mb-2">
+            <form action="">
+                <div class="row mb-3 mx-auto">
+                <label for="nomCoordinacion">Coordinacion</label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="nomCoordinacion" id="nomCoordinacion" value="{{ isset($coordinacion-> nomCoordinacion)?$coordinacion-> nomCoordinacion: '' }}">
+                @error('numTrimestre')
                 <small>{{$message}}</small>
-        @enderror
-        <div class="input-group mb-3 w-50">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="nomCoordinacion">Coordinacion</label>
-  </div>
-  <input type="text" class="form-control" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="nomCoordinacion" id="nomCoordinacion" value="{{ isset($coordinacion-> nomCoordinacion)?$coordinacion-> nomCoordinacion: '' }}">
-</div>
-                <div>
-            <button type="submit" class="btn btn-primary" value="Guardar">Guardar</button>
-        </div><br>
-            </center>
-        </div></from>
+                @enderror
+                </div>
+                <div class="row mb-2 mx-auto">
+                    <input class="btn btn-primary" type="submit" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 

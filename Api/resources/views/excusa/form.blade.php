@@ -27,7 +27,62 @@
     </div>
   </div>
 </nav>
-    <div>
+<br>
+<section class="d-flex justify-content-center">
+    <div class="card col-sm-6 p-3 shadow-lg p-3 mb-5 bg-white rounded ">
+        <div class="mb-3">
+            <h4 class="text-center">Nueva excusa</h4>
+        </div>
+        <div class="mb-2">
+            <form action="{{ route('enviar.store') }}">
+                <div class="row mb-3 mx-auto">
+                <label for="id_instructor"> Destinatario </label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="id_instructor" id="id_instructor" value="{{ isset($excusa-> id_instructor)?$excusa-> id_instructor: '' }}">
+                    @foreach ($instruc as $ins)
+                        <option value="{{ $ins['id'] }}">
+                            {{ $ins['correoMisena'] }}
+                        </option>
+                    @endforeach
+                </select> 
+            @error('id_instructor')
+                <small>{{$message}}</small>
+            @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="fechaExcusa"> Fecha </label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="date"  value="{{ isset ($excusa->fechaExcusa)?$excusa->fechaExcusa:''}}" name="fechaExcusa" id="fechaExcusa">
+                    @error('fechaExcusa') 
+                        <small>{{$message}}</small>
+                    @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="descExcusa">Asunto</label>
+                <textarea class="from-control rounded" value="{{ isset ($excusa->descExcusa)?$excusa->descExcusa:''}}" name="descExcusa" id="descExcusa"></textarea>
+                    @error('descExcusa') 
+                        <small>{{$message}}</small>
+                    @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="archivo"> Adjuntar validacion de la excusa</label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="file" value="{{ isset($excusa->archivo)?$excusa->archivo:''}}" name="archivo" id="archivo">
+                    @error('archivo') 
+                        <small>{{$message}}</small>
+                    @enderror
+                </div>
+                
+                <div class="row mb-2 mx-auto">
+                    <input class="btn btn-primary" type="submit" value="Guardar">
+                </div>
+            </form>
+            @if(session('info'))
+            <script>
+            alert("{{session('info')}}");
+            </script>
+            @endif 
+        </div>
+    </div>
+</section>
+    <!-- <div>
         <center>
         <h3>Enviar excusa</h3>
         <form action="{{ route('enviar.store') }}">
@@ -88,7 +143,7 @@
         <script>
             alert("{{session('info')}}");
         </script>
-    @endif 
+    @endif  -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 

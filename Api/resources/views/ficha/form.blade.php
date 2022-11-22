@@ -25,8 +25,55 @@
     </ul>
     </div>
   </div>
-</nav>
-    <div>
+</nav><br>
+<section class="d-flex justify-content-center">
+    <div class="card col-sm-6 p-3 shadow-lg p-3 mb-5 bg-white rounded ">
+        <div class="mb-3">
+            <h4 class="text-center">Nueva ficha</h4>
+        </div>
+        <div class="mb-2">
+            <form action="">
+                <div class="row mb-3 mx-auto">
+                <label for="numFicha"> Numero de ficha </label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="number" name="numFicha" id="numFicha" value="{{ isset($ficha-> numFicha)?$ficha-> numFicha: '' }}">
+                @error('numFicha')
+                <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="id_instructor"> Instructor encargado </label>
+                <select class="from-control rounded" name="id_instructor" id="id_instructor" value="{{ isset($ficha-> id_instructor)?$ficha-> id_instructor: '' }}">
+                    @foreach ($instructors as $instructor)
+                        <option value="{{ $instructor['id'] }}">
+                            {{ $instructor['nombreInst'] }}
+                        </option>
+                    @endforeach
+                </select> 
+                @error('id_instructor')
+                <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="id_programa"> Programa </label>   
+                <select class="from-control rounded" name="id_programa" id="id_programa" value="{{ isset($ficha-> id_programa)?$ficha-> id_programa: '' }}">
+                    @foreach ($programas as $pa)
+                        <option value="{{ $pa['id'] }}">
+                            {{ $pa['nombrePrograma'] }}
+                        </option>
+                    @endforeach
+                </select> 
+                @error('id_programa')
+                    <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-2 mx-auto">
+                    <input class="btn btn-primary" type="submit" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+    <!-- <div>
         <center>
         <div>
             <label for="numFicha"> Numero de ficha </label>
@@ -74,7 +121,7 @@
             <input type="submit" value="Guardar">
         </div>
         </center>
-    </div>
+    </div> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 

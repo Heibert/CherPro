@@ -34,14 +34,14 @@
         </div>
         <div class="mb-2">
             <form action="">
-                <div class="row mb-3">
+                <div class="row mb-3 mx-auto">
                 <label for="numTrimestre">Numero</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="numTrimestre" id="numTrimestre" value="{{ isset($trimestre-> numTrimestre)?$trimestre-> numTrimestre: '' }}">
                 @error('numTrimestre')
                 <small>{{$message}}</small>
                 @enderror
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-3 mx-auto">
                 <label for="id_ficha">Seleccionar ficha</label>
                 <select class="from-control rounded" name="id_ficha" id="id_ficha" value="{{ isset($trimestre-> id_ficha)?$trimestre-> id_ficha: '' }}">
                     @foreach ($fichas as $ficha)
@@ -54,7 +54,7 @@
                 <small>{{$message}}</small>
                 @enderror
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-3 mx-auto">
                 <label for="id_tematica"> Seleccionar tematicas </label>   
                 <select class="from-control rounded" name="id_tematica" id="id_tematica" value="{{ isset($trimestre-> id_tematica)?$trimestre-> id_tematica: '' }}">
                     @foreach ($tematica as $tema)
@@ -64,7 +64,7 @@
                     @endforeach
                 </select>  
                 </div>
-                <div class="row mb-2">
+                <div class="row mb-2 mx-auto">
                     <input class="btn btn-primary" type="submit" value="Guardar">
                 </div>
             </form>

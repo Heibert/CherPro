@@ -28,87 +28,70 @@
     </ul>
     </div>
   </div>
-</nav>
-        <div>
-            <center>
-            <div>
+</nav><br>
+<section class="d-flex justify-content-center">
+    <div class="card col-sm-6 p-3 shadow-lg p-3 mb-5 bg-white rounded ">
+        <div class="mb-3">
+            <h4 class="text-center">Nuevo administrador</h4>
+        </div>
+        <div class="mb-2">
+            <form action="">
+                <div class="row mb-3 mx-auto">
                 <label for="name">Nombre</label>
-                <div>
-                    <input type="text" name="name" id="name" value="{{ isset($administradors-> name)?$administradors-> name: '' }}">
-                </div>
-                @error('name') 
-                    <small>{{$message}}</small>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="name" id="name" value="{{ isset($administradors-> name)?$administradors-> name: '' }}">
+                 @error('name') 
+                <small>{{$message}}</small>
                 @enderror
-            </div>
-            <br>
-            <div>
+                </div>
+                <div class="row mb-3 mx-auto">
                 <label for="apellido">Apellido</label>
-                <div>
-                    <input type="text" name="apellido" id="apellido" value="{{ isset($administradors-> apellido)?$administradors-> apellido: '' }}">
-                </div>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="apellido" id="apellido" value="{{ isset($administradors-> apellido)?$administradors-> apellido: '' }}">
                 @error('apellido')
-                        <small>{{$message}}</small>
+                    <small>{{$message}}</small>
                 @enderror      
-            </div>
-            <br>
-            <div>
+                </div>
+                <div class="row mb-3 mx-auto">
                 <label for="telefono">Telefono</label>
-                <div>
-                    <input type="text" name="telefono" id="telefono" value="{{ isset($administradors-> telefono)?$administradors-> telefono: '' }}">
-                </div>      
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="telefono" id="telefono" value="{{ isset($administradors-> telefono)?$administradors-> telefono: '' }}">
                 @error('telefono')
-                    <small>{{$message}}</small>
+                <small>{{$message}}</small>
                 @enderror
-            </div>
-            <br>
-            <div>
+                </div>
+                <div class="row mb-3 mx-auto">
                 <label for="email">Correo</label>
-                <div>
-                    <input type="text" name="email" id="email" value="{{ isset($administradors-> email)?$administradors-> email: '' }}">
-                </div>
+                <input class="from-control rounded" name="email" id="email" value="{{ isset($administradors-> email)?$administradors-> email: '' }}">
                 @error('email')
-                    <small>{{$message}}</small>
+                <small>{{$message}}</small>
                 @enderror
-            </div>
-            <br>
-            <div>
-                <label for="id_programa"> Programas </label>
-                <div>
-                    <select name="id_programa" id="id_programa" value="{{ isset($administradors-> id_programa)?$administradors-> id_programa: '' }}">
-                            @foreach ($programa as $p)
-                                <option value="{{ $p['id'] }}">
-                                    {{ $p['nombrePrograma'] }}
-                                </option>
-                            @endforeach
-                    </select>
-                    @error('id_programa')
-                        <small>{{$message}}</small>
-                    @enderror
+                </select>
+                @error('id_programa')
+                <small>{{$message}}</small>
+                @enderror
                 </div>
-            </div>
-            <br>
-            <div>
-            <label for="id_user"> Usuario </label>
-                <div>
-                    <select name="id_user" id="id_user" value="{{ isset($administradors-> id_user)?$administradors-> id_user: '' }}">
+                <div class="row mb-3 mx-auto">
+                <label for="id_user"> Usuario </label>
+                <select class="from-control rounded"  name="id_user" id="id_user" value="{{ isset($administradors-> id_user)?$administradors-> id_user: '' }}">
                         @foreach ($user as $u)
                             <option value="{{ $u['id'] }}">
                                 {{ $u['name'] }}
                             </option>
                         @endforeach
                     </select>
-                    <br>
+                    @error('id_user')
+                        <small>{{$message}}</small>
+                    @enderror
+                    </select>
                     @error('id_user')
                         <small>{{$message}}</small>
                     @enderror
                 </div>
-            <br>
-            <div>
-                <input type="submit" value="Guardar">
-            </div>
-            </center>
+                <div class="row mb-2 mx-auto">
+                    <input class="btn btn-primary" type="submit" value="Guardar">
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
+</section>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 

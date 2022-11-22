@@ -24,7 +24,6 @@ class UserSeeder extends Seeder
         $u->password_confirmation = '12345';
         $u->rol = 'admin';
         $u->save();
-        User::factory(8)->create();
     }
        
 }

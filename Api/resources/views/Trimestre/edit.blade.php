@@ -31,53 +31,50 @@
         </div>
         </nav>
         <br>
-        <div>
-            <center>
-            <div>
-                <label for="numTrimestre">Numero</label>
-                <div>
-                    <input type="text" name="numTrimestre" id="numTrimestre" value="{{ isset($trimestre-> numTrimestre)?$trimestre-> numTrimestre: '' }}"><br>
-                </div>
-                @error('numTrimestre')
-                    <small>{{$message}}</small>
-                @enderror
-            </div>
-            <br>
-            <div>
-                <label for="id_ficha">Ficha</label>
-                <div>
-                    <select name="id_ficha" id="id_ficha" value="{{ isset($trimestre-> id_ficha)?$trimestre-> id_ficha: '' }}">
-                        @foreach ($fichas as $ficha)
-                            <option value="{{ $ficha['id'] }}">
-                                {{ $ficha['numFicha'] }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-                @error('id_ficha')
-                    <small>{{$message}}</small>
-                @enderror
-            </div>
-            <br>
-            <div>
-                <label for="id_tematica"> Tematica </label>
-                <div>
-                    <select name="id_tematica" id="id_tematica" value="{{ isset($trimestre-> id_tematica)?$trimestre-> id_tematica: '' }}">
-                        @foreach ($tematica as $tema)
-                            <option value="{{ $tema['id'] }}">
-                                {{ $tema['nombreTematica'] }}
-                            </option>
-                        @endforeach
-                    </select> 
-                </div>
-            </div>
-            <br>
-            <div>
-                <input type="submit" value="Guardar">
-            </div>
-            </center>
+        <section class="d-flex justify-content-center">
+    <div class="card col-sm-6 p-3 shadow-lg p-3 mb-5 bg-white rounded ">
+        <div class="mb-3">
+            <h4 class="text-center">Editar trimestre</h4>
         </div>
-    </form>
+        <div class="mb-2">
+            <form action="">
+                <div class="row mb-3 mx-auto">
+                <label for="numTrimestre">Numero</label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="numTrimestre" id="numTrimestre" value="{{ isset($trimestre-> numTrimestre)?$trimestre-> numTrimestre: '' }}">
+                @error('numTrimestre')
+                <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="id_ficha">Seleccionar ficha</label>
+                <select class="from-control rounded" name="id_ficha" id="id_ficha" value="{{ isset($trimestre-> id_ficha)?$trimestre-> id_ficha: '' }}">
+                    @foreach ($fichas as $ficha)
+                        <option value="{{ $ficha['id'] }}">
+                            {{ $ficha['numFicha'] }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_ficha')
+                <small>{{$message}}</small>
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="id_tematica"> Seleccionar tematicas </label>   
+                <select class="from-control rounded" name="id_tematica" id="id_tematica" value="{{ isset($trimestre-> id_tematica)?$trimestre-> id_tematica: '' }}">
+                    @foreach ($tematica as $tema)
+                        <option value="{{ $tema['id'] }}">
+                            {{ $tema['nombreTematica'] }}
+                        </option>
+                    @endforeach
+                </select>  
+                </div>
+                <div class="row mb-2 mx-auto">
+                    <input class="btn btn-primary" type="submit" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 

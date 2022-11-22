@@ -39,6 +39,9 @@
 </nav>
     @section('title', 'home')
     @section('content')
+
+    
+
     @endsection
     
 </body>
