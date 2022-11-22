@@ -60,7 +60,11 @@ class AsistenciaController extends Controller
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->orderBy('numFicha', 'Asc')
             ->orderBy('nombreAprend', 'desc')->get();
-        return  array($asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc, $fichaAsc, $fichaDesc);
+        $busqueda = DB::table('asistencias')
+            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
+            ->join('tematicas','tematicas.id','=', 'asistencias.id_tematica')->get();
+        return  array($busqueda, $asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc, $fichaAsc, $fichaDesc);
     }
 
     /**
