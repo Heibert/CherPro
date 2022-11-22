@@ -8,13 +8,13 @@ function change(){
     var datos = (document.getElementById("busqueda").value)
     console.log(datos)
 }
-function mostrarBus(){
+/* function mostrarBus(){
     if (datos == $busqueda) {
         
     } else {
         
     }
-}
+} */
 
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
@@ -381,15 +381,29 @@ const Lista = () => {
     </div>
   </div>
 </nav>
-        <div className='row'>
+        <div className='input-group mb-3 mt-3'>
+        <div class="input-group-prepend">
+        <span class="input-group-text " id="basic-addon1"><i class="bi bi-search"></i></span>
+        </div>
             <input type="text" 
                 onChange={change} 
-                placeholder="Buscar" 
-                className='textfield' 
+                placeholder="Buscar aprendiz" 
+                className='textfield form-control' 
                 name='busqueda'
                 id='busqueda' 
                 />
-            <button type='button' className='btnBuscar'>{" "}</button>
+            <select className="form-select form-control" aria-label=".form-select-lg example">
+            <option selected>Selecione Ficha</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+            </select>
+        {/* <div className="col">
+        <select type='select' onChange={(e) => setFicha(e.target.value)} className="form-control">
+                  <option value="" >Selecciona una Ficha</option>
+                  {Fichas.map((Ficha) => (
+                  <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
+                  ))}</select></div> */}
         </div>
         <div className='container-fluid'>
                 <div className="row">
