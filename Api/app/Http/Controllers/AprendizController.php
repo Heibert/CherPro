@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Aprendiz;
 use App\Models\Ficha;
-use App\Models\Estado;
+use App\Models\User;
 use App\Imports\AprendizImport;
 use App\Http\Requests\AprendizCreateRequest;
 use App\Http\Requests\AprendizEditRequest;
@@ -106,6 +106,7 @@ class AprendizController extends Controller
         Aprendiz::destroy($id); 
         return redirect('aprendiz');
     }
+    
     public function import(Request $request){
         $file = $request->file('file');
         Excel::import(new AprendizImport, $file);

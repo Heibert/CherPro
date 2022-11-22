@@ -88,6 +88,22 @@
             </div>
             <br>
             <div>
+            <label for="id_user"> Usuario </label>
+                <div>
+                    <select name="id_user" id="id_user" value="{{ isset($administradors-> id_user)?$administradors-> id_user: '' }}">
+                        @foreach ($user as $u)
+                            <option value="{{ $u['id'] }}">
+                                {{ $u['name'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <br>
+                    @error('id_user')
+                        <small>{{$message}}</small>
+                    @enderror
+                </div>
+            <br>
+            <div>
                 <input type="submit" value="Guardar">
             </div>
             </center>
