@@ -19,7 +19,6 @@ class CoordinadorFactory extends Factory
     {
         $correoSena = "@misena.edu.co";
         $nombre = $this->faker->userName();
-
             return [
                 "nomCoordinador" => $this->faker->firstName(),
                 "apeCoordinador" => $this->faker->lastName(),

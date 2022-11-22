@@ -2,19 +2,19 @@ import React, { Component, useEffect, useState } from 'react'
 import axios/* , { AxiosError } */ from 'axios'
 import { Link, useParams, useNavigate } from "react-router-dom";
 const endpoint = 'http://localhost:8000/api/asistencia'
+console.log("wtf asda")
 
-
-function change(){
+/* function change(){
     var datos = (document.getElementById("busqueda").value)
     console.log(datos)
-}
-function mostrarBus(){
+} */
+/* function mostrarBus(){
     if (datos == $busqueda) {
         
     } else {
         
     }
-}
+} */
 
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
@@ -370,16 +370,16 @@ const Lista = () => {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href='/create'><i class="bi bi-plus-lg"> Crear</i></a>
+          <a className="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href='/create'><i className="bi bi-plus-lg"> Crear</i></a>
         </li>
         <li className="nav-item">
-          <a className="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href='http://127.0.0.1:8000/admin'><i class="bi bi-unindent"> Atras</i></a>
+          <a className="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href='http://127.0.0.1:8000/admin'><i className="bi bi-unindent"> Atras</i></a>
         </li>
     </ul>
     </div>
   </div>
 </nav>
-        <div className='row'>
+        {/* <div className='row'>
             <input type="text" 
                 onChange={change} 
                 placeholder="Buscar" 
@@ -388,7 +388,7 @@ const Lista = () => {
                 id='busqueda' 
                 />
             <button type='button' className='btnBuscar'>{" "}</button>
-        </div>
+        </div> */}
         <div className='container-fluid'>
                 <div className="row">
                     <div className="col"><button className='btn btn-primary w-100 text-white' onClick={(e) => {

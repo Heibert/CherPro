@@ -70,7 +70,7 @@ const CreateAsistencia = () => {
     <nav className="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
   <div className="container-fluid">
     <a className="navbar-brand" href="">
-        <img src='./Logo.png' class="d-inline-block align-top"/>
+        <img src='./Logo.png' className="d-inline-block align-top"/>
     </a>
     <button className="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
