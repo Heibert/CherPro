@@ -12,23 +12,20 @@ const Lista = () => {
     const [AsistenciasNombreDesc, setAsistenciasNombreDesc] = useState([])
     const [AsistenciaFichaAsc, setAsistenciaFichaAsc] = useState([])
     const [AsistenciaFichaDesc, setAsistenciaFichaDesc] = useState([])
+    const [NumFicha, setNumFicha] = useState()
+    const [fechaAsistencia, setfechaAsistencia] = useState('')
+    const [estadoAsistencia, setEstadoAsistencia] = useState('')
+    const [idAprendiz, setidAprendiz] = useState("")
 
     const EditAsistencia = () => {
-        const [Aprendices, setAprendices] = useState([])
-        const [Tematicas, setTematicas] = useState([])
         /* const [erroresAxio, setErroresAxio] = useState(""); */
-        const [fechaAsistencia, setfechaAsistencia] = useState('')
-        const [estadoAsistencia, setEstadoAsistencia] = useState('')
-        const [idAprendiz, setidAprendiz] = useState("")
-        const [idTematica, setidTematica] = useState("")
-        const { id } = useParams()
         const update = async (e) => {
             e.preventDefault()
             await axios.put('${endpoint}${id}', {
                 fechaAsistencia: fechaAsistencia,
                 estadoAsistencia: estadoAsistencia,
                 id_aprendiz: idAprendiz,
-                id_tematica: idTematica
+                numFicha: NumFicha
             })
         }
         useEffect(() => {
@@ -62,7 +59,7 @@ const Lista = () => {
         setAsistenciasNombreDesc(response.data[5])
         setAsistenciaFichaAsc(response.data[6])
         setAsistenciaFichaDesc(response.data[7])
-        console.log(response.data)
+        console.log("Response: ", response.data)
     }
 
     const up = "bi bi-caret-up-fill"
@@ -92,6 +89,7 @@ const Lista = () => {
             return (
                 AsistenciasFechaAsc.map((Asistencia, index) => (
                     <div className="container-fluid row h5" key={index}>
+                        
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
                         <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
@@ -181,11 +179,11 @@ const Lista = () => {
                 }
             })
 
-            /*  */
+            /* --------------------------------------------------------------------------------------- */
             return (
                 AsistenciaFichaDesc.map((Asistencia, index) => (
                     <div className='row h5' key={index}>
-                        <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="number" placeholder={Asistencia.numFicha} onChange={(e) => {setfechaAsistencia(e.target.value)}} id={"F"+Asistencia.id_aprendiz} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
                         <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
                         <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
@@ -193,7 +191,7 @@ const Lista = () => {
                 ))
             )
         }
-        /*  */
+        /*  -------------------------------------------------------------------------------------------*/
         if (OrdenAsistencia == "NombreAsc") {
             AsistenciasNombreAsc.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
