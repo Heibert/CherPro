@@ -20,7 +20,7 @@ class TematicaController extends Controller
     public function index()
     {
         $datos['tematicas']= Tematica::paginate();
-        return view ('Tematica.index',$datos );
+        return view ('Tematica.index',$datos);
     }
 
     /**
@@ -34,7 +34,7 @@ class TematicaController extends Controller
         $instructors = Instructor::all();
         $programas = Programa::all();
         $fichas = Ficha::all(); 
-        return view ('tematica.create');
+        return view ('tematica.create', compact('instructors', 'programas', 'fichas'));
     }
 
     /**
