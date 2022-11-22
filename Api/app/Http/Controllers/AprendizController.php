@@ -8,6 +8,7 @@ use App\Imports\AprendizImport;
 use App\Http\Requests\AprendizCreateRequest;
 use App\Http\Requests\AprendizEditRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 //use Illuminate\Support\Facades\Validator;
 
@@ -20,6 +21,7 @@ class AprendizController extends Controller
      */
     public function index()
     {
+        $userAuth = Auth::user();
         $datos['aprendiz']=Aprendiz::paginate();
         return view('aprendiz.index', $datos);
     }

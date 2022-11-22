@@ -52,9 +52,9 @@
         <div>
             <label for="tipoDoc"> Tipo de documento </label>
             <div>
-                <select name="tipoDoc">
-                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">TI</option>
-                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">CC</option>
+                <select name="tipoDoc" value="{{ isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''}}">
+                    <option name="tipoDoc">TI</option>
+                    <option name="tipoDoc">CC</option>
                 </select>
             </div>
             @error('tipoDoc')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserCreateRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -12,8 +13,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
+        $userAuth = Auth::user();
         $datos['user']=User::paginate();
         return view('user.index', $datos);
     }
@@ -40,4 +43,6 @@ class UserController extends Controller
         User::destroy($id);
         return redirect('user');
     }
+
+    
 }

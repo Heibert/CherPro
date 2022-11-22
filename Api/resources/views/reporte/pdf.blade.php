@@ -19,7 +19,7 @@
                     <br>
                     Firma el coordinador {{$reporte->coordinadores->nomCoordinador}}, perteneciente a la Coordinación de logistica. 
                 </p>
-                    </div>
+        </div>
     </div>
 </body>
 </html>
