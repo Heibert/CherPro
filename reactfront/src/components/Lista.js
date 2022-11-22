@@ -8,6 +8,13 @@ function change(){
     var datos = (document.getElementById("busqueda").value)
     console.log(datos)
 }
+function mostrarBus(){
+    if (datos == $busqueda) {
+        
+    } else {
+        
+    }
+}
 
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
