@@ -26,10 +26,18 @@ const Lista = () => {
     const [AsistenciasNombreDesc, setAsistenciasNombreDesc] = useState([])
     const [AsistenciaFichaAsc, setAsistenciaFichaAsc] = useState([])
     const [AsistenciaFichaDesc, setAsistenciaFichaDesc] = useState([])
+    const [Fichas, setFichas] = useState([])
+    const [Ficha, setFicha] = useState([])
+
+    const getAllTematicaAprendiz = async () => {
+        const response = await axios.get(`${endpoint}/create`)
+        setFichas(response.data[2])
+      }
 
     const EditAsistencia = () => {
         const [Aprendices, setAprendices] = useState([])
         const [Tematicas, setTematicas] = useState([])
+        
         /* const [erroresAxio, setErroresAxio] = useState(""); */
         const [fechaAsistencia, setfechaAsistencia] = useState('')
         const [estadoAsistencia, setEstadoAsistencia] = useState('')
@@ -359,6 +367,9 @@ const Lista = () => {
             )
         }
     }
+    useEffect(() => {
+        getAllTematicaAprendiz()
+      }, [])
     return (
         <>
 <nav className="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
@@ -381,10 +392,7 @@ const Lista = () => {
     </div>
   </div>
 </nav>
-        <div className='input-group mb-3 mt-3'>
-        <div class="input-group-prepend">
-        <span class="input-group-text " id="basic-addon1"><i class="bi bi-search"></i></span>
-        </div>
+        <div className='input-group mb-3 mt-3 '>
             <input type="text" 
                 onChange={change} 
                 placeholder="Buscar aprendiz" 
@@ -392,18 +400,12 @@ const Lista = () => {
                 name='busqueda'
                 id='busqueda' 
                 />
-            <select className="form-select form-control" aria-label=".form-select-lg example">
-            <option selected>Selecione Ficha</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-            </select>
-        {/* <div className="col">
+        <div className="col ">
         <select type='select' onChange={(e) => setFicha(e.target.value)} className="form-control">
                   <option value="" >Selecciona una Ficha</option>
                   {Fichas.map((Ficha) => (
                   <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
-                  ))}</select></div> */}
+                  ))}</select></div>
         </div>
         <div className='container-fluid'>
                 <div className="row">

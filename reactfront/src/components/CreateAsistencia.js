@@ -91,7 +91,7 @@ const CreateAsistencia = () => {
         </div>
         <div className="mb-2">
             <form onSubmit={Store}>
-                <div classclassName="row mb-4">
+                <div className="row mb-4 mx-auto">
                   <label>Fecha</label>
                   <input className="form-control" placeholder="Fecha" autoFocus
                   min={fecha_ISOPasado}
@@ -101,7 +101,7 @@ const CreateAsistencia = () => {
                   type='date' />
                   {/* <div className="alert alert-danger d-none" id="fechaError">{erroresAxio.fechaAsistencia}</div> */}
                 </div>
-                <div className="row mb-4">
+                <div className="row mb-4 mx-auto">
                   <label>Ficha</label>
                   <select type='select' onChange={(e) => setFicha(e.target.value)} className="form-control">
                   <option value="" >Selecciona una Ficha</option>
@@ -110,7 +110,7 @@ const CreateAsistencia = () => {
                   ))}</select>
                   {/* <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.id_ficha}</div> */}
                 </div>
-                <div className="row mb-4">
+                <div className="row mb-4 mx-auto">
                   <label>Tematica</label>
                   <select type='select' onChange={(e) => setidTematica(e.target.value)} className="form-control">
                   <option value="">Selecciona una tematica</option>
@@ -119,7 +119,7 @@ const CreateAsistencia = () => {
                   ))}</select>
                   {/* <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div> */}  
                 </div>
-                <div className="row mb-4">
+                <div className="row mb-4 mx-auto">
                 <button type="submit" className="btn btn-primary">Crear</button>
                 </div>
             </form>
