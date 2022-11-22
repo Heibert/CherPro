@@ -53,18 +53,18 @@ class User extends Authenticatable
     }
 
     public function aprendiz(){
-        return $this->hasOne(Aprendiz::class);
+        return $this->hasOne(Aprendiz::class, 'id');
     }
 
     public function instructor(){
-        return $this->hasOne(Instructor::class);
+        return $this->hasOne(Instructor::class, 'id');
     } 
 
     public function coordinador(){
-        return $this->hasOne(Coordinador::class);
+        return $this->hasOne(Coordinador::class, 'id');
     }
 
     public function admin(){
-        return $this->hasOne(Administrador::class);
+        return $this->hasOne(Administrador::class, 'id');
     } 
 }

@@ -104,9 +104,9 @@ class CoordinacionController extends Controller
     }
 
     public function import(Request $request){
+
         $file = $request->file('file');
         Excel::import(new CoordinacionImport, $file);
-
         return redirect()->route('coordinacion.index')->with('success','Coordinaciones importadas con exito'); 
     }
 }
