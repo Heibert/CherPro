@@ -52,9 +52,9 @@
         <div>
             <label for="tipoDoc"> Tipo de documento </label>
             <div>
-                <select name="tipoDoc">
-                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">TI</option>
-                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">CC</option>
+                <select name="tipoDoc" id="tipoDoc" value="{{ isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: '' }}">
+                    <option value="TI">TI</option>
+                    <option value="CC">CC</option>
                 </select>
             </div>
             @error('tipoDoc')
@@ -65,7 +65,7 @@
         <div>
             <label for="numDoc"> Número de documento </label>
             <div>
-                <input type="number" name="numDoc"  id="numDoc" value="{{ isset($aprendiz-> numDoc)?$aprendiz-> numDoc: '' }}">
+                <input type="number" name="numDoc" id="numDoc" value="{{ isset($aprendiz-> numDoc)?$aprendiz-> numDoc: '' }}">
             </div>
             @error('numDoc')
                 <small>{{$message}}</small>
@@ -73,14 +73,20 @@
         </div>
         <br>
         <div>
-            <label for="id_user"> Correo Misena </label>
+        <label for="id_user"> Usuario </label>
             <div>
-                <input type="text" name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
+                <select name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
+                    @foreach ($user as $u)
+                        <option value="{{ $u['id'] }}">
+                            {{ $u['email'] }}
+                        </option>
+                    @endforeach
+                </select>
+                <br>
+                @error('id_user')
+                    <small>{{$message}}</small>
+                @enderror
             </div>
-            @error('id_user')
-                <small>{{$message}}</small>
-            @enderror
-        </div>
         <br>
         <div>
             <label for="correoAprend"> Correo personal </label>
@@ -129,22 +135,6 @@
                     </select>
                 </div>
                 @error('estado')
-                    <small>{{$message}}</small>
-                @enderror
-            </div>
-            <br>
-            <div>
-            <label for="id_user"> Usuario </label>
-            <div>
-                <select name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
-                    @foreach ($user as $u)
-                        <option value="{{ $u['id'] }}">
-                            {{ $u['name'] }}
-                        </option>
-                    @endforeach
-                </select>
-                <br>
-                @error('id_user')
                     <small>{{$message}}</small>
                 @enderror
             </div>

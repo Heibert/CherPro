@@ -44,16 +44,20 @@
 <div class="input-group-prepend">
     <label class="input-group-text" for="id_instructor">Intructor</label>
   </div>
-  <select class="custom-select" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="id_instructor" id="id_instructor" value="{{ isset($tematica-> id_instructor)?$tematica-> id_instructor: '' }}">
-                    @foreach($instructors as $instu)
-                        <option value="{{ $instu['id'] }}">
-                            {{ $instu['nombreInst'] }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('id_instructor') 
-                <small> {{$message}} </small> 
-            @enderror
+  <div>
+    <label for="id_instructor"> Instructor </label>
+    <div>
+        <select name="id_instructor" id="id_instructor" value="{{ isset($tematica-> id_instructor)?$tematica-> id_instructor: '' }}">
+            @foreach ($instructors as $instructor)
+                <option value="{{ $instructor['id'] }}">
+                    {{ $instructor['nombreInst'] }}
+                </option>
+            @endforeach
+        </select> 
+    </div>
+    @error('id_instructor')
+        <small>{{$message}}</small>
+    @enderror
 </div>
 <div class="input-group mb-3 w-50">
 <div class="input-group-prepend">
