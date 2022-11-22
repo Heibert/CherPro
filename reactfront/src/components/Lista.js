@@ -3,16 +3,12 @@ import axios/* , { AxiosError } */ from 'axios'
 import { Link, useParams, useNavigate } from "react-router-dom";
 const endpoint = 'http://localhost:8000/api/asistencia'
 
-class App extends Component{
-    state={
-        busqueda: ''
-    }
-    onChange=async e=>{
-        e.persist();
-        await this.setState({busqueda: e.target.value})
-        console.log(this.state.target)
-    }
+
+function change(){
+    var datos = (document.getElementById("busqueda").value)
+    console.log(datos)
 }
+
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
     const [AsistenciasFechaDesc, setAsistenciasFechaDesc] = useState([])
@@ -380,11 +376,12 @@ const Lista = () => {
 </nav>
         <div className='row'>
             <input type="text" 
-                onChange={this.onChange} 
+                onChange={change} 
                 placeholder="Buscar" 
                 className='textfield' 
-                name='busqueda' 
-                value={this.state.busqueda}/>
+                name='busqueda'
+                id='busqueda' 
+                />
             <button type='button' className='btnBuscar'>{" "}</button>
         </div>
         <div className='container-fluid'>

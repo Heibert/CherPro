@@ -104,7 +104,7 @@ const CreateAsistencia = () => {
                 <div className="row mb-4">
                   <label>Ficha</label>
                   <select type='select' onChange={(e) => setFicha(e.target.value)} className="form-control">
-                  <option value="">Selecciona una Ficha</option>
+                  <option value="" >Selecciona una Ficha</option>
                   {Fichas.map((Ficha) => (
                   <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
                   ))}</select>
@@ -119,7 +119,7 @@ const CreateAsistencia = () => {
                   ))}</select>
                   {/* <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div> */}  
                 </div>
-                <div className="row mb-3">
+                <div className="row mb-4">
                 <button type="submit" className="btn btn-primary">Crear</button>
                 </div>
             </form>
