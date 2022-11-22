@@ -54,6 +54,7 @@
                 <th>Telefono</th>
                 <th>Ficha</th>
                 <th>Estado</th>
+                <th>Usuario</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
@@ -72,6 +73,7 @@
                 <td>{{ $a->telefonoAprend}}</td >
                 <td>{{ $a->fichas->numFicha}}</td>
                 <td>{{ $a->estado}}</td>
+                <td>{{ $a->users->name}}</td>
                 <td>
                     <a href="{{url('/aprendiz/'.$a->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>

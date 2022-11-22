@@ -134,11 +134,26 @@
             </div>
             <br>
             <div>
+            <label for="id_user"> Usuario </label>
+            <div>
+                <select name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
+                    @foreach ($user as $u)
+                        <option value="{{ $u['id'] }}">
+                            {{ $u['name'] }}
+                        </option>
+                    @endforeach
+                </select>
+                <br>
+                @error('id_user')
+                    <small>{{$message}}</small>
+                @enderror
+            </div>
+            <br>
+            <div>
                 <input type="submit" value="Guardar">
             </div>
         </center>
     </div>
-    
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 </body>

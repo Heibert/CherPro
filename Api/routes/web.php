@@ -20,6 +20,7 @@ use App\Http\Controllers\EnviarReporteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IInstructorController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -58,7 +59,7 @@ Route::resource('trimestre', TrimestreController::class)->middleware('auth');
 Route::resource('ficha', FichaController::class)->middleware('auth');
 Route::resource('aprendiz', AprendizController::class)->middleware('auth');
 Route::resource('instructor', InstructorController::class)->middleware('auth');
-
+Route::resource('user', UserController::class)->middleware('auth');
 //---------------------------------- Login -----------------------------------
 
 Route::get('/', function () {

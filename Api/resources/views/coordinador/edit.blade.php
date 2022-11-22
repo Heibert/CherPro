@@ -126,6 +126,22 @@
             </div>
             <br>
             <div>
+                <label for="id_user"> Usuario </label>
+                <div>
+                    <select name="id_user" id="id_user" value="{{ isset($coordinador-> id_user)?$coordinador-> id_user: '' }}">
+                        @foreach ($user as $u)
+                            <option value="{{ $u['id'] }}">
+                                {{ $u['name'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <br>
+                    @error('id_user')
+                        <small>{{$message}}</small>
+                    @enderror
+                </div>
+            <br>
+            <div>
                 <button type="submit" class="btn btn-primary" value="Guardar">Guardar</button>
             </div>
             </center>
