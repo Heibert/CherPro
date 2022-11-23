@@ -8,9 +8,6 @@ use App\Models\Tematica;
 use App\Models\Aprendiz;
 use App\Models\Asistencia;
 use App\Models\Ficha;
-use GuzzleHttp\Psr7\Response;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\validator;
 use Illuminate\Support\Facades\DB;
 
 class AsistenciaController extends Controller
@@ -121,10 +118,8 @@ class AsistenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate(['estadoAsistencia' => 'size:1|starts_with:A,F,R,E']);
         $Asistencia = Asistencia::find($id);
-        if ($request->fechaAsistencia) {
-            $Asistencia->fechaAsistencia = $request->fechaAsistencia;
-        }
         if ($request->estadoAsistencia) {
             $Asistencia->estadoAsistencia = $request->estadoAsistencia;
         }
