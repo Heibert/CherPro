@@ -58,8 +58,8 @@
             @foreach($ficha as $f)
             <tr>
                 <td>{{ $f->id }}</td>
-                <td>{{ $f->numFicha }}</td>
-                <td>{{ $f->id_instructor}}</td>
+                <td>{{ $f->numFicha}}</td>
+                <td>{{ $f->id}}</td>
                 <td>{{ $f->programas->nombrePrograma}}</td>
                 <td>
                     <a href="{{url('/ficha/'.$f->id.'/edit')}}">

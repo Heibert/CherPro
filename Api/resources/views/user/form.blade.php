@@ -81,10 +81,10 @@
                 <div class="row mb-3 mx-auto">
                 <label for="rol"> Rol </label>   
                 <select class="from-control rounded" name="rol" id="rol" value="{{ isset($user-> rol)?$user-> rol: '' }}">
-                    <option value="">Administrador</option>
-                    <option value="">Aprendiz</option>
-                    <option value="">Coordinaro</option>
-                    <option value="">Instructor</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Aprendiz">Aprendiz</option>
+                    <option value="Coordinador">Coordinador</option>
+                    <option value="Instructor">Instructor</option>
                 </select>  
                 @error('rol') 
                 <small> {{$message}} </small> 

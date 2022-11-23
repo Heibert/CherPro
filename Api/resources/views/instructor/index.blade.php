@@ -68,7 +68,7 @@
                 <td>{{ $i->apellidoInst}}</td>
                 <td>{{ $i->tipoDoc}}</td>
                 <td>{{ $i->numDoc}}</td>
-                <td>{{ $i->correoMisena}}</td>
+                <td>{{ $i->users->email}}</td>
                 <td>{{ $i->telefonoInst}}</td>
                 <td>{{ $i->programas->nombrePrograma}}</td>
                 <td>{{$i->estado}}</td>
@@ -82,7 +82,7 @@
                     <form action="{{url('/instructor/'.$i->id)}}" method="post">
                         @csrf
                         {{method_field('DELETE')}}
-                        <button type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>
+                        <button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>
                     </form>
                 </td>
                 <br>

@@ -25,7 +25,7 @@ class Programa extends Model
 
     public function coordinaciones(){
         
-        return $this->belongsTo(Coordinacion::class, 'id_coordinacion');
+        return $this->belongsTo(Coordinacion::class, 'id');
     }
 
     // Relacion con instructor (1:m)

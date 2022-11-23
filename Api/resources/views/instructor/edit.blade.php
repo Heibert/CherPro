@@ -69,10 +69,17 @@
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="id_user"> Correo Misena </label>
-                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="id_user" id="id_user" value="{{ isset($instructor-> id_user)?$instructor-> id_user: '' }}">
-                @error('id_user')
-                <small>{{$message}}</small>
-                @enderror
+                    <select class="from-control rounded" name="id_user" id="id_user" value="{{ isset($instructor-> id_user)?$instructor-> id_user: '' }}">
+                        @foreach ($user as $u)
+                            <option value="{{ $u['id'] }}">
+                                {{ $u['email'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <br>
+                    @error('id_user')
+                        <small>{{$message}}</small>
+                    @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="telefonoInst"> Telefono </label>
@@ -103,19 +110,6 @@
                 @error('estado')
                 <small>{{$message}}</small>
                 @enderror
-                </div>
-                <div class="row mb-3 mx-auto">
-                <label for="id_user"> Usuario </label>
-                <select class="from-control rounded"  name="id_user" id="id_user" value="{{ isset($instructor-> id_user)?$instructor-> id_user: '' }}">
-                        @foreach ($user as $u)
-                            <option value="{{ $u['id'] }}">
-                                {{ $u['name'] }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('id_user')
-                        <small>{{$message}}</small>
-                    @enderror
                 </div>
                 <div class="row mb-2 mx-auto">
                     <input class="btn btn-primary" type="submit" value="Guardar">

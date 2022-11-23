@@ -9,8 +9,8 @@
 <body>
     <div>
         <div>
-            <h2>Reporte de deserción</h2>
             
+            <h2>Reporte de deserción</h2>
                 <p>
                     El contenido de este reporte con numero de identificación {{$reporte->id}}, informa que el
                     instructor {{$reporte->instructores->nombreInst}} solicita la {{$reporte->descReporte}} del aprendiz {{$reporte->aprendices->nombreAprend}}, de la ficha 2465903 el dia 
