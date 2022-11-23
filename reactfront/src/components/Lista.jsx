@@ -13,7 +13,7 @@ const Lista = () => {
     const [estadoAsistencia, setEstadoAsistencia] = useState('')
     const [idAprendiz, setidAprendiz] = useState("")
     const [Fichas, setFichas] = useState([])
-    const [Ficha, setFicha] = useState("1")
+    const [Ficha, setFicha] = useState([])
     const [Ficha1,setFicha1] = useState([])
     const [Ficha2,setFicha2] = useState([])
     const [Ficha3,setFicha3] = useState([])
@@ -144,6 +144,38 @@ const Lista = () => {
                 ))
             )
         }
+        else {
+            AsistenciaFichaDesc.map(function (Asistencia) {
+                switch (Asistencia.estadoAsistencia) {
+                    case "A":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "F":
+                        Asistencia.color = "bg-danger";
+                        break;
+                    case "E":
+                        Asistencia.color = "bg-success";
+                        break;
+                    case "R":
+                        Asistencia.color = "bg-warning";
+                        break;
+                    default:
+                        break;
+                }
+            })
+            return (
+                AsistenciaFichaDesc.map((Asistencia, index) => (
+                    <div className='row h5' key={index}>
+                        <input type="number" placeholder={Asistencia.numFicha} onChange={(e) => { setfechaAsistencia(e.target.value) }} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} onChange={(e) => { setfechaAsistencia(e.target.value) }} id={"F" + Asistencia.id_aprendiz} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
+                        <input className={Asistencia.color + " col text-white border"} id={"E" + Asistencia.id_aprendiz}
+                            placeholder={Asistencia.estadoAsistencia} onChange={(e) => { setEstadoAsistencia(e.target.value) }}
+                            onKeyDown={(e) => { setidAprendiz(Asistencias[index].id) }} onKeyUp={updateE} />
+                    </div>
+                ))
+            )
+        }
         /*  -------------------------------------------------------------------------------------------*/
     }
     function ActualizarAsistencia(){
@@ -207,15 +239,16 @@ const Lista = () => {
                 </div>
             </nav>
             <div className='input-group mb-3 mt-3 '>
-                <input type="text"
+{/*                 <input type="text"
                     onChange={change}
                     placeholder="Buscar aprendiz"
                     className='textfield form-control'
                     name='busqueda'
                     id='busqueda'
-                />
+                /> */}
                 <div className="col ">
                     <select type='select' onChange={ActualizarAsistencia()} onClick={(e) => setFicha(e.target.value)}  className="form-control">
+                        <option value="">Seleccione una ficha especifica: </option>
                         {Fichas.map((Ficha) => (
                             <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
                         ))}
