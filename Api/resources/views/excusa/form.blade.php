@@ -36,17 +36,17 @@
         <div class="mb-2">
             <form action="{{ route('enviar.store') }}">
                 <div class="row mb-3 mx-auto">
-                <label for="id_instructor"> Destinatario </label>
-                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="id_instructor" id="id_instructor" value="{{ isset($excusa-> id_instructor)?$excusa-> id_instructor: '' }}">
-                    @foreach ($instruc as $ins)
-                        <option value="{{ $ins['id'] }}">
-                            {{ $ins['correoMisena'] }}
-                        </option>
-                    @endforeach
-                </select> 
-            @error('id_instructor')
-                <small>{{$message}}</small>
-            @enderror
+                    <label for="id_instructor"> Destinatario </label>
+                        <select class="from-control rounded" name="id_instructor" id="id_instructor" value="{{ isset($excusa-> id_instructor)?$excusa-> id_instructor: '' }}">
+                            @foreach($instruc as $ins)
+                                <option value="{{ $ins['id'] }}">
+                                    {{ $ins['nombreInst'] }}
+                                </option>
+                            @endforeach
+                        </select> 
+                    @error('id_instructor')
+                        <small>{{$message}}</small>
+                    @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="fechaExcusa"> Fecha </label>

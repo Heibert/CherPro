@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Index;
 use Illuminate\Http\Request;
+use App\Models\Programa;
+use App\Models\Trimestre;
 
 class IndexController extends Controller
 {
@@ -14,7 +16,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('index');
+       
     }
 
     /**

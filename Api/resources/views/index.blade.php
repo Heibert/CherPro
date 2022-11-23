@@ -28,7 +28,6 @@
   </div>
 </nav>
 <main>
-  <div class="container">
         <li class="card">
           <div class="contenido">
             <h3>EXCUSA</h3>

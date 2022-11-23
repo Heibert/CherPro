@@ -70,7 +70,7 @@
                 <td>{{ $a->apelliAprend}}</td>
                 <td>{{ $a->tipoDoc}}</td>
                 <td>{{ $a->numDoc}}</td>
-                <td>{{ $a->users}}</td>
+                <td>{{ $a->users->email}}</td>
                 <td>{{ $a->correoAprend}}</td>
                 <td>{{ $a->telefonoAprend}}</td >
                 <td>{{ $a->fichas->numFicha}}</td>
@@ -90,15 +90,17 @@
                 </td>
             </tr>
             @endforeach
+            <br>
+            <div>
+                @if(session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{session('success')}}
+                    </div>
+                @endif
+            </div>
         </tbody>
     </table>
 </div>
-@if (isset($errors) && $errors->any())
-    <div class="alert-danger" role="alert">
-        @foreach ($errors->all() as $error)
-        @endforeach
-        </div>
-@endif
 <form action="{{route('aprendiz.import')}}" method="POST" enctype="multipart/form-data">
 @csrf
 <div class="boton-modal">

@@ -25,7 +25,7 @@ class CoordinacionCreateRequest extends FormRequest
     {
         return [
 
-            'nomCoordinacion' => 'required|min:5|max:36|alpha'
+            'nomCoordinacion' => 'required|min:5|max:36'
         ];
     }
 
@@ -33,8 +33,7 @@ class CoordinacionCreateRequest extends FormRequest
         return[
             'nomCoordinacion.required' => 'El nombre es obligatorio',
             'nomCoordinacion.min' => 'El nombre debe tener minimo 5 letras',
-            'nomCoordinacion.max' => 'El nombre debe tener maximo 35 letras',
-            'nomCoordinacion.alpha' => 'El nombre solo requiere letras'
+            'nomCoordinacion.max' => 'El nombre debe tener maximo 35 letras'
         ];
     }
 }

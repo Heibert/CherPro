@@ -51,8 +51,8 @@
                 <div class="row mb-3 mx-auto">
                 <label for="tipoDoc"> Tipo de documento </label>
                 <select class="from-control rounded" name="tipoDoc">
-                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">TI</option>
-                    <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">CC</option>
+                    <option value="TI">TI</option>
+                    <option value="CC">CC</option>
                 </select>
                 @error('tipoDoc')
                 <small>{{$message}}</small>
