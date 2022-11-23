@@ -18,7 +18,7 @@ console.log("wtf asda")
 
 const Lista = () => {
     const [OrdenAsistencia, setOrdenAsistencia] = useState("FichaDesc")
-    const [AsistenciasFechaDesc, setAsistenciasFechaDesc] = useState([])
+    const [Asistencias, setAsistencias] = useState([])
     const [AsistenciasFechaAsc, setAsistenciasFechaAsc] = useState([])
     const [AsistenciasEstadoAsc, setAsistenciasEstadoAsc] = useState([])
     const [AsistenciasEstadoDesc, setAsistenciasEstadoDesc] = useState([])
@@ -26,36 +26,27 @@ const Lista = () => {
     const [AsistenciasNombreDesc, setAsistenciasNombreDesc] = useState([])
     const [AsistenciaFichaAsc, setAsistenciaFichaAsc] = useState([])
     const [AsistenciaFichaDesc, setAsistenciaFichaDesc] = useState([])
-    const [NumFicha, setNumFicha] = useState()
     const [fechaAsistencia, setfechaAsistencia] = useState('')
     const [estadoAsistencia, setEstadoAsistencia] = useState('')
     const [idAprendiz, setidAprendiz] = useState("")
+    const [Tematicas, setTematicas] = useState([])
+    const [idTematica, setidTematica] = useState("")
+    const [Aprendices, setAprendices] = useState([])
 
-    const EditAsistencia = () => {
-        /* const [erroresAxio, setErroresAxio] = useState(""); */
-        const update = async (e) => {
+        const updateE = async (e) => {
+            console.log(Asistencias)
+            var id = idAprendiz
+            console.log(id)
             e.preventDefault()
-            await axios.put('${endpoint}${id}', {
+            console.log("Estado: ",estadoAsistencia,"fecha: ",fechaAsistencia)
+            await axios.put(`${endpoint}/${id}`, {
                 fechaAsistencia: fechaAsistencia,
                 estadoAsistencia: estadoAsistencia,
-                id_aprendiz: idAprendiz,
-                numFicha: NumFicha
+            }).then(console.log("logrado"))
+            .catch(function (error){
+                console.log("Hubo un error al guardar: ",error.response.data.message)
             })
         }
-        useEffect(() => {
-            const getAsistenciaById = async () => {
-                const response = await axios.get('${endpoint}${id}')
-                await axios.get('${endpoint}${id}')
-                setAprendices(response.data.Aprendices)
-                setTematicas(response.data.Tematicas)
-                setfechaAsistencia(response.data.fechaAsistencia)
-                setEstadoAsistencia(response.data.estadoAsistencia)
-                setidAprendiz(response.data.idAprendiz)
-                setidTematica(response.data.idTematica)
-            }
-            getAsistenciaById()
-        })
-    }
 
     useEffect(() => {
         getAllDatosAsistencias()
@@ -65,7 +56,7 @@ const Lista = () => {
 
     const getAllDatosAsistencias = async () => {
         const response = await axios.get(`${endpoint}`)
-        setAsistenciasFechaDesc(response.data[0])
+        setAsistencias(response.data[0])
         setAsistenciasFechaAsc(response.data[1])
         setAsistenciasEstadoAsc(response.data[2])
         setAsistenciasEstadoDesc(response.data[3])
@@ -113,7 +104,7 @@ const Lista = () => {
             )
         }
         if (OrdenAsistencia == "AsistenciaReciente") {
-            AsistenciasFechaDesc.map(function (Asistencia) {
+            Asistencias.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
                     case "A":
                         Asistencia.color = "bg-success";
@@ -132,7 +123,7 @@ const Lista = () => {
                 }
             })
             return (
-                AsistenciasFechaDesc.map((Asistencia, index) => (
+                Asistencias.map((Asistencia, index) => (
                     <div className="container-fluid row h5" key={index}>
                         <input type="number" placeholder={Asistencia.numFicha} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
                         <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
@@ -192,15 +183,16 @@ const Lista = () => {
                         break;
                 }
             })
-
             /* --------------------------------------------------------------------------------------- */
             return (
                 AsistenciaFichaDesc.map((Asistencia, index) => (
                     <div className='row h5' key={index}>
-                        <input type="number" placeholder={Asistencia.numFicha} onChange={(e) => {setfechaAsistencia(e.target.value)}} id={"F"+Asistencia.id_aprendiz} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
-                        <input type="date" className={Asistencia.color + " col text-white border"} defaultValue={Asistencia.fechaAsistencia} />
+                        <input type="number" placeholder={Asistencia.numFicha} onChange={(e) => {setfechaAsistencia(e.target.value)}} defaultValue={Asistencia.numFicha} className={Asistencia.color + " col text-white border"} />
+                        <input type="date" className={Asistencia.color + " col text-white border"} onChange={(e) => {setfechaAsistencia(e.target.value)}} id={"F"+Asistencia.id_aprendiz} defaultValue={Asistencia.fechaAsistencia} />
                         <input type="text" placeholder={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} defaultValue={Asistencia.nombreAprend + " " + Asistencia.apelliAprend} className={Asistencia.color + " col text-white border"} />
-                        <input className={Asistencia.color + " col text-white border"} placeholder={Asistencia.estadoAsistencia} />
+                        <input className={Asistencia.color + " col text-white border"} id={"E"+Asistencia.id_aprendiz}
+                        placeholder={Asistencia.estadoAsistencia} onChange={(e) => {setEstadoAsistencia(e.target.value)}}
+                        onKeyDown={(e)=>{setidAprendiz(Asistencias[index].id)}} onKeyUp={updateE}/>
                     </div>
                 ))
             )

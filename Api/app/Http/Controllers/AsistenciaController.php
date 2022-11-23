@@ -8,6 +8,8 @@ use App\Models\Tematica;
 use App\Models\Aprendiz;
 use App\Models\Asistencia;
 use App\Models\Ficha;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\validator;
 use Illuminate\Support\Facades\DB;
 
@@ -20,11 +22,7 @@ class AsistenciaController extends Controller
      */
     public function index()
     {   
-        $asistencias = DB::table('asistencias')
-            ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
-            ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('fechaAsistencia', 'desc')
-            ->orderBy('numFicha', 'desc')->get();
+        $asistencias = DB::table('asistencias')->get();
         $asistenciasA = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
@@ -58,8 +56,7 @@ class AsistenciaController extends Controller
         $fichaDesc = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('numFicha', 'Asc')
-            ->orderBy('nombreAprend', 'desc')->get();
+            ->orderBy('asistencias.id', 'desc')->get();
         $busqueda = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
@@ -115,18 +112,6 @@ class AsistenciaController extends Controller
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-/*  */
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -136,13 +121,14 @@ class AsistenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $asistencia = Asistencia::find($id);
-
-        $asistencia->fechaAsistencia = $request->fechaAsistencia;
-        $asistencia->estadoAsistencia = $request->estadoAsistencia;
-        $asistencia->id_aprendiz = $request->id_aprendiz;
-        $asistencia->id_tematica = $request->id_tematica;
-        $asistencia->save();
+        $Asistencia = Asistencia::find($id);
+        if ($request->fechaAsistencia) {
+            $Asistencia->fechaAsistencia = $request->fechaAsistencia;
+        }
+        if ($request->estadoAsistencia) {
+            $Asistencia->estadoAsistencia = $request->estadoAsistencia;
+        }
+        $Asistencia->save();
     }
 
     /**
