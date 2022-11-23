@@ -57,7 +57,6 @@
             <a href="{{ url('instructor')}}">Instructor</a>
           </div>
         </li>
-
         <li class="card">
           <div class="contenido">
               <h3>COORDINADOR</h3>

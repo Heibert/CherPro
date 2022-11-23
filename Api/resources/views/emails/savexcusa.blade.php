@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Excusa</h1>
-    <p><strong>Destinatario:</strong>{{ '$enviado->$instruc->correoMisena' }}</p>
+    <p><strong>Destinatario:</strong>Camilo</p>
     <p><strong>Fecha:</strong>{{ $enviado['fechaExcusa' ]}}</p>
     <p><strong>Descripción:</strong>{{ $enviado['descExcusa' ]}}</p>
     <p><strong>Adjunto:</strong>{{ $enviado['archivo' ]}}</p>

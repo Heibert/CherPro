@@ -18,4 +18,8 @@ class Trimestre extends Model
     public function fichas(){
         return $this->belongsTo(Ficha::class, 'id_ficha');
     }
+
+    public function index(){
+        return $this->belongsTo(index::class);
+    }
 }

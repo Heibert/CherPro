@@ -84,16 +84,24 @@
                 </td>
             </tr>
             @endforeach
+            <br>
+            <div>
+                @if(session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{session('success')}}
+                    </div>
+                @endif
+            </div>
         </tbody>
     </table>
     </div>
+
           @if (isset($errors) && $errors->any())
             <div class="alert-danger" role="alert">
               @foreach ($errors->all() as $error)
               @endforeach
             </div>
             @endif
-
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

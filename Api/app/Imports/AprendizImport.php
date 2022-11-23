@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 class AprendizImport implements ToModel, WithHeadingRow, WithBatchInserts,WithChunkReading
 {
     private $fichas;
-    private $estados;
+
     public function __construct()
     {
         $this->fichas = Ficha::pluck('id', 'numFicha');
@@ -34,7 +34,7 @@ class AprendizImport implements ToModel, WithHeadingRow, WithBatchInserts,WithCh
             'correoAprend'=> $row['correo_personal'],
             'telefonoAprend'=> $row['telefono_del_aprendiz'],
             'id_ficha'=> $this->fichas[$row['ficha']],
-            'id_estados'=> $row['estado'],
+            'estado'=> [$row['estado']],
 
         ]);
     }

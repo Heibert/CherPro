@@ -39,4 +39,9 @@ class Programa extends Model
     public function fichas(){
         return $this->hasMany(Ficha::class, 'id');
     }
+
+    public function index(){
+        
+        return $this->belongsTo(index::class);
+    }
 }
