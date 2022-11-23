@@ -55,7 +55,7 @@
             <tr>
                 <td>{{$prog->id}}</td>
                 <td>{{$prog->nombrePrograma}}</td>
-                <td>{{$prog->coordinacion->nomCoordinacion}}</td>
+                <td>{{$prog->coordinaciones->nomCoordinacion}}</td>
                 <td>
                     <a href="{{url('/programa/'.$prog->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>

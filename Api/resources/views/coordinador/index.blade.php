@@ -65,7 +65,7 @@
                     <td>{{ $coordinador->apeCoordinador }}</td>
                     <td>{{ $coordinador->tipoDoc }}</td>
                     <td>{{ $coordinador->numDoc }}</td>
-                    <td>{{ $coordinador->correoMisena }}</td>
+                    <td>{{ $coordinador->users->email }}</td>
                     <td>{{ $coordinador->telefonoCoordinador }}</td>
                     <td>{{ $coordinador->coordinacions->nomCoordinacion}}</td>
                     <td>{{ $coordinador->estado}}</td>

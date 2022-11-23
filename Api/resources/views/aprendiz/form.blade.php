@@ -67,11 +67,19 @@
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="id_user"> Correo Misena </label>
-                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
-                @error('id_user')
-                <small>{{$message}}</small>
-                @enderror
+                    <select class="from-control rounded" name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
+                        @foreach ($user as $u)
+                            <option value="{{ $u['id'] }}">
+                                {{ $u['email'] }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <br>
+                    @error('id_user')
+                        <small>{{$message}}</small>
+                    @enderror
                 </div>
+                <div>
                 <div class="row mb-3 mx-auto">
                 <label for="correoAprend"> Correo personal </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="correoAprend" id="correoAprend" value="{{ isset($aprendiz-> correoAprend)?$aprendiz-> correoAprend: '' }}">
@@ -107,19 +115,6 @@
                         <option name="estado" value="Proceso de formación aplazado">En aplazamiento</option>
                     </select>
                 @error('estado')
-                    <small>{{$message}}</small>
-                @enderror
-                </div>
-                <div class="row mb-3 mx-auto">
-                <label for="id_user"> Usuario </label>
-                <select class="from-control rounded" name="id_user" id="id_user" value="{{ isset($aprendiz-> id_user)?$aprendiz-> id_user: '' }}">
-                    @foreach ($user as $u)
-                        <option value="{{ $u['id'] }}">
-                            {{ $u['name'] }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('id_user')
                     <small>{{$message}}</small>
                 @enderror
                 </div>
