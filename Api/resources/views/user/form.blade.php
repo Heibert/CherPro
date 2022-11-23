@@ -72,13 +72,6 @@
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
-                <label for="password_confirmation"> Confirmar contraseña </label>
-                <input class="from-control rounded" placeholder="Escribe aqui" type="password"  name="password_confirmation" id="password_confirmation" value="{{ isset($user-> password_confirmation)?$user-> password_confirmation: '' }}"> 
-                @error('password_confirmation') 
-                <small> {{$message}} </small> 
-                @enderror
-                </div>
-                <div class="row mb-3 mx-auto">
                 <label for="rol"> Rol </label>   
                 <select class="from-control rounded" name="rol" id="rol" value="{{ isset($user-> rol)?$user-> rol: '' }}">
                     <option value="Administrador">Administrador</option>

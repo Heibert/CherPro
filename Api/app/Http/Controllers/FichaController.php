@@ -19,8 +19,9 @@ class FichaController extends Controller
     public function index()
     {
         //
+        $instructors = Instructor::all();
         $datos['ficha']=Ficha::paginate();
-        return view('ficha.index', $datos);
+        return view('ficha.index', $datos, $user,$instructors);
         
     }
 

@@ -24,10 +24,10 @@ class SessionsController extends Controller {
                 'message' => 'El correo o la contraseña es incorrecto'
             ]);
         } else if(auth()->user()->rol == 'admin'){
-                return redirect()->route('admin.index');
+                return redirect()->to('/index');
         }else {
             if(auth()->user()->rol == 'instructor'){
-                return redirect()->route('instructor.index');
+                return redirect()->to('/index');
             } else{
                 return redirect()->to('/index');
             }

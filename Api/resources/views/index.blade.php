@@ -27,7 +27,158 @@
     </div>
   </div>
 </nav>
-<main>
+  <main>
+  @if(auth()->user()->rol == 'admin')
+  <div class="container">
+        <li class="card">
+          <div class="contenido">
+            <h3>COORDINACIÓN</h3>
+            <a href="{{ url('coordinacion')}}">Coordinación</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>FICHA</h3>
+            <a href="{{ url('ficha')}}">Ficha</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>APRENDIZ</h3>
+            <a href="{{ url('aprendiz')}}">Aprendiz</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>INSTRUCTOR</h3>
+            <a href="{{ url('instructor')}}">Instructor</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+              <h3>COORDINADOR</h3>
+                <a href="{{ url('coordinador')}}">Coordinador</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>EXCUSA</h3>
+              <a href="{{ url('excusa')}}">Excusa</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>PROGRAMA</h3>
+              <a href="{{ url('programa')}}">Programa</a>
+          </div>  
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>REPORTE</h3>
+            <a href="{{ url('reporte')}}">Reporte</a>
+          </div>         
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>TEMÁTICA</h3>
+              <a href="{{ url('tematica')}}">Temática</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>TRIMESTRE</h3>
+              <a href="{{ url('trimestre')}}">Trimestre</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>ADMINISTRADOR</h3>
+              <a href="{{ url('administrador')}}">Administrador</a>
+          </div>
+        </li>
+
+        <li class="card">
+          <div class="contenido">
+            <h3>ASISTENCIA</h3>
+              <a href="{{ url('http://localhost:3000')}}">Asistencia</a>
+          </div>
+        </li>
+        <li class="card">
+          <div class="contenido">
+            <h3>USUARIOS</h3>
+              <a href="{{ url('user')}}">Usuarios</a>
+          </div>
+        </li>
+    </div>
+  @elseif(auth()->user()->rol == 'instructor')
+  <div class="container">
+    <li class="card">
+      <div class="contenido">
+        <h3>EXCUSA</h3>
+          <a href="{{ url('excusa')}}">Excusa</a>
+      </div>
+    </li>
+
+    <li class="card">
+      <div class="contenido">
+        <h3>PROGRAMA</h3>
+          <a href="{{ url('programa')}}">Programa</a>
+      </div>  
+    </li>
+
+    <li class="card">
+      <div class="contenido">
+        <h3>REPORTE</h3>
+        <a href="{{ url('reporte')}}">Reporte</a>
+      </div>         
+    </li>
+
+    <li class="card">
+      <div class="contenido">
+        <h3>TEMÁTICA</h3>
+          <a href="{{ url('tematica')}}">Temática</a>
+      </div>
+    </li>
+
+    <li class="card">
+      <div class="contenido">
+        <h3>TRIMESTRE</h3>
+          <a href="{{ url('trimestre')}}">Trimestre</a>
+      </div>
+    </li>
+
+    <li class="card">
+      <div class="contenido">
+        <h3>FICHA</h3>
+        <a href="{{ url('ficha')}}">Ficha</a>
+      </div>
+    </li>
+
+    <li class="card">
+      <div class="contenido">
+        <h3>APRENDIZ</h3>
+        <a href="{{ url('aprendiz')}}">Aprendiz</a>
+      </div>
+    </li>
+
+    <li class="card">
+      <div class="contenido">
+        <h3>ASISTENCIA</h3>
+          <a href="{{ url('http://localhost:3000')}}">Asistencia</a>
+      </div>
+    </li>
+  </div>
+  @else(auth()->user()->rol == '')
   <div class="container">
         <li class="card">
           <div class="contenido">
@@ -58,7 +209,9 @@
         </li>
 
     </div>
-  </main> 
+  @endif
+    
+  </main>  
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  

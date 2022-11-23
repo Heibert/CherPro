@@ -70,14 +70,14 @@ Route::get('/index', function () {
     return view('/index');
 })->middleware('auth');
 
-Route::get('/register', [RegisterController::class, 'create'])->name('register.index');
+Route::get('/register', [RegisterController::class, 'create'])->name('register.index')->middleware('guest');
 
-Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store')->middleware('guest');
 
 
-Route::get('/login', [SessionsController::class, 'create'])->name('login.index');
+Route::get('/login', [SessionsController::class, 'create'])->name('login.index')->middleware('guest');
 
-Route::post('/login', [SessionsController::class, 'store'])->name('login.store');
+Route::post('/login', [SessionsController::class, 'store'])->name('login.store')->middleware('guest');
 
 Route::get('/sesion', [SessionsController::class, 'destroy'])->name('login.destroy');
 
@@ -91,9 +91,8 @@ Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
 Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
 ->name('password.email');
 
-Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-->name('password.reset');
-
+Route::post('reset-password', [NewPasswordController::class, 'store'])
+->name('password.update');
 
 //------------------------------------ Carga masiva ---------------------------
 

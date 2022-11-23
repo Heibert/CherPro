@@ -40,7 +40,7 @@
     @section('title', 'home')
     @section('content')
 
-    
+    <img src="" alt="">
 
     @endsection
     

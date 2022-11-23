@@ -24,19 +24,9 @@
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('ficha/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
-        @if(auth()->user()->rol == 'admin')
-        <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('admin') }}"><i class="bi bi-unindent"> Atras</i></a>
-        </li>
-        @elseif(auth()->user()->rol == 'instructor')
-        <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('instructorSesion') }}"><i class="bi bi-unindent"> Atras</i></a>
-        </li>
-        @else(auth()->user()->rol == '')
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
-        @endif
     </ul>
     </div>
   </div>
@@ -66,7 +56,6 @@
                         <button class="btn btn-outline-warning">Editar</button>
                     </a> 
                 </td>
-                <br>
                 <td>
                     <form action="{{url('/ficha/'.$f->id)}}" method="post">
                         @csrf
@@ -78,7 +67,7 @@
             @endforeach
         </tbody>
     </table>
-</div>
+</div>}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
@@ -108,7 +97,6 @@
                           sortDescending: ": active para ordenar la columna en orden descendente"
                       }
                   },
-                  scrollY: 550,
                   lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
               });
           });
