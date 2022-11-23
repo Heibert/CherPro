@@ -10,6 +10,7 @@ use App\Models\Asistencia;
 use App\Models\Ficha;
 use Illuminate\Support\Facades\validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class AsistenciaController extends Controller
 {/* Borrar */
@@ -18,8 +19,9 @@ class AsistenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {   
+    public function index(){   
+        $userAut = Auth::user();
+        
         $asistencias = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
@@ -64,7 +66,7 @@ class AsistenciaController extends Controller
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->join('tematicas','tematicas.id','=', 'asistencias.id_tematica')->get();
-        return  array($busqueda, $asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc, $fichaAsc, $fichaDesc);
+        return  array($userAut,$busqueda, $asistencias, $asistenciasA, $estadoasc, $estadodesc, $nombreasc, $nombredesc, $fichaAsc, $fichaDesc);
     }
 
     /**

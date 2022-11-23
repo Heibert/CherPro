@@ -35,6 +35,7 @@ class AprendizImport implements ToModel, WithHeadingRow, WithBatchInserts,WithCh
             'telefonoAprend'=> $row['telefono_del_aprendiz'],
             'id_ficha'=> $this->fichas[$row['ficha']],
             'estado'=> [$row['estado']],
+
         ]);
     }
 

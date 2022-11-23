@@ -29,7 +29,6 @@ class UserCreateRequest extends FormRequest
             'telefono' => 'required|numeric',
             'email' => 'required',
             'password' => 'required|numeric',
-            'password_confirmation' => 'required|numeric',
             'rol' => 'required'
         ];
     }
@@ -41,7 +40,6 @@ class UserCreateRequest extends FormRequest
                 'email.required' => 'Su correo personal es requerido',
                 'telefono.required' => 'Este campo es requerido',
                 'password.required' => 'Esta opción es requerida',
-                'password_confirmation.required' => 'Opción obligatoria',
                 'rol' => 'required'
             ];
         }

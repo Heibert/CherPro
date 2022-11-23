@@ -25,19 +25,9 @@
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('instructor/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
-        @if(auth()->user()->rol == 'admin')
-        <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('admin') }}"><i class="bi bi-unindent"> Atras</i></a>
-        </li>
-        @elseif(auth()->user()->rol == 'instructor')
-        <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('instructorSesion') }}"><i class="bi bi-unindent"> Atras</i></a>
-        </li>
-        @else(auth()->user()->rol == '')
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
-        @endif
     </ul>
     </div>
   </div>
@@ -77,7 +67,6 @@
                         <button class="btn btn-outline-warning">Editar</button>
                     </a> 
                 </td>
-                <br>
                 <td>
                     <form action="{{url('/instructor/'.$i->id)}}" method="post">
                         @csrf
@@ -85,10 +74,8 @@
                         <button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>
                     </form>
                 </td>
-                <br>
             </tr>
             @endforeach
-            <br>
         </tbody>
     </table>
   </div>
@@ -121,7 +108,6 @@
                           sortDescending: ": active para ordenar la columna en orden descendente"
                       }
                   },
-                  scrollY: 550,
                   lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
               });
           });
