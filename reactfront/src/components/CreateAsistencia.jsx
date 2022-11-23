@@ -91,7 +91,7 @@ const CreateAsistencia = () => {
         </div>
         <div className="mb-2">
             <form onSubmit={Store}>
-                <div classclassName="row mb-4">
+                <div className="row mb-4">
                   <label>Fecha</label>
                   <input className="form-control" placeholder="Fecha" autoFocus
                   min={fecha_ISOPasado}
@@ -99,7 +99,7 @@ const CreateAsistencia = () => {
                   value={fechaAsistencia}
                   onChange={(e) => setfechaAsistencia(e.target.value)}
                   type='date' />
-                  {/* <div className="alert alert-danger d-none" id="fechaError">{erroresAxio.fechaAsistencia}</div> */}
+                  {<div className="alert alert-danger d-none" id="fechaError">{erroresAxio.fechaAsistencia}</div>}
                 </div>
                 <div className="row mb-4">
                   <label>Ficha</label>
@@ -108,7 +108,7 @@ const CreateAsistencia = () => {
                   {Fichas.map((Ficha) => (
                   <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
                   ))}</select>
-                  {/* <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.id_ficha}</div> */}
+                  {<div className="alert alert-danger d-none" id="fichaError">{erroresAxio.id_ficha}</div>}
                 </div>
                 <div className="row mb-4">
                   <label>Tematica</label>
@@ -117,7 +117,7 @@ const CreateAsistencia = () => {
                   {Tematicas.map((Tematica) => (
                   <option key={Tematica.id} value={Tematica.id}>{Tematica.nombreTematica}</option>
                   ))}</select>
-                  {/* <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div> */}  
+                  {<div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div>}  
                 </div>
                 <div className="row mb-4">
                 <button type="submit" className="btn btn-primary">Crear</button>

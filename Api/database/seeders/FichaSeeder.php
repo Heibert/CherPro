@@ -15,7 +15,7 @@ class FichaSeeder extends Seeder
      */
     public function run()
     {
-        $max = 4;
+        $max = 3;
         for($c=1; $c<=$max; $c++) {
             Ficha::factory()->create();
         }

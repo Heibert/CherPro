@@ -22,16 +22,31 @@ class AsistenciaController extends Controller
     public function index()
     {
         $asistencias = DB::table('asistencias')->get();
+        /* $BD1 = DB::table('fichas')->join('aprendices', 'fichas.id','=', 'aprendices.id')->where('aprendices.id_ficha','=','1')->get();
+        $BD2 = DB::table('fichas')->join('aprendices', 'fichas.id', '=', 'aprendices.id')->where('aprendices.id_ficha', '=', '2')->get();
+        $BD3 = DB::table('fichas')->join('aprendices', 'fichas.id', '=', 'aprendices.id')->where('aprendices.id_ficha', '=', '3')->get(); */
+        $BD1 = DB::table('fichas')
+        ->join('aprendices', 'id_ficha', '=', 'fichas.id')
+        ->join('asistencias', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->orderBy('asistencias.id', 'asc')->where('aprendices.id_ficha', '=', '1')->get();
+        $BD2 = DB::table('fichas')
+        ->join('aprendices', 'id_ficha', '=', 'fichas.id')
+        ->join('asistencias', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->orderBy('asistencias.id', 'asc')->where('aprendices.id_ficha', '=', '2')->get();
+        $BD3 = DB::table('fichas')
+        ->join('aprendices', 'id_ficha', '=', 'fichas.id')
+        ->join('asistencias', 'asistencias.id_aprendiz', '=', 'aprendices.id')
+        ->orderBy('asistencias.id', 'asc')->where('aprendices.id_ficha', '=', '3')->get();
         $fichaDesc = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
-            ->orderBy('asistencias.id', 'desc')->get();
+            ->orderBy('asistencias.id', 'asc')->get();
         $busqueda = DB::table('asistencias')
             ->join('aprendices', 'asistencias.id_aprendiz', '=', 'aprendices.id')
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->join('tematicas','tematicas.id','=', 'asistencias.id_tematica')->get();
         $fichas = DB::table('fichas')->get();
-        return  array($busqueda, $asistencias,$fichaDesc,$fichas);
+        return  array($busqueda, $asistencias,$fichaDesc,$fichas, $BD1,$BD2,$BD3);
     }
 
     /**
@@ -61,7 +76,6 @@ class AsistenciaController extends Controller
             'id_ficha' => 'bail|required|numeric'
         ]);
         $aprendices = DB::table('aprendices')->where('id_ficha','=',$request->id_ficha)->pluck('id');
-        $nAprendices = DB::table('fichas')->where('id','=',$request->id_ficha)->value("cantAprendiz");
         for ($i=0; $i < count($aprendices); $i++) {
             $asistencia = new Asistencia;
             $asistencia->fechaAsistencia = $request->fechaAsistencia;

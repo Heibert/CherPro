@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('apelliAprend');
             $table->char('tipoDoc');
             $table->integer('numDoc')->unique();
-            $table->unsignedBigInteger('id_user')->unique();
+            $table->unsignedBigInteger('id_user')/* ->unique() */;
             $table->foreign('id_user')->references('id')
                                       ->on('users')
                                       ->onDelete('cascade');

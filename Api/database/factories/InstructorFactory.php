@@ -28,7 +28,7 @@ class InstructorFactory extends Factory
                 "apellidoInst" => $this->faker->lastName(),
                 "tipoDoc" => $this->faker->randomElement(['Cedula', 'TI']),
                 "numDoc" => $this->faker->unique(true)->numberBetween(1, 2500),
-                "id_user" => $l,
+                "id_user" => "1",
                 "telefonoInst" => $this->faker->randomNumber(5, true),
                 "id_programa" => Programa::all()->random()->id,
                 "estado" => $this->faker->randomElement(['Activo', 'Inactivo'])
