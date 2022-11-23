@@ -1,11 +1,12 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
 
@@ -47,5 +48,5 @@
                 </x-primary-button>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+</body>
+</html>

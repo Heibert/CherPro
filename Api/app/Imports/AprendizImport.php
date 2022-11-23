@@ -4,7 +4,6 @@ namespace App\Imports;
 
 use App\Models\Aprendiz;
 use App\Models\Ficha;
-use App\Models\Estado;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
@@ -17,7 +16,6 @@ class AprendizImport implements ToModel, WithHeadingRow, WithBatchInserts,WithCh
     public function __construct()
     {
         $this->fichas = Ficha::pluck('id', 'numFicha');
-        $this->estados = Estado::pluck('id', 'nomEstado');
     }
     
     /**
@@ -36,7 +34,7 @@ class AprendizImport implements ToModel, WithHeadingRow, WithBatchInserts,WithCh
             'correoAprend'=> $row['correo_personal'],
             'telefonoAprend'=> $row['telefono_del_aprendiz'],
             'id_ficha'=> $this->fichas[$row['ficha']],
-            'id_estados'=> $this->estados[$row['estado']],
+            'id_estados'=> $row['estado'],
 
         ]);
     }

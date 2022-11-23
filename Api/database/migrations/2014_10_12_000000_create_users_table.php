@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('telefono');  
             $table->string('email');
             $table->string('password');
-            $table->string('password_confirmation');
             $table->string('rol')->nullable();
             $table->timestamps();
         });

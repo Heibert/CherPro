@@ -24,19 +24,9 @@
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('excusa/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
-        @if(auth()->user()->rol == 'admin')
-        <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('admin') }}"><i class="bi bi-unindent"> Atras</i></a>
-        </li>
-        @elseif(auth()->user()->rol == 'instructor')
-        <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('instructorSesion') }}"><i class="bi bi-unindent"> Atras</i></a>
-        </li>
-        @else(auth()->user()->rol == '')
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
-        @endif
     </ul>
     </div>
   </div>
@@ -61,7 +51,6 @@
                 <td>{{ $ex->fechaExcusa }}</td>
                 <td>{{ $ex->descExcusa }}</td>
                 <td>{{ $ex->archivo }}</td>
-                <br>
                 <td>
                     <form action="{{url('/excusa/'.$ex->id)}}" method="post">
                         @csrf
@@ -103,7 +92,6 @@
                           sortDescending: ": active para ordenar la columna en orden descendente"
                       }
                   },
-                  scrollY: 550,
                   lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
               });
           });
