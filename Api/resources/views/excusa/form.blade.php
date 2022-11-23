@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url('css/login.css')}}">
     @vite(['resources/css/app.css'])
-    <title>Crea excusa</title>
+    <title>Crea excusa </title>
 </head>
 <body>
 <nav class="navbar text-uppercase navbar-expand-md shadow p-13 mb-15 bg-body rounded bg-white">
