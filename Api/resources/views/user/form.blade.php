@@ -40,35 +40,45 @@
                 <label for="name"> Nombre </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="name" id="name" value="{{ isset($user-> name)?$user-> name: '' }}"> 
                 @error('name') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="apellido"> Apellido </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" name="apellido" id="apellido" value="{{ isset($user-> apellido)?$user-> apellido: '' }}"> 
                 @error('apellido') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="telefono"> Telefono </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" name="telefono" id="telefono" value="{{ isset($user-> telefono)?$user-> telefono: '' }}"> 
                 @error('telefono') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="email"> Correo </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" name="email" id="email" value="{{ isset($user-> email)?$user-> email: '' }}"> 
                 @error('email') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="password"> Contraseña </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="password" name="password" id="password" value="{{ isset($user-> password)?$user-> password: '' }}"> 
                 @error('password') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -80,7 +90,9 @@
                     <option value="Instructor">Instructor</option>
                 </select>  
                 @error('rol') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </div>
                 <div class="row mb-2 mx-auto">
@@ -97,7 +109,9 @@
                 <input type="text" name="name" id="name" value="{{ isset($user-> name)?$user-> name: '' }}"> 
             </div>
             @error('name') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
         </div>
         <br>
@@ -107,7 +121,9 @@
                 <input type="text" name="apellido" id="apellido" value="{{ isset($user-> apellido)?$user-> apellido: '' }}"> 
             </div>
             @error('apellido') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
         </div>
         <br>
@@ -117,7 +133,9 @@
                 <input type="text" name="telefono" id="telefono" value="{{ isset($user-> telefono)?$user-> telefono: '' }}"> 
             </div>
             @error('telefono') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
         </div>
         <br>
@@ -127,7 +145,9 @@
                 <input type="text" name="email" id="email" value="{{ isset($user-> email)?$user-> email: '' }}"> 
             </div>
             @error('email') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
         </div>
         <br>
@@ -137,7 +157,9 @@
                 <input type="text" name="password" id="password" value="{{ isset($user-> password)?$user-> password: '' }}"> 
             </div>
             @error('password') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
         </div>
         <br>
@@ -147,7 +169,9 @@
                 <input type="text" name="password_confirmation" id="password_confirmation" value="{{ isset($user-> password_confirmation)?$user-> password_confirmation: '' }}"> 
             </div>
             @error('password_confirmation') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
         </div>
         <br>
@@ -157,7 +181,9 @@
                 <input type="text" name="rol" id="rol" value="{{ isset($user-> rol)?$user-> rol: '' }}"> 
             </div>
             @error('rol') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
         </div>
         <br>

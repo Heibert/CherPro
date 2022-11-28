@@ -37,7 +37,9 @@
                 <label for="numFicha"> Numero de ficha </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="number" name="numFicha" id="numFicha" value="{{ isset($ficha-> numFicha)?$ficha-> numFicha: '' }}">
                 @error('numFicha')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -50,7 +52,9 @@
                     @endforeach
                 </select> 
                 @error('id_instructor')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -63,7 +67,9 @@
                     @endforeach
                 </select> 
                 @error('id_programa')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-2 mx-auto">
@@ -81,7 +87,9 @@
                 <input type="number" name="numFicha" id="numFicha" value="{{ isset($ficha-> numFicha)?$ficha-> numFicha: '' }}">
             </div>
             @error('numFicha')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
         </div>
         <br>
@@ -97,7 +105,9 @@
                 </select> 
             </div>
             @error('id_instructor')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
         </div>
         <br>
@@ -113,7 +123,9 @@
                 </select> 
             </div>
             @error('id_programa')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
         </div>
         <br>

@@ -26,13 +26,85 @@
     </ul>
     </div>
   </div>
-</nav>
-    <br>
+</nav><br>
+<section class="d-flex justify-content-center">
+    <div class="card col-sm-6 p-3 shadow-lg p-3 mb-5 bg-white rounded ">
+        <div class="mb-3">
+            <h4 class="text-center">Nueva tematica</h4>
+        </div>
+        <div class="mb-2">
+            <form action="">
+                <div class="row mb-3 mx-auto">
+                <label for="nombreTematica">Nombre</label>
+                <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="nombreTematica" placeholder="Escriba Aqui" id="nombreTematica" value="{{ isset($tematica-> nombreTematica)?$tematica-> nombreTematica: '' }}">
+                @error('nombreTematica') 
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="id_instructor">Intructor</label>
+                <select class="from-control rounded" name="id_instructor" id="id_instructor" value="{{ isset($tematica-> id_instructor)?$tematica-> id_instructor: '' }}">
+                @foreach ($instructors as $instructor)
+                <option value="{{ $instructor['id'] }}">
+                    {{ $instructor['nombreInst'] }}
+                </option>
+                @endforeach
+                </select> 
+                @error('id_instructor')
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
+                @enderror
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="id_programa"> Programa </label>   
+                <select class="from-control rounded" name="id_programa" id="id_programa" value="{{ isset($tematica-> id_programa)?$tematica-> id_programa: '' }}">
+                    @foreach ($programas as $pro)
+                        <option value="{{ $pro['id'] }}">
+                            {{ $pro['nombrePrograma'] }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_programa') 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
+                @enderror
+                </select>  
+                </div>
+                <div class="row mb-3 mx-auto">
+                <label for="id_ficha"> Ficha </label>   
+                <select class="from-control rounded" name="id_ficha" id="id_ficha" value="{{ isset($tematica-> id_ficha)?$tematica-> id_ficha: '' }}">
+                    @foreach ($fichas as $ficha)
+                        <option value="{{ $ficha['id'] }}">
+                            {{ $ficha['numFicha'] }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('id_ficha') 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
+                @enderror
+                </select>  
+                </div>
+                <div class="row mb- mx-auto">
+                    <input class="btn btn-primary" type="submit" value="Guardar">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+    <!-- <br>
     <div>
         <center><br><br><br>
         <div class="border border-dark w-50 opacity-75" style="background-color: orangered ;">
         <form><br>@error('nombreTematica') 
-                    <small> {{$message}} </small> 
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
         <div class="input-group mb-3 w-50">
   <div class="input-group-prepend">
@@ -71,7 +143,9 @@
                     @endforeach
                 </select>
                 @error('id_programa') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
 </div>
 <div class="input-group mb-3 w-50">
@@ -86,14 +160,16 @@
                     @endforeach
                 </select>
                 @error('id_ficha') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
 </div>
         <div>
             <button type="submit" class="btn btn-primary" value="Guardar">Crear</button>
         </div><br></div>
         </center>
-    </div>
+    </div> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>  
 

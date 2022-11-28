@@ -24,12 +24,11 @@
                 <div class="formulario__grupo-input">
                     <input type="password" class="formulario__input" name="password" id="password" placeholder="Contraseña">
                 </div>
-            </div>
+            </div><br>
             @error('message')
-                <span>
-                    <br>
-                    <strong>{{$message}}</strong>
-                <span>
+            <div class="bg-danger p-3 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
             <br>
             <br>

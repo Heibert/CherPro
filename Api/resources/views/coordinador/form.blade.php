@@ -38,14 +38,18 @@
                 <label for="nomCoordinador">Nombre Coordinador</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="nomCoordinador" id="nomCoordinador" value="{{ isset($coordinador->nomCoordinador)?$coordinador->nomCoordinador:''}}">
                 @error('nomCoordinador')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="apeCoordinador">Apellido Coordinador</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text"  name="apeCoordinador" id="apeCoordinador" value="{{ isset($coordinador->apeCoordinador)?$coordinador->apeCoordinador:''}}" >
                 @error('apeCoordinador')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -54,14 +58,18 @@
                 <option name="tipoDoc" value="CC">CC</option>
                 </select>
                 @error('tipoDoc')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="numDoc">Número de documento</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="numDoc" id="numDoc" value="{{  isset($coordinador->numDoc)?$coordinador->numDoc:''}}">
                 @error('numDoc')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror   
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -75,14 +83,18 @@
                     </select>
                     <br>
                     @error('id_user')
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="telefonoCoordinador">Telefono</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="telefonoCoordinador" id="telefonoCoordinador" value="{{ isset($coordinador->telefonoCoordinador)?$coordinador->telefonoCoordinador:'' }}">      
                 @error('telefonoCoordinador')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -95,7 +107,9 @@
                     @endforeach
                 </select> 
                 @error('id_coordinacion')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -105,7 +119,9 @@
                         <option name="estado" value="Inactivo">Inactivo</option>
                     </select>
                 @error('estado')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-2 mx-auto">
@@ -119,7 +135,9 @@
         <center>
         <div class="border border-dark w-50 opacity-75" style="background-color: orangered ;">
         <form><br>@error('nomCoordinador')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
          @enderror
         <div class="input-group mb-3 w-50">
   <div class="input-group-prepend">
@@ -133,7 +151,9 @@
   </div>
   <input type="text" class="form-control" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="apeCoordinador" id="apeCoordinador" value="{{ isset($coordinador->apeCoordinador)?$coordinador->apeCoordinador:''}}" >
             </div> @error('apeCoordinador')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
             <div class="input-group mb-3 w-50">
 <div class="input-group-prepend">
@@ -143,7 +163,9 @@
         <option name="tipoDoc" value="CC">CC</option>
       </select>
   @error('tipoDoc')
-    <small>{{$message}}</small>
+    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
   @enderror
   <br>
 <div class="input-group mb-3 w-50">
@@ -153,7 +175,9 @@
   <input type="number" class="form-control" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="numDoc" id="numDoc" value="{{  isset($coordinador->numDoc)?$coordinador->numDoc:''}}">
             </div>
             @error('numDoc')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror   
         </div>
         <div class="input-group mb-3 w-50">
@@ -163,7 +187,9 @@
                 <input type="text" name="id_user" id="id_user" value="{{ isset($coordinador-> id_user)?$coordinador-> id_user: '' }}">
             </div>
             @error('id_user')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
         </div>
         <div class="input-group mb-3 w-50">
@@ -173,7 +199,9 @@
   <input type="number" class="form-control" aria-label="Escriba Aqui" aria-describedby="basic-addon1" name="telefonoCoordinador" id="telefonoCoordinador" value="{{ isset($coordinador->telefonoCoordinador)?$coordinador->telefonoCoordinador:'' }}">      
             </div>
             @error('telefonoCoordinador')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
         <div class="input-group mb-3 w-50">
 <div class="input-group-prepend">
@@ -188,7 +216,9 @@
                 </select> 
             </div>
             @error('id_coordinacion')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
             <div>
             <br>
@@ -202,7 +232,9 @@
                     </select>
                 </div>
                 @error('estado')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
             </div>
             <br>
@@ -218,7 +250,9 @@
                     </select>
                     <br>
                     @error('id_user')
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
             <br>
