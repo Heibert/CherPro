@@ -38,14 +38,18 @@
                 <label for="fechaReporte">Fecha</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="date" name="fechaReporte" id="fechaReporte" value="{{ isset ($reporte->fechaReporte)?$reporte->fechaReporte:''}}">
                 @error('fechaReporte') 
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="descReporte">Descripcion</label>
                 <textarea class="from-control rounded" placeholder="Escribe aqui" value="{{ isset ($reporte->descReporte)?$reporte->descReporte:''}}" name="descReporte" id="descReporte"></textarea>            
                 @error('descReporte') 
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror 
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -58,7 +62,9 @@
                     @endforeach
                 </select>
                 @error('id_instructor') 
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror 
                 </select>  
                 </div>
@@ -72,7 +78,9 @@
                     @endforeach
                 </select>
                 @error('id_coordinador') 
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror 
                 </select>  
                 </div>
@@ -86,7 +94,9 @@
                     @endforeach
                 </select>
                 @error('id_coordinador') 
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror 
                 </select>  
                 </div>
@@ -105,7 +115,9 @@
                     <input type="date" name="fechaReporte" id="fechaReporte" value="{{ isset ($reporte->fechaReporte)?$reporte->fechaReporte:''}}">
                 </div>
                 @error('fechaReporte') 
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
         </div>
         <br>
@@ -115,7 +127,9 @@
                 <textarea value="{{ isset ($reporte->descReporte)?$reporte->descReporte:''}}" name="descReporte" id="descReporte"></textarea>            
             </div>
             @error('descReporte') 
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror 
         </div>
         <br>
@@ -130,7 +144,9 @@
                     @endforeach
                 </select>
                 @error('id_instructor') 
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror 
             </div>
         </div>
@@ -146,7 +162,9 @@
                     @endforeach
                 </select>
                 @error('id_coordinador') 
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror 
             </div>
         </div>
@@ -162,7 +180,9 @@
                     @endforeach
                 </select>
                 @error('id_coordinador') 
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror 
             </div>
         </div>

@@ -38,32 +38,42 @@
                 <label for="name">Nombre</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="name" id="name" value="{{ isset($administradors-> name)?$administradors-> name: '' }}">
                  @error('name') 
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="apellido">Apellido</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="apellido" id="apellido" value="{{ isset($administradors-> apellido)?$administradors-> apellido: '' }}">
                 @error('apellido')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror      
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="telefono">Telefono</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="telefono" id="telefono" value="{{ isset($administradors-> telefono)?$administradors-> telefono: '' }}">
                 @error('telefono')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="email">Correo</label>
                 <input class="from-control rounded" name="email" id="email" value="{{ isset($administradors-> email)?$administradors-> email: '' }}">
                 @error('email')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </select>
                 @error('id_programa')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -76,11 +86,15 @@
                         @endforeach
                     </select>
                     @error('id_user')
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                     </select>
                     @error('id_user')
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
                 <div class="row mb-2 mx-auto">
@@ -98,7 +112,9 @@
                 <input type="text" name="name" id="name" value="{{ isset($administradors-> name)?$administradors-> name: '' }}">
             </div>
             @error('name') 
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
         </div>
         <br>
@@ -108,7 +124,9 @@
                 <input type="text" name="apellido" id="apellido" value="{{ isset($administradors-> apellido)?$administradors-> apellido: '' }}">
             </div>
             @error('apellido')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror      
         </div>
         <br>
@@ -118,7 +136,9 @@
                 <input type="text" name="telefono" id="telefono" value="{{ isset($administradors-> telefono)?$administradors-> telefono: '' }}">
             </div>      
             @error('telefono')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
         </div>
         <br>
@@ -128,7 +148,9 @@
                 <input type="text" name="email" id="email" value="{{ isset($administradors-> email)?$administradors-> email: '' }}">
             </div>
             @error('email')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
         </div>
         <br>
@@ -143,7 +165,9 @@
                         @endforeach
                 </select>
                 @error('id_programa')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
             </div>
         </div>
@@ -160,7 +184,9 @@
                     </select>
                     <br>
                     @error('id_user')
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
             <br>

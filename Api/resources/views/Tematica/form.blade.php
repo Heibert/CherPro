@@ -38,7 +38,9 @@
                 <label for="nombreTematica">Nombre</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="nombreTematica" placeholder="Escriba Aqui" id="nombreTematica" value="{{ isset($tematica-> nombreTematica)?$tematica-> nombreTematica: '' }}">
                 @error('nombreTematica') 
-                    <small> {{$message}} </small> 
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -51,7 +53,9 @@
                 @endforeach
                 </select> 
                 @error('id_instructor')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -64,7 +68,9 @@
                     @endforeach
                 </select>
                 @error('id_programa') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </select>  
                 </div>
@@ -78,7 +84,9 @@
                     @endforeach
                 </select>
                 @error('id_ficha') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </select>  
                 </div>
@@ -94,7 +102,9 @@
         <center><br><br><br>
         <div class="border border-dark w-50 opacity-75" style="background-color: orangered ;">
         <form><br>@error('nombreTematica') 
-                    <small> {{$message}} </small> 
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
         <div class="input-group mb-3 w-50">
   <div class="input-group-prepend">
@@ -133,7 +143,9 @@
                     @endforeach
                 </select>
                 @error('id_programa') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
 </div>
 <div class="input-group mb-3 w-50">
@@ -148,7 +160,9 @@
                     @endforeach
                 </select>
                 @error('id_ficha') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
             @enderror
 </div>
         <div>

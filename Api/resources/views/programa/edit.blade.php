@@ -40,7 +40,9 @@
                 <label for="nombrePrograma">Nombre del programa</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="nombrePrograma" id="nombrePrograma" value="{{ isset($programa->nombrePrograma)?$programa->nombrePrograma:''}}">
                 @error('nombrePrograma')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -53,7 +55,9 @@
                     @endforeach
                 </select>
                 @error('id_coordinacion')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-2 mx-auto">

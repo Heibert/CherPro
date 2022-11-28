@@ -41,14 +41,18 @@
                 <label for="nomCoordinador">Nombre Coordinador</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="nomCoordinador" id="nomCoordinador" value="{{ isset($coordinador->nomCoordinador)?$coordinador->nomCoordinador:''}}">
                 @error('nomCoordinador')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="apeCoordinador">Apellido Coordinador</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text"  name="apeCoordinador" id="apeCoordinador" value="{{ isset($coordinador->apeCoordinador)?$coordinador->apeCoordinador:''}}" >
                 @error('apeCoordinador')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -57,14 +61,18 @@
                 <option name="tipoDoc" value="CC">CC</option>
                 </select>
                 @error('tipoDoc')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="numDoc">Número de documento</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="numDoc" id="numDoc" value="{{  isset($coordinador->numDoc)?$coordinador->numDoc:''}}">
                 @error('numDoc')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror   
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -78,14 +86,18 @@
                     </select>
                     <br>
                     @error('id_user')
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="telefonoCoordinador">Telefono</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="telefonoCoordinador" id="telefonoCoordinador" value="{{ isset($coordinador->telefonoCoordinador)?$coordinador->telefonoCoordinador:'' }}">      
                 @error('telefonoCoordinador')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -98,7 +110,9 @@
                     @endforeach
                 </select> 
                 @error('id_coordinacion')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -108,7 +122,9 @@
                         <option name="estado" value="Inactivo">Inactivo</option>
                     </select>
                 @error('estado')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-2 mx-auto">

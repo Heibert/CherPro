@@ -40,7 +40,7 @@
                 <label for="numFicha"> Numero de ficha </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="number" name="numFicha" id="numFicha" value="{{ isset($ficha-> numFicha)?$ficha-> numFicha: '' }}">
                 @error('numFicha')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -53,7 +53,7 @@
                     @endforeach
                 </select> 
                 @error('id_instructor')
-                <small>{{$message}}</small>
+                                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -66,7 +66,7 @@
                     @endforeach
                 </select> 
                 @error('id_programa')
-                    <small>{{$message}}</small>
+                                </div>
                 @enderror
                 </div>
                 <div class="row mb-2 mx-auto">

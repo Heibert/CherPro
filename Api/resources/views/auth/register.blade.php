@@ -15,9 +15,9 @@
                     <input type="text" class="formulario__input" name="name" id="name" placeholder="Nombre" value="{{old('name')}}">
                 </div>
                 @error('name')
-                    <span>
-                        <strong class="formulario__input-error" >{{$message}}</strong>
-                    <span>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
             </div>
             
@@ -27,9 +27,9 @@
                     <input type="text" class="formulario__input" name="apellido" id="apellido" placeholder="apellido" value="{{old('apellido')}}">
                 </div>
                 @error('apellido')
-                    <span>
-                        <strong class="formulario__input-error">{{$message}}</strong>
-                    <span>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
             </div>
 
@@ -39,9 +39,9 @@
                     <input type="number" class="formulario__input" name="telefono" id="telefono" placeholder="Número de telefono" value="{{old('telefono')}}">
                 </div>
                 @error('telefono')
-                    <span>
-                        <strong class="formulario__input-error">{{$message}}</strong>
-                    <span>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
             </div>
 
@@ -51,9 +51,9 @@
                     <input type="email" class="formulario__input" name="email" id="email" placeholder="Correo" value="{{old('email')}}">
                 </div>
                 @error('email')
-                    <span>
-                        <strong class="formulario__input-error">{{$message}}</strong>
-                    <span>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
             </div>
 
@@ -63,9 +63,9 @@
                     <input type="password" class="formulario__input" name="password" id="password" placeholder="Contraseña">
                 </div>
                 @error('password')
-                    <span>
-                        <strong class="formulario__input-error">{{$message}}</strong>
-                    <span>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
             </div>
 
@@ -75,9 +75,9 @@
                     <input type="password" class="formulario__input" name="password_confirmation" id="password_confirmation" placeholder="Confirmar contraseña">
                 </div>
                 @error('password_confirmation')
-                    <span>
-                        <strong class="formulario__input-error">{{$message}}</strong>
-                    <span>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                  @enderror
             </div>
 

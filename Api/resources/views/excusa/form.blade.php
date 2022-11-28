@@ -45,28 +45,36 @@
                             @endforeach
                         </select> 
                     @error('id_instructor')
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="fechaExcusa"> Fecha </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="date"  value="{{ isset ($excusa->fechaExcusa)?$excusa->fechaExcusa:''}}" name="fechaExcusa" id="fechaExcusa">
                     @error('fechaExcusa') 
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="descExcusa">Asunto</label>
                 <textarea class="from-control rounded" value="{{ isset ($excusa->descExcusa)?$excusa->descExcusa:''}}" name="descExcusa" id="descExcusa"></textarea>
                     @error('descExcusa') 
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="archivo"> Adjuntar validacion de la excusa</label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="file" value="{{ isset($excusa->archivo)?$excusa->archivo:''}}" name="archivo" id="archivo">
                     @error('archivo') 
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
                 
@@ -99,7 +107,9 @@
                 </select> 
             </div>
             @error('id_instructor')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
             @enderror
         </div>
             <br>
@@ -109,7 +119,9 @@
                         <input type="date" value="{{ isset ($excusa->fechaExcusa)?$excusa->fechaExcusa:''}}" name="fechaExcusa" id="fechaExcusa">
                     </div>
                     @error('fechaExcusa') 
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
             <br>
@@ -119,7 +131,9 @@
                         <textarea value="{{ isset ($excusa->descExcusa)?$excusa->descExcusa:''}}" name="descExcusa" id="descExcusa"></textarea>
                     </div>
                     @error('descExcusa') 
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
             </div>
             <br>
@@ -129,7 +143,9 @@
                         <input type="file" value="{{ isset($excusa->archivo)?$excusa->archivo:''}}" name="archivo" id="archivo">
                     </div>
                     @error('archivo') 
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
             </div>
             <br>

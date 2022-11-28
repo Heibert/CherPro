@@ -40,14 +40,18 @@
                 <label for="nombreAprend" > Nombre del Aprendiz </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="nombreAprend" id="nombreAprend" value="{{ isset($aprendiz-> nombreAprend)?$aprendiz-> nombreAprend: '' }}">
                 @error('nombreAprend') 
-                <small> {{$message}} </small> 
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div> 
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="apelliAprend"> Apellido del Aprendiz </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="apelliAprend" id="apelliAprend" value="{{ isset($aprendiz-> apelliAprend)?$aprendiz-> apelliAprend: '' }}">
                 @error('apelliAprend') 
-                <small> {{$message}} </small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -57,14 +61,18 @@
                     <option value="isset($aprendiz-> tipoDoc)?$aprendiz-> tipoDoc: ''">CC</option>
                 </select>
                 @error('tipoDoc')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="numDoc"> Número de documento </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="numDoc"  id="numDoc" value="{{ isset($aprendiz-> numDoc)?$aprendiz-> numDoc: '' }}">
                 @error('numDoc')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -78,21 +86,27 @@
                     </select>
                     <br>
                     @error('id_user')
-                        <small>{{$message}}</small>
+                        <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                     @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="correoAprend"> Correo personal </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="correoAprend" id="correoAprend" value="{{ isset($aprendiz-> correoAprend)?$aprendiz-> correoAprend: '' }}">
                 @error('correoAprend')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
                 <label for="telefonoAprend"> Telefono </label>
                 <input class="from-control rounded" placeholder="Escribe aqui" type="text" name="telefonoAprend" id="telefonoAprend" value="{{ isset($aprendiz-> telefonoAprend)?$aprendiz-> telefonoAprend: '' }}">
                 @error('telefonoAprend')
-                <small>{{$message}}</small>
+                <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -105,7 +119,9 @@
                     @endforeach
                 </select>
                 @error('id_ficha')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-3 mx-auto">
@@ -116,7 +132,9 @@
                         <option name="estado" value="Proceso de formación aplazado">En aplazamiento</option>
                     </select>
                 @error('estado')
-                    <small>{{$message}}</small>
+                    <div class="bg-danger p-1 mb-2">
+                <strong class="text-white"> <i class="bi bi-exclamation-circle" style="color: yellow"></i> {{$message}}</strong>
+            </div>
                 @enderror
                 </div>
                 <div class="row mb-2 mx-auto">
