@@ -36,4 +36,7 @@ class Ficha extends Model
     {
         return $this->belongsTo(Programa::class, 'id_programa');
     }
+    public function users(){
+        return $this->belongsTo(User::class, 'id_user');
+    }
 }

@@ -21,9 +21,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
+      @if(auth()->user()->rol == 'admin')
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('ficha/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
+        <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href="{{ url('ficha/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
+      @endif
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
@@ -46,6 +48,7 @@
 
         <tbody>
             @foreach($ficha as $f)
+           
             <tr>
                 <td>{{ $f->id }}</td>
                 <td>{{ $f->numFicha}}</td>
@@ -64,6 +67,7 @@
                     </form>
                 </td>
             </tr>
+      
             @endforeach
         </tbody>
     </table>

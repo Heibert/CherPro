@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ficha;
 use App\Models\Instructor;
 use App\Models\Programa;
+use App\Models\User;
 use App\Http\Requests\FichaCreateRequest;
 use App\Http\Requests\FichaEditRequest;
 use Illuminate\Http\Request;
@@ -19,9 +20,8 @@ class FichaController extends Controller
     public function index()
     {
         //
-        $instructors = Instructor::all();
         $datos['ficha']=Ficha::paginate();
-        return view('ficha.index', $datos, $user,$instructors);
+        return view('ficha.index', $datos);
         
     }
 
