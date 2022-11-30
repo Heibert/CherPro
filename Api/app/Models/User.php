@@ -56,7 +56,7 @@ class User extends Authenticatable
     }
 
     public function instructor(){
-        return $this->hasOne(Instructor::class, 'id');
+        return $this->hasMany(Instructor::class, 'id_user');
     } 
 
     public function coordinador(){

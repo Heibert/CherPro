@@ -55,7 +55,7 @@
 
         <tbody>
             @foreach($instructor as $i)
-            @if($i->users->id  === Auth::user()->id)
+           
             <tr>
                 <td>{{ $i->id}}</td>
                 <td>{{ $i->nombreInst}}</td>
@@ -79,7 +79,7 @@
                     </form>
                 </td>
             </tr>
-            @endif
+           
             @endforeach
         </tbody>
     </table>

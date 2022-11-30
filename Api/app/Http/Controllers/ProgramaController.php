@@ -8,6 +8,7 @@ use App\Models\Coordinacion;
 use App\Http\Requests\ProgramaCreateRequest;
 use App\Http\Requests\ProgramaEditRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramaController extends Controller
 {
@@ -18,9 +19,10 @@ class ProgramaController extends Controller
      */
     public function index()
     {
-        //
-        $datos['programa']= Programa::paginate();
-        return view('programa.index', $datos);
+        $usuario= Auth::user();
+        $programa = $usuario->instructor()->first()->programas;
+        //$datos['programa']= Programa::paginate();
+        return view('programa.index' )->with("datos" , $programa);
     }
 
     /**

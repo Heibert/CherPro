@@ -45,25 +45,25 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($programa as $prog)
+          
             <tr>
-                <td>{{$prog->id}}</td>
-                <td>{{$prog->nombrePrograma}}</td>
-                <td>{{$prog->coordinaciones->nomCoordinacion}}</td>
+                <td>{{$datos->id}}</td>
+                <td>{{$datos->nombrePrograma}}</td>
+               
                 <td>
-                    <a href="{{url('/programa/'.$prog->id.'/edit')}}">
+                    <a href="{{url('/programa/'.$datos->id.'/edit')}}">
                         <button class="btn btn-outline-warning">Editar</button>
                     </a> 
                 </td>
                 <td>
-                    <form action="{{url('/programa/'.$prog->id)}}" method="post">
+                    <form action="{{url('/programa/'.$datos->id)}}" method="post">
                         @csrf
                         {{method_field('DELETE')}}
                         <button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>
                     </form>
                 </td>
             </tr>
-            @endforeach
+         
         </tbody>
     </table>
   </div>

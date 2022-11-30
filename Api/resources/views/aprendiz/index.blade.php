@@ -73,43 +73,78 @@
                 <th>Ficha</th>
                 <th>Estado</th>
                 <th>Usuario</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                @if(auth()->user()->rol == 'admin')
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                @endif
                 
             </tr>
         </thead>
         
         <tbody>
-        
+        @if(auth()->user()->rol == 'admin')
+            @foreach($aprendiz as $a)
+                <tr>
+                    <td>{{ $a->id }}</td>
+                    <td>{{ $a->nombreAprend}} </td>
+                    <td>{{ $a->apelliAprend}}</td>
+                    <td>{{ $a->tipoDoc}}</td>
+                    <td>{{ $a->numDoc}}</td>
+                    <td>{{ $a->users->email}}</td>
+                    <td>{{ $a->correoAprend}}</td>
+                    <td>{{ $a->telefonoAprend}}</td >
+                    <td>{{ $a->fichas->numFicha}}</td>
+                    <td>{{ $a->estado}}</td>
+                    <td>{{ $a->users->name}}</td>
+                    <td>
+                        <a href="{{url('/aprendiz/'.$a->id.'/edit')}}">
+                            <button class="btn btn-outline-warning">Editar</button>
+                        </a> 
+                    </td>
+                    <td>
+                        <form action="{{url('/aprendiz/'.$a->id)}}" method="post">
+                            @csrf
+                            {{method_field('DELETE')}}
+                            <button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        @elseif(auth()->user()->rol == 'instructor')
+            @foreach($aprendiz as $a)
+                <tr>
+                    <td>{{ $a->id }}</td>
+                    <td>{{ $a->nombreAprend}} </td>
+                    <td>{{ $a->apelliAprend}}</td>
+                    <td>{{ $a->tipoDoc}}</td>
+                    <td>{{ $a->numDoc}}</td>
+                    <td>{{ $a->users->email}}</td>
+                    <td>{{ $a->correoAprend}}</td>
+                    <td>{{ $a->telefonoAprend}}</td >
+                    <td>{{ $a->fichas->numFicha}}</td>
+                    <td>{{ $a->estado}}</td>
+                    <td>{{ $a->users->name}}</td>
+                </tr>
+            @endforeach
+        @else
             @foreach($aprendiz as $a)
                 @if($a->users->id  === Auth::user()->id)
-            <tr>
-                <td>{{ $a->id }}</td>
-                <td>{{ $a->nombreAprend}} </td>
-                <td>{{ $a->apelliAprend}}</td>
-                <td>{{ $a->tipoDoc}}</td>
-                <td>{{ $a->numDoc}}</td>
-                <td>{{ $a->users->email}}</td>
-                <td>{{ $a->correoAprend}}</td>
-                <td>{{ $a->telefonoAprend}}</td >
-                <td>{{ $a->fichas->numFicha}}</td>
-                <td>{{ $a->estado}}</td>
-                <td>{{ $a->users->name}}</td>
-                <td>
-                    <a href="{{url('/aprendiz/'.$a->id.'/edit')}}">
-                        <button class="btn btn-outline-warning">Editar</button>
-                    </a> 
-                </td>
-                <td>
-                    <form action="{{url('/aprendiz/'.$a->id)}}" method="post">
-                        @csrf
-                        {{method_field('DELETE')}}
-                        <button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>
-                    </form>
-                </td>
-            </tr>
-            @endif
+                    <tr>
+                        <td>{{ $a->id }}</td>
+                        <td>{{ $a->nombreAprend}} </td>
+                        <td>{{ $a->apelliAprend}}</td>
+                        <td>{{ $a->tipoDoc}}</td>
+                        <td>{{ $a->numDoc}}</td>
+                        <td>{{ $a->users->email}}</td>
+                        <td>{{ $a->correoAprend}}</td>
+                        <td>{{ $a->telefonoAprend}}</td >
+                        <td>{{ $a->fichas->numFicha}}</td>
+                        <td>{{ $a->estado}}</td>
+                        <td>{{ $a->users->name}}</td>
+                    </tr>
+                @endif
             @endforeach
+        @endif
             <br>
             <div>
                 @if(session('success'))
