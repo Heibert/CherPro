@@ -126,50 +126,7 @@ const CreateAsistencia = () => {
         </div>
     </div>
 </section>
-
-    {/* <div>
-      <h1 className="mt-3 mb-5">Selecione Una Fecha Expecifica</h1>
-      <form onSubmit={Store}>
-        <div className="row">
-          <div className="col">
-            <label className="form-label mt-5 mb-3">Fecha:</label>
-            <input className="form-control" placeholder="Fecha" autoFocus
-              min={fecha_ISOPasado}
-              max={fecha_ISO}
-              value={fechaAsistencia}
-              onChange={(e) => setfechaAsistencia(e.target.value)}
-              type='date' />
-            <div className="alert alert-danger d-none" id="fechaError">{erroresAxio.fechaAsistencia}</div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col">
-            <label className="form-label mt-5 mb-3">Ficha:</label>
-            <select type='select' onChange={(e) => setFicha(e.target.value)} className="form-control">
-              <option value="">Selecciona una Ficha</option>
-              {Fichas.map((Ficha) => (
-                <option key={Ficha.id} value={Ficha.id}>{Ficha.numFicha}</option>
-              ))}
-            </select>
-            <div className="alert alert-danger d-none" id="fichaError">{erroresAxio.id_ficha}</div>
-          </div>
-        </div>
-  <div className="row">
-    <div className="col">
-      <label className="col-sm-2 col-form-label mt-4 mb-3">Tematica:</label>
-
-          <select type='select' onChange={(e) => setidTematica(e.target.value)} className="form-control">
-            <option value="">Selecciona una tematica</option>
-            {Tematicas.map((Tematica) => (
-              <option key={Tematica.id} value={Tematica.id}>{Tematica.nombreTematica}</option>
-            ))}
-          </select>
-          <div className="alert alert-danger d-none" id="tematicaError">{erroresAxio.id_tematica}</div>
-    </div>
-  </div>
-        <button type="submit" className="btn btn-primary mt-5 mb-3">Crear</button>
-      </form>
-    </div> */}</>
-  )
+</>
+)
 }
 export default CreateAsistencia
