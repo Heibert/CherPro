@@ -52,16 +52,16 @@ const Lista = () => {
             Ficha1.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
                     case "A":
-                        Asistencia.color = "bg-success";
+                        Asistencia.color = "text-success";
                         break;
                     case "F":
-                        Asistencia.color = "bg-danger";
+                        Asistencia.color = "text-danger";
                         break;
                     case "E":
-                        Asistencia.color = "bg-success";
+                        Asistencia.color = "text-success";
                         break;
                     case "R":
-                        Asistencia.color = "bg-warning";
+                        Asistencia.color = "text-warning";
                         break;
                     default:
                         break;
@@ -84,16 +84,16 @@ const Lista = () => {
             Ficha2.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
                     case "A":
-                        Asistencia.color = "bg-success";
+                        Asistencia.color = "text-success";
                         break;
                     case "F":
-                        Asistencia.color = "bg-danger";
+                        Asistencia.color = "text-danger";
                         break;
                     case "E":
-                        Asistencia.color = "bg-success";
+                        Asistencia.color = "text-success";
                         break;
                     case "R":
-                        Asistencia.color = "bg-warning";
+                        Asistencia.color = "text-warning";
                         break;
                     default:
                         break;
@@ -116,16 +116,16 @@ const Lista = () => {
             Ficha3.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
                     case "A":
-                        Asistencia.color = "bg-success";
+                        Asistencia.color = "text-success";
                         break;
                     case "F":
-                        Asistencia.color = "bg-danger";
+                        Asistencia.color = "text-danger";
                         break;
                     case "E":
-                        Asistencia.color = "bg-success";
+                        Asistencia.color = "text-success";
                         break;
                     case "R":
-                        Asistencia.color = "bg-warning";
+                        Asistencia.color = "text-warning";
                         break;
                     default:
                         break;
@@ -149,16 +149,16 @@ const Lista = () => {
             AsistenciaFichaDesc.map(function (Asistencia) {
                 switch (Asistencia.estadoAsistencia) {
                     case "A":
-                        Asistencia.color = "bg-success";
+                        Asistencia.color = "text-success";
                         break;
                     case "F":
-                        Asistencia.color = "bg-danger";
+                        Asistencia.color = "text-danger";
                         break;
                     case "E":
-                        Asistencia.color = "bg-success";
+                        Asistencia.color = "text-success";
                         break;
                     case "R":
-                        Asistencia.color = "bg-warning";
+                        Asistencia.color = "text-warning";
                         break;
                     default:
                         break;
@@ -240,13 +240,13 @@ const Lista = () => {
                 </div>
             </nav>
             <div className='input-group mb-3 mt-3 '>
-{/*                 <input type="text"
+                <input type="text"
                     onChange={change}
                     placeholder="Buscar aprendiz"
                     className='textfield form-control'
                     name='busqueda'
                     id='busqueda'
-                /> */}
+                />
                 <div className="col ">
                     <select type='select' onChange={ActualizarAsistencia()} onClick={(e) => setFicha(e.target.value)}  className="form-control">
                         <option value="">Seleccione una ficha especifica: </option>
