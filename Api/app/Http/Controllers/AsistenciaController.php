@@ -22,9 +22,31 @@ class AsistenciaController extends Controller
     public function index()
     {
         $asistencias = DB::table('asistencias')->get();
-        /* $BD1 = DB::table('fichas')->join('aprendices', 'fichas.id','=', 'aprendices.id')->where('aprendices.id_ficha','=','1')->get();
-        $BD2 = DB::table('fichas')->join('aprendices', 'fichas.id', '=', 'aprendices.id')->where('aprendices.id_ficha', '=', '2')->get();
-        $BD3 = DB::table('fichas')->join('aprendices', 'fichas.id', '=', 'aprendices.id')->where('aprendices.id_ficha', '=', '3')->get(); */
+        $reporte = null;
+        for ($i=0; $i < count($asistencias); $i++) { 
+            if ($asistencias[$i]->estadoAsistencia == "F") {
+                $idAprendiz = $asistencias[$i]->id_aprendiz;
+                $fallas = 0;
+                for ($j=0; $j < count($asistencias); $j++) { 
+                    if ($asistencias[$j]->estadoAsistencia == "F") {
+                        if ($idAprendiz == $asistencias[$j]->id_aprendiz) {
+                            $fallas++;
+                            if ($fallas >= 3) {
+                                $reporte[0] = $idAprendiz;
+                                $reporte[1] = $fallas;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        if ($reporte != null) {
+            $aprendices = DB::table('aprendices')->where('id', '=', $reporte[0])->select('nombreAprend', 'apelliAprend')->first();
+        }
+        else {
+            $aprendices = "Ningun aprendiz reportado";
+        }
         $BD1 = DB::table('fichas')
         ->join('aprendices', 'id_ficha', '=', 'fichas.id')
         ->join('asistencias', 'asistencias.id_aprendiz', '=', 'aprendices.id')
@@ -46,9 +68,8 @@ class AsistenciaController extends Controller
             ->join('fichas', 'fichas.id', '=', 'aprendices.id_ficha')
             ->join('tematicas','tematicas.id','=', 'asistencias.id_tematica')->get();
         $fichas = DB::table('fichas')->get();
-        return  array($busqueda, $asistencias,$fichaDesc,$fichas, $BD1,$BD2,$BD3);
+        return  array($busqueda, $asistencias, $fichaDesc, $fichas, $BD1, $BD2, $BD3, $reporte, $aprendices);
     }
-
     /**
      * Show the form for creating a new resource.
      *

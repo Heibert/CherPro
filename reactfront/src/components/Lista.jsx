@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from 'react'
 import axios/* , { AxiosError } */ from 'axios'
 import { Link, useParams, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
 const endpoint = 'http://localhost:8000/api/asistencia'
 function change() {
     var datos = (document.getElementById("busqueda").value)
@@ -17,6 +18,8 @@ const Lista = () => {
     const [Ficha1,setFicha1] = useState([])
     const [Ficha2,setFicha2] = useState([])
     const [Ficha3,setFicha3] = useState([])
+    const [Reporte, setReporte] = useState(null)
+    const [AprendizR, setAprendizR] = useState("")
     const updateE = async (e) => {
         console.log(Asistencias)
         var id = idAprendiz
@@ -26,12 +29,14 @@ const Lista = () => {
         await axios.put(`${endpoint}/${id}`, {
             fechaAsistencia: fechaAsistencia,
             estadoAsistencia: estadoAsistencia,
-        }).then(console.log("logrado"))
+        }).then(setTimeout(() => {
+            window.location = ""
+        }, 250))
             .catch(function (error) {
                 console.log("Hubo un error al guardar: ", error.response.data.message)
             })
     }
-
+        
     useEffect(() => {
         getAllDatosAsistencias()
     }, [])
@@ -44,8 +49,29 @@ const Lista = () => {
         setFicha1(response.data[4])
         setFicha2(response.data[5])
         setFicha3(response.data[6])
+        setReporte(response.data[7])
+        setAprendizR(response.data[8])
         console.log("Response: ", response.data)
     }
+
+        if (Reporte != null) {
+            setReporte(null)
+            Swal.fire({
+                title: 'El aprendiz ' + AprendizR.nombreAprend + " " + AprendizR.apelliAprend + " Tiene " + Reporte[1] + " fallas",
+                text: "¿Deseas hacer un reporte ya mismo?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si',
+                cancelButtonText: 'Despues'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = "http://localhost:8000/reporte"
+                }
+            })
+        }
+
     function mostrarAsistencia() {
         if (Ficha == "1") {
             Ficha1.map(function (Asistencia) {
@@ -137,7 +163,7 @@ const Lista = () => {
                         <input placeholder={Asistencia2.numFicha} defaultValue={Asistencia2.numFicha} id={"Fi" + Asistencia2.id_aprendiz} className={Asistencia2.color + " col text-white border"} />
                         <input type="date" className={Asistencia2.color + " col text-white border"} id={"F" + Asistencia2.id_aprendiz} defaultValue={Asistencia2.fechaAsistencia} />
                         <input placeholder={Asistencia2.nombreAprend + " " + Asistencia2.apelliAprend} id={"N" + Asistencia2.id_aprendiz} defaultValue={Asistencia2.nombreAprend + " " + Asistencia2.apelliAprend} className={Asistencia2.color + " col text-white border"} />
-                        <input className={Asistencia2.color + " col text-white border"} maxLength="1" id={"E" + Asistencia2.id_aprendiz}
+                        <input className={""} maxLength="1" id={"E" + Asistencia2.id_aprendiz}
                             placeholder={Asistencia2.estadoAsistencia} onChange={(e) => { setEstadoAsistencia(e.target.value) }}
                             onKeyDown={(e) => { setidAprendiz(Asistencias[index2].id) }} onKeyUp={updateE} />
                     </div>
