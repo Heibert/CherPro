@@ -20,11 +20,8 @@ class FichaController extends Controller
      */
     public function index()
     {
-        $usuario = Auth::user();
-        $fichas = $usuario->fichas;
-        var_dump($usuario);
-        //$datos['ficha']=Ficha::paginate();
-        //return view('ficha.index')->with('fichas' , $fichas );
+        $datos['ficha']=Ficha::paginate();
+        return view('ficha.index')->with('fichas' , $fichas );
         
     }
 
