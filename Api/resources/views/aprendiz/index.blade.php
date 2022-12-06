@@ -21,12 +21,15 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       
       <ul class="navbar-nav navbar-right ms-auto  mb-2 mb-lg-0">
+      @if(auth()->user()->rol == 'admin')
         <li class="nav-item">
-          <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('aprendiz/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
+        <a class="nav-link navbar-brand text-back btn btn-outline-white " aria-current="page" href="{{ url('aprendiz/create') }}"><i class="bi bi-plus-lg"> Crear</i></a>
         </li>
+      @endif
         <li class="nav-item">
           <a class="nav-link navbar-brand text-back btn btn-outline-white" aria-current="page" href="{{ url('index') }}"><i class="bi bi-unindent"> Atras</i></a>
         </li>
+        @if(auth()->user()->rol == 'admin')
         <li class="nav-item">
             <form action="{{route('aprendiz.import')}}" method="POST" enctype="multipart/form-data">
             @csrf     
@@ -50,6 +53,7 @@
             </div>
         </form>
         </li>
+        @endif
     </ul>
     </div>
   </div>
@@ -69,40 +73,78 @@
                 <th>Ficha</th>
                 <th>Estado</th>
                 <th>Usuario</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
+                @if(auth()->user()->rol == 'admin')
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                @endif
                 
             </tr>
         </thead>
         
         <tbody>
+        @if(auth()->user()->rol == 'admin')
             @foreach($aprendiz as $a)
-            <tr>
-                <td>{{ $a->id }}</td>
-                <td>{{ $a->nombreAprend}} </td>
-                <td>{{ $a->apelliAprend}}</td>
-                <td>{{ $a->tipoDoc}}</td>
-                <td>{{ $a->numDoc}}</td>
-                <td>{{ $a->users->email}}</td>
-                <td>{{ $a->correoAprend}}</td>
-                <td>{{ $a->telefonoAprend}}</td >
-                <td>{{ $a->fichas->numFicha}}</td>
-                <td>{{ $a->estado}}</td>
-                <td>{{ $a->users->name}}</td>
-                <td>
-                    <a href="{{url('/aprendiz/'.$a->id.'/edit')}}">
-                        <button class="btn btn-outline-warning">Editar</button>
-                    </a> 
-                </td>
-                <td>
-                    <form action="{{url('/aprendiz/'.$a->id)}}" method="post">
-                        @csrf
-                        {{method_field('DELETE')}}
-                        <button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>
-                    </form>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{ $a->id }}</td>
+                    <td>{{ $a->nombreAprend}} </td>
+                    <td>{{ $a->apelliAprend}}</td>
+                    <td>{{ $a->tipoDoc}}</td>
+                    <td>{{ $a->numDoc}}</td>
+                    <td>{{ $a->users->email}}</td>
+                    <td>{{ $a->correoAprend}}</td>
+                    <td>{{ $a->telefonoAprend}}</td >
+                    <td>{{ $a->fichas->numFicha}}</td>
+                    <td>{{ $a->estado}}</td>
+                    <td>{{ $a->users->name}}</td>
+                    <td>
+                        <a href="{{url('/aprendiz/'.$a->id.'/edit')}}">
+                            <button class="btn btn-outline-warning">Editar</button>
+                        </a> 
+                    </td>
+                    <td>
+                        <form action="{{url('/aprendiz/'.$a->id)}}" method="post">
+                            @csrf
+                            {{method_field('DELETE')}}
+                            <button class="btn btn-outline-danger" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar"> Eliminar </button>
+                        </form>
+                    </td>
+                </tr>
             @endforeach
+        @elseif(auth()->user()->rol == 'instructor')
+            @foreach($aprendiz as $a)
+                <tr>
+                    <td>{{ $a->id }}</td>
+                    <td>{{ $a->nombreAprend}} </td>
+                    <td>{{ $a->apelliAprend}}</td>
+                    <td>{{ $a->tipoDoc}}</td>
+                    <td>{{ $a->numDoc}}</td>
+                    <td>{{ $a->users->email}}</td>
+                    <td>{{ $a->correoAprend}}</td>
+                    <td>{{ $a->telefonoAprend}}</td >
+                    <td>{{ $a->fichas->numFicha}}</td>
+                    <td>{{ $a->estado}}</td>
+                    <td>{{ $a->users->name}}</td>
+                </tr>
+            @endforeach
+        @else
+            @foreach($aprendiz as $a)
+                @if($a->users->id  === Auth::user()->id)
+                    <tr>
+                        <td>{{ $a->id }}</td>
+                        <td>{{ $a->nombreAprend}} </td>
+                        <td>{{ $a->apelliAprend}}</td>
+                        <td>{{ $a->tipoDoc}}</td>
+                        <td>{{ $a->numDoc}}</td>
+                        <td>{{ $a->users->email}}</td>
+                        <td>{{ $a->correoAprend}}</td>
+                        <td>{{ $a->telefonoAprend}}</td >
+                        <td>{{ $a->fichas->numFicha}}</td>
+                        <td>{{ $a->estado}}</td>
+                        <td>{{ $a->users->name}}</td>
+                    </tr>
+                @endif
+            @endforeach
+        @endif
             <br>
             <div>
                 @if(session('success'))
@@ -114,28 +156,6 @@
         </tbody>
     </table>
 </div>
-<form action="{{route('aprendiz.import')}}" method="POST" enctype="multipart/form-data">
-@csrf
-<div class="boton-modal">
-    <label for="btn-modal">
-        Importar
-    </label>
-    </div>
-    <input type="checkbox" id="btn-modal">
-    <div class="container-modal">
-        <div class="content-modal">
-            <h2>IMPORTAR</h2>
-            <div class="contenido-modal">
-                <input type="file" class="" name="file">
-            </div>
-            <div class="btn-cerrar">
-                <button class="btn-importar">Importar</button>
-            </div>
-        </div>
-        <label for="btn-modal" class="cerrar-modal"></label>
-        </div>
-    </form>
-
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

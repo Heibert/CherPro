@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Programa;
+use App\Models\User;
 use App\Models\Coordinacion;
 use App\Http\Requests\ProgramaCreateRequest;
 use App\Http\Requests\ProgramaEditRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramaController extends Controller
 {
@@ -17,7 +19,6 @@ class ProgramaController extends Controller
      */
     public function index()
     {
-        //
         $datos['programa']= Programa::paginate();
         return view('programa.index', $datos);
     }

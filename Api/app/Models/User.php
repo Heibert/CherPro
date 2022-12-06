@@ -56,7 +56,7 @@ class User extends Authenticatable
     }
 
     public function instructor(){
-        return $this->hasOne(Instructor::class, 'id');
+        return $this->hasMany(Instructor::class, 'id_user');
     } 
 
     public function coordinador(){
@@ -65,5 +65,22 @@ class User extends Authenticatable
 
     public function admin(){
         return $this->hasOne(Administrador::class, 'id');
+    }
+    public function asistencia(){
+        return $this->hasOne(Asistencia::class, 'id');
     } 
+    public function coordinacion(){
+        return $this->hasOne(Coordinacion::class, 'id');
+    }
+    public function ficha(){
+        return $this->hasOne(Ficha::class, 'id');
+    }
+   
+    public function tematica(){
+        return $this->hasOne(Tematica::class, 'id');
+    } 
+    public function trimestre(){
+        return $this->hasOne(Trimestre::class, 'id');
+    } 
+   
 }

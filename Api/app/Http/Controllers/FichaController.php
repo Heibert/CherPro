@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Ficha;
 use App\Models\Instructor;
 use App\Models\Programa;
+use App\Models\User;
 use App\Http\Requests\FichaCreateRequest;
 use App\Http\Requests\FichaEditRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FichaController extends Controller
 {
@@ -18,10 +20,11 @@ class FichaController extends Controller
      */
     public function index()
     {
-        //
-        $instructors = Instructor::all();
-        $datos['ficha']=Ficha::paginate();
-        return view('ficha.index', $datos, $user,$instructors);
+        $usuario = Auth::user();
+        $fichas = $usuario->fichas;
+        var_dump($usuario);
+        //$datos['ficha']=Ficha::paginate();
+        //return view('ficha.index')->with('fichas' , $fichas );
         
     }
 
