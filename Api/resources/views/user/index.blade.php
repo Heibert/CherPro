@@ -43,6 +43,7 @@
                 <th>Telefono</th>
                 <th>Correo</th>
                 <th>Rol</th>
+                <th>Editar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
@@ -55,7 +56,12 @@
                 <td>{{ $u->apellido}}</td>
                 <td>{{ $u->telefono}}</td >
                 <td>{{ $u->email}}</td>
-                <td>{{ $u->rol}}</td>
+                <td>{{ $u->rol}}</td>   
+                <td>
+                    <a href="{{url('/user/'.$u->id.'/edit')}}">
+                        <button class="btn btn-outline-warning">Editar</button>
+                    </a> 
+                </td>
                 <td>
                     <form action="{{url('/user/'.$u->id)}}" method="post">
                         @csrf

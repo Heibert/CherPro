@@ -35,6 +35,23 @@ class UserController extends Controller
         return redirect('user');
     }
 
+    public function edit($id)
+    {
+        return view('user.edit')->with([
+            'user' => User::find($id)
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $datos = $request->except('_token','_method');
+        User::where('id', '=', $id)->update($datos);
+
+        return redirect('user')->with([
+            'user' => User::find($id)
+        ]);
+    }
+
     public function destroy($id)
     {
         User::destroy($id);
