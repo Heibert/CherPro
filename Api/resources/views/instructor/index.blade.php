@@ -55,7 +55,6 @@
 
         <tbody>
             @foreach($instructor as $i)
-           
             <tr>
                 <td>{{ $i->id}}</td>
                 <td>{{ $i->nombreInst}}</td>

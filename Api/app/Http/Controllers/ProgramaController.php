@@ -19,10 +19,8 @@ class ProgramaController extends Controller
      */
     public function index()
     {
-        $usuario= Auth::user();
-        $programa = $usuario->instructor()->first()->programas;
-        //$datos['programa']= Programa::paginate();
-        return view('programa.index' )->with("datos" , $programa);
+        $datos['programa']= Programa::paginate();
+        return view('programa.index', $datos);
     }
 
     /**
